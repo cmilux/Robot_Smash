@@ -936,12 +936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11737530f4e3f534c9d1eea33505e828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestrictMovement
-  xfloatMax: 998
-  xfloatMin: 2
-  yfloatMax: 0
-  yfloatMin: 0
-  zfloatMax: 998
-  zfloatMin: 2
 --- !u!1 &1002319666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1802077192}
+  - component: {fileID: 1802077193}
   m_Layer: 0
   m_Name: CameraFollowObject
   m_TagString: Untagged
@@ -1364,6 +1359,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 802853354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1802077193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802077191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af87e8f935757e646b718e5e8c650731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CamMov
+  car: {fileID: 802853354}
+  sensitivity: 5
+  maxAngle: 50
 --- !u!1 &1811223172
 GameObject:
   m_ObjectHideFlags: 0
