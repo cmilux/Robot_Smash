@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class TurretEnemy : MonoBehaviour
 {
+    NavMeshAgent agent;
+
     public GameObject bulletObj;
     public Transform player;
     public Transform spawnPoint;
@@ -13,11 +15,13 @@ public class TurretEnemy : MonoBehaviour
     
     private void Start()
     {
-        //bulletTime = shootingCooldown;    
+        agent = GetComponent<NavMeshAgent>();
     }
     
     private void Update()
     {
+        agent.SetDestination(player.position);
+
         ShootPlayer();
     }
     
