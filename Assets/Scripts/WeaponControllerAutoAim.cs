@@ -6,31 +6,57 @@ public class WeaponControllerAutoAim : MonoBehaviour
     public Transform aim;
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public float detectionRange = 25f;
 
-    private GameObject currentEnemy; 
+    private GameObject currentEnemy;
 
     void Update()
     {
-        if (currentEnemy == null)
-        {
-            // Get all enemies in the scene and add to the array enemies 
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //look for the closest enemy to keep the aim updated(esto puede traer problemas por buscar en cada frame, podria utilizar invoke para hacerlo cada determinados segundos en start)
+        FindNearestEnemy();
 
-            // If there are no enemies exit
-            if (enemies.Length == 0) return;
-
-            // Pick a random enemy from the array
-            currentEnemy = enemies[Random.Range(0, enemies.Length)];
-        }
         if (currentEnemy != null)
         {
-            // calculate direction towards the enemy
+            // Calculate direction towards the enemy
             Vector3 direction = currentEnemy.transform.position - aim.position;
             direction.y = 0;
 
             // Rotate the aim towards the enemy
-            aim.LookAt(aim.position + direction);
+            if (direction != Vector3.zero)
+            {
+                aim.LookAt(aim.position + direction);
+            }
         }
+    }
+
+    void FindNearestEnemy()
+    {
+        //Get all enemies in the range
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange);
+        GameObject closest = null;
+
+        float minDistance = detectionRange;
+
+        // for each collider first verifies if its an enemy
+        foreach (Collider col in collidersInRange)
+        {
+            if (col.CompareTag("Enemy"))
+            {
+                // Calculate the distance to each enemy
+                float distance = Vector3.Distance(transform.position, col.transform.position);
+
+                //Check if this enemy is the closest
+                if (distance < minDistance)
+                {
+                    closest = col.gameObject;
+                    minDistance = distance;
+                }
+
+            }
+
+
+        }
+        currentEnemy = closest;
     }
 
     public void OnAttack(InputValue value)

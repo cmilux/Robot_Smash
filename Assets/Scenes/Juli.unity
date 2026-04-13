@@ -1705,6 +1705,7 @@ MonoBehaviour:
   aim: {fileID: 1783682332}
   firePoint: {fileID: 1838402780}
   bulletPrefab: {fileID: 1142616099853660861, guid: 5e35427a7810fc24fb9bcb3cf792bdb9, type: 3}
+  detectionRange: 25
 --- !u!1 &1783682331
 GameObject:
   m_ObjectHideFlags: 0
