@@ -1518,6 +1518,7 @@ GameObject:
   - component: {fileID: 1756802468}
   - component: {fileID: 1756802467}
   - component: {fileID: 1756802473}
+  - component: {fileID: 1756802474}
   m_Layer: 0
   m_Name: Car1
   m_TagString: Untagged
@@ -1555,6 +1556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarController
   speed: 10
   turnSpeed: 100
+  dashSpeed: 20
+  dashDuration: 0.2
+  isDashing: 0
 --- !u!114 &1756802468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,6 +1710,19 @@ MonoBehaviour:
   firePoint: {fileID: 1838402780}
   bulletPrefab: {fileID: 1142616099853660861, guid: 5e35427a7810fc24fb9bcb3cf792bdb9, type: 3}
   detectionRange: 25
+--- !u!114 &1756802474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756802465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef03eb7f39729245919d24732e36f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombatMelee
+  damageAmount: 1
 --- !u!1 &1783682331
 GameObject:
   m_ObjectHideFlags: 0
