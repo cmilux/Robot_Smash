@@ -18,6 +18,10 @@ public class CarController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         currentSpeed = speed;
+
+        Cursor.visible = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
     {

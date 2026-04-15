@@ -19,12 +19,13 @@ public class WeaponControllerAutoAim : MonoBehaviour
         {
             // Calculate direction towards the enemy
             Vector3 direction = currentEnemy.transform.position - aim.position;
-            direction.y = 0;
+            //direction.y = 0;
 
             // Rotate the aim towards the enemy
             if (direction != Vector3.zero)
             {
-                aim.LookAt(aim.position + direction);
+                //aim.LookAt(aim.position + direction);
+                aim.LookAt(currentEnemy.transform);
             }
         }
     }
@@ -32,7 +33,7 @@ public class WeaponControllerAutoAim : MonoBehaviour
     void FindNearestEnemy()
     {
         //Get all enemies in the range
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange);
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange); //Añadir aca un filtro por layer
         GameObject closest = null;
 
         float minDistance = detectionRange;
@@ -40,22 +41,19 @@ public class WeaponControllerAutoAim : MonoBehaviour
         // for each collider first verifies if its an enemy
         foreach (Collider col in collidersInRange)
         {
-            if (col.CompareTag("Enemy"))
+            if (!col.CompareTag("Enemy")) continue;
+
+            // Calculate the distance to each enemy
+            float distance = Vector3.Distance(transform.position, col.transform.position);
+
+            //Check if this enemy is the closest
+            if (distance < minDistance)
             {
-                // Calculate the distance to each enemy
-                float distance = Vector3.Distance(transform.position, col.transform.position);
-
-                //Check if this enemy is the closest
-                if (distance < minDistance)
-                {
-                    closest = col.gameObject;
-                    minDistance = distance;
-                }
-
+                closest = col.gameObject;
+                minDistance = distance;
             }
-
-
         }
+
         currentEnemy = closest;
     }
 
