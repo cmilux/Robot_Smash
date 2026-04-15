@@ -15,19 +15,20 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
 
         health -= damage;
-
+        //por consola pueden salir valores negativos
         Debug.Log($"player health {health}");
         
         if (health <= 0)
-        {  
-          isDead = true;
-
+        {//pero para la ui queda en cero
           health = 0;
+
+          isDead = true;
 
           Debug.Log("player died");
 
-          gameObject.SetActive(false);
+         //para el enemigo torreta if (player == null || !player.gameObject.activeInHierarchy) return;
 
+            gameObject.SetActive(false);
         }   
     }
     
