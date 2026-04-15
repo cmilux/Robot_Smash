@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KamikazeEnemy
   _explosion: {fileID: 5596529144562090865}
+  isDead: 0
 --- !u!198 &5596529144562090865
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4944,7 +4945,7 @@ GameObject:
   - component: {fileID: 7281657852056504164}
   m_Layer: 0
   m_Name: SpawnKamikaze
-  m_TagString: Untagged
+  m_TagString: SpawnedEnemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

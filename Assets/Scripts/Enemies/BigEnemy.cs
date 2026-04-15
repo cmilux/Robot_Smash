@@ -9,11 +9,11 @@ public class BigEnemy : MonoBehaviour
     public GameObject kamikazeEnemy;
     public Transform player;
     public Transform[] spawnPoint;
+    public KamikazeEnemy scriptEnemy;
     
     public float shootingCooldown = 3f;
     public float bulletTime;
 
-    public float currentEnemies;
     float maxEnemies = 3;
 
     private void Update()
@@ -30,6 +30,8 @@ public class BigEnemy : MonoBehaviour
     
     void ShootPlayer()
     {
+        int currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
+
         while (currentEnemies < maxEnemies)
         {
             bulletTime -= Time.deltaTime;
@@ -39,9 +41,6 @@ public class BigEnemy : MonoBehaviour
             int spawnPointIndex = Random.Range(0, spawnPoint.Length);
 
             Instantiate(kamikazeEnemy, spawnPoint[spawnPointIndex].position, Quaternion.identity);
-            currentEnemies++;
-
-            //solve how to reset counter
         }
     }
 }
