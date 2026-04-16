@@ -1617,6 +1617,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5138751995002846690, guid: dc14722645b844aa58e6a158e859ac66, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1445728134
+      objectReference: {fileID: 0}
     - target: {fileID: 8810552515979775077, guid: dc14722645b844aa58e6a158e859ac66, type: 3}
       propertyPath: m_Name
       value: KamikazeEnemy
@@ -1634,6 +1638,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4138132026237443600, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4009188189
+      objectReference: {fileID: 0}
     - target: {fileID: 1292183927680097623, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
       propertyPath: player
       value: 
@@ -1734,6 +1742,10 @@ PrefabInstance:
     - target: {fileID: 1913989984503514398, guid: 31e18fc45f79d4b248c5162a2d055b97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5358928007689083968, guid: 31e18fc45f79d4b248c5162a2d055b97, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 760933732
       objectReference: {fileID: 0}
     - target: {fileID: 5974822476655922325, guid: 31e18fc45f79d4b248c5162a2d055b97, type: 3}
       propertyPath: m_Name
