@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CarController
   speed: 10
   turnSpeed: 100
-  dashSpeed: 100
+  dashSpeed: 50
   dashDuration: 0.5
   isDashing: 0
 --- !u!114 &7524327735374140399

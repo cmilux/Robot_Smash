@@ -6,7 +6,7 @@ public class CarController : MonoBehaviour
     public float speed = 10f;
     public float turnSpeed = 100f;
 
-    public float dashSpeed = 100f;
+    public float dashSpeed = 50f;
     public float dashDuration = 0.5f;
     public bool isDashing = false;
 
