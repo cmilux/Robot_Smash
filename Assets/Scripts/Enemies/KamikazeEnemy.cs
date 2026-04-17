@@ -1,19 +1,48 @@
 using UnityEngine;
 
-public class KamikazeEnemy : MonoBehaviour
+public class KamikazeEnemy : Enemy
 {
-    //EnemyHealth _enemyHealht;
     public ParticleSystem _explosion;
+    public Transform player;
+    public float explodeDistance = 10f;
+    public int damage = 1;
     public bool isDead = false;
 
     private void Start()
     {
-        //_enemyHealht = GetComponent<EnemyHealth>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.gameObject.CompareTag("Player"))
+        if(isDead) return;
+
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance <= explodeDistance)
+        {
+            Explode();
+        }
+    }
+
+    void Explode()
+    {
+        isDead= true;
+
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.LoseHealth(damage);
+        }
+
+        _explosion.Play();
+        timeBeforeDestroy = 5;
+        Die(timeBeforeDestroy);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             _explosion.Play();
             //Destroy enemy if player collides w it

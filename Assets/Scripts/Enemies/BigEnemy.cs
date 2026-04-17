@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Pool;
 
-public class BigEnemy : MonoBehaviour
+public class BigEnemy : Enemy
 {
     NavMeshAgent agent;
     public GameObject kamikazeEnemy;
@@ -32,7 +32,7 @@ public class BigEnemy : MonoBehaviour
     {
         int currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
 
-        while (currentEnemies < maxEnemies)
+        if (currentEnemies < maxEnemies)
         {
             bulletTime -= Time.deltaTime;
             if (bulletTime > 0) return;

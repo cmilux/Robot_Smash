@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - BigEnemy
+  - SpawnedEnemies
+  - TurretBullet
   layers:
   - Default
   - TransparentFX

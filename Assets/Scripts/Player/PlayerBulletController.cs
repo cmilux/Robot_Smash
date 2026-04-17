@@ -18,7 +18,7 @@ public class PlayerBulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
         if (enemy != null) 
         {

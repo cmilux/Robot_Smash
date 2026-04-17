@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af3afcb62f65440a25d9a30f868b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KamikazeEnemy
+  health: 3
   _explosion: {fileID: 5574712555228159307}
   isDead: 0
 --- !u!1 &6461405680750632148
@@ -5009,7 +5010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1445728134
+  GlobalObjectIdHash: 2242918938
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1

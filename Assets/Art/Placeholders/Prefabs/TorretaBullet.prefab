@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8822041682169158449}
   - component: {fileID: 113237295562287286}
   - component: {fileID: 7112418423039165931}
+  - component: {fileID: -6370925785387550289}
   m_Layer: 0
   m_Name: TorretaBullet
   m_TagString: Untagged
@@ -140,3 +141,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6370925785387550289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142616099853660861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6dfaf39d6379784a8d585471d8a59f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretBullet
+  health: 3
+  timeBeforeDestroy: 0
+  damage: 1
