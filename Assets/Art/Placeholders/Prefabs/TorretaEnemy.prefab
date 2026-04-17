@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf4099b8a3746b48bd8e1bc28651715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TorretaEnemy
+  health: 3
+  timeBeforeDestroy: 0
   bulletObj: {fileID: 1142616099853660861, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
   player: {fileID: 0}
   spawnPoint: {fileID: 3064454808605387750}
@@ -199,7 +201,7 @@ GameObject:
   - component: {fileID: -4138132026237443600}
   m_Layer: 0
   m_Name: TorretaEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,14 +234,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4009188189
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 2435686470
+  InScenePlacedSourceGlobalObjectIdHash: 1982440800
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
