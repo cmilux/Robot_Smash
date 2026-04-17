@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +427,7 @@ GameObject:
   - component: {fileID: 360967611}
   - component: {fileID: 360967610}
   - component: {fileID: 360967609}
+  - component: {fileID: 360967612}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -508,6 +510,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &360967612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360967608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: c380c5d6e9aca794ea1a9027f8534c86, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!65 &487899793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1147,6 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!1 &1267078263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!65 &1267078266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1321,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!65 &1372485186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1399,6 +1437,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372485183}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1390409178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4359516273046785223, guid: ba276fce49ff6f748b9849597471a7ea, type: 3}
+  m_PrefabInstance: {fileID: 1113516080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1443724668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!65 &1776019712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1743,6 +1787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 3
+  timeBeforeDestroy: 0
 --- !u!65 &1879646878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1821,6 +1866,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879646875}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1991874632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -4138132026237443600, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2435686470
+      objectReference: {fileID: 0}
+    - target: {fileID: -4138132026237443600, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4138132026237443600, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1982440800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292183927680097623, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1390409178}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.76546
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24.10309
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3002129305067694749, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598088030143140085, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
+      propertyPath: m_Name
+      value: TorretaEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95cac8fb0b9814cd1b451d26fa85df88, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1833,3 +1951,4 @@ SceneRoots:
   - {fileID: 971170972}
   - {fileID: 1030772717}
   - {fileID: 1113516080}
+  - {fileID: 1991874632}
