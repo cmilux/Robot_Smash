@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttackMelee : MonoBehaviour
-{   
+{
     private CarController carController;
 
     public int damageAmount = 1;
@@ -26,12 +26,25 @@ public class PlayerAttackMelee : MonoBehaviour
         {
             if (carController.isDashing)
             {
-                EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
                 if (enemy != null)
                 {
                     enemy.TakeDamage(damageAmount);
                 }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damageAmount);
             }
         }
     }
