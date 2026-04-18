@@ -129,7 +129,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!65 &8977668199020093351
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 748036270
+  GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   slotsContainer: {fileID: 0}
   hotBarSlotsContainer: {fileID: 0}
+  itemDev: {fileID: 11400000, guid: 7775df18e34ceee40ab160209cc6f7e1, type: 2}
 --- !u!1 &3817942854181428294
 GameObject:
   m_ObjectHideFlags: 0
