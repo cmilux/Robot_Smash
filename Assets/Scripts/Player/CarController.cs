@@ -10,6 +10,8 @@ public class CarController : MonoBehaviour
     public float dashDuration = 0.5f;
     public bool isDashing = false;
 
+    public bool isFrozen = false;
+
     private Rigidbody rb;
     private Vector2 moveInput;
     private float currentSpeed;
@@ -24,7 +26,8 @@ public class CarController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
-    {
+    {   // Si el inventario está abierto, isFrozen será true y el coche no se moverá
+        if (isFrozen) return;
         // Movimiento hacia adelante/atrás
         float move = moveInput.y * speed * Time.fixedDeltaTime;
 

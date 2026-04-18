@@ -49,6 +49,8 @@ GameObject:
   - component: {fileID: 7014260135373736064}
   - component: {fileID: 2668508467809286515}
   - component: {fileID: 8942512084302758237}
+  - component: {fileID: 4175479433859854553}
+  - component: {fileID: 5797081634331217539}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Untagged
@@ -168,6 +170,7 @@ MonoBehaviour:
   dashSpeed: 50
   dashDuration: 0.5
   isDashing: 0
+  isFrozen: 0
 --- !u!114 &7524327735374140399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +252,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11737530f4e3f534c9d1eea33505e828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestrictMovement
+--- !u!114 &4175479433859854553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663539091826855021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb701050e850c8a4eab53ed4fe990563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  playerInventoryUI: {fileID: 0}
+--- !u!114 &5797081634331217539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663539091826855021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89175f9158c546b4d8dd90e8304ae6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  slotsContainer: {fileID: 0}
+  hotBarSlotsContainer: {fileID: 0}
 --- !u!1 &3817942854181428294
 GameObject:
   m_ObjectHideFlags: 0
