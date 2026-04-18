@@ -16,30 +16,36 @@ public class BigEnemy : Enemy
 
     float maxEnemies = 3;
 
+    private void Start()
+    {
+        //Gets the nav mesh
+        agent = GetComponent<NavMeshAgent>();
+    }
+
     private void Update()
     {
+        //Sets nav mesh destination to player
         agent.SetDestination(player.position);
 
         ShootPlayer();
     }
 
-    private void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
-    
     void ShootPlayer()
     {
+        //Checks how many spawned enemies are on scene
         int currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
 
         if (currentEnemies < maxEnemies)
         {
+            //Cooldown to spawn enemies
             bulletTime -= Time.deltaTime;
             if (bulletTime > 0) return;
             bulletTime = shootingCooldown;
 
+            //Save a random position from the array of points
             int spawnPointIndex = Random.Range(0, spawnPoint.Length);
 
+            //Spawn enemies at the random position
             Instantiate(kamikazeEnemy, spawnPoint[spawnPointIndex].position, Quaternion.identity);
         }
     }
