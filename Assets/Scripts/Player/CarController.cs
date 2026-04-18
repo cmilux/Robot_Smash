@@ -26,7 +26,7 @@ public class CarController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
-    {   // Si el inventario está abierto, isFrozen será true y el coche no se moverá
+    {   // If inventory its open frozen would be true
         if (isFrozen) return;
         // Movimiento hacia adelante/atrás
         float move = moveInput.y * speed * Time.fixedDeltaTime;

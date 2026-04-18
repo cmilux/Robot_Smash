@@ -1,49 +1,57 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance { get; private set; }
+
     public GameObject playerInventoryUI;
 
     private PlayerInput playerInput;
     private CarController carController;
+
     private void Awake()
     {
+        // Singleton pattern implementation
         if (instance == null) { instance = this; }
         else { Destroy(gameObject); }
 
         playerInput = GetComponent<PlayerInput>();
         carController = GetComponent<CarController>();
     }
+
     private void OnOpenInventory(InputValue value)
     {
         if (value.isPressed)
         {
+            // Open or close the menu based on its current active state
             bool isOpening = !playerInventoryUI.activeSelf;
             playerInventoryUI.SetActive(isOpening);
 
             if (isOpening)
             {
-                // 1. Cambiamos al mapa de "UI". 
-                // Esto DESACTIVA automáticamente Move, Attack y todo lo del mapa "Player".
+                //  Switch to the "UI" Action Map. 
+                // This automatically disables Move, Attack and other Player map actions.
                 playerInput.SwitchCurrentActionMap("UI");
 
+                // Show and unlock the cursor for menu navigation
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
 
-                // Si quieres que el coche se detenga físicamente (frenazo seco)
-                GetComponent<CarController>().isFrozen = true;
+                // Stop the car
+                carController.isFrozen = true;
             }
             else
             {
-                // 2. Volvemos al mapa de "Player" para poder movernos y disparar
+                // Return to the "Player" Action Map to restore movement and combat
                 playerInput.SwitchCurrentActionMap("Player");
 
+                // Hide and lock the cursor for gameplay
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                GetComponent<CarController>().isFrozen = false;
+                
+                carController.isFrozen = false;
             }
         }
     }
-    //FALTA AGREGAR LOGICA PARA QUE EL JUGADOR NO SE PUEDA MOVER
 }
