@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3933168563465866347}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.3, y: 1.07, z: 33.7}
-  m_LocalScale: {x: 1.4005, y: 2.0763261, z: 1.0349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.085, z: 0}
+  m_LocalScale: {x: 1, y: 2.491535, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1939316757520331269}
@@ -107,12 +107,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.049935, y: 1, z: 5.753362}
-  m_Center: {x: -0.19037192, y: 0, z: -0.08254965}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1038246757368645068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KamikazeEnemy
   health: 3
-  _explosion: {fileID: 5574712555228159307}
   isDead: 0
+  timeBeforeDestroy: 0
+  _explosion: {fileID: 5574712555228159307}
+  player: {fileID: 0}
+  explodeDistance: 10
+  damage: 1
 --- !u!1 &6461405680750632148
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 6461405680750632148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.3, y: 1.07, z: 33.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5010,7 +5014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2242918938
+  GlobalObjectIdHash: 1445728134
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1

@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 5797081634331217539}
   m_Layer: 0
   m_Name: 'Player '
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,8 +151,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.0052776, y: 1.1463604, z: 3.4482727}
-  m_Center: {x: 0, y: -0.17368007, z: -0.006214142}
+  m_Size: {x: 2.0052776, y: 1.9969686, z: 3.4482727}
+  m_Center: {x: 0, y: -0.5989842, z: -0.006214142}
 --- !u!114 &4456747113851718241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackMelee
   damageAmount: 1
+  pj: {fileID: 0}
 --- !u!114 &7014260135373736064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   health: 0
-  maxHealth: 5
+  maxHealth: 50
   isDead: 0
 --- !u!114 &2668508467809286515
 MonoBehaviour:
@@ -227,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1822358916
+  GlobalObjectIdHash: 748036270
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1

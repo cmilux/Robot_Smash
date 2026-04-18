@@ -160,6 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699ca5a15e0451f4d963efdb29d10552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BigEnemy
+  health: 3
+  isDead: 0
+  timeBeforeDestroy: 0
   kamikazeEnemy: {fileID: 6655157236960887136, guid: 77ca7e5254d19524a847238518d6772b, type: 3}
   player: {fileID: 0}
   spawnPoint:
