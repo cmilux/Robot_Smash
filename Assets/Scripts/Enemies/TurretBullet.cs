@@ -8,13 +8,16 @@ public class TurretBullet : Enemy
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            //Gets the playerHealth script from player
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
             if (playerHealth != null)
             {
+                //Takes damage from player
                 playerHealth.LoseHealth(damage);
             }
-            Destroy(gameObject);
+
+            Destroy(gameObject);        //Destroys bullet
         }
     }
 }

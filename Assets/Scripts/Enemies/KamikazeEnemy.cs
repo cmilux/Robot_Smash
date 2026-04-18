@@ -10,6 +10,7 @@ public class KamikazeEnemy : Enemy
 
     private void Start()
     {
+        //Get the player transform component
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -24,6 +25,7 @@ public class KamikazeEnemy : Enemy
     {
         if (kamIsDead) return;
 
+        //Calculates the distance between player an enemy
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance <= explodeDistance)
@@ -32,9 +34,11 @@ public class KamikazeEnemy : Enemy
 
             if (distance <= explodeDistance)
             {
+                //Get the player health script
                 PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
+                    //Applies damage to player
                     playerHealth.LoseHealth(damage);
                 }
             }
@@ -46,7 +50,7 @@ public class KamikazeEnemy : Enemy
         if (kamIsDead) return;
 
         _explosion.Play();
-        timeBeforeDestroy = 5;
+        timeBeforeDestroy = 5;      //Set time to be destroyed
         Die(timeBeforeDestroy);
 
     }
@@ -57,16 +61,18 @@ public class KamikazeEnemy : Enemy
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            //Get the player health script
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
+                //Applies damage to player
                 playerHealth.LoseHealth(damage);
             }
 
             _explosion.Play();
             //Destroy enemy if player collides w it
             kamIsDead = true;
-            Destroy(transform.root.gameObject, 5f);
+            //Destroy(transform.root.gameObject, 5f);
         }
     }
 }

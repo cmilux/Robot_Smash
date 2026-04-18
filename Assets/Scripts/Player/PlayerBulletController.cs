@@ -14,24 +14,28 @@ public class PlayerBulletController : MonoBehaviour
 
         rb.linearVelocity = transform.forward * speed;
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 2f);    //Destroy bullet
 
-        pj = GameObject.FindGameObjectWithTag("ExpUI").GetComponent<PlayerLevel>();
+        pj = GameObject.FindGameObjectWithTag("ExpUI").GetComponent<PlayerLevel>();         //Gets player level script (esta en el canvas ups)
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        //Get enemy script
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
         if (enemy != null) 
         {
-            enemy.TakeDamage(damage); 
+            enemy.TakeDamage(damage);           //Apply damage to enemy
 
             if (enemy.isDead == true)
             {
-                pj.AddExp(30);
+                //Add this amount of experience to player if enemy died
+                pj.AddExp(30);          
             }
         }
-        Destroy(gameObject);
+
+        //Destroy bullet
+        Destroy(gameObject);                
     }
 }
