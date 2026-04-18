@@ -7,6 +7,8 @@ public class PlayerAttackMelee : MonoBehaviour
 
     public int damageAmount = 1;
 
+    [SerializeField] PlayerLevel pj;
+
     private void Awake()
     {
         carController = GetComponent<CarController>();
@@ -31,6 +33,11 @@ public class PlayerAttackMelee : MonoBehaviour
                 if (enemy != null)
                 {
                     enemy.TakeDamage(damageAmount);
+
+                    if (enemy.isDead == true)
+                    {
+                        pj.AddExp(15);
+                    }
                 }
             }
         }

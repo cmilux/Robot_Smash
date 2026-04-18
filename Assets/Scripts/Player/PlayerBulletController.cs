@@ -6,6 +6,7 @@ public class PlayerBulletController : MonoBehaviour
     public int damage = 1;
 
     private Rigidbody rb;
+    PlayerLevel pj;
 
     void Start()
     {
@@ -14,6 +15,8 @@ public class PlayerBulletController : MonoBehaviour
         rb.linearVelocity = transform.forward * speed;
 
         Destroy(gameObject, 2f);
+
+        pj = GameObject.FindGameObjectWithTag("ExpUI").GetComponent<PlayerLevel>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -23,6 +26,11 @@ public class PlayerBulletController : MonoBehaviour
         if (enemy != null) 
         {
             enemy.TakeDamage(damage); 
+
+            if (enemy.isDead == true)
+            {
+                pj.AddExp(30);
+            }
         }
         Destroy(gameObject);
     }

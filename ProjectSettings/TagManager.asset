@@ -8,6 +8,7 @@ TagManager:
   - BigEnemy
   - SpawnedEnemies
   - TurretBullet
+  - ExpUI
   layers:
   - Default
   - TransparentFX
