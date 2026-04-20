@@ -280,7 +280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   slotsContainer: {fileID: 0}
   hotBarSlotsContainer: {fileID: 0}
-  itemDev: {fileID: 11400000, guid: 7775df18e34ceee40ab160209cc6f7e1, type: 2}
+  pickupRadius: 4
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3817942854181428294
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 2
   nombre: Capsule
-  icon: {fileID: 21300000, guid: 291b7f13073e7a149a20b0b6a3ef8f8c, type: 3}
+  icon: {fileID: 21300000, guid: 10f5bcf5a34663b46b4194ef6ce575e3, type: 3}
   maxStock: 10
