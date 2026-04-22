@@ -7,7 +7,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
     public int damageAmount = 1;
 
-    [SerializeField] PlayerLevel pj;
+    [SerializeField] PlayerLevelUI pj;
 
     private void Awake()
     {

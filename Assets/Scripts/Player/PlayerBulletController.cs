@@ -6,7 +6,7 @@ public class PlayerBulletController : MonoBehaviour
     public int damage = 1;
 
     private Rigidbody rb;
-    PlayerLevel pj;
+    PlayerLevelUI pj;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class PlayerBulletController : MonoBehaviour
 
         Destroy(gameObject, 2f);    //Destroy bullet
 
-        pj = GameObject.FindGameObjectWithTag("ExpUI").GetComponent<PlayerLevel>();         //Gets player level script (esta en el canvas ups)
+        pj = GameObject.FindGameObjectWithTag("ExpUI").GetComponent<PlayerLevelUI>();         //Gets player level script (esta en el canvas ups)
     }
 
     private void OnCollisionEnter(Collision collision)

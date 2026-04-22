@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerLevel : MonoBehaviour
+public class PlayerLevelUI : MonoBehaviour
 {
     [Header("Player experience")]
     [SerializeField] AnimationCurve expCurve;
