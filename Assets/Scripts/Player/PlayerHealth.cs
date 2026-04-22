@@ -10,7 +10,6 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead = false;
 
     [Header("User interface elements")]
-    [SerializeField] TextMeshProUGUI lifeText;
     [SerializeField] TextMeshProUGUI totalLifeText;
     [SerializeField] Image lifeFill;
 

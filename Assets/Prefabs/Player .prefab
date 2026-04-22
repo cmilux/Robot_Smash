@@ -214,8 +214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   health: 0
-  maxHealth: 50
+  maxHealth: 100
   isDead: 0
+  totalLifeText: {fileID: 0}
+  lifeFill: {fileID: 0}
 --- !u!114 &2668508467809286515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2185100068
+  GlobalObjectIdHash: 748036270
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1

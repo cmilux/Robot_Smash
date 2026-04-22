@@ -25,7 +25,7 @@ public class PlayerLevelUI : MonoBehaviour
     {
         totalExp += amount;         //Add experience to the total
         CheckForLevelUp();
-        UpdateUI();
+        UpdateLevel();
     }
 
     void CheckForLevelUp()
@@ -54,5 +54,8 @@ public class PlayerLevelUI : MonoBehaviour
         levelText.text = currentLevel.ToString();
         expText.text = $"{start} exp / {end} exp";          //Set current exp and how much u need to go to next level
         expFill.fillAmount = (float)start / (float)end;     //Fills the experience bar from the UI
+
+        Debug.Log($"EXP: {totalExp} | prev: {prevLevExp} | next: {nextLevExp}");
+        Debug.Log("Updating UI on: " + gameObject.name);
     }
 }

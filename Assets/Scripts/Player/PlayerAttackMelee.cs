@@ -14,6 +14,11 @@ public class PlayerAttackMelee : MonoBehaviour
         carController = GetComponent<CarController>();
     }
 
+    private void Start()
+    {
+        pj = GameObject.FindAnyObjectByType<PlayerLevelUI>();
+    }
+
     public void OnDash(InputValue value)
     {   //Shift Key
         if (value.isPressed)

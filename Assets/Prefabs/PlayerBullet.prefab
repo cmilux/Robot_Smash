@@ -155,3 +155,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
   speed: 20
   damage: 1
+  pj: {fileID: 820122627292049983, guid: e694fc408b210ea4cbbac7cc57474d05, type: 3}
