@@ -9,6 +9,7 @@ TagManager:
   - SpawnedEnemies
   - TurretBullet
   - ExpUI
+  - Slot
   layers:
   - Default
   - TransparentFX
