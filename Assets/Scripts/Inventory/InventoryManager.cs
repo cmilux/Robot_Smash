@@ -20,6 +20,11 @@ public class InventoryManager : MonoBehaviour
         carController = GetComponent<CarController>();
     }
 
+    private void Start()
+    {
+        playerInventoryUI.SetActive(false);
+    }
+
     private void OnOpenInventory(InputValue value)
     {
         if (value.isPressed)
