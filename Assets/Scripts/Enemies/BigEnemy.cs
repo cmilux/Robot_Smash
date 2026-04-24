@@ -18,7 +18,8 @@ public class BigEnemy : Enemy
     //public Transform[] spawnKamikazePoint;  //Right now enemies are being spawned on a radius instead of spawn points
     public Transform[] spawnBulletsPoint;
     float spawnRadius = 5f;
-    
+    float destroyTimer = 5f;
+
     [Header("Cooldown time")]
     public float spawnCooldown = 3f;
     public float spawnTime;
@@ -114,6 +115,7 @@ public class BigEnemy : Enemy
                 //Apply force to the bullets
                 rb.AddForce(dir * 15f, ForceMode.Impulse);
 
+                Destroy(bullet, destroyTimer);
             }
         }
     }

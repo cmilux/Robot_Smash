@@ -39,6 +39,6 @@ public class TurretEnemy : Enemy
         Vector3 dir = (player.position - spawnPoint.transform.position).normalized;
         rb.AddForce(dir * shootingSpeed, ForceMode.Impulse);
 
-        //Destroy(bullet, destroyTimer);
+        Destroy(bullet, destroyTimer);
     }
 }
