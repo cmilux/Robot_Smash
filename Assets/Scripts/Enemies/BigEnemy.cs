@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
+using Unity.Profiling;
+using UnityEngine.Profiling;
 
 public class BigEnemy : Enemy
 {
@@ -37,15 +39,19 @@ public class BigEnemy : Enemy
 
         //Checks how many spawned enemies are on scene and call method
         currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
+        Profiler.BeginSample("SpawnKamikaze");
         SpawnKamikaze();
+        Profiler.EndSample();
 
         //Shoot bullets
+        Profiler.BeginSample("SpawnBullet");
         Shoot();
+        Profiler.EndSample();
     }
 
     void SpawnKamikaze()
     {
-        if (currentEnemies < maxEnemies)
+        while (currentEnemies < maxEnemies)
         {
             //Cooldown to spawn enemies
             spawnTime -= Time.deltaTime;
@@ -84,7 +90,7 @@ public class BigEnemy : Enemy
     void Shoot()
     {
         //If on scene they are the max amount of enemies
-        if (currentEnemies == maxEnemies)
+        while (currentEnemies == maxEnemies)
         {
             //Cooldown to spawn bullets
             spawnTime -= Time.deltaTime;

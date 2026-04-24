@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
         if (instance == null) {  instance = this; }
         else { Destroy(gameObject);}
 
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+
         //Inicializamos la DB
         itemDataBase.InitializeDataBase();
     }
