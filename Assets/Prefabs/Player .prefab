@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1540056935949494643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 8942512084302758237}
   - component: {fileID: 4175479433859854553}
   - component: {fileID: 5797081634331217539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Player '
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!65 &8977668199020093351
@@ -187,6 +187,9 @@ MonoBehaviour:
   firePoint: {fileID: 1540056935949494643}
   bulletPrefab: {fileID: 1142616099853660861, guid: 5e35427a7810fc24fb9bcb3cf792bdb9, type: 3}
   detectionRange: 25
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &4751104695589398738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 748036270
+  GlobalObjectIdHash: 1822358916
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1
@@ -298,7 +301,7 @@ GameObject:
   - component: {fileID: 941747394094740491}
   - component: {fileID: 3697844360458550149}
   - component: {fileID: 1175703826446062731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7110220627884209288}
   - component: {fileID: 4192038118968562048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CameraFollowObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2122549951985193506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2746289847459606845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Meshes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +525,7 @@ GameObject:
   - component: {fileID: 1239513491387412976}
   - component: {fileID: 781512706772172349}
   - component: {fileID: 446922445284230239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +639,7 @@ GameObject:
   - component: {fileID: 4359516273046785223}
   - component: {fileID: 8545401269742612880}
   - component: {fileID: 6266142752889236111}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}

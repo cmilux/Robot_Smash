@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8300176792761860670}
   - component: {fileID: 4111880128241359797}
   - component: {fileID: 8199264679482647000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: SpawnedEnemies
   m_Icon: {fileID: 0}
@@ -4951,7 +4951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1149564454
+  GlobalObjectIdHash: 8566697
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -5000,7 +5000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6439220333632682570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnKamikaze
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class WeaponControllerAutoAim : MonoBehaviour
+public class PlayerAttackDistance : MonoBehaviour
 {
     public Transform aim;
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float detectionRange = 25f;
+    public LayerMask enemyLayer;
 
     private GameObject currentEnemy;
 
@@ -33,7 +34,7 @@ public class WeaponControllerAutoAim : MonoBehaviour
     void FindNearestEnemy()
     {
         //Get all enemies in the range
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange); //Añadir aca un filtro por layer
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange, enemyLayer); 
         GameObject closest = null;
 
         float minDistance = detectionRange;
@@ -41,8 +42,6 @@ public class WeaponControllerAutoAim : MonoBehaviour
         // for each collider first verifies if its an enemy
         foreach (Collider col in collidersInRange)
         {
-            if (!col.CompareTag("Enemy")) continue;
-
             // Calculate the distance to each enemy
             float distance = Vector3.Distance(transform.position, col.transform.position);
 

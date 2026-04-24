@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 113237295562287286}
   - component: {fileID: 7112418423039165931}
   - component: {fileID: 5500572145646739805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,4 +155,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
   speed: 20
   damage: 1
-  pj: {fileID: 820122627292049983, guid: e694fc408b210ea4cbbac7cc57474d05, type: 3}

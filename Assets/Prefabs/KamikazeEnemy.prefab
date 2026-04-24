@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 685731687501203258}
   - component: {fileID: 3406844443686217954}
   - component: {fileID: 1038246757368645068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy_Kamikaze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 4920232162340542197}
   - component: {fileID: 5574712555228159307}
   - component: {fileID: 7993174324016325540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4978,7 +4978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1939316757520331269}
   - component: {fileID: 5138751995002846690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KamikazeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1445728134
+  GlobalObjectIdHash: 2242918938
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1

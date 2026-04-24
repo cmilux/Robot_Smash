@@ -18,9 +18,9 @@ TagManager:
   - Water
   - UI
   - itemLayer
-  - 
-  - 
-  - 
+  - playerBullet
+  - Player
+  - Enemy
   - 
   - 
   - 

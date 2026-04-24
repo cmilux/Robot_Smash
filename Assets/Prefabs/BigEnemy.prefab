@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7106444173178428215}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpanwPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3000231936478886196}
   - component: {fileID: 6298409554199302546}
   - component: {fileID: 4710013105507631216}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913989984503514398}
   - component: {fileID: 5358928007689083968}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BigEnemy
   m_TagString: BigEnemy
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 760933732
+  GlobalObjectIdHash: 35457467
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8608320851764825258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpanwPoint
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1599727373165233667}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpanwPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}

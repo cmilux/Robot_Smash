@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3373897250998231505}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 9038699747390827611}
   - component: {fileID: 1292183927680097623}
   - component: {fileID: 1978976051160616314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torreta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3002129305067694749}
   - component: {fileID: -4138132026237443600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TorretaEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4009188189
+  GlobalObjectIdHash: 1982440800
   InScenePlacedSourceGlobalObjectIdHash: 1982440800
   DeferredDespawnTick: 0
   Ownership: 1
