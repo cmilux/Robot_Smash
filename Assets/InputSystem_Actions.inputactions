@@ -39,7 +39,7 @@
                     "id": "852140f2-7766-474d-8707-702459ba45f3",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -64,15 +64,6 @@
                     "name": "Dash",
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OpenInventory",
-                    "type": "Button",
-                    "id": "75bdbaf9-521e-4c90-8c47-30a3c9a4524c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -118,6 +109,15 @@
                     "name": "Hotbar5",
                     "type": "Button",
                     "id": "e2c9f712-89b2-412d-a045-e9669c7f9a16",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "9d620a80-6501-47df-a72e-542c717a5cad",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -457,17 +457,6 @@
                 },
                 {
                     "name": "",
-                    "id": "da992d02-1da2-4393-8b88-277d4867dbf0",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "afe7c3e6-9fda-41f6-9284-d303b340470d",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -518,6 +507,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Hotbar5",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8451440e-014c-46e7-a120-44f47fc9393c",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

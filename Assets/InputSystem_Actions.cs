@@ -125,7 +125,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -150,15 +150,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""OpenInventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""75bdbaf9-521e-4c90-8c47-30a3c9a4524c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -204,6 +195,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Hotbar5"",
                     ""type"": ""Button"",
                     ""id"": ""e2c9f712-89b2-412d-a045-e9669c7f9a16"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d620a80-6501-47df-a72e-542c717a5cad"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -543,17 +543,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""da992d02-1da2-4393-8b88-277d4867dbf0"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenInventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""afe7c3e6-9fda-41f6-9284-d303b340470d"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -604,6 +593,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Hotbar5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8451440e-014c-46e7-a120-44f47fc9393c"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1218,12 +1218,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_Hotbar1 = m_Player.FindAction("Hotbar1", throwIfNotFound: true);
         m_Player_Hotbar2 = m_Player.FindAction("Hotbar2", throwIfNotFound: true);
         m_Player_Hotbar3 = m_Player.FindAction("Hotbar3", throwIfNotFound: true);
         m_Player_Hotbar4 = m_Player.FindAction("Hotbar4", throwIfNotFound: true);
         m_Player_Hotbar5 = m_Player.FindAction("Hotbar5", throwIfNotFound: true);
+        m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1325,12 +1325,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_Hotbar1;
     private readonly InputAction m_Player_Hotbar2;
     private readonly InputAction m_Player_Hotbar3;
     private readonly InputAction m_Player_Hotbar4;
     private readonly InputAction m_Player_Hotbar5;
+    private readonly InputAction m_Player_OpenInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1371,10 +1371,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         /// <summary>
-        /// Provides access to the underlying input action "Player/OpenInventory".
-        /// </summary>
-        public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
-        /// <summary>
         /// Provides access to the underlying input action "Player/Hotbar1".
         /// </summary>
         public InputAction @Hotbar1 => m_Wrapper.m_Player_Hotbar1;
@@ -1394,6 +1390,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Hotbar5".
         /// </summary>
         public InputAction @Hotbar5 => m_Wrapper.m_Player_Hotbar5;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenInventory".
+        /// </summary>
+        public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1441,9 +1441,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @OpenInventory.started += instance.OnOpenInventory;
-            @OpenInventory.performed += instance.OnOpenInventory;
-            @OpenInventory.canceled += instance.OnOpenInventory;
             @Hotbar1.started += instance.OnHotbar1;
             @Hotbar1.performed += instance.OnHotbar1;
             @Hotbar1.canceled += instance.OnHotbar1;
@@ -1459,6 +1456,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Hotbar5.started += instance.OnHotbar5;
             @Hotbar5.performed += instance.OnHotbar5;
             @Hotbar5.canceled += instance.OnHotbar5;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
         }
 
         /// <summary>
@@ -1491,9 +1491,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @OpenInventory.started -= instance.OnOpenInventory;
-            @OpenInventory.performed -= instance.OnOpenInventory;
-            @OpenInventory.canceled -= instance.OnOpenInventory;
             @Hotbar1.started -= instance.OnHotbar1;
             @Hotbar1.performed -= instance.OnHotbar1;
             @Hotbar1.canceled -= instance.OnHotbar1;
@@ -1509,6 +1506,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Hotbar5.started -= instance.OnHotbar5;
             @Hotbar5.performed -= instance.OnHotbar5;
             @Hotbar5.canceled -= instance.OnHotbar5;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
         }
 
         /// <summary>
@@ -1870,13 +1870,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDash(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnOpenInventory(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Hotbar1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1911,6 +1904,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHotbar5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenInventory(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
