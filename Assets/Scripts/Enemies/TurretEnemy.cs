@@ -17,6 +17,10 @@ public class TurretEnemy : Enemy
     {
         //Get the nav mesh
         agent = GetComponent<NavMeshAgent>();
+
+        //Find player
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     private void Update()

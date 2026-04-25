@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class KamikazeEnemy : Enemy
 {
+    NavMeshAgent agent;
     public ParticleSystem _explosion;       //explosion particles
     public Transform player;                //player transform's component
     public float explodeDistance = 10f;     //distance to explode
@@ -11,8 +13,18 @@ public class KamikazeEnemy : Enemy
 
     private void Start()
     {
-        //Get the player transform component
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //Gets the nav mesh
+        agent = GetComponent<NavMeshAgent>();
+
+        //Find player
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+    }
+
+    private void Update()
+    {
+        //Sets nav mesh destination to player
+        agent.SetDestination(player.position);
     }
 
     private void LateUpdate()
@@ -51,6 +63,7 @@ public class KamikazeEnemy : Enemy
         if (kamIsDead) return;
 
         _explosion.Play();
+        agent.isStopped = true;
         timeBeforeDestroy = 5;      //Set time to be destroyed
         Die(timeBeforeDestroy);
         kamIsDead = true;           //Enemy is dead now

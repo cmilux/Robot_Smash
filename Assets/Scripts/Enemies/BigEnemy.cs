@@ -30,6 +30,10 @@ public class BigEnemy : Enemy
     {
         //Gets the nav mesh
         agent = GetComponent<NavMeshAgent>();
+
+        //Find player
+        if (player == null)
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     private void Update()
@@ -53,6 +57,8 @@ public class BigEnemy : Enemy
     {
         while (currentEnemies < maxEnemies)
         {
+            agent.isStopped = true;
+
             //Cooldown to spawn enemies
             spawnTime -= Time.deltaTime;
             if (spawnTime > 0) return;
@@ -92,6 +98,9 @@ public class BigEnemy : Enemy
         //If on scene they are the max amount of enemies
         while (currentEnemies == maxEnemies)
         {
+
+            agent.isStopped = false;
+
             //Cooldown to spawn bullets
             spawnTime -= Time.deltaTime;
             if (spawnTime > 0) return;
