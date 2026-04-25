@@ -3,7 +3,8 @@ using UnityEngine.UI;
 public enum ItemType
 {
     none,
-    weapon
+    weapon,
+    paint
 }
 
 [CreateAssetMenu(fileName ="Nuevo Item", menuName ="Inventory/Item")]
@@ -17,5 +18,8 @@ public class ItemData : ScriptableObject
     [Header("Weapons")]
     public int visibleItemID = -1;
     public ItemType itemType;
+
+    [Header("Paint System")]
+    public Material paintMaterial;
 
 }

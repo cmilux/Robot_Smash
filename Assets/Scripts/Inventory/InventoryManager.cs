@@ -18,8 +18,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject hotbarSlotsContainer;
 
     [Header("Attack System")]
-    // NEW: Reference to your shooting script
     public PlayerAttackDistance playerAttack;
+
 
     private void Awake()
     {
@@ -78,14 +78,19 @@ public class InventoryManager : MonoBehaviour
         {
             Slot slotToUse = hotbarSlots[index];
 
-            // If the slot has an item and it's a weapon, equip it
-            if (slotToUse.itemData != null && slotToUse.itemData.itemType == ItemType.weapon)
+            //  Si hay algo en el casillero 
+            if (slotToUse.itemData != null)
             {
-                EquipWeapon(slotToUse.itemData);
+                // Es un arma? La equipa
+                if (slotToUse.itemData.itemType == ItemType.weapon)
+                {
+                    EquipWeapon(slotToUse.itemData);
+                }
             }
-            // If the slot is empty or isn't a weapon, unequip everything
+            // si el casillero está completamente vacio
             else
             {
+                // desequipamos el arma
                 UnequipWeapons();
             }
         }
@@ -124,7 +129,5 @@ public class InventoryManager : MonoBehaviour
         {
             playerAttack.enabled = false;
         }
-
-        Debug.Log("Weapons unequipped");
     }
 }
