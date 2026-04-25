@@ -34,9 +34,10 @@ public class PlayerBulletController : MonoBehaviour
                 pj.AddExp(30);
                 Debug.Log("Adding EXP to: " + pj.gameObject.name);
             }
-        }
 
-        //Destroy bullet
-        Destroy(gameObject);                
+            //Destroy bullet
+            Destroy(gameObject);
+        }
+            
     }
 }
