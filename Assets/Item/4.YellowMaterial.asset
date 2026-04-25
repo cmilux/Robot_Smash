@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
   m_Name: 4.YellowMaterial
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 0
+  id: 4
   nombre: Material
   icon: {fileID: 21300000, guid: 362f1294680521445a53e9e4672f0619, type: 3}
   maxStock: 1
   visibleItemID: -1
   itemType: 2
   paintMaterial: {fileID: 2100000, guid: f54ef2f7b0ea64b4caf598a2574039d7, type: 2}
+  dropPrefab: {fileID: 8520364222636903442, guid: 2965479cbab6f6a4fb1b46e3bf6082fb, type: 3}

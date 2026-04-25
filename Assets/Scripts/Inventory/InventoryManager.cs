@@ -24,6 +24,9 @@ public class InventoryManager : MonoBehaviour
     public Renderer playerRenderer;
     public Material defaultMaterial;
 
+    [Header("Drop Settings")]
+    public Transform dropPoint;
+
 
     private void Awake()
     {
@@ -154,6 +157,32 @@ public class InventoryManager : MonoBehaviour
         if (defaultMaterial != null)
         {
             playerRenderer.material = defaultMaterial;
+        }
+    }
+
+    public void DropItem(Slot slotToDrop)
+    {
+        if (slotToDrop.itemData != null && slotToDrop.itemData.dropPrefab != null)
+        {
+            //Instanciar el prefab en el punto de dropeo
+            GameObject droppedItem = Instantiate(slotToDrop.itemData.dropPrefab, dropPoint.position, dropPoint.rotation);
+
+            // Pasarle la cantidad exacta al objeto que cae al suelo 
+            ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
+            if (pickup != null)
+            {
+                pickup.quantity = slotToDrop.quantity;
+            }
+
+            // Si tiras un arma la desequipa visualmente 
+            if (slotToDrop.itemData.itemType == ItemType.weapon)
+            {
+                UnequipWeapons();
+            }
+            else if (slotToDrop.itemData.itemType == ItemType.paint)
+            {
+                ResetPaint();
+            }
         }
     }
 }

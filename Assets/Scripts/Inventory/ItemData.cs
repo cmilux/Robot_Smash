@@ -22,4 +22,8 @@ public class ItemData : ScriptableObject
     [Header("Paint System")]
     public Material paintMaterial;
 
+    // El objeto 3D fisico que cae al suelo
+    [Header("Drop System")]
+    public GameObject dropPrefab;
+
 }

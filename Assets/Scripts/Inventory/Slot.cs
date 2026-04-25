@@ -64,8 +64,15 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
         UIManager.Instance.ghostIcon.enabled = false;
         quantityText.text = quantity.ToString();
+        // Lo solto afuera de la interfaz?
+        if (eventData.pointerEnter == null)
+        {
+            InventoryManager.instance.DropItem(this);
+            ClearItem();
+            return; 
+        }
 
-        if(eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("Slot"))
+        if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("Slot"))
         {
             Slot targetSlot = eventData.pointerEnter.GetComponent<Slot>();
 

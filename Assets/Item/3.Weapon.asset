@@ -18,3 +18,5 @@ MonoBehaviour:
   maxStock: 1
   visibleItemID: 3
   itemType: 1
+  paintMaterial: {fileID: 0}
+  dropPrefab: {fileID: 458585512828865983, guid: 49439659156a9bf4c8dc8fc74e63121d, type: 3}

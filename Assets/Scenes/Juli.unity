@@ -1549,6 +1549,10 @@ PrefabInstance:
       propertyPath: hotBarSlotsContainer
       value: 
       objectReference: {fileID: 2102000}
+    - target: {fileID: 6869126209225901810, guid: ba276fce49ff6f748b9849597471a7ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.77
+      objectReference: {fileID: 0}
     - target: {fileID: 7014260135373736064, guid: ba276fce49ff6f748b9849597471a7ea, type: 3}
       propertyPath: lifeFill
       value: 
