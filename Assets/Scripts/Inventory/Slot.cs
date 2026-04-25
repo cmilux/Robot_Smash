@@ -11,14 +11,18 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
     public Image icon;
 
-    private TextMeshProUGUI quantityText;
+    public TextMeshProUGUI quantityText;
     private void Start()
     {
-        quantityText = GetComponentInChildren<TextMeshProUGUI>();
+        quantityText = transform.Find("Quantity")?.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void SetItem(ItemData itemData, int quantity)
     {
+        if (icon == null) Debug.LogError("ICON IS NULL", this);
+        if (quantityText == null) Debug.LogError("QUANTITY TEXT IS NULL", this);
+        if (itemData == null) Debug.LogError("ITEMDATA IS NULL", this);
+
         this.itemData = itemData;
         this.quantity = quantity;
 
