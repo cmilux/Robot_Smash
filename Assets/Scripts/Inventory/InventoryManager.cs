@@ -20,6 +20,10 @@ public class InventoryManager : MonoBehaviour
     [Header("Attack System")]
     public PlayerAttackDistance playerAttack;
 
+    [Header("Player Visual")]
+    public Renderer playerRenderer;
+    public Material defaultMaterial;
+
 
     private void Awake()
     {
@@ -86,12 +90,17 @@ public class InventoryManager : MonoBehaviour
                 {
                     EquipWeapon(slotToUse.itemData);
                 }
+                else if (slotToUse.itemData.itemType == ItemType.paint)
+                {
+                    ApplyPaint(slotToUse.itemData);
+                }
             }
             // si el casillero está completamente vacio
             else
             {
                 // desequipamos el arma
                 UnequipWeapons();
+                ResetPaint();
             }
         }
     }
@@ -128,6 +137,23 @@ public class InventoryManager : MonoBehaviour
         if (playerAttack != null)
         {
             playerAttack.enabled = false;
+        }
+    }
+
+    void ApplyPaint(ItemData item)
+    {
+        if (item.paintMaterial != null)
+        {
+            playerRenderer.material = item.paintMaterial;
+            Debug.Log("Paint applied");
+        }
+    }
+
+    void ResetPaint()
+    {
+        if (defaultMaterial != null)
+        {
+            playerRenderer.material = defaultMaterial;
         }
     }
 }
