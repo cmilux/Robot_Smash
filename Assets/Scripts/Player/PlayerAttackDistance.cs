@@ -58,6 +58,8 @@ public class PlayerAttackDistance : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
+        if (!this.enabled) return;
+
         if (value.isPressed)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

@@ -1,5 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+public enum ItemType
+{
+    none,
+    weapon
+}
+
 [CreateAssetMenu(fileName ="Nuevo Item", menuName ="Inventory/Item")]
 public class ItemData : ScriptableObject
 {
@@ -7,4 +13,9 @@ public class ItemData : ScriptableObject
     public string nombre = "";
     public Sprite icon;
     public int maxStock = 1;
+
+    [Header("Weapons")]
+    public int visibleItemID = -1;
+    public ItemType itemType;
+
 }
