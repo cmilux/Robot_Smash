@@ -130,13 +130,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0af3afcb62f65440a25d9a30f868b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KamikazeEnemy
-  health: 3
+  health: 15
   isDead: 0
   timeBeforeDestroy: 0
   _explosion: {fileID: 5596529144562090865}
   player: {fileID: 0}
   explodeDistance: 10
-  damage: 1
+  damage: 3
 --- !u!198 &5596529144562090865
 ParticleSystem:
   m_ObjectHideFlags: 0

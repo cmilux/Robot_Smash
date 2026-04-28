@@ -6,6 +6,10 @@ public class Enemy : MonoBehaviour
     public int health = 3;
     public bool isDead;
     public float timeBeforeDestroy;
+    public int playerExp;
+
+    [Header("Player experience")]
+    [SerializeField] PlayerLevelUI pj;
 
     public virtual void TakeDamage(int damageAmount)
     {
@@ -15,6 +19,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             isDead = true;                  //Enemy is dead
+            PlayerLevelUI.Instance.AddExp(playerExp);          //Add experience to player
             Die(timeBeforeDestroy);         //Call Die method wirh parameter
         }
     }

@@ -16,6 +16,13 @@ public class PlayerLevelUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI expText;
     [SerializeField] Image expFill;
 
+    public static PlayerLevelUI Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         UpdateLevel();
@@ -31,7 +38,7 @@ public class PlayerLevelUI : MonoBehaviour
     void CheckForLevelUp()
     {
         //If experience is a bigger value than stablished on curve
-        if (totalExp >= nextLevExp)
+        while (totalExp >= nextLevExp)
         {
             currentLevel++;         //Set player to next level
             UpdateLevel();

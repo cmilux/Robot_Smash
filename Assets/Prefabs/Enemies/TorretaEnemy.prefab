@@ -158,9 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf4099b8a3746b48bd8e1bc28651715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TorretaEnemy
-  health: 3
+  health: 50
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 300
+  pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
   bulletObj: {fileID: 1142616099853660861, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
   player: {fileID: 0}
   spawnPoint: {fileID: 3064454808605387750}
@@ -235,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1982440800
+  GlobalObjectIdHash: 4009188189
   InScenePlacedSourceGlobalObjectIdHash: 1982440800
   DeferredDespawnTick: 0
   Ownership: 1

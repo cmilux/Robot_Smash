@@ -157,7 +157,7 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
-  damage: 1
+  damage: 10
 --- !u!96 &6270953841034012852
 TrailRenderer:
   serializedVersion: 4

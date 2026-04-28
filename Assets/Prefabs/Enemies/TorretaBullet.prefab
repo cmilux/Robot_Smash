@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretBullet
   health: 3
+  isDead: 0
   timeBeforeDestroy: 0
-  damage: 1
+  damage: 7

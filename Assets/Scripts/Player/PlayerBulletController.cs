@@ -31,7 +31,7 @@ public class PlayerBulletController : MonoBehaviour
             if (enemy.isDead == true)
             {
                 //Add this amount of experience to player if enemy died
-                pj.AddExp(30);
+                //pj.AddExp(30);
                 Debug.Log("Adding EXP to: " + pj.gameObject.name);
             }
 

@@ -41,7 +41,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
                     if (enemy.isDead == true)
                     {
-                        pj.AddExp(15);
+                        //pj.AddExp(15);
                     }
                 }
             }
