@@ -6,8 +6,13 @@ public class PlayerAttackDistance : MonoBehaviour
     public Transform aim;
     public Transform firePoint;
     public GameObject bulletPrefab;
+
+    public float cooldownShoot = 2;
+    public float nextFireTime;
+
     public float detectionRange = 25f;
     public LayerMask enemyLayer;
+  
 
     private GameObject currentEnemy;
 
@@ -60,9 +65,12 @@ public class PlayerAttackDistance : MonoBehaviour
     {
         if (!this.enabled) return;
 
-        if (value.isPressed)
+        if (value.isPressed && Time.time >= nextFireTime)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            nextFireTime = Time.time + cooldownShoot;
+            Debug.Log(nextFireTime);
         }
     }
 }

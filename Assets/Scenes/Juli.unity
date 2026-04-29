@@ -319,6 +319,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!1 &329728014
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +878,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!65 &487899793
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1517,6 +1521,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!1001 &1155071446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1656,6 +1662,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!65 &1267078266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1789,6 +1797,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!65 &1372485186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2155,6 +2165,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!65 &1776019712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2333,6 +2345,8 @@ MonoBehaviour:
   health: 3
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 0
+  pj: {fileID: 0}
 --- !u!65 &1879646878
 BoxCollider:
   m_ObjectHideFlags: 0
