@@ -133,6 +133,8 @@ MonoBehaviour:
   health: 15
   isDead: 0
   timeBeforeDestroy: 0
+  playerExp: 300
+  pj: {fileID: 0}
   _explosion: {fileID: 5596529144562090865}
   player: {fileID: 0}
   explodeDistance: 10

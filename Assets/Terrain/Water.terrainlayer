@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Water
   m_DiffuseTexture: {fileID: 2800000, guid: 74beb46c30488bc4db87cb5fdefda5bd, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 37bf093aec5fdac499e6c951f4c08e91, type: 3}
-  m_MaskMapTexture: {fileID: 2800000, guid: 75bc06b02e8104c44a7bcc797391605e, type: 3}
+  m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 25, y: 25}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
