@@ -14,12 +14,7 @@ GameObject:
   - component: {fileID: 8977668199020093351}
   - component: {fileID: 2668508467809286515}
   - component: {fileID: 4456747113851718241}
-  - component: {fileID: 7524327735374140399}
-  - component: {fileID: 4751104695589398738}
-  - component: {fileID: 7014260135373736064}
   - component: {fileID: 8942512084302758237}
-  - component: {fileID: 4175479433859854553}
-  - component: {fileID: 5797081634331217539}
   - component: {fileID: 8381511029143251621}
   - component: {fileID: 2525489656012723007}
   m_Layer: 8
@@ -169,58 +164,6 @@ MonoBehaviour:
   dashDuration: 0.5
   isDashing: 0
   isFrozen: 0
---- !u!114 &7524327735374140399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb49dd5729700a34ba1fcb591efec8ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponControllerAutoAim
-  aim: {fileID: 7883265278146590190}
-  firePoint: {fileID: 9035422147845022566}
-  bulletPrefab: {fileID: 1142616099853660861, guid: 5e35427a7810fc24fb9bcb3cf792bdb9, type: 3}
-  cooldownShoot: 2
-  nextFireTime: 0
-  detectionRange: 25
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
---- !u!114 &4751104695589398738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aef03eb7f39729245919d24732e36f7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackMelee
-  damageAmount: 10
-  pj: {fileID: 0}
---- !u!114 &7014260135373736064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c16f0d1095db3a4aacad61af35c0943, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  health: 0
-  maxHealth: 100
-  isDead: 0
-  totalLifeText: {fileID: 0}
-  lifeFill: {fileID: 0}
 --- !u!114 &8942512084302758237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,43 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11737530f4e3f534c9d1eea33505e828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RestrictMovement
---- !u!114 &4175479433859854553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb701050e850c8a4eab53ed4fe990563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
-  playerInventoryUI: {fileID: 0}
-  visibleItemsContainer: {fileID: 8208866699056197519}
-  hotbarSlotsContainer: {fileID: 0}
-  playerAttack: {fileID: 7524327735374140399}
-  playerRenderer: {fileID: 6266142752889236111}
-  defaultMaterial: {fileID: 2100000, guid: 0f66ef2e4d29c014cb4547f728fb987f, type: 2}
-  dropPoint: {fileID: 6869126209225901810}
---- !u!114 &5797081634331217539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89175f9158c546b4d8dd90e8304ae6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  slotsContainer: {fileID: 0}
-  hotBarSlotsContainer: {fileID: 0}
-  pickupRadius: 4
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &8381511029143251621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 3112758913659697368}
   serializedVersion: 2
   m_LocalRotation: {x: 0.24878111, y: -0, z: -0, w: 0.96855974}
-  m_LocalPosition: {x: 23.91, y: 8.86, z: 9.889999}
+  m_LocalPosition: {x: 0, y: 7.2, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -478,7 +384,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 0}
+    TrackingTarget: {fileID: 7110220627884209288}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
