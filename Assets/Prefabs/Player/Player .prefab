@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8942512084302758237}
   - component: {fileID: 8381511029143251621}
   - component: {fileID: 2525489656012723007}
+  - component: {fileID: 4785973931527059128}
   m_Layer: 8
   m_Name: 'Player '
   m_TagString: Player
@@ -76,7 +77,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -237,6 +238,20 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _playerInput: {fileID: 5073014740563901637}
   _camera: {fileID: 3112758913659697368}
+--- !u!114 &4785973931527059128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663539091826855021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aef03eb7f39729245919d24732e36f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackMelee
+  damageAmount: 1
+  pj: {fileID: 0}
 --- !u!1 &1719075854036894465
 GameObject:
   m_ObjectHideFlags: 0

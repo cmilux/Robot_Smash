@@ -16,7 +16,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
     private void Start()
     {
-        pj = GameObject.FindAnyObjectByType<PlayerLevelUI>();
+       // pj = GameObject.FindAnyObjectByType<PlayerLevelUI>();
     }
 
     public void OnDash(InputValue value)
