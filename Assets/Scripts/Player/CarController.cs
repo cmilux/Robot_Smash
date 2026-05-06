@@ -1,7 +1,8 @@
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class CarController : MonoBehaviour
+public class CarController : NetworkBehaviour
 {
     public float speed = 10f;
     public float turnSpeed = 100f;
@@ -26,7 +27,8 @@ public class CarController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
-    {   // If inventory its open frozen would be true
+    {   if (!IsOwner) return; 
+        // If inventory its open frozen would be true
         if (isFrozen) return;
         // Movimiento hacia adelante/atrás
         float move = moveInput.y * speed * Time.fixedDeltaTime;
