@@ -5,7 +5,7 @@ public class KamikazeEnemy : Enemy
 {
     NavMeshAgent agent;
     public ParticleSystem _explosion;       //explosion particles
-    public Transform player;                //player transform's component
+    public Transform target;                //player transform's component
     public float explodeDistance = 10f;     //distance to explode
     public int damage = 1;                  //amount of damage caused by enemy
     bool kamIsDead = false;                 //bool to check if enemy is dead
@@ -16,45 +16,53 @@ public class KamikazeEnemy : Enemy
         //Gets the nav mesh
         agent = GetComponent<NavMeshAgent>();
 
-        //Find player
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        UpdateTarget();
     }
 
     private void Update()
     {
-        //Sets nav mesh destination to player
-        agent.SetDestination(player.position);
+        if (kamIsDead) return;
+
+        UpdateTarget(); // refresh closest player every frame
+
+        if (target == null) return;
+
+        agent.SetDestination(target.position);
+        //Distance();
     }
 
-    private void LateUpdate()
+    void UpdateTarget()
     {
-        //Distance();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        float closestDistance = Mathf.Infinity;
+        Transform closestPlayer = null;
+
+        foreach (GameObject p in players)
+        {
+            float dist = Vector3.Distance(transform.position, p.transform.position);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                closestPlayer = p.transform;
+            }
+        }
+
+        target = closestPlayer;
     }
 
 
     //need to find a way to cancel the attack when player moves away
     void Distance()
     {
-        if (kamIsDead) return;
+        if (kamIsDead || target == null) return;
 
-        //Calculates the distance between player an enemy
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, target.position);
 
         if (distance <= explodeDistance && !methodRun)
         {
             methodRun = true;
-
             Explode();
-
-            //Get the player health script
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                //Applies damage to player
-                playerHealth.LoseHealth(damage);
-                Debug.Log("Player damage");
-            }
         }
     }
 
@@ -68,10 +76,10 @@ public class KamikazeEnemy : Enemy
         Die(timeBeforeDestroy);
         kamIsDead = true;           //Enemy is dead now
 
-        if (!methodRun)
+        if (target != null)
         {
             //Get the player health script
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+            PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 //Applies damage to player
@@ -87,6 +95,7 @@ public class KamikazeEnemy : Enemy
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            target = collision.transform;
             Explode();
         }
     }
