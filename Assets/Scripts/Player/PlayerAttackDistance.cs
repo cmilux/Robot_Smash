@@ -1,13 +1,15 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttackDistance : MonoBehaviour
+public class PlayerAttackDistance : NetworkBehaviour
+
 {
     public Transform aim;
     public Transform firePoint;
     public GameObject bulletPrefab;
 
-    public float cooldownShoot = 2;
+    public float cooldownShoot = 1;
     public float nextFireTime;
 
     public float detectionRange = 25f;
@@ -15,31 +17,50 @@ public class PlayerAttackDistance : MonoBehaviour
   
 
     private GameObject currentEnemy;
+    private NetworkVariable<Quaternion> aimRotation = 
+        new NetworkVariable<Quaternion>(Quaternion.identity,
+            NetworkVariableReadPermission.Everyone,
+            NetworkVariableWritePermission.Owner);
 
     void Update()
     {
-        //look for the closest enemy to keep the aim updated(esto puede traer problemas por buscar en cada frame, podria utilizar invoke para hacerlo cada determinados segundos en start)
-        FindNearestEnemy();
-
-        if (currentEnemy != null)
+       if (IsOwner)
         {
-            // Calculate direction towards the enemy
-            Vector3 direction = currentEnemy.transform.position - aim.position;
-            //direction.y = 0;
+            //look for the closest enemy to keep the aim updated(esto puede traer problemas por buscar en cada frame, podria utilizar invoke para hacerlo cada determinados segundos en start)
+            FindNearestEnemy();
+            //InvokeRepeating(nameof(FindNearestEnemy), 0f, 0.2f); podria hacer esto para optimizar
 
-            // Rotate the aim towards the enemy
-            if (direction != Vector3.zero)
+            if (currentEnemy != null)
             {
-                //aim.LookAt(aim.position + direction);
-                aim.LookAt(currentEnemy.transform);
+                // Calculate direction towards the enemy
+                Vector3 direction = currentEnemy.transform.position - aim.position;
+                //direction.y = 0;
+
+                // Rotate the aim towards the enemy
+                if (direction != Vector3.zero)
+                {
+                    //aim.LookAt(aim.position + direction);
+                    aim.LookAt(currentEnemy.transform);
+
+                    // Solo actualiza si cambio la rotacion
+                    if (aim.rotation != aimRotation.Value)
+                    {
+                        aimRotation.Value = aim.rotation;
+                    }
+                }
             }
         }
+        else
+        {
+            aim.rotation = aimRotation.Value;
+        }
+
     }
 
     void FindNearestEnemy()
     {
         //Get all enemies in the range
-        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange, enemyLayer); 
+        Collider[] collidersInRange = Physics.OverlapSphere(transform.position, detectionRange, enemyLayer);
         GameObject closest = null;
 
         float minDistance = detectionRange;
@@ -63,14 +84,19 @@ public class PlayerAttackDistance : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        if (!this.enabled) return;
+        //if (!this.enabled) return;
+        if(!IsOwner) return;
 
         if (value.isPressed && Time.time >= nextFireTime)
         {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
+            ShootServerRpc(firePoint.position, firePoint.rotation);
             nextFireTime = Time.time + cooldownShoot;
-            Debug.Log(nextFireTime);
         }
+    }
+    [ServerRpc]
+    void ShootServerRpc(Vector3 position, Quaternion rotation)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, position, rotation);
+        bullet.GetComponent<NetworkObject>().Spawn();
     }
 }

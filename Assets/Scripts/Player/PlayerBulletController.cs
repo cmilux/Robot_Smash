@@ -1,26 +1,32 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerBulletController : MonoBehaviour
+public class PlayerBulletController : NetworkBehaviour
 {
     public float speed = 20f;
     public int damage = 1;
 
     private Rigidbody rb;
-    PlayerLevelUI pj;
+   // PlayerLevelUI pj;
 
     void Start()
+    {   
+
+       // pj = GameObject.FindAnyObjectByType<PlayerLevelUI>();
+    }
+    public override void OnNetworkSpawn()
     {
         rb = GetComponent<Rigidbody>();
+        if (IsServer)
+        {
+            rb.linearVelocity = transform.forward * speed;
 
-        rb.linearVelocity = transform.forward * speed;
-
-        pj = GameObject.FindAnyObjectByType<PlayerLevelUI>();
-
-        Destroy(gameObject, 2f);    //Destroy bullet
+            Invoke(nameof(DestroyBullet), 2f);
+        }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
+        if (!IsServer) return;
         //Get enemy script
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
@@ -28,16 +34,21 @@ public class PlayerBulletController : MonoBehaviour
         {
             enemy.TakeDamage(damage);           //Apply damage to enemy
 
-            if (enemy.isDead == true)
-            {
+           // if (enemy.isDead == true)
+            
                 //Add this amount of experience to player if enemy died
                 //pj.AddExp(30);
-                Debug.Log("Adding EXP to: " + pj.gameObject.name);
-            }
-
-            //Destroy bullet
-            Destroy(gameObject);
+               // Debug.Log("Adding EXP to: " + pj.gameObject.name);
+            
+            DestroyBullet();
         }
             
+    }
+    void DestroyBullet()
+    {
+        if (NetworkObject != null && NetworkObject.IsSpawned)
+        {
+            NetworkObject.Despawn();
+        }
     }
 }
