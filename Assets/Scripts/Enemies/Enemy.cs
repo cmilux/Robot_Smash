@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class Enemy : MonoBehaviour
+public class Enemy : NetworkBehaviour
 {
     [Header("Enemy class")]
     public int health = 3;
@@ -27,6 +28,13 @@ public class Enemy : MonoBehaviour
     protected virtual void Die(float timeBeforeDestroys)
     {
         //Enemy will destroy after some time set in parameter
-        Destroy(gameObject, timeBeforeDestroy);
+        //Destroy(gameObject, timeBeforeDestroy);
+        NetworkObject.Despawn(false);
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        gameObject.SetActive(false);
+        base.OnNetworkDespawn();
     }
 }
