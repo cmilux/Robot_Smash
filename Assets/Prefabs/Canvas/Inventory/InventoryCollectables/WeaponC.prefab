@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8554858560896642580}
   - component: {fileID: 5861738325955315713}
   - component: {fileID: 7881776180894738075}
+  - component: {fileID: -8118191794325020489}
   - component: {fileID: 5477187798071141577}
   m_Layer: 6
   m_Name: WeaponC
@@ -29,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 458585512828865983}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.6, y: 0.043, z: 4.7}
-  m_LocalScale: {x: 0.9306543, y: 1.0081676, z: 0.616862}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8299279447237574703}
@@ -114,6 +115,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0462629, y: 1.1471707, z: 1.1660892}
   m_Center: {x: 0, y: 0.57358533, z: -0.07302923}
+--- !u!114 &-8118191794325020489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458585512828865983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 3462605363
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &5477187798071141577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ace16b5f0ccc744af2e78a7bf05a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
+  ShowTopMostFoldoutHeaderGroup: 1
   itemData: {fileID: 11400000, guid: e5a244be84ec1e1488e8755accaa4920, type: 2}
   quantity: 1
 --- !u!1 &1165974602396949081
