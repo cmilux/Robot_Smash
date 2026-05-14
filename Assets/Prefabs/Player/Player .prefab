@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 2525489656012723007}
   - component: {fileID: 4785973931527059128}
   - component: {fileID: 6344646766486943117}
-  - component: {fileID: 6412783051553377969}
   m_Layer: 8
   m_Name: 'Player '
   m_TagString: Player
@@ -276,23 +275,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &6412783051553377969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663539091826855021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89175f9158c546b4d8dd90e8304ae6ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  ShowTopMostFoldoutHeaderGroup: 1
-  pickupRadius: 4
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &1719075854036894465
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112758913659697368}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2487811, y: -0, z: -0, w: 0.96855974}
+  m_LocalRotation: {x: 0.24878111, y: -0, z: -0, w: 0.96855974}
   m_LocalPosition: {x: 0, y: 7.2, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
