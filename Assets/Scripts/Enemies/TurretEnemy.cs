@@ -1,32 +1,36 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class TurretEnemy : Enemy
 {
-    NavMeshAgent agent;
-
     public GameObject bulletObj;
-    public Transform player;
     public Transform spawnPoint;
     public float shootingCooldown = 3f;
     public float shootingSpeed = 40f;
     public float destroyTimer = 5;
     public float bulletTime;
 
-    private void Start()
+    protected override void Start()
     {
         //Get the nav mesh
-        agent = GetComponent<NavMeshAgent>();
+        base.Start();
 
         //Find player
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        /*if (target == null) {
+            target = GameObject.FindGameObjectWithTag("Player")?.transform;
+            Debug.Log("player is not null");
+        }*/
     }
 
     private void Update()
     {
-        agent.SetDestination(player.position);          //Set enemy destination to player to follow
+        if (!IsServer || !IsSpawned) return;
 
+        UpdateTarget();
+        MoveTowardTarget();
+
+        if (target == null) return;
         ShootPlayer();
     }
 
@@ -39,8 +43,11 @@ public class TurretEnemy : Enemy
 
         //Creates a bullet to spawn to the player position
         GameObject bullet = Instantiate(bulletObj, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        NetworkObject netObj = bullet.GetComponent<NetworkObject>();
+        netObj.Spawn();
+
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        Vector3 dir = (player.position - spawnPoint.transform.position).normalized;
+        Vector3 dir = (target.position - spawnPoint.transform.position).normalized;
         rb.AddForce(dir * shootingSpeed, ForceMode.Impulse);
 
         Destroy(bullet, destroyTimer);

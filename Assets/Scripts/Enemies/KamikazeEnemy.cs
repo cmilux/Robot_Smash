@@ -3,19 +3,17 @@ using UnityEngine.AI;
 
 public class KamikazeEnemy : Enemy
 {
-    NavMeshAgent agent;
     public ParticleSystem _explosion;       //explosion particles
-    public Transform target;                //player transform's component
     public float explodeDistance = 10f;     //distance to explode
     public int damage = 1;                  //amount of damage caused by enemy
     bool kamIsDead = false;                 //bool to check if enemy is dead
     bool methodRun = false;                 //bool to check if distance method has run
 
-    private void Start()
+    protected override void Start()
     {
         //Gets the nav mesh
-        agent = GetComponent<NavMeshAgent>();
-
+        //agent = GetComponent<NavMeshAgent>();
+        base.Start();
         UpdateTarget();
     }
 
@@ -30,27 +28,6 @@ public class KamikazeEnemy : Enemy
         agent.SetDestination(target.position);
         //Distance();
     }
-
-    void UpdateTarget()
-    {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        float closestDistance = Mathf.Infinity;
-        Transform closestPlayer = null;
-
-        foreach (GameObject p in players)
-        {
-            float dist = Vector3.Distance(transform.position, p.transform.position);
-            if (dist < closestDistance)
-            {
-                closestDistance = dist;
-                closestPlayer = p.transform;
-            }
-        }
-
-        target = closestPlayer;
-    }
-
 
     //need to find a way to cancel the attack when player moves away
     void Distance()

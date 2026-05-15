@@ -9,7 +9,6 @@ using UnityEngine.Profiling;
 public class BigEnemy : Enemy
 {
     [Header("Nav Mesh")]
-    NavMeshAgent agent;
     public Transform player;
 
     [Header("Spawn settings")]
@@ -26,7 +25,7 @@ public class BigEnemy : Enemy
     public float spawnCooldown = 3f;
     public float spawnTime;
 
-    private void Start()
+    protected override void Start()
     {
         //Gets the nav mesh
         agent = GetComponent<NavMeshAgent>();

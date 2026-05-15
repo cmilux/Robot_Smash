@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class TurretBullet : Enemy
+public class TurretBullet : NetworkBehaviour
 {
     public int damage = 1;
 
@@ -17,7 +18,12 @@ public class TurretBullet : Enemy
                 playerHealth.LoseHealth(damage);
             }
 
-            Destroy(gameObject);        //Destroys bullet
+            if (NetworkObject != null && NetworkObject.IsSpawned)
+            {
+                NetworkObject.Despawn();
+            }
+
+            //Destroy(gameObject);        //Destroys bullet
         }
     }
 }
