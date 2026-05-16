@@ -16,7 +16,7 @@ MonoBehaviour:
   nombre: Capsule
   icon: {fileID: 21300000, guid: 10f5bcf5a34663b46b4194ef6ce575e3, type: 3}
   maxStock: 10
-  visibleItemID: -1
+  visibleItemID: 2
   itemType: 0
   paintMaterial: {fileID: 0}
   dropPrefab: {fileID: 6727424340737748590, guid: d02e8a11c2174714f846f3b673e0f14e, type: 3}
