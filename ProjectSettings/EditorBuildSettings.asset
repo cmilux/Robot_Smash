@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Juli.unity
     guid: f21ccdd3cfb1f3f4ab5ff7de427df08b
+  - enabled: 1
+    path: Assets/Scenes/Marti.unity
+    guid: 2b3e7a48c4e91e845922c08e1e07da44
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

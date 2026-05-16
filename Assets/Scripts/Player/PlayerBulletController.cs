@@ -32,10 +32,10 @@ public class PlayerBulletController : NetworkBehaviour
 
         if (enemy != null) 
         {
-            enemy.TakeDamage(damage);           //Apply damage to enemy
+            enemy.TakeDamageServerRpc(damage);           //Apply damage to enemy
 
-           // if (enemy.isDead == true)
-            
+            if (enemy.isDead.Value == true)
+            {
                 //Add this amount of experience to player if enemy died
                 //pj.AddExp(30);
                // Debug.Log("Adding EXP to: " + pj.gameObject.name);
