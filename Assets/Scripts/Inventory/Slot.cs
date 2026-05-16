@@ -67,7 +67,12 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         // Lo solto afuera de la interfaz?
         if (eventData.pointerEnter == null)
         {
-            InventoryManager.instance.DropItem(this);
+            InventoryManager inventoryManager = FindFirstObjectByType<InventoryManager>();
+
+            if (inventoryManager != null)
+            {
+                inventoryManager.DropItem(this);
+            }
             ClearItem();
             return; 
         }

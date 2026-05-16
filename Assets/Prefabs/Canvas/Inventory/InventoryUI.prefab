@@ -614,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HotBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4891357591985966406, guid: 966532be62319cd42808fe39004340e9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4903541208149259421, guid: 966532be62319cd42808fe39004340e9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -636,6 +640,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4903541208149259421, guid: 966532be62319cd42808fe39004340e9, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179839545387816923, guid: 966532be62319cd42808fe39004340e9, type: 3}
+      propertyPath: itemData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179839545387816923, guid: 966532be62319cd42808fe39004340e9, type: 3}
+      propertyPath: quantity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7486017634446323754, guid: 966532be62319cd42808fe39004340e9, type: 3}
@@ -717,6 +729,12 @@ PrefabInstance:
     - target: {fileID: 7486017634446323754, guid: 966532be62319cd42808fe39004340e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804778119553204894, guid: 966532be62319cd42808fe39004340e9, type: 3}
+      propertyPath: m_text
+      value: '
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 8043710229493505411, guid: 966532be62319cd42808fe39004340e9, type: 3}
       propertyPath: m_AnchorMax.y

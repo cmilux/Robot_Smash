@@ -16,3 +16,7 @@ MonoBehaviour:
   nombre: 
   icon: {fileID: 0}
   maxStock: 1
+  visibleItemID: -1
+  itemType: 0
+  paintMaterial: {fileID: 0}
+  dropPrefab: {fileID: 0}
