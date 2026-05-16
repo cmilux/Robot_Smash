@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7555499725296057902}
   m_Layer: 9
   m_Name: Big_Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2520587976
+  GlobalObjectIdHash: 2834332697
   InScenePlacedSourceGlobalObjectIdHash: 2834332697
   DeferredDespawnTick: 0
   Ownership: 1
@@ -313,9 +313,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BigEnemy
   ShowTopMostFoldoutHeaderGroup: 1
-  health: 3
+  health: 20
   isDead: 0
-  timeBeforeDestroy: 0
+  timeBeforeDestroy: 2
   playerExp: 500
   stopDistance: 0
   pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}

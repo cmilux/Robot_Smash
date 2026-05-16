@@ -156,7 +156,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   health: 50
   isDead: 0
-  timeBeforeDestroy: 0
+  timeBeforeDestroy: 2
   playerExp: 300
   stopDistance: 0
   pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
