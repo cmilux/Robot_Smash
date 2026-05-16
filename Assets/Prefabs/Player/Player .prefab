@@ -310,11 +310,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   ShowTopMostFoldoutHeaderGroup: 1
   playerInventoryUI: {fileID: 0}
-  visibleItemsContainer: {fileID: 1719075854036894465}
+  visibleItemsContainer: {fileID: 8208866699056197519}
   hotbarSlotsContainer: {fileID: 0}
   playerAttack: {fileID: 6344646766486943117}
   playerRenderer: {fileID: 6266142752889236111}
-  defaultMaterial: {fileID: -7255647052170860681, guid: 7d7fc9b80ad1ee64e9e1c2d19775f561, type: 3}
+  defaultMaterial: {fileID: -6020431060793709385, guid: 7d7fc9b80ad1ee64e9e1c2d19775f561, type: 3}
   dropPoint: {fileID: 6869126209225901810}
 --- !u!1 &1719075854036894465
 GameObject:
