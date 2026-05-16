@@ -26,9 +26,9 @@ public class PlayerBulletController : MonoBehaviour
 
         if (enemy != null) 
         {
-            enemy.TakeDamage(damage);           //Apply damage to enemy
+            enemy.TakeDamageServerRpc(damage);           //Apply damage to enemy
 
-            if (enemy.isDead == true)
+            if (enemy.isDead.Value == true)
             {
                 //Add this amount of experience to player if enemy died
                 //pj.AddExp(30);

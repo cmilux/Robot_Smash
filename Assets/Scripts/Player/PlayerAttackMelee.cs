@@ -37,9 +37,9 @@ public class PlayerAttackMelee : MonoBehaviour
 
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(damageAmount);
+                    enemy.TakeDamageServerRpc(damageAmount);
 
-                    if (enemy.isDead == true)
+                    if (enemy.isDead.Value == true)
                     {
                         //pj.AddExp(15);
                     }
@@ -56,7 +56,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damageAmount);
+                enemy.TakeDamageServerRpc(damageAmount);
             }
         }
     }
