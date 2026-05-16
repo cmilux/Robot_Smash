@@ -5,16 +5,24 @@ using UnityEngine.AI;
 
 public class Enemy : NetworkBehaviour
 {
-    [Header("Enemy class")]
-    public int health;
-    public bool isDead;
+    [Header("Enemy life")]
+    public NetworkVariable<int> health = new NetworkVariable<int>(
+        0,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
+    public NetworkVariable <bool> isDead = new NetworkVariable<bool>(
+        false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
     public float timeBeforeDestroy;
-    public int playerExp;
+    
+    [Header("Enemy movement")]
     protected NavMeshAgent agent;
     public float stopDistance;
 
-    [Header("Player experience")]
+    [Header("Player and experience")]
     [SerializeField] PlayerLevelUI pj;
+    public int playerExp;
     public Transform target;            //player transform's component
 
     protected virtual void Start()
@@ -60,16 +68,17 @@ public class Enemy : NetworkBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damageAmount)
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+    public virtual void TakeDamageServerRpc(int damageAmount)
     {
-        if (isDead) return;
+        if (isDead.Value) return;
 
         //Takes damage from enemies
-        health -= damageAmount;
+        health.Value -= damageAmount;
 
-        if (health <= 0)
+        if (health.Value <= 0)
         {
-            isDead = true;                                      //Enemy is dead
+            isDead.Value = true;                                      //Enemy is dead
             //PlayerLevelUI.Instance.AddExp(playerExp);          //Add experience to player
             Die(timeBeforeDestroy);                             //Call Die method wirh parameter
         }
