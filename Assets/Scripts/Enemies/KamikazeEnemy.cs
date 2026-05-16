@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,21 +12,20 @@ public class KamikazeEnemy : Enemy
 
     protected override void Start()
     {
-        //Gets the nav mesh
-        //agent = GetComponent<NavMeshAgent>();
         base.Start();
         UpdateTarget();
     }
 
     private void Update()
     {
+        if(!IsServer) return;
         if (kamIsDead) return;
 
         UpdateTarget(); // refresh closest player every frame
 
         if (target == null) return;
 
-        agent.SetDestination(target.position);
+        MoveTowardTarget();
         //Distance();
     }
 
@@ -47,7 +47,7 @@ public class KamikazeEnemy : Enemy
     {
         if (kamIsDead) return;
 
-        _explosion.Play();
+        PlayExplosionClientRpc();
         agent.isStopped = true;
         timeBeforeDestroy = 5;      //Set time to be destroyed
         Die(timeBeforeDestroy);
@@ -66,8 +66,15 @@ public class KamikazeEnemy : Enemy
 
     }
 
+    [ClientRpc]
+    void PlayExplosionClientRpc()
+    {
+        _explosion.Play();          //Play particles on clients scene too
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
+        if (!IsServer) return;
         if (kamIsDead) return;
 
         if (collision.gameObject.CompareTag("Player"))

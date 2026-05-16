@@ -15,12 +15,6 @@ public class TurretEnemy : Enemy
     {
         //Get the nav mesh
         base.Start();
-
-        //Find player
-        /*if (target == null) {
-            target = GameObject.FindGameObjectWithTag("Player")?.transform;
-            Debug.Log("player is not null");
-        }*/
     }
 
     private void Update()

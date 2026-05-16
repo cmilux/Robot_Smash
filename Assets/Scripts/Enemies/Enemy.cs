@@ -69,20 +69,17 @@ public class Enemy : NetworkBehaviour
 
         if (health <= 0)
         {
-            isDead = true;                  //Enemy is dead
+            isDead = true;                                      //Enemy is dead
             PlayerLevelUI.Instance.AddExp(playerExp);          //Add experience to player
-            Die(timeBeforeDestroy);         //Call Die method wirh parameter
+            Die(timeBeforeDestroy);                             //Call Die method wirh parameter
         }
     }
 
     protected virtual void Die(float timeBeforeDestroys)
     {
-        //Enemy will destroy after some time set in parameter
-        //Destroy(gameObject, timeBeforeDestroy);
-        //NetworkObject.Despawn(false);
-
         if (!IsServer) return;
-
+        
+        //Enemy will "destroy" after some time set in parameter
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroys));
     }
 
@@ -96,7 +93,7 @@ public class Enemy : NetworkBehaviour
         }
     }
 
-    IEnumerator DespawnBullet(NetworkObject netObj, float timeBeforeDestroy)
+    protected virtual IEnumerator DespawnBullet(NetworkObject netObj, float timeBeforeDestroy)
     {
         yield return new WaitForSeconds(timeBeforeDestroy);
 

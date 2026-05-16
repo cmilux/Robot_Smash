@@ -7,6 +7,8 @@ public class TurretBullet : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!IsServer) return;
+
         if (collision.gameObject.CompareTag("Player"))
         {
             //Gets the playerHealth script from player
@@ -22,8 +24,6 @@ public class TurretBullet : NetworkBehaviour
             {
                 NetworkObject.Despawn();
             }
-
-            //Destroy(gameObject);        //Destroys bullet
         }
     }
 }

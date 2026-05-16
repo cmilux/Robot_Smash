@@ -51,14 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 795196533
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 4214580754
+  InScenePlacedSourceGlobalObjectIdHash: 795196533
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -127,9 +127,10 @@ MonoBehaviour:
   isDead: 0
   timeBeforeDestroy: 0
   playerExp: 200
+  stopDistance: 0
   pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
-  _explosion: {fileID: 4995779627933072742}
   target: {fileID: 0}
+  _explosion: {fileID: 4995779627933072742}
   explodeDistance: 10
   damage: 1
 --- !u!195 &8668231840871655142
