@@ -313,11 +313,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BigEnemy
   ShowTopMostFoldoutHeaderGroup: 1
-  health: 20
+  health: 2
   isDead: 0
   timeBeforeDestroy: 2
   playerExp: 500
-  stopDistance: 0
+  stopDistance: 10
   pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
   target: {fileID: 0}
   kamikazeEnemy: {fileID: 2109011744752369539, guid: e7fb3bd73201ec64b9c3871b637ee9c9, type: 3}
@@ -363,9 +363,9 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 40
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
