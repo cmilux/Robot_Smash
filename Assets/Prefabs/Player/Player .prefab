@@ -314,7 +314,7 @@ MonoBehaviour:
   hotbarSlotsContainer: {fileID: 0}
   playerAttack: {fileID: 6344646766486943117}
   playerRenderer: {fileID: 6266142752889236111}
-  defaultMaterial: {fileID: -6020431060793709385, guid: 7d7fc9b80ad1ee64e9e1c2d19775f561, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: 0f66ef2e4d29c014cb4547f728fb987f, type: 2}
   dropPoint: {fileID: 6869126209225901810}
 --- !u!1 &1719075854036894465
 GameObject:
