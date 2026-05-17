@@ -60,7 +60,7 @@ public class KamikazeEnemy : Enemy
             if (playerHealth != null)
             {
                 //Applies damage to player
-                playerHealth.LoseHealth(damage);
+                playerHealth.LoseHealthServerRpc(damage);
             }
         }
 
