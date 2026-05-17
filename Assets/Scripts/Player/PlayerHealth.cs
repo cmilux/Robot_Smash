@@ -1,47 +1,70 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : NetworkBehaviour
 {
     [Header("Player life")]
-    public int health;
-    public int maxHealth = 5;
+    NetworkVariable<int> health = new NetworkVariable<int>(50, 
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
+
+    public int maxHealth = 50;
     public bool isDead = false;
 
     [Header("User interface elements")]
     [SerializeField] TextMeshProUGUI totalLifeText;
     [SerializeField] Image lifeFill;
 
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-        health = maxHealth;
-        totalLifeText.text = $"HP: {health.ToString()}";
+        health.OnValueChanged += OnHealthChange;
+
+        if (IsServer)
+        {
+            health.Value = maxHealth;
+        }
+
+        if (IsOwner)
+        {   //Search UI references 
+            totalLifeText = GameObject.Find("LifeText").GetComponent<TextMeshProUGUI>();
+            lifeFill = GameObject.Find("Fill").GetComponent<Image>();
+
+            OnHealthChange(0, health.Value);
+        }
     }
-    public void LoseHealth(int damage)
+    
+    private void OnHealthChange(int oldValue, int newValue)
+    {
+        if (!IsOwner) return;
+        //Update Ui references
+
+        if (totalLifeText!= null) totalLifeText.text = $"HP: {newValue.ToString()}";
+
+        if (lifeFill != null) lifeFill.fillAmount = (float)newValue / maxHealth;
+    }
+
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+    public void LoseHealthServerRpc(int damage)
     {
         if (isDead) return;
 
-        health -= damage;
+        health.Value -= damage;
 
-        //update ui health bar
-        UpdateUI();
-
-        if (health <= 0)
-        {//pero para la ui queda en cero
-            health = 0;
+        if (health.Value <= 0)
+        {   
+            health.Value = 0;
 
             isDead = true;
 
-            //para el enemigo torreta if (player == null || !player.gameObject.activeInHierarchy) return;
+            NetworkObject.Despawn(true);
 
-            gameObject.SetActive(false);
         }
     }
-
-    void UpdateUI()
+    public override void OnNetworkDespawn()
     {
-        totalLifeText.text = $"HP: {health.ToString()}";        //Set current life
-        lifeFill.fillAmount = (float)health / maxHealth;     //Fills the life bar from the UI
+        // Siempre es buena práctica desvincular el evento al salir de la red
+        health.OnValueChanged -= OnHealthChange;
     }
 }

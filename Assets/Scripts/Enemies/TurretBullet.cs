@@ -17,7 +17,7 @@ public class TurretBullet : NetworkBehaviour
             if (playerHealth != null)
             {
                 //Takes damage from player
-                playerHealth.LoseHealth(damage);
+                playerHealth.LoseHealthServerRpc(damage);
             }
 
             if (NetworkObject != null && NetworkObject.IsSpawned)

@@ -84,8 +84,10 @@ public class PlayerAttackDistance : NetworkBehaviour
 
     public void OnAttack(InputValue value)
     {
-        //if (!this.enabled) return;
-        if(!IsOwner) return;
+        if (!enabled) return;
+
+        if (!IsOwner) return;
+
 
         if (value.isPressed && Time.time >= nextFireTime)
         {
