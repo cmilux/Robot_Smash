@@ -38,9 +38,8 @@ public class PlayerBulletController : NetworkBehaviour
 
             if (enemy.isDead.Value == true)
             {
-                // Add EXP if enemy died
-                // pj.AddExp(30);
-
+                //Add this amount of experience to player if enemy died
+                //pj.AddExp(30);
                 // Debug.Log("Adding EXP to: " + pj.gameObject.name);
             }
 
