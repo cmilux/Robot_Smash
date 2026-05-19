@@ -7,14 +7,12 @@ public class PlayerBulletController : NetworkBehaviour
     public int damage = 1;
 
     private Rigidbody rb;
-
-    void Start()
-    {
-    }
+    ulong shooterClientId;
 
     public override void OnNetworkSpawn()
     {
         rb = GetComponent<Rigidbody>();
+        shooterClientId = OwnerClientId;
 
         if (IsServer)
         {
@@ -26,22 +24,13 @@ public class PlayerBulletController : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!IsServer) return;
-
         // Get enemy script
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
         if (enemy != null)
         {
             // Apply damage to enemy
-            enemy.TakeDamageServerRpc(damage, NetworkManager.Singleton.LocalClientId);
-
-            if (enemy.isDead.Value == true)
-            {
-                //Add this amount of experience to player if enemy died
-                //pj.AddExp(30);
-                // Debug.Log("Adding EXP to: " + pj.gameObject.name);
-            }
+            enemy.TakeDamageServerRpc(damage, shooterClientId);
 
             DestroyBullet();
         }

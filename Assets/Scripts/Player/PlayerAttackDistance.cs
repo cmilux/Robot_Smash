@@ -99,6 +99,6 @@ public class PlayerAttackDistance : NetworkBehaviour
     void ShootServerRpc(Vector3 position, Quaternion rotation)
     {
         GameObject bullet = Instantiate(bulletPrefab, position, rotation);
-        bullet.GetComponent<NetworkObject>().Spawn();
+        bullet.GetComponent<NetworkObject>().SpawnWithOwnership(OwnerClientId);
     }
 }

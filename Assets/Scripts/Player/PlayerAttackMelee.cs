@@ -2,7 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttackMelee : MonoBehaviour
+public class PlayerAttackMelee : NetworkBehaviour
 {
     private CarController carController;
 
@@ -10,14 +10,16 @@ public class PlayerAttackMelee : MonoBehaviour
 
     [SerializeField] PlayerLevelUI pj;
 
+    ulong shooterClientId;
+
     private void Awake()
     {
         carController = GetComponent<CarController>();
     }
 
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-       // pj = GameObject.FindAnyObjectByType<PlayerLevelUI>();
+        shooterClientId = OwnerClientId;
     }
 
     public void OnDash(InputValue value)
@@ -30,6 +32,8 @@ public class PlayerAttackMelee : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!IsOwner) return;
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (carController.isDashing)
@@ -38,7 +42,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
                 if (enemy != null)
                 {
-                    enemy.TakeDamageServerRpc(damageAmount, NetworkManager.Singleton.LocalClientId);
+                    enemy.TakeDamageServerRpc(damageAmount, shooterClientId);
 
                     if (enemy.isDead.Value == true)
                     {
@@ -51,13 +55,15 @@ public class PlayerAttackMelee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!IsOwner) return;
+
         if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
             if (enemy != null)
             {
-                enemy.TakeDamageServerRpc(damageAmount, NetworkManager.Singleton.LocalClientId);
+                enemy.TakeDamageServerRpc(damageAmount, shooterClientId);
             }
         }
     }
