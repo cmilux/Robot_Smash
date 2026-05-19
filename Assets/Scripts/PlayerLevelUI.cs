@@ -1,22 +1,17 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
 public class PlayerLevelUI : MonoBehaviour
 {
-    [Header("Player experience")]
+    [Header("Player Experience")]
     [SerializeField] AnimationCurve expCurve;
     int currentLevel;
     int totalExp;
-    int prevLevExp;
-    int nextLevExp;
 
-    [Header("User interface elements")]
-    [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] TextMeshProUGUI expText;
-    [SerializeField] Image expFill;
-
-    public static PlayerLevelUI Instance { get; private set; }
+    //one shared copy across everything
+    public static PlayerLevelUI Instance { get; private set; }      //anyone can read it, but only the class itself can write to it
 
     private void Awake()
     {
@@ -30,39 +25,30 @@ public class PlayerLevelUI : MonoBehaviour
 
     public void AddExp(int amount)
     {
-        totalExp += amount;         //Add experience to the total
+        totalExp += amount;
         CheckForLevelUp();
         UpdateLevel();
     }
 
     void CheckForLevelUp()
     {
-        //If experience is a bigger value than stablished on curve
-        while (totalExp >= nextLevExp)
+        while (totalExp >= GetExpForLevel(currentLevel + 1))
         {
-            currentLevel++;         //Set player to next level
-            UpdateLevel();
+            currentLevel++;
         }
     }
 
     void UpdateLevel()
     {
-        //Checks the value of the curve with previous and next level of experience
-        prevLevExp = (int)expCurve.Evaluate(currentLevel);
-        nextLevExp = (int)expCurve.Evaluate(currentLevel + 1);
-        UpdateUI();
-    }
+        int prevLevExp = GetExpForLevel(currentLevel);
+        int nextLevExp = GetExpForLevel(currentLevel + 1);
 
-    void UpdateUI()
-    {
         int start = totalExp - prevLevExp;
         int end = nextLevExp - prevLevExp;
 
-        levelText.text = currentLevel.ToString();
-        expText.text = $"{start} exp / {end} exp";          //Set current exp and how much u need to go to next level
-        expFill.fillAmount = (float)start / (float)end;     //Fills the experience bar from the UI
-
-        Debug.Log($"EXP: {totalExp} | prev: {prevLevExp} | next: {nextLevExp}");
-        Debug.Log("Updating UI on: " + gameObject.name);
+        UIManager.Instance.UpdateExp(start, end, currentLevel);
     }
+
+    int GetExpForLevel(int level) => (int)expCurve.Evaluate(level);
+
 }

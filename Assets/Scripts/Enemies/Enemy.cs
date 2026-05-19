@@ -10,20 +10,22 @@ public class Enemy : NetworkBehaviour
         0,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
-    public NetworkVariable <bool> isDead = new NetworkVariable<bool>(
+    public NetworkVariable<bool> isDead = new NetworkVariable<bool>(
         false,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
     public float timeBeforeDestroy;
-    
+
     [Header("Enemy movement")]
     protected NavMeshAgent agent;
     public float stopDistance;
 
     [Header("Player and experience")]
-    [SerializeField] PlayerLevelUI pj;
-    public int playerExp;
+    [SerializeField] PlayerLevelUI playerLevExp;
+    public int levExpPoints;
     public Transform target;            //player transform's component
+
+    ulong killerClientId;               //unsigned long integer (only positive so doesnt causes compilation errors)
 
     protected virtual void Start()
     {
@@ -69,12 +71,13 @@ public class Enemy : NetworkBehaviour
     }
 
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
-    public virtual void TakeDamageServerRpc(int damageAmount)
+    public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
         if (isDead.Value) return;
 
         //Takes damage from enemies
         health.Value -= damageAmount;
+        killerClientId = attackerClientId;
 
         if (health.Value <= 0)
         {
@@ -87,9 +90,18 @@ public class Enemy : NetworkBehaviour
     protected virtual void Die(float delay)
     {
         if (!IsServer) return;
-        
+
         //Enemy will "destroy" after some time set in parameter
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
+
+        GrantExpToKillerClientRpc(killerClientId, levExpPoints);
+    }
+
+    [ClientRpc]
+    void GrantExpToKillerClientRpc(ulong clientId, int expAmount)
+    {
+        if (NetworkManager.Singleton.LocalClientId != clientId && isDead.Value == false) return;
+        PlayerLevelUI.Instance.AddExp(expAmount);
     }
 
     IEnumerator DespawnAfterDelay(float delay)

@@ -313,12 +313,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BigEnemy
   ShowTopMostFoldoutHeaderGroup: 1
-  health: 2
-  isDead: 0
+  health:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
+  isDead:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
   timeBeforeDestroy: 2
-  playerExp: 500
   stopDistance: 10
-  pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
+  playerLevExp: {fileID: 0}
+  levExpPoints: 500
   target: {fileID: 0}
   kamikazeEnemy: {fileID: 2109011744752369539, guid: e7fb3bd73201ec64b9c3871b637ee9c9, type: 3}
   bulletObj: {fileID: 1142616099853660861, guid: d5cb5e91807de4645a984a6b80b82aa4, type: 3}
