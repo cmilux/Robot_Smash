@@ -26,7 +26,7 @@ public class Enemy : NetworkBehaviour
     public int levExpPoints;
     public Transform target;            //player transform's component
 
-    ulong killerClientId;               //unsigned long integer (only positive so doesnt causes compilation errors)
+    ulong killerClientId = ulong.MaxValue;               //unsigned long integer (only positive so doesnt causes compilation errors)
 
     protected virtual void Start()
     {
@@ -82,6 +82,8 @@ public class Enemy : NetworkBehaviour
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
+        Debug.Log($"Hit by clientId: {attackerClientId} | Server clientId: {NetworkManager.Singleton.LocalClientId}");
+
         if (isDead.Value) return;
 
         //Takes damage from enemies
@@ -109,7 +111,7 @@ public class Enemy : NetworkBehaviour
     [ClientRpc]
     void GrantExpToKillerClientRpc(ulong clientId, int expAmount)
     {
-        if (NetworkManager.Singleton.LocalClientId != clientId && isDead.Value == false) return;
+        if (NetworkManager.Singleton.LocalClientId != clientId) return;
         PlayerLevelUI.Instance.AddExp(expAmount);
     }
 
