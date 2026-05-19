@@ -159,6 +159,7 @@ MonoBehaviour:
       MinSecondsBetweenUpdates: 0
       MaxSecondsBetweenUpdates: 0
     m_InternalValue: 0
+  maxHealth: 70
   isDead:
     UpdateTraits:
       MinSecondsBetweenUpdates: 0
