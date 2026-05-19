@@ -368,36 +368,6 @@ MonoBehaviour:
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
---- !u!1 &174171021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2833841044239605821, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
-  m_PrefabInstance: {fileID: 327491164}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &174171025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174171021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2249476619
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!1 &313841359
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,10 +520,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 580885568318556203, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 821545836179889613, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -577,6 +543,10 @@ PrefabInstance:
     - target: {fileID: 821545836179889613, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456033559655448090, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3875774416
       objectReference: {fileID: 0}
     - target: {fileID: 1478575737625804426, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_AnchorMax.y
@@ -913,10 +883,6 @@ PrefabInstance:
     - target: {fileID: 6533736007693727491, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7255493963751845043, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -48.338135
       objectReference: {fileID: 0}
     - target: {fileID: 7323215761996755118, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1029,44 +995,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 580885568318556203, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 327491166}
-    - targetCorrespondingSourceObject: {fileID: 2833841044239605821, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 174171025}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
---- !u!1 &327491165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 580885568318556203, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
-  m_PrefabInstance: {fileID: 327491164}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &327491166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327491165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2556016701
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  DeferredDespawnTick: 0
-  Ownership: 1
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
-  SyncOwnerTransformWhenParented: 1
-  AllowOwnerToParent: 0
 --- !u!1 &352680292
 GameObject:
   m_ObjectHideFlags: 0
