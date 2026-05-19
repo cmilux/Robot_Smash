@@ -10,6 +10,7 @@ public class Enemy : NetworkBehaviour
         0,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
+    public int maxHealth;
     public NetworkVariable<bool> isDead = new NetworkVariable<bool>(
         false,
         NetworkVariableReadPermission.Everyone,
@@ -30,6 +31,14 @@ public class Enemy : NetworkBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        if (IsServer)
+        {
+            health.Value = maxHealth;
+        }
     }
 
     public void UpdateTarget()
