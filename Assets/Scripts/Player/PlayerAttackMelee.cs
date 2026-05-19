@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,7 +38,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
                 if (enemy != null)
                 {
-                    enemy.TakeDamageServerRpc(damageAmount);
+                    enemy.TakeDamageServerRpc(damageAmount, NetworkManager.Singleton.LocalClientId);
 
                     if (enemy.isDead.Value == true)
                     {
@@ -56,7 +57,7 @@ public class PlayerAttackMelee : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamageServerRpc(damageAmount);
+                enemy.TakeDamageServerRpc(damageAmount, NetworkManager.Singleton.LocalClientId);
             }
         }
     }

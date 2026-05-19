@@ -124,12 +124,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KamikazeEnemy
   ShowTopMostFoldoutHeaderGroup: 1
-  health: 15
-  isDead: 0
+  health:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
+  isDead:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
   timeBeforeDestroy: 0
-  playerExp: 300
   stopDistance: 0
-  pj: {fileID: 0}
+  playerLevExp: {fileID: 0}
+  levExpPoints: 150
   target: {fileID: 0}
   _explosion: {fileID: 5582185301062415785}
   explodeDistance: 10

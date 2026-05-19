@@ -34,7 +34,7 @@ public class PlayerBulletController : NetworkBehaviour
         if (enemy != null)
         {
             // Apply damage to enemy
-            enemy.TakeDamageServerRpc(damage);
+            enemy.TakeDamageServerRpc(damage, NetworkManager.Singleton.LocalClientId);
 
             if (enemy.isDead.Value == true)
             {

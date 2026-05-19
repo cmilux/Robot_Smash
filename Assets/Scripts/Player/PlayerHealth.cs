@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : NetworkBehaviour
 {
     [Header("Player life")]
-    NetworkVariable<int> health = new NetworkVariable<int>(50, 
+    NetworkVariable<int> health = new NetworkVariable<int>(50,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
 
@@ -28,19 +28,22 @@ public class PlayerHealth : NetworkBehaviour
 
         if (IsOwner)
         {   //Search UI references 
-            totalLifeText = GameObject.Find("LifeText").GetComponent<TextMeshProUGUI>();
-            lifeFill = GameObject.Find("Fill").GetComponent<Image>();
+            if (totalLifeText == null && lifeFill == null)
+            {
+                totalLifeText = GameObject.Find("LifeText").GetComponent<TextMeshProUGUI>();
+                lifeFill = GameObject.Find("Fill").GetComponent<Image>();
+            }
 
             OnHealthChange(0, health.Value);
         }
     }
-    
+
     private void OnHealthChange(int oldValue, int newValue)
     {
         if (!IsOwner) return;
         //Update Ui references
 
-        if (totalLifeText!= null) totalLifeText.text = $"HP: {newValue.ToString()}";
+        if (totalLifeText != null) totalLifeText.text = $"HP: {newValue.ToString()}";
 
         if (lifeFill != null) lifeFill.fillAmount = (float)newValue / maxHealth;
     }
@@ -53,7 +56,7 @@ public class PlayerHealth : NetworkBehaviour
         health.Value -= damage;
 
         if (health.Value <= 0)
-        {   
+        {
             health.Value = 0;
 
             isDead = true;
