@@ -18,6 +18,11 @@ public class InventoryManager : NetworkBehaviour
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Owner
     );
+    private NetworkVariable<int> currentPaintId = new NetworkVariable<int>(
+        -1,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
 
     [Header("Hotbar")]
     public GameObject hotbarSlotsContainer;
@@ -43,11 +48,14 @@ public class InventoryManager : NetworkBehaviour
     {
         // All clients subscribe to the weapon changes
         equippedWeaponId.OnValueChanged += OnWeaponChanged;
-
         //Force the initial update for late joiners
         OnWeaponChanged(-1, equippedWeaponId.Value);
 
+        // All clients subscribe to the paint changes
+        currentPaintId.OnValueChanged += OnPaintChanged;
+        OnPaintChanged(-1, currentPaintId.Value);
         //Local UI only for the owner
+
         if (!IsOwner) return;
 
         playerInventoryUI = GameObject.Find("InventoryUI").transform.Find("Inventory").gameObject;
@@ -66,8 +74,9 @@ public class InventoryManager : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
-        // clear the event 
+        // clear the events
         equippedWeaponId.OnValueChanged -= OnWeaponChanged;
+        currentPaintId.OnValueChanged -= OnPaintChanged;
     }
 
     // this function runs on all clients when the weapon Id changes
@@ -92,6 +101,28 @@ public class InventoryManager : NetworkBehaviour
         if (IsOwner && playerAttack != null)
         {
             playerAttack.enabled = (newId != -1);
+        }
+    }
+    private void OnPaintChanged(int oldId, int newId)
+    {
+        if (playerRenderer == null) return;
+
+        if (newId == -1)
+        {
+            //  -1 vuelve al default material
+            if (defaultMaterial != null)
+            {
+                playerRenderer.material = defaultMaterial;
+            }
+        }
+        else
+        {
+            // Busca el item en la base de datos usando el Id para usar su material
+            ItemData paintItem = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
+            if (paintItem != null && paintItem.paintMaterial != null)
+            {
+                playerRenderer.material = paintItem.paintMaterial;
+            }
         }
     }
     private void OnOpenInventory(InputValue value)
@@ -173,11 +204,11 @@ public class InventoryManager : NetworkBehaviour
 
     void ApplyPaint(ItemData item)
     {
-        // esto sigue siendo local si quiero que todos vean el cambio tengo que hacer una networkvariable para el Id de la pintura
         if (item.paintMaterial != null)
         {
-            playerRenderer.material = item.paintMaterial;
-            Debug.Log("Paint applied");
+            if (!IsOwner) return;
+
+            currentPaintId.Value = item.id;
         }
     }
 
@@ -185,7 +216,8 @@ public class InventoryManager : NetworkBehaviour
     {
         if (defaultMaterial != null)
         {
-            playerRenderer.material = defaultMaterial;
+            if (!IsOwner) return;
+            currentPaintId.Value = -1;
         }
     }
 
