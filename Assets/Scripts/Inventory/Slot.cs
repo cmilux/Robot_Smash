@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -61,20 +62,29 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         if (itemData == null) return;
 
         icon.enabled = true;
-
         UIManager.Instance.ghostIcon.enabled = false;
         quantityText.text = quantity.ToString();
+
         // Lo solto afuera de la interfaz?
         if (eventData.pointerEnter == null)
         {
-            InventoryManager inventoryManager = FindFirstObjectByType<InventoryManager>();
+            // Buscar el InventoryManager del JUGADOR LOCAL en lugar de usar FindFirstObjectByType
+            InventoryManager inventoryManager = null;
 
+            if (NetworkManager.Singleton != null && NetworkManager.Singleton.LocalClient != null)
+            {
+                var localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject;
+                if (localPlayerObject != null)
+                {
+                    inventoryManager = localPlayerObject.GetComponent<InventoryManager>();
+                }
+            }
             if (inventoryManager != null)
             {
                 inventoryManager.DropItem(this);
+                ClearItem();
             }
-            ClearItem();
-            return; 
+            return;
         }
 
         if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("Slot"))

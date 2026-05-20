@@ -191,6 +191,7 @@ public class InventoryManager : NetworkBehaviour
 
     public void DropItem(Slot slotToDrop)
     {
+        if (!IsOwner) return;
         if (slotToDrop.itemData != null && slotToDrop.itemData.dropPrefab != null)
         {
             DropItemServerRpc(slotToDrop.itemData.id, slotToDrop.quantity);
