@@ -3,11 +3,11 @@ using UnityEngine;
 public class CamMov : MonoBehaviour
 {
     public Transform car;
-    public float sensitivity = 5;        // How fast camera is going to turn
+    public float sensitivity = 5;        //How fast camera is going to turn
 
-    public float maxAngle = 50;
+    public float maxAngle = 50;         //Cam angle
 
-    private float yaw;      // Horizontal rotation
+    private float yaw;      //Horizontal rotation
 
     private InputSystem_Actions controls;
 

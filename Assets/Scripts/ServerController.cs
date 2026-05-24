@@ -8,12 +8,12 @@ public class ServerController : MonoBehaviour
     {
         if (Keyboard.current.hKey.wasPressedThisFrame)
         {
-            NetworkManager.Singleton.StartHost(); //Iniciamos el Host
+            NetworkManager.Singleton.StartHost(); //Starts hosts || Iniciamos el Host
         }
 
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
-            NetworkManager.Singleton.StartClient(); //Iniciamos como client
+            NetworkManager.Singleton.StartClient(); //Starts client || Iniciamos como client
         }
     }
 }

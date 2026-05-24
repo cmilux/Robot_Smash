@@ -25,8 +25,7 @@ public class Enemy : NetworkBehaviour
     [SerializeField] PlayerLevelUI playerLevExp;
     public int levExpPoints;
     public Transform target;            //player transform's component
-
-    ulong killerClientId = ulong.MaxValue;               //unsigned long integer (only positive so doesnt causes compilation errors)
+    ulong killerClientId = ulong.MaxValue;               //unsigned long integer (only positive so doesnt causes compilation errors) || variable q solo almacena int positivos
 
     protected virtual void Start()
     {
@@ -37,49 +36,48 @@ public class Enemy : NetworkBehaviour
     {
         if (IsServer)
         {
-            health.Value = maxHealth;
+            health.Value = maxHealth;                   //sets enemies to max health (set on inspector individually) || salud maxima de los enemigos (se pone manualmente en el inspector de cada uno)
         }
     }
 
     public void UpdateTarget()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");     //gets all the player active on scene || encuentra a todos los players en la escena
 
-        float closestDistance = Mathf.Infinity;
-        Transform closestPlayer = null;
+        float closestDistance = Mathf.Infinity;                 //largest possible value(infinity) so any real distance will be smaller || asigna el valor mas largo (inifito) para q cualquier distancia sea menor
+        Transform closestPlayer = null;             //variable to find the closest player || variable para encontrar al player mas cercano
 
-        foreach (GameObject p in players)
+        foreach (GameObject p in players)           //for each player on players array || por cada player en el array de players
         {
-            float dist = Vector3.Distance(transform.position, p.transform.position);
+            float dist = Vector3.Distance(transform.position, p.transform.position);        //calculate distance between enemy and every player on scene || calcula la distancia entre el enemigo y los jugadores
             if (dist < closestDistance)
             {
-                closestDistance = dist;
-                closestPlayer = p.transform;
+                closestDistance = dist;             //now closest distance now is the real distance between enemy and player || ahora closestdistance tiene la distancia real entre el enemigo y el player
+                closestPlayer = p.transform;        //sets the closest player transform || asigna la posicion del player mas cercanoo
             }
         }
 
-        target = closestPlayer;
+        target = closestPlayer;         //follows closest player || sigue al player mas cercano
     }
 
     protected void MoveTowardTarget()
     {
         if (target == null || agent == null) return;
 
-        float dist = Vector3.Distance(transform.position, target.position);
+        float dist = Vector3.Distance(transform.position, target.position);     //calculate distance between enemy and every player on scene || calcula la distancia entre el enemigo y los jugadores
 
-
-        if (dist > stopDistance)
+        if (dist > stopDistance)        //if distance is > than stop distance
         {
-            agent.isStopped = false;
-            agent.SetDestination(target.position);
+            agent.isStopped = false;        //enemy wont stop || el enemigo no frena
+            agent.SetDestination(target.position);      //follows player || persigue al player
         }
         else
         {
-            agent.isStopped = true;
+            agent.isStopped = true;     //stops enemy || frena al enemigo
         }
     }
 
-    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]       //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
         Debug.Log($"Hit by clientId: {attackerClientId} | Server clientId: {NetworkManager.Singleton.LocalClientId}");
@@ -88,13 +86,12 @@ public class Enemy : NetworkBehaviour
 
         //Takes damage from enemies
         health.Value -= damageAmount;
-        killerClientId = attackerClientId;
+        killerClientId = attackerClientId;      //who killed the enemy || quien mato al enemigo
 
         if (health.Value <= 0)
         {
             isDead.Value = true;                                      //Enemy is dead
-            //PlayerLevelUI.Instance.AddExp(playerExp);          //Add experience to player
-            Die(timeBeforeDestroy);                             //Call Die method wirh parameter
+            Die(timeBeforeDestroy);                             //Call Die method with parameter
         }
     }
 
@@ -102,9 +99,9 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        //Enemy will "destroy" after some time set in parameter
+        //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
-
+        //Add experience to the killer || agrega experiencia a quien mato al enemigo
         GrantExpToKillerClientRpc(killerClientId, levExpPoints);
     }
 
@@ -112,7 +109,7 @@ public class Enemy : NetworkBehaviour
     void GrantExpToKillerClientRpc(ulong clientId, int expAmount)
     {
         if (NetworkManager.Singleton.LocalClientId != clientId) return;
-        PlayerLevelUI.Instance.AddExp(expAmount);
+        PlayerLevelUI.Instance.AddExp(expAmount);       //add exp to player || agrega experiencia al player
     }
 
     IEnumerator DespawnAfterDelay(float delay)
@@ -121,7 +118,7 @@ public class Enemy : NetworkBehaviour
 
         if (NetworkObject != null && NetworkObject.IsSpawned)
         {
-            NetworkObject.Despawn(false);
+            NetworkObject.Despawn(false);       //Despawn enemy after death || despawn enemigo una vez muerto
         }
     }
 
@@ -131,13 +128,13 @@ public class Enemy : NetworkBehaviour
 
         if (netObj != null && netObj.IsSpawned)
         {
-            netObj.Despawn(false);
+            netObj.Despawn(false);              //Despawn bullet after some time || despawn bala desp de un tiempo
         }
     }
 
     public override void OnNetworkDespawn()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);        //turn game obj off after despawn || apaga el objeto desp de ser despawneado
         base.OnNetworkDespawn();
     }
 }
