@@ -13,7 +13,7 @@ public class TurretEnemy : Enemy
 
     protected override void Start()
     {
-        //Get the nav mesh
+        //Get the nav mesh from enemy class
         base.Start();
     }
 
@@ -35,11 +35,12 @@ public class TurretEnemy : Enemy
         if (bulletTime > 0) return;
         bulletTime = shootingCooldown;
 
-        //Creates a bullet to spawn to the player position
+        //Creates a bullet to spawn || spawnea una bala
         GameObject bullet = Instantiate(bulletObj, spawnPoint.transform.position, spawnPoint.transform.rotation);
         NetworkObject netObj = bullet.GetComponent<NetworkObject>();
         netObj.Spawn();
 
+        //Adds force and direction to the bullet to shoot player || Agrega fuerza y direccion a la bala del enemigo para atacar al player
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         Vector3 dir = (target.position - spawnPoint.transform.position).normalized;
         rb.AddForce(dir * shootingSpeed, ForceMode.Impulse);

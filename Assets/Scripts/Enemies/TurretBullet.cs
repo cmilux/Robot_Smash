@@ -22,6 +22,7 @@ public class TurretBullet : NetworkBehaviour
 
             if (NetworkObject != null && NetworkObject.IsSpawned)
             {
+                //Despawns bullet || Elimina la bala
                 NetworkObject.Despawn();
             }
         }

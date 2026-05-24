@@ -32,10 +32,11 @@ public class PlayerHealth : NetworkBehaviour
     {
         if (!IsOwner) return;
 
-        //Update Ui references
+        //Update ui references if value changes || actualiza la ui si los valores cambian
         UIManager.Instance.UpdateHealth(newValue, maxHealth);
     }
 
+    //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     public void LoseHealthServerRpc(int damage)
     {

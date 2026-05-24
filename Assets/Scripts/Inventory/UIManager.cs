@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; }
+    //one shared copy across everything
+    public static UIManager Instance { get; private set; }      //anyone can read it, but only the class itself can write to it
 
     [Header("Inventory")]
     public Image ghostIcon;
