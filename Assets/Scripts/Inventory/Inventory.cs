@@ -3,6 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// Manages player inventory, hotbar slots, and network-synced item pickup mechanics
 public class Inventory : NetworkBehaviour
 {
     public Transform slotsContainer;
@@ -10,60 +11,72 @@ public class Inventory : NetworkBehaviour
     public Transform hotBarSlotsContainer;
 
     [Header("Configuración para Recoger")]
-    public float pickupRadius = 4f; 
-    public LayerMask itemLayer;   
+    public float pickupRadius = 4f;
+    public LayerMask itemLayer;
 
+    // // A list to save all the inventory slots
     private List<Slot> slots = new List<Slot>();
 
     public override void OnNetworkSpawn()
     {
+        // Only the local owner of this player object should search and bind the local UI
         if (!IsOwner) return;
 
+        // Find the UI canvas in the scene at runtime
         GameObject inventoryUI = GameObject.Find("InventoryUI");
 
         slotsContainer = inventoryUI.transform.Find("Inventory");
 
         hotBarSlotsContainer = inventoryUI.transform.Find("HotBar");
 
-        slots.AddRange( slotsContainer.GetComponentsInChildren<Slot>(true));
+        // Get all Slot components from both containers (including inactive ones)
+        slots.AddRange(slotsContainer.GetComponentsInChildren<Slot>(true));
 
         slots.AddRange(hotBarSlotsContainer.GetComponentsInChildren<Slot>(true));
     }
+
+    // Automatically called when the player presses the interact key
     private void OnInteract(InputValue value)
     {
         if (!IsOwner) return;
         if (value.isPressed)//Key E 
-        { 
+        {
+            // Detect all item colliders within the defined radius and layer mask
             Collider[] colliders = Physics.OverlapSphere(transform.position, pickupRadius, itemLayer);
 
             foreach (Collider col in colliders)
-            {   
+            {
                 ItemPickup itemOnGround = col.GetComponent<ItemPickup>();
 
                 if (itemOnGround != null)
                 {
+                    //Try to add the item and its quantity to the inventory slots
                     int itemsLeftOver = AddItem(itemOnGround.itemData, itemOnGround.quantity);
 
+                    // 1 The item fits entirely in the inventory, destroy/disable the world object
                     if (itemsLeftOver == 0)
                     {
                         itemOnGround.Pickup();
                     }
+                    // 2 Partial pickup, update the world item quantity with the remaining amount
                     else if (itemsLeftOver < itemOnGround.quantity)
                     {
                         itemOnGround.quantity = itemsLeftOver;
                     }
 
-                    break;
+                    break; // Exit loop to prevent picking up multiple different items in a single press
                 }
             }
         }
     }
 
+    //logic to distribute items into existing stacks or empty slots, returning leftover amounts
     public int AddItem(ItemData itemData, int quantity)
     {
         int quantityToSave = quantity;
 
         //Primero buscamos los slots que ya tengan ese item y no esten llenos(para completar el stock)
+        // Find slots with the same item to fill them up
         for (int i = 0; i < slots.Count; i++)
         {
             //1_si encontramos ese item en el slot y la cantidad que tiene es menor a la cantidad maxima del slot
@@ -77,6 +90,7 @@ public class Inventory : NetworkBehaviour
                 slots[i].SetItem(itemData, slots[i].quantity + quantityToStore);
                 quantityToSave -= quantityToStore;
 
+                // If we saved all items, stop here
                 if (quantityToSave <= 0)
                 {
                     return 0;
@@ -84,6 +98,7 @@ public class Inventory : NetworkBehaviour
             }
         }
         //2_ Buscar slots vacios
+        // If we still have items, look for empty slots
         if (quantityToSave > 0)
         {
             for (int i = 0; i < slots.Count; i++)
@@ -95,6 +110,7 @@ public class Inventory : NetworkBehaviour
                     slots[i].SetItem(itemData, quantityToStore);
                     quantityToSave -= quantityToStore;
 
+                    //If we saved all items, stop here
                     if (quantityToSave <= 0)
                     {
                         return 0;
@@ -103,6 +119,7 @@ public class Inventory : NetworkBehaviour
             }
         }
         //3_ Quedaron items por guardar 
+        // Inventory is full, return the total amount of leftover items
         return quantityToSave;
     }
 }
