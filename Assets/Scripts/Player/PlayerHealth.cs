@@ -1,47 +1,73 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : NetworkBehaviour
 {
     [Header("Player life")]
-    public int health;
-    public int maxHealth = 5;
+    // The server controls the health, but all players can see it
+    NetworkVariable<int> health = new NetworkVariable<int>(50,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
+
+    public int maxHealth = 50;
     public bool isDead = false;
 
-    [Header("User interface elements")]
-    [SerializeField] TextMeshProUGUI totalLifeText;
-    [SerializeField] Image lifeFill;
-
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-        health = maxHealth;
-        totalLifeText.text = $"HP: {health.ToString()}";
-    }
-    public void LoseHealth(int damage)
-    {
-        if (isDead) return;
+        // Listen for health changes to update the UI
+        health.OnValueChanged += OnHealthChange;
 
-        health -= damage;
+        // Only the server can set the starting health
+        if (IsServer)
+        {
+            health.Value = maxHealth;
+        }
 
-        //update ui health bar
-        UpdateUI();
-
-        if (health <= 0)
-        {//pero para la ui queda en cero
-            health = 0;
-
-            isDead = true;
-
-            //para el enemigo torreta if (player == null || !player.gameObject.activeInHierarchy) return;
-
-            gameObject.SetActive(false);
+        // If this is my local player, update my health UI 
+        if (IsOwner) 
+        { 
+            OnHealthChange(0, health.Value);
         }
     }
 
-    void UpdateUI()
+    // Called automatically for all clients when the health number changes
+    private void OnHealthChange(int oldValue, int newValue)
     {
-        totalLifeText.text = $"HP: {health.ToString()}";        //Set current life
-        lifeFill.fillAmount = (float)health / maxHealth;     //Fills the life bar from the UI
+        // Only update the screen UI for the person who owns this player
+        if (!IsOwner) return;
+
+        //Update ui references if value changes || actualiza la ui si los valores cambian
+        UIManager.Instance.UpdateHealth(newValue, maxHealth);
+    }
+
+    //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+    public void LoseHealthServerRpc(int damage)
+    {
+        // If the player is already dead do nothing
+        if (isDead) return;
+
+        // Take damage
+        health.Value -= damage;
+
+        // Check if the player has died
+        if (health.Value <= 0)
+        {
+            health.Value = 0;
+
+            isDead = true;
+
+            // The server removes the dead player from the game
+            NetworkObject.Despawn(true);
+
+        }
+    }
+    public override void OnNetworkDespawn()
+    {
+        // Stop listening for health changes to prevent errors
+        // Siempre es buena práctica desvincular el evento al salir de la red
+        health.OnValueChanged -= OnHealthChange;
     }
 }

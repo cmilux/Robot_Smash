@@ -7,10 +7,12 @@ public class CarController : NetworkBehaviour
     public float speed = 10f;
     public float turnSpeed = 100f;
 
+    // Dash settings (a fast and short speed boost)
     public float dashSpeed = 50f;
     public float dashDuration = 0.5f;
     public bool isDashing = false;
 
+    // If true the car cannot move
     public bool isFrozen = false;
 
     private Rigidbody rb;
@@ -27,9 +29,12 @@ public class CarController : NetworkBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
-    {   if (!IsOwner) return; 
+    {   
+        if (!IsOwner) return; 
+
         // If inventory its open frozen would be true
         if (isFrozen) return;
+        
         // Movimiento hacia adelante/atrás
         float move = moveInput.y * speed * Time.fixedDeltaTime;
 
@@ -54,21 +59,27 @@ public class CarController : NetworkBehaviour
     }
 
     public void ActivateDash()
-    {   //Prevent starting a new DashRoutine() if one is already in progress
+    {   
+        //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {
             StartCoroutine(DashRoutine());
         }
     }
 
+    // A timer function that controls how long the dash lasts
     private IEnumerator DashRoutine()
     {
         isDashing = true;
+
+        // Save the normal speed before changing it
         float originalSpeed = speed;
         speed = dashSpeed;
-        
+
+        // Wait for a short time (dashDuration)
         yield return new WaitForSeconds(dashDuration);
 
+        // Return to normal speed after waiting
         speed = originalSpeed;
         isDashing = false;
     }

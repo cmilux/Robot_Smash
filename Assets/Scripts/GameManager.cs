@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject);}
 
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;       //fps limit || limite de fps
 
         //Inicializamos la DB
         itemDataBase.InitializeDataBase();

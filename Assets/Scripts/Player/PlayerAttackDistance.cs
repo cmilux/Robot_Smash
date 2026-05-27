@@ -17,6 +17,8 @@ public class PlayerAttackDistance : NetworkBehaviour
   
 
     private GameObject currentEnemy;
+
+    // Network variable to share the gun rotation with all players
     private NetworkVariable<Quaternion> aimRotation = 
         new NetworkVariable<Quaternion>(Quaternion.identity,
             NetworkVariableReadPermission.Everyone,
@@ -34,7 +36,6 @@ public class PlayerAttackDistance : NetworkBehaviour
             {
                 // Calculate direction towards the enemy
                 Vector3 direction = currentEnemy.transform.position - aim.position;
-                //direction.y = 0;
 
                 // Rotate the aim towards the enemy
                 if (direction != Vector3.zero)
@@ -50,6 +51,7 @@ public class PlayerAttackDistance : NetworkBehaviour
                 }
             }
         }
+        // If im not the owner, just copy the rotation from the network
         else
         {
             aim.rotation = aimRotation.Value;
@@ -84,19 +86,25 @@ public class PlayerAttackDistance : NetworkBehaviour
 
     public void OnAttack(InputValue value)
     {
-        //if (!this.enabled) return;
-        if(!IsOwner) return;
+        if (!enabled) return;
+
+        if (!IsOwner) return;
+
 
         if (value.isPressed && Time.time >= nextFireTime)
         {
+            // Ask the server to spawn the bullet
             ShootServerRpc(firePoint.position, firePoint.rotation);
+
             nextFireTime = Time.time + cooldownShoot;
         }
     }
+
+    // The server creates the bullet and gives ownership to the player who shot it
     [ServerRpc]
     void ShootServerRpc(Vector3 position, Quaternion rotation)
     {
         GameObject bullet = Instantiate(bulletPrefab, position, rotation);
-        bullet.GetComponent<NetworkObject>().Spawn();
+        bullet.GetComponent<NetworkObject>().SpawnWithOwnership(OwnerClientId);
     }
 }

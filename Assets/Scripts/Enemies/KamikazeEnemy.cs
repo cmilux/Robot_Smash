@@ -21,11 +21,11 @@ public class KamikazeEnemy : Enemy
         if(!IsServer) return;
         if (kamIsDead) return;
 
-        UpdateTarget(); // refresh closest player every frame
+        UpdateTarget(); // refresh closest player every frame || calcula el player mas cercano
 
         if (target == null) return;
 
-        MoveTowardTarget();
+        MoveTowardTarget(); //follow player || persigue al player
         //Distance();
     }
 
@@ -48,9 +48,9 @@ public class KamikazeEnemy : Enemy
         if (kamIsDead) return;
 
         PlayExplosionClientRpc();
-        agent.isStopped = true;
+        agent.isStopped = true;     //Enemy stops
         timeBeforeDestroy = 5;      //Set time to be destroyed
-        Die(timeBeforeDestroy);
+        Die(timeBeforeDestroy);     //Enemy death method is called
         kamIsDead = true;           //Enemy is dead now
 
         if (target != null)
@@ -60,7 +60,7 @@ public class KamikazeEnemy : Enemy
             if (playerHealth != null)
             {
                 //Applies damage to player
-                playerHealth.LoseHealth(damage);
+                playerHealth.LoseHealthServerRpc(damage);
             }
         }
 

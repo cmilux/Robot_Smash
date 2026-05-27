@@ -154,12 +154,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TorretaEnemy
   ShowTopMostFoldoutHeaderGroup: 1
-  health: 2
-  isDead: 0
+  health:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
+  maxHealth: 70
+  isDead:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
   timeBeforeDestroy: 2
-  playerExp: 300
   stopDistance: 10
-  pj: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
+  playerLevExp: {fileID: 0}
+  levExpPoints: 300
   target: {fileID: 8867579207307262118, guid: ba276fce49ff6f748b9849597471a7ea, type: 3}
   bulletObj: {fileID: 1142616099853660861, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
   spawnPoint: {fileID: 7282342173314574223}
