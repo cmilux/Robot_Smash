@@ -18,6 +18,9 @@ public class CarController : NetworkBehaviour
     private Rigidbody rb;
     private Vector2 moveInput;
     private float currentSpeed;
+
+    private float flippedRotation = 90f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,12 +32,12 @@ public class CarController : NetworkBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
-    {   
-        if (!IsOwner) return; 
+    {
+        if (!IsOwner) return;
 
         // If inventory its open frozen would be true
         if (isFrozen) return;
-        
+
         // Movimiento hacia adelante/atrás
         float move = moveInput.y * speed * Time.fixedDeltaTime;
 
@@ -52,6 +55,8 @@ public class CarController : NetworkBehaviour
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
 
         rb.MoveRotation(rb.rotation * turnRotation);
+
+        FlipCar();      //flip car
     }
     public void OnMove(InputValue value)
     {
@@ -59,7 +64,7 @@ public class CarController : NetworkBehaviour
     }
 
     public void ActivateDash()
-    {   
+    {
         //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {
@@ -82,6 +87,17 @@ public class CarController : NetworkBehaviour
         // Return to normal speed after waiting
         speed = originalSpeed;
         isDashing = false;
+    }
+
+    void FlipCar()
+    {
+        //flip car to normal if player finds itself flipped upside down or sideways
+        if (gameObject.transform.rotation.x > flippedRotation || gameObject.transform.rotation.x > -flippedRotation
+            || gameObject.transform.rotation.y > flippedRotation || gameObject.transform.rotation.y > -flippedRotation
+            || gameObject.transform.rotation.z > flippedRotation || gameObject.transform.rotation.z > flippedRotation)
+        {
+            gameObject.transform.Rotate(0f, 0f, 0f);
+        }
     }
 }
 
