@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2834332697
+  GlobalObjectIdHash: 2520587976
   InScenePlacedSourceGlobalObjectIdHash: 2834332697
   DeferredDespawnTick: 0
   Ownership: 1
@@ -329,6 +329,8 @@ MonoBehaviour:
   playerLevExp: {fileID: 0}
   levExpPoints: 500
   target: {fileID: 0}
+  resourcesObj: {fileID: 2344226651918682138, guid: fcb2ddcb59d2d4d4498600d34f3bc514, type: 3}
+  spawnResPoint: {fileID: 0}
   kamikazeEnemy: {fileID: 2109011744752369539, guid: e7fb3bd73201ec64b9c3871b637ee9c9, type: 3}
   bulletObj: {fileID: 1142616099853660861, guid: d5cb5e91807de4645a984a6b80b82aa4, type: 3}
   spawnBulletsPoint:

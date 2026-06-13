@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 795196533
+  GlobalObjectIdHash: 4214580754
   InScenePlacedSourceGlobalObjectIdHash: 795196533
   DeferredDespawnTick: 0
   Ownership: 1
@@ -139,6 +139,8 @@ MonoBehaviour:
   playerLevExp: {fileID: 0}
   levExpPoints: 200
   target: {fileID: 0}
+  resourcesObj: {fileID: 2344226651918682138, guid: fcb2ddcb59d2d4d4498600d34f3bc514, type: 3}
+  spawnResPoint: {fileID: 0}
   _explosion: {fileID: 4995779627933072742}
   explodeDistance: 10
   damage: 1
