@@ -4,8 +4,11 @@ using UnityEngine.AI;
 
 public class TurretEnemy : Enemy
 {
+    [Header("Bullet attack")]
     public GameObject bulletObj;
     public Transform spawnPoint;
+
+    [Header("Cooldown")]
     public float shootingCooldown = 3f;
     public float shootingSpeed = 40f;
     public float destroyTimer = 5;
