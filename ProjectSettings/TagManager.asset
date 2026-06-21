@@ -10,6 +10,7 @@ TagManager:
   - TurretBullet
   - ExpUI
   - Slot
+  - Healer
   layers:
   - Default
   - TransparentFX

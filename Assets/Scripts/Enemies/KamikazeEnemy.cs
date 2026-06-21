@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class KamikazeEnemy : Enemy
 {
+    [Header("Explosion Attack")]
     public ParticleSystem _explosion;       //explosion particles
     public float explodeDistance = 10f;     //distance to explode
     public int damage = 1;                  //amount of damage caused by enemy
@@ -19,7 +20,7 @@ public class KamikazeEnemy : Enemy
     private void Update()
     {
         if(!IsServer) return;
-        if (kamIsDead) return;
+        if (isDead.Value) return;
 
         UpdateTarget(); // refresh closest player every frame || calcula el player mas cercano
 
@@ -32,7 +33,7 @@ public class KamikazeEnemy : Enemy
     //need to find a way to cancel the attack when player moves away
     void Distance()
     {
-        if (kamIsDead || target == null) return;
+        if (isDead.Value || target == null) return;
 
         float distance = Vector3.Distance(transform.position, target.position);
 
@@ -45,7 +46,7 @@ public class KamikazeEnemy : Enemy
 
     void Explode()
     {
-        if (kamIsDead) return;
+        if (isDead.Value) return;
 
         PlayExplosionClientRpc();
         agent.isStopped = true;     //Enemy stops
@@ -75,7 +76,7 @@ public class KamikazeEnemy : Enemy
     private void OnCollisionEnter(Collision collision)
     {
         if (!IsServer) return;
-        if (kamIsDead) return;
+        if (isDead.Value) return;
 
         if (collision.gameObject.CompareTag("Player"))
         {

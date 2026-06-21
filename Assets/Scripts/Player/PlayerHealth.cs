@@ -70,4 +70,19 @@ public class PlayerHealth : NetworkBehaviour
         // Siempre es buena práctica desvincular el evento al salir de la red
         health.OnValueChanged -= OnHealthChange;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Healer"))
+        {
+            health.Value = health.Value + 5;
+
+            if (health.Value == maxHealth)
+            {
+                health.Value = maxHealth;
+            }
+
+            NetworkObject.Destroy(other.gameObject);
+        }
+    }
 }
