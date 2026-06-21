@@ -11,17 +11,14 @@ public class ItemPickup : NetworkBehaviour
     // This is called when a player picks up the item
     public void Pickup()
     {
-        Debug.Log("PICKUP LLAMADO");
         if (IsServer)
         {
-            Debug.Log("Soy server");
             // The server can delete the item from the network directly
             NetworkObject.Despawn(false);
         }
         else
         {
             // Clients cannot delete items so they ask the server 
-            Debug.Log("SOy cliente");
             PickupServerRpc();
         }
     }
