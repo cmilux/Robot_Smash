@@ -27,6 +27,10 @@ public class Enemy : NetworkBehaviour
     public Transform target;            //player transform's component
     ulong killerClientId = ulong.MaxValue;               //unsigned long integer (only positive so doesnt causes compilation errors) || variable q solo almacena int positivos
 
+    [Header("Drop resources")]
+    [SerializeField] GameObject resourcesObj;
+    [SerializeField] Transform spawnResPoint;
+
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -101,9 +105,26 @@ public class Enemy : NetworkBehaviour
 
         //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
+
+        DropResources();
+
         //Add experience to the killer || agrega experiencia a quien mato al enemigo
         GrantExpToKillerClientRpc(killerClientId, levExpPoints);
     }
+
+    void DropResources()
+    {
+        if(resourcesObj == null) return;
+
+        if (isDead.Value == true)
+        {
+            GameObject resources = Instantiate(resourcesObj, gameObject.transform.position, gameObject.transform.rotation);
+            NetworkObject netRes = resources.GetComponent<NetworkObject>();
+            netRes.Spawn();
+        }
+    }
+
+
 
     [ClientRpc]
     void GrantExpToKillerClientRpc(ulong clientId, int expAmount)
