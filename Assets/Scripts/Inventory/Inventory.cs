@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 // Manages player inventory, hotbar slots, and network-synced item pickup mechanics
 public class Inventory : NetworkBehaviour
@@ -9,10 +8,6 @@ public class Inventory : NetworkBehaviour
     public Transform slotsContainer;
 
     public Transform hotBarSlotsContainer;
-
-    [Header("Configuración para Recoger")]
-    public float pickupRadius = 4f;
-    public LayerMask itemLayer;
 
     // // A list to save all the inventory slots
     private List<Slot> slots = new List<Slot>();
@@ -35,37 +30,23 @@ public class Inventory : NetworkBehaviour
         slots.AddRange(hotBarSlotsContainer.GetComponentsInChildren<Slot>(true));
     }
 
-    // Automatically called when the player presses the interact key
-    private void OnInteract(InputValue value)
+    private void OnTriggerEnter(Collider other)
     {
         if (!IsOwner) return;
-        if (value.isPressed)//Key E 
+
+        ItemPickup itemOnGround = other.GetComponent<ItemPickup>();
+
+        if (itemOnGround != null)
         {
-            // Detect all item colliders within the defined radius and layer mask
-            Collider[] colliders = Physics.OverlapSphere(transform.position, pickupRadius, itemLayer);
+            int itemsLeftOver = AddItem(itemOnGround.itemData, itemOnGround.quantity);
 
-            foreach (Collider col in colliders)
+            if (itemsLeftOver == 0)
             {
-                ItemPickup itemOnGround = col.GetComponent<ItemPickup>();
-
-                if (itemOnGround != null)
-                {
-                    //Try to add the item and its quantity to the inventory slots
-                    int itemsLeftOver = AddItem(itemOnGround.itemData, itemOnGround.quantity);
-
-                    // 1 The item fits entirely in the inventory, destroy/disable the world object
-                    if (itemsLeftOver == 0)
-                    {
-                        itemOnGround.Pickup();
-                    }
-                    // 2 Partial pickup, update the world item quantity with the remaining amount
-                    else if (itemsLeftOver < itemOnGround.quantity)
-                    {
-                        itemOnGround.quantity = itemsLeftOver;
-                    }
-
-                    break; // Exit loop to prevent picking up multiple different items in a single press
-                }
+                itemOnGround.Pickup();
+            }
+            else if (itemsLeftOver < itemOnGround.quantity)
+            {
+                itemOnGround.quantity = itemsLeftOver;
             }
         }
     }
