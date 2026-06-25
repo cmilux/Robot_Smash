@@ -19,8 +19,6 @@ public class CarController : NetworkBehaviour
     private Vector2 moveInput;
     private float currentSpeed;
 
-    private float flippedRotation = 90f;
-
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -89,14 +87,19 @@ public class CarController : NetworkBehaviour
         isDashing = false;
     }
 
+
     void FlipCar()
     {
-        //flip car to normal if player finds itself flipped upside down or sideways
-        if (gameObject.transform.rotation.x > flippedRotation || gameObject.transform.rotation.x > -flippedRotation
-            || gameObject.transform.rotation.y > flippedRotation || gameObject.transform.rotation.y > -flippedRotation
-            || gameObject.transform.rotation.z > flippedRotation || gameObject.transform.rotation.z > -flippedRotation)
+        Vector3 euler = transform.eulerAngles;
+
+        // Convert 0-360 to -180/180 to detect left and right leaning
+        float x = euler.x > 180 ? euler.x - 360 : euler.x;
+        float z = euler.z > 180 ? euler.z - 360 : euler.z;
+
+        // If the car is leaning too much, put it back upright
+        if (Mathf.Abs(x) > 60f || Mathf.Abs(z) > 60f)
         {
-            gameObject.transform.Rotate(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
         }
     }
 }
