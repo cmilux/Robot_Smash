@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5007672173514967793}
   - component: {fileID: 3507376688042911206}
   m_Layer: 0
-  m_Name: LootBox
+  m_Name: LootBoxWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
