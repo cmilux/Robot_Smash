@@ -19,15 +19,22 @@ public class KamikazeEnemy : Enemy
 
     private void Update()
     {
-        if(!IsServer) return;
-        if (isDead.Value) return;
+        if (!IsServer) return;         //server-only — clients don't run enemy AI logic, they just see the result
+        if (isDead.Value) return;      //dead enemies don't act
 
-        UpdateTarget(); // refresh closest player every frame || calcula el player mas cercano
+        UpdateTarget();                 //re-check who the closest player is every frame
+        if (target == null) return;    //no players in scene, nothing to do
 
-        if (target == null) return;
+        DetectPlayer();                 //checks distance to target and sets _playerDetected accordingly
 
-        MoveTowardTarget(); //follow player || persigue al player
-        //Distance();
+        if (!_playerDetected)
+        {
+            HandlePatrolState();        //player is out of range — keep wandering patrol points
+        }
+        else
+        {
+            MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
+        }
     }
 
     //need to find a way to cancel the attack when player moves away
@@ -64,7 +71,6 @@ public class KamikazeEnemy : Enemy
                 playerHealth.LoseHealthServerRpc(damage);
             }
         }
-
     }
 
     [ClientRpc]
