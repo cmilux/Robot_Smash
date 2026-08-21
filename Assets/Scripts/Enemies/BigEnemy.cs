@@ -43,15 +43,12 @@ public class BigEnemy : Enemy
         else
         {
             MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
+            SpawnKamikaze();
+            Shoot();
         }
 
         //Checks how many spawned enemies are on scene || chequea cuantos enemigos hay en escena
         currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
-        if (_playerDetected)
-        {
-            SpawnKamikaze();
-            Shoot();
-        }
     }
 
     void SpawnKamikaze()

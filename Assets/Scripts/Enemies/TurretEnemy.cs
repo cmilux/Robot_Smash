@@ -27,8 +27,6 @@ public class TurretEnemy : Enemy
 
         UpdateTarget();
         if (target == null) return;
-        
-        if (_playerDetected) ShootPlayer();
 
         DetectPlayer();                 //checks distance to target and sets _playerDetected accordingly
 
@@ -39,6 +37,7 @@ public class TurretEnemy : Enemy
         else
         {
             MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
+            ShootPlayer();
         }
     }
 

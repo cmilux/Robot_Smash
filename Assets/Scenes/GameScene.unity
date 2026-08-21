@@ -2034,10 +2034,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1506976481}
     m_Modifications:
-    - target: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: _patrolRadius
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 579513504492542185, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.8917236
@@ -2089,14 +2085,6 @@ PrefabInstance:
     - target: {fileID: 6769487437545582415, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: m_Name
       value: Enemy_Big
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784758704834646011, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9104438235431029906, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2732,18 +2720,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1506976481}
     m_Modifications:
-    - target: {fileID: 3076757787990573249, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3672926778639196210, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
-      propertyPath: _patrolRadius
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7085054270354447370, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -2814,22 +2790,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1506976481}
     m_Modifications:
-    - target: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: _patrolRadius
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: detectionRadius
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2832274241359153359, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3153868557325588576, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4511660602434808902, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
       propertyPath: m_Name
       value: Enemy_Kamikaze

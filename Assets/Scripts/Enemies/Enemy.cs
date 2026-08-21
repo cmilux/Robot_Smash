@@ -25,6 +25,7 @@ public class Enemy : NetworkBehaviour
     [SerializeField] float _patrolRadius;   //sets the radius of the patrol area for the enemy
     [SerializeField] bool _enemyWaiting;    //checks whether the enemy is waiting to go to the next patrol point or not
     protected bool _playerDetected;  //checks whether the enemy has detected the player or not
+    protected bool _wasPlayerDetected;  //remembers last frame's detection state, so we can catch the exact moment the player leaves range
     public float detectionRadius = 8f;  //how close the player needs to be for this enemy to notice them and stop patrolling
 
     [Header("Player and experience")]
@@ -137,6 +138,13 @@ public class Enemy : NetworkBehaviour
 
         float dist = Vector3.Distance(transform.position, target.position);     //distance between enemy and its current target
         _playerDetected = dist <= detectionRadius;      //true if player is within detection range, false otherwise (triggers patrol vs chase)
+
+        if (_wasPlayerDetected && !_playerDetected)
+        {
+            agent.ResetPath();
+        }
+
+        _wasPlayerDetected = _playerDetected;
     }
 
     protected void HandleFollowState()
