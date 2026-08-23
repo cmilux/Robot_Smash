@@ -30,14 +30,25 @@ public class BigEnemy : Enemy
     private void Update()
     {
         if (!IsServer || !IsSpawned) return;
+        if (isDead.Value) return;      //dead enemies don't act
 
         UpdateTarget();
-        MoveTowardTarget();
+
+        DetectPlayer();                 //checks distance to target and sets _playerDetected accordingly
+
+        if (!_playerDetected)
+        {
+            HandlePatrolState();        //player is out of range — keep wandering patrol points
+        }
+        else
+        {
+            MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
+            SpawnKamikaze();
+            Shoot();
+        }
 
         //Checks how many spawned enemies are on scene || chequea cuantos enemigos hay en escena
         currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
-        SpawnKamikaze();
-        Shoot();
     }
 
     void SpawnKamikaze()

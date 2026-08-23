@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9159795205607410543}
   - component: {fileID: 459753635806799329}
   - component: {fileID: 8668231840871655142}
-  - component: {fileID: 2832274241359153359}
   m_Layer: 9
   m_Name: Enemy_Kamikaze
   m_TagString: Untagged
@@ -50,12 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2341344648
+  GlobalObjectIdHash: 2180247388
   InScenePlacedSourceGlobalObjectIdHash: 795196533
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
+  m_InScenePlaced: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -135,6 +135,9 @@ MonoBehaviour:
     m_InternalValue: 0
   timeBeforeDestroy: 0
   stopDistance: 0
+  _patrolRadius: 15
+  _enemyWaiting: 0
+  detectionRadius: 15
   playerLevExp: {fileID: 0}
   levExpPoints: 200
   target: {fileID: 0}
@@ -165,27 +168,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &2832274241359153359
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4511660602434808902}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.89420795, z: 1}
-  m_Center: {x: 0, y: 0.29886866, z: 0}
 --- !u!1 &5882350554118143225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5113,7 +5095,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
