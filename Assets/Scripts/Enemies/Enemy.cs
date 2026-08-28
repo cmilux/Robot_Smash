@@ -147,7 +147,7 @@ public class Enemy : NetworkBehaviour
         _wasPlayerDetected = _playerDetected;
     }
 
-    protected void HandleFollowState()
+    public virtual void HandleFollowState()
     {
         if (!IsServer) return;
         agent.SetDestination(target.position);
