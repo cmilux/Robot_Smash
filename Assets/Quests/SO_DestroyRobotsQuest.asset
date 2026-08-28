@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5505331a42d0e604c816c276bb0f7826, type: 3}
-  m_Name: DestroyRobotsQuest
+  m_Name: SO_DestroyRobotsQuest
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: 0
   questTitle: Destroy Robots
@@ -18,7 +18,9 @@ MonoBehaviour:
     to be destroyed.
   objectives:
   - {fileID: 11400000, guid: 4f8817ebaeaa73b41832f850a401eda1, type: 2}
+  - {fileID: 11400000, guid: 8281e93c6c291064f8b2b2f113384c11, type: 2}
   requiredQuestId: -1
   rewardItems:
   - {fileID: 11400000, guid: 304e7340c4dca764aaa4f3e07139fd7a, type: 2}
-  rewardExp: 5
+  - {fileID: 11400000, guid: 2526e41e07396994ba56fadd313c47d5, type: 2}
+  rewardExp: 10

@@ -12,6 +12,7 @@ TagManager:
   - Slot
   - Healer
   - ItemReward
+  - Bunker
   layers:
   - Default
   - TransparentFX
