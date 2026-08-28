@@ -7,10 +7,11 @@ public class CarController : NetworkBehaviour
     public float speed = 10f;
     public float turnSpeed = 100f;
 
-    // Dash settings (a fast and short speed boost)
+    // Dash settings
     public float dashSpeed = 50f;
     public float dashDuration = 0.5f;
     public bool isDashing = false;
+    public float acceleration = 8f; // how fast it reaches target speed
 
     // If true the car cannot move
     public bool isFrozen = false;
@@ -29,6 +30,7 @@ public class CarController : NetworkBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
     }
+    //TO DO: fix car climbing hills in little jumps
     void FixedUpdate()
     {
         if (!IsOwner) return;
@@ -36,22 +38,24 @@ public class CarController : NetworkBehaviour
         // If inventory its open frozen would be true
         if (isFrozen) return;
 
-        // Movimiento hacia adelante/atrás
-        float move = moveInput.y * speed * Time.fixedDeltaTime;
+        float moveAmount = moveInput.y * speed;
 
-        // Force forward movement during dash even if there is no player input
         if (isDashing)
         {
-            move = 1 * speed * Time.fixedDeltaTime;
+            moveAmount = speed; // force forward movement during dash (si no apretas la w igual acelera)
         }
-        Vector3 movement = transform.forward * move;
 
-        rb.MovePosition(rb.position + movement);
+        // Set the target velocity in the car forward direction
+        Vector3 targetVelocity = transform.forward * moveAmount;
+        // Keep the current vertical velocity
+        targetVelocity.y = rb.linearVelocity.y;
 
-        // Rotación
+        // move smoothly towards the target velocity
+        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+
+        // Rotation
         float turn = moveInput.x * turnSpeed * Time.fixedDeltaTime;
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
-
         rb.MoveRotation(rb.rotation * turnRotation);
 
         FlipCar();      //flip car
@@ -87,19 +91,14 @@ public class CarController : NetworkBehaviour
         isDashing = false;
     }
 
-
     void FlipCar()
     {
         Vector3 euler = transform.eulerAngles;
-
-        // Convert 0-360 to -180/180 to detect left and right leaning
         float x = euler.x > 180 ? euler.x - 360 : euler.x;
         float z = euler.z > 180 ? euler.z - 360 : euler.z;
-
-        // If the car is leaning too much, put it back upright
         if (Mathf.Abs(x) > 60f || Mathf.Abs(z) > 60f)
         {
-            transform.rotation = Quaternion.Euler(0f, euler.y, 0f);
+            rb.MoveRotation(Quaternion.Euler(0f, euler.y, 0f));
         }
     }
 }
