@@ -37,6 +37,9 @@ public class PlayerBulletController : NetworkBehaviour
             // Apply damage to enemy
             enemy.TakeDamageServerRpc(damage, shooterClientId);
 
+            //if bullet hits enemy, follow player
+            enemy.HandleFollowState();
+
             // Delete the bullet after hitting the enemy
             DestroyBullet();
         }
