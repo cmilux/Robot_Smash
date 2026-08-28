@@ -177,7 +177,7 @@ MonoBehaviour:
   spawnResPoint: {fileID: 0}
   bulletObj: {fileID: 1142616099853660861, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
   spawnPoint: {fileID: 7009095645688573368}
-  shootingCooldown: 3
+  shootingCooldown: 1.5
   shootingSpeed: 20
   destroyTimer: 5
   bulletTime: 0

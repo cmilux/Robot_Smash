@@ -2566,7 +2566,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: spawnCooldown
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 579513504492542185, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2608,18 +2608,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1231206206632900287, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Height
-      value: 5.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 1231206206632900287, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Radius
-      value: 3.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 1231206206632900287, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_BaseOffset
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1246990913529109215, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -2627,22 +2615,6 @@ PrefabInstance:
     - target: {fileID: 1246990913529109215, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1647411505
-      objectReference: {fileID: 0}
-    - target: {fileID: 3442688326797778350, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Size.x
-      value: 5.5027466
-      objectReference: {fileID: 0}
-    - target: {fileID: 3442688326797778350, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Size.y
-      value: 5.4824333
-      objectReference: {fileID: 0}
-    - target: {fileID: 3442688326797778350, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Center.x
-      value: 0.02168274
-      objectReference: {fileID: 0}
-    - target: {fileID: 3442688326797778350, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-      propertyPath: m_Center.y
-      value: 2.6960735
       objectReference: {fileID: 0}
     - target: {fileID: 6769487437545582415, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
       propertyPath: m_Name
@@ -3602,14 +3574,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1506976481}
     m_Modifications:
-    - target: {fileID: 255090838882674859, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: m_Size.y
-      value: 0.9059372
-      objectReference: {fileID: 0}
-    - target: {fileID: 255090838882674859, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: m_Center.y
-      value: 0.2847557
-      objectReference: {fileID: 0}
     - target: {fileID: 4511660602434808902, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
       propertyPath: m_Name
       value: Enemy_Kamikaze
@@ -3660,14 +3624,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465576872638547918, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8668231840871655142, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: m_Height
-      value: 0.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 8668231840871655142, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-      propertyPath: m_BaseOffset
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
