@@ -175,6 +175,12 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer) return;
 
+        if (agent != null && agent.isOnNavMesh)
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
+
         //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
 
@@ -182,6 +188,9 @@ public class Enemy : NetworkBehaviour
 
         //Add experience to the killer || agrega experiencia a quien mato al enemigo
         GrantExpToKillerClientRpc(killerClientId, levExpPoints);
+
+        //reports using the enemy's tag as targetId
+        QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag); 
     }
 
     void DropResources()

@@ -29,6 +29,8 @@ public class LootBox : NetworkBehaviour
         netObj.Spawn();
 
         NetworkObject.Despawn(false);
+
+        QuestManager.Instance.ReportProgress(ObjectiveType.DestroyObject, itemToDrop.id.ToString());
     }
 
     public override void OnNetworkDespawn()
