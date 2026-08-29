@@ -22,6 +22,11 @@ public class InventoryManager : NetworkBehaviour
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Owner
     );
+    private NetworkVariable<int> equippedSawsId = new NetworkVariable<int>(
+    -1,
+    NetworkVariableReadPermission.Everyone,
+    NetworkVariableWritePermission.Owner
+);
     private NetworkVariable<int> currentPaintId = new NetworkVariable<int>(
         -1,
         NetworkVariableReadPermission.Everyone,
@@ -33,6 +38,7 @@ public class InventoryManager : NetworkBehaviour
 
     [Header("Attack System")]
     public PlayerAttackDistance playerAttack;
+    public CarSaws carSaws;
 
     [Header("Player Visual")]
     public Renderer playerRenderer;
@@ -46,6 +52,7 @@ public class InventoryManager : NetworkBehaviour
         // Get components automatically when the game starts
         playerInput = GetComponent<PlayerInput>();
         carController = GetComponent<CarController>();
+        carSaws = GetComponent<CarSaws>();
         visibleItems = visibleItemsContainer.GetComponentsInChildren<VisibleItem>(true);
     }
 
@@ -55,6 +62,10 @@ public class InventoryManager : NetworkBehaviour
         equippedWeaponId.OnValueChanged += OnWeaponChanged;
         //Force the initial update for late joiners
         OnWeaponChanged(-1, equippedWeaponId.Value);
+
+        // All clients subscribe to the saws changes
+        equippedSawsId.OnValueChanged += OnSawsChanged;
+        OnSawsChanged(-1, equippedSawsId.Value);
 
         // All clients subscribe to the paint changes
         currentPaintId.OnValueChanged += OnPaintChanged;
@@ -87,15 +98,16 @@ public class InventoryManager : NetworkBehaviour
     {
         // clear the events
         equippedWeaponId.OnValueChanged -= OnWeaponChanged;
+        equippedSawsId.OnValueChanged -= OnSawsChanged;
         currentPaintId.OnValueChanged -= OnPaintChanged;
     }
 
     // this function runs on all clients when the weapon Id changes
     private void OnWeaponChanged(int oldId, int newId)
     {
-        foreach (VisibleItem vItem in visibleItems)
+        foreach (VisibleItem vItem in visibleItems )
         {
-            if (vItem.visibleItem != null)
+            if (vItem.visibleItem != null && vItem.item.itemType == ItemType.weapon)
             {
                 // turn off the visual
                 vItem.visibleItem.SetActive(false);
@@ -114,7 +126,34 @@ public class InventoryManager : NetworkBehaviour
             playerAttack.enabled = (newId != -1);
         }
     }
+    // this function runs on all clients when the saws Id changes
+    private void OnSawsChanged(int oldId, int newId)
+    {
+        foreach (VisibleItem vItem in visibleItems)
+        {
+            if (vItem.visibleItem != null && vItem.item.itemType == ItemType.saws)
+            {
+                // turn off the visual
+                vItem.visibleItem.SetActive(false);
 
+                // turn on the one that matches the new Id
+                if (vItem.item.id == newId)
+                {
+                    vItem.visibleItem.SetActive(true);
+                }
+            }
+        }
+
+        if (carSaws != null)
+        {
+            carSaws.isEquipped = (newId != -1);
+            // Force the saws off if they get unequipped 
+            if (newId == -1)
+            {
+                carSaws.sawsOn = false;
+            }
+        }
+    }
     // This function runs on all clients when the paint Id changes
     private void OnPaintChanged(int oldId, int newId)
     {
@@ -192,6 +231,10 @@ public class InventoryManager : NetworkBehaviour
                 {
                     EquipWeapon(slotToUse.itemData);
                 }
+                else if (slotToUse.itemData.itemType == ItemType.saws)
+                {
+                    EquipSaws(slotToUse.itemData);
+                }
                 else if (slotToUse.itemData.itemType == ItemType.paint)
                 {
                     ApplyPaint(slotToUse.itemData);
@@ -200,6 +243,7 @@ public class InventoryManager : NetworkBehaviour
             else
             {
                 UnequipWeapons();
+                UnequipSaws();
                 ResetPaint();
             }
         }
@@ -219,6 +263,19 @@ public class InventoryManager : NetworkBehaviour
         if (!IsOwner) return;
 
         equippedWeaponId.Value = -1;
+    }
+    private void EquipSaws(ItemData sawsToEquip)
+    {
+        if (!IsOwner) return;
+
+        equippedSawsId.Value = sawsToEquip.id;
+    }
+
+    private void UnequipSaws()
+    {
+        if (!IsOwner) return;
+
+        equippedSawsId.Value = -1;
     }
 
     void ApplyPaint(ItemData item)
@@ -253,6 +310,10 @@ public class InventoryManager : NetworkBehaviour
             if (slotToDrop.itemData.itemType == ItemType.weapon)
             {
                 UnequipWeapons();
+            }
+            else if (slotToDrop.itemData.itemType == ItemType.saws)
+            {
+                UnequipSaws();
             }
             else if (slotToDrop.itemData.itemType == ItemType.paint)
             {
