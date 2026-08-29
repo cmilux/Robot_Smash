@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
   type: 3
   targetId: Bunker
-  requiredAmount: 0
+  requiredAmount: 1
   description: Reach the bunker
   isOptional: 1
   bonusExp: 7

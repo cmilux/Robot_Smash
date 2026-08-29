@@ -36,10 +36,10 @@ public class QuestManager : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         //whener the active quest changes, tell UI to refresh
-        //activeQuestId.OnValueChanged += (oldId, newId) => QuestUI.Instance?.RefreshQuest(ActiveQuest, objectiveProgress);
+        activeQuestId.OnValueChanged += (oldId, newId) => UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
 
         //whenever any objective's progress count changes, tell UI to refresh too
-        //objectiveProgress.OnListChanged += (change) => QuestUI.Instance?.RefreshQuest(ActiveQuest, objectiveProgress);
+        objectiveProgress.OnListChanged += (change) => UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
     }
 
     //server start quest (this needs to be called from the mission giver(npc), a trigger zone, etc)
@@ -80,6 +80,7 @@ public class QuestManager : NetworkBehaviour
     private void ApplyProgress(ObjectiveType type, string targetId, int amount)
     {
         if (ActiveQuest == null) return;       //no active quest, nothing to update
+        if (ActiveQuest.objectives.Count != objectiveProgress.Count) return; // quest data still syncing
 
         if (ActiveQuest != null)
         {
@@ -108,6 +109,8 @@ public class QuestManager : NetworkBehaviour
 
     private void CheckQuestComplete()
     {
+        if (ActiveQuest.objectives.Count != objectiveProgress.Count) return;  // quest data still syncing
+
         //only checks main objectives, decides if the quest can close
         for (int i = 0; i < ActiveQuest.objectives.Count; ++i)
         {
