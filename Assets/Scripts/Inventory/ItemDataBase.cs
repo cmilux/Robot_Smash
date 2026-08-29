@@ -6,7 +6,7 @@ public class ItemDataBase : ScriptableObject
 {
     // List of items assigned from the inspector
     public List<ItemData> items = new List<ItemData>();
-
+    public List<RecipeData> recipes = new List<RecipeData>();
     // Item dictionary (hidden in the inspector)
     private Dictionary<string, ItemData> itemDictionary = new Dictionary<string, ItemData>();
 
