@@ -11,6 +11,8 @@ TagManager:
   - ExpUI
   - Slot
   - Healer
+  - ItemReward
+  - Bunker
   layers:
   - Default
   - TransparentFX

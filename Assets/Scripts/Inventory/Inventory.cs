@@ -40,6 +40,17 @@ public class Inventory : NetworkBehaviour
         {
             int itemsLeftOver = AddItem(itemOnGround.itemData, itemOnGround.quantity);
 
+            //how many actually got stored (could be less than requested if inventory was near full)
+            //cuantos realmente se guardaron (puede ser menos de lo pedido si el inventario estaba casi lleno)
+            int amountPickedUp = itemOnGround.quantity - itemsLeftOver;
+
+            //only report to the quest system if the player actually picked something up from the world
+            //solo reporta al sistema de misiones si el jugador realmente recogio algo del mundo
+            if (amountPickedUp > 0)
+            {
+                QuestManager.Instance.ReportProgressServerRpc(ObjectiveType.CollectItem, itemOnGround.itemData.id.ToString(), amountPickedUp);
+            }
+
             if (itemsLeftOver == 0)
             {
                 itemOnGround.Pickup();
