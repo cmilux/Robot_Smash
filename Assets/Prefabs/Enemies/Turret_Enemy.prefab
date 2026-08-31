@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7809911169820398215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.99999946, y: 1.3500004, z: 0.50000304}
+  m_LocalPosition: {x: 0.99999946, y: 1.3500004, z: 1.328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,8 +176,8 @@ MonoBehaviour:
   resourcesObj: {fileID: 2344226651918682138, guid: fcb2ddcb59d2d4d4498600d34f3bc514, type: 3}
   spawnResPoint: {fileID: 0}
   bulletObj: {fileID: 1142616099853660861, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
-  spawnPoint: {fileID: 7282342173314574223}
-  shootingCooldown: 3
+  spawnPoint: {fileID: 7009095645688573368}
+  shootingCooldown: 1.5
   shootingSpeed: 20
   destroyTimer: 5
   bulletTime: 0
@@ -199,8 +199,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
+  m_Height: 2.26
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &442834944868099865
@@ -222,8 +222,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.0084991, y: 2.2208672, z: 1}
+  m_Center: {x: 0.01625824, y: 1.1148396, z: 0}
 --- !u!1001 &4576051250083088442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d0061f05c477729479387a6675821a75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.488
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d0061f05c477729479387a6675821a75, type: 3}
       propertyPath: m_LocalRotation.w
