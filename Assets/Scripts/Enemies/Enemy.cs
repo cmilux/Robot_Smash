@@ -74,7 +74,7 @@ public class Enemy : NetworkBehaviour
     protected void MoveTowardTarget()
     {
         if (!IsServer) return;
-        if (target == null || agent == null) return;
+        if (target == null || agent == null || health.Value <= 0) return;
 
         float dist = Vector3.Distance(transform.position, target.position);     //calculate distance between enemy and every player on scene || calcula la distancia entre el enemigo y los jugadores
 
@@ -91,8 +91,8 @@ public class Enemy : NetworkBehaviour
 
     protected void HandlePatrolState()
     {
-        if(!IsServer) return; 
-        if (agent.pathPending || _enemyWaiting)
+        if (!IsServer) return;
+        if (agent.pathPending || _enemyWaiting || health.Value <= 0)
         {
             return;
         }
@@ -167,6 +167,13 @@ public class Enemy : NetworkBehaviour
         if (health.Value <= 0)
         {
             isDead.Value = true;                                      //Enemy is dead
+
+            if (agent != null && agent.isOnNavMesh)
+            {
+                agent.isStopped = true;
+                agent.ResetPath();
+            }
+
             Die(timeBeforeDestroy);                             //Call Die method with parameter
         }
     }
@@ -175,11 +182,7 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        if (agent != null && agent.isOnNavMesh)
-        {
-            agent.isStopped = true;
-            agent.ResetPath();
-        }
+        agent.isStopped = true;
 
         //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
@@ -190,12 +193,12 @@ public class Enemy : NetworkBehaviour
         GrantExpToKillerClientRpc(killerClientId, levExpPoints);
 
         //reports using the enemy's tag as targetId
-        QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag); 
+        QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag);
     }
 
     void DropResources()
     {
-        if(resourcesObj == null) return;
+        if (resourcesObj == null) return;
 
         if (isDead.Value == true)
         {
