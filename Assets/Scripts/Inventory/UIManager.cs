@@ -13,6 +13,10 @@ public class UIManager : MonoBehaviour
 
     [Header("Inventory")]
     public Image ghostIcon;
+    [SerializeField] GameObject inventoryPanel;
+
+    [Header("Craft")]
+    [SerializeField] GameObject craftPanel;
 
     [Header("Health")]
     [SerializeField] TextMeshProUGUI healthText;
@@ -32,6 +36,18 @@ public class UIManager : MonoBehaviour
     {
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
+    }
+
+    private void Update()
+    {
+        if (inventoryPanel.activeSelf && craftPanel.activeSelf)
+        {
+            questPanel.SetActive(false);
+        }
+        else
+        {
+            questPanel.SetActive(true);
+        }
     }
 
     public void UpdateHealth(int current, int max)
@@ -63,10 +79,7 @@ public class UIManager : MonoBehaviour
         questPanel.SetActive(true);
         questTitleText.text = quest.questTitle;
 
-        if (inventoryPanel.isActive)
-        {
-            questPanel.SetActive(false);
-        }
+        
 
         string objectivesList = "";
         for (int i = 0; i < quest.objectives.Count; i++)
