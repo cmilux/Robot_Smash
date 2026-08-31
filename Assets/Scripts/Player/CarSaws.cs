@@ -9,14 +9,14 @@ public class CarSaws : NetworkBehaviour
     // True when the player has the saws equipped from the inventory
     public bool isEquipped = false;
     // True when the player turned the saws on with the button
-    public bool sawsOn = false;
+    public bool sawsOn = false; // deberia ser networkvariable para que el otro jugador vea la rotacion visual
 
     public int damageAmount = 20;
 
     public float damageRate = 1f; // how often the same enemy can be hit again
 
     public float onDuration = 5f; // how long the saws stay on
-    public float cooldownTime = 3f; // wait time before turning on again
+    public float cooldownTime = 3f; // wait time before the player can turning on again
 
     private bool onCooldown = false;
 
@@ -29,14 +29,14 @@ public class CarSaws : NetworkBehaviour
         shooterClientId = OwnerClientId;
     }
 
-    // Called by the Input System when pressing the saw power button
+    // Called by the Input System when pressing the saw power button(barra espaciadora)
     public void OnSawsPower(InputValue value)
     {
         if (!IsOwner) return;
         if (!isEquipped) return;
         if (!value.isPressed) return;
 
-        if (sawsOn) return; // already spinning ignore extra presses
+        if (sawsOn) return; // already spinning ignore extra press
 
         if (onCooldown) return; // still waiting to be usable again
 
