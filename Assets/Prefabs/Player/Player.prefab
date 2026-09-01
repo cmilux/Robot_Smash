@@ -114,8 +114,9 @@ GameObject:
   - component: {fileID: 4379124669852826354}
   - component: {fileID: 7695856016492172092}
   - component: {fileID: 7819543308125877676}
+  - component: {fileID: 8498195182841326423}
   m_Layer: 8
-  m_Name: 'Player '
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 1663539091826855021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.463585, y: 30, z: 42.96444}
+  m_LocalPosition: {x: 122.463585, y: 50, z: 42.96444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -168,7 +169,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &5073014740563901637
 MonoBehaviour:
@@ -217,7 +218,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.0052776, y: 1.8954897, z: 3.952321}
   m_Center: {x: 0, y: -0.5369692, z: -0.028486729}
@@ -464,6 +465,27 @@ MonoBehaviour:
   sawLeft: {fileID: 4658166322544171145}
   sawRight: {fileID: 1264656293325783324}
   spinSpeed: 600
+--- !u!135 &8498195182841326423
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663539091826855021}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.1095839
+  m_Center: {x: 0, y: 0.17000675, z: -0.076135635}
 --- !u!1 &2011923794811791080
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6486076332297913434}
   - component: {fileID: 4865970748647269162}
+  - component: {fileID: 873490343200077738}
   m_Layer: 0
   m_Name: PickUpTrigger
   m_TagString: Untagged
@@ -545,10 +568,31 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2.1698608, y: 1.2599707, z: 4.0639343}
   m_Center: {x: 0.009284973, y: -0.12998533, z: 0.04642105}
+--- !u!135 &873490343200077738
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808594562492023452}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.3755074
+  m_Center: {x: 0, y: 0.34939003, z: -0.026576996}
 --- !u!1 &3112758913659697368
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112758913659697368}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24878113, y: -0, z: -0, w: 0.96855974}
+  m_LocalRotation: {x: 0.24878119, y: -0, z: -0, w: 0.96855974}
   m_LocalPosition: {x: 0, y: 7.200001, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

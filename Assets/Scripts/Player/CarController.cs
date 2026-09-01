@@ -58,7 +58,7 @@ public class CarController : NetworkBehaviour
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         rb.MoveRotation(rb.rotation * turnRotation);
 
-        FlipCar();      //flip car
+        //FlipCar();      //flip car
     }
     public void OnMove(InputValue value)
     {
