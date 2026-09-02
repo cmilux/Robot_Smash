@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1069777830090682999}
   - component: {fileID: 8458574710870276399}
   - component: {fileID: 1837183487964304116}
+  - component: {fileID: 8182521984715001926}
   m_Layer: 0
   m_Name: ItemRope
   m_TagString: Untagged
@@ -97,6 +98,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.46581095, y: 0.1092073, z: 0.44244236}
   m_Center: {x: 0.013010055, y: 0.0034299344, z: 0.0067994893}
+--- !u!54 &8182521984715001926
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7257092213913500555}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &4639660163059236151
 PrefabInstance:
   m_ObjectHideFlags: 0

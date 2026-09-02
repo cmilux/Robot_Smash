@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 938711718970526171}
   - component: {fileID: 6327832759754874621}
   - component: {fileID: 6427287104591198141}
+  - component: {fileID: 4192226732083387516}
   m_Layer: 0
   m_Name: ItemCircuitBoard
   m_TagString: Untagged
@@ -97,6 +98,33 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   itemData: {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
   quantity: 1
+--- !u!54 &4192226732083387516
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028469759395132739}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &1068059011239520930
 PrefabInstance:
   m_ObjectHideFlags: 0
