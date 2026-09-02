@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
+  m_Name: 9.MigWelder
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: 9
+  nombre: MigWelder
+  icon: {fileID: 21300000, guid: 7924162267535ec4a9aa8f75801cb781, type: 3}
+  maxStock: 15
+  visibleItemID: 9
+  itemType: 0
+  paintMaterial: {fileID: 0}
+  dropPrefab: {fileID: 9056080809146111240, guid: 79151fc55bf588a48a704ef37b30f4a9, type: 3}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
+  m_Name: 14.WireRope
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: 14
+  nombre: WireRope
+  icon: {fileID: 21300000, guid: cd2086d817d01a4468a530dbe935bdf3, type: 3}
+  maxStock: 15
+  visibleItemID: 14
+  itemType: 0
+  paintMaterial: {fileID: 0}
+  dropPrefab: {fileID: 2063874734002819314, guid: c7bdf1f7fc6aea94f9d09a41f84bedee, type: 3}
