@@ -27,5 +27,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2c1b4817ea469542b8f23e73a494480, type: 2}
   - {fileID: 11400000, guid: 0e2486141b7a9d9409262cdcb44f46ee, type: 2}
   - {fileID: 11400000, guid: 462bdc52d7512c9479d70943aa30ae28, type: 2}
+  - {fileID: 11400000, guid: 60199cb6ede1efb44b690a6dbb9f8f6d, type: 2}
+  - {fileID: 11400000, guid: 6c055dd7c6341584c81631f485622f58, type: 2}
+  - {fileID: 11400000, guid: 0bb87ecca6496c943883c939c80ab3b4, type: 2}
+  - {fileID: 11400000, guid: 0ca03c06be283c64980d002a1a035405, type: 2}
   recipes:
   - {fileID: 11400000, guid: 5a4dfe820ba1d834e96d4e987d6cf29b, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
+  m_Name: 17.SolarPanel
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: 17
+  nombre: SolarPanel
+  icon: {fileID: 21300000, guid: c20a4c3ab856d2a4f98a4e623218a6e2, type: 3}
+  maxStock: 15
+  visibleItemID: 17
+  itemType: 0
+  paintMaterial: {fileID: 0}
+  dropPrefab: {fileID: 3235546015685732297, guid: 37706a5fd0129194ba83ff0626af93a7, type: 3}
