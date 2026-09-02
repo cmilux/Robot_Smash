@@ -3,7 +3,12 @@ guid: ef895508d15110d4182c35cbff6e04af
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Roughness
+    second: {fileID: 2100000, guid: f14f47c4b48570e4481116fa9b5d6f9f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

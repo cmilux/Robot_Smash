@@ -3,7 +3,12 @@ guid: dfa1e47cf8c55b6489415b76f1df373b
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Atlas_Tree_03
+    second: {fileID: 2100000, guid: 1c99bb07835484e429cc9be94657759a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
