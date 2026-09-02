@@ -87,7 +87,7 @@ MonoBehaviour:
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -167,9 +167,9 @@ MonoBehaviour:
     m_InternalValue: 0
   timeBeforeDestroy: 2
   stopDistance: 10
-  _patrolRadius: 10
+  _patrolRadius: 30
   _enemyWaiting: 0
-  detectionRadius: 8
+  detectionRadius: 15
   playerLevExp: {fileID: 0}
   levExpPoints: 300
   target: {fileID: 8867579207307262118, guid: ba276fce49ff6f748b9849597471a7ea, type: 3}
