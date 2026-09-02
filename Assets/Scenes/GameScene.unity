@@ -139,9 +139,25 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1909139042
       objectReference: {fileID: 0}
+    - target: {fileID: 2127121459566298690, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3588088241431504305, guid: 1fe64a9117dc2254780b46820e56f180, type: 3}
     - target: {fileID: 2876095499056714678, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_Name
       value: Healer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5412269813883231158, guid: 6931907dc6e1d5d48a1e057ca55c34ae, type: 3}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -183,6 +199,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -213,9 +233,25 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1909139042
       objectReference: {fileID: 0}
+    - target: {fileID: 2127121459566298690, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3588088241431504305, guid: 1fe64a9117dc2254780b46820e56f180, type: 3}
     - target: {fileID: 2876095499056714678, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_Name
       value: Healer (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5412269813883231158, guid: 6931907dc6e1d5d48a1e057ca55c34ae, type: 3}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1777,9 +1813,25 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1909139042
       objectReference: {fileID: 0}
+    - target: {fileID: 2127121459566298690, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3588088241431504305, guid: 1fe64a9117dc2254780b46820e56f180, type: 3}
     - target: {fileID: 2876095499056714678, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_Name
       value: Healer (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5412269813883231158, guid: 6931907dc6e1d5d48a1e057ca55c34ae, type: 3}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3652,9 +3704,25 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 1909139042
       objectReference: {fileID: 0}
+    - target: {fileID: 2127121459566298690, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3588088241431504305, guid: 1fe64a9117dc2254780b46820e56f180, type: 3}
     - target: {fileID: 2876095499056714678, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_Name
       value: Healer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5412269813883231158, guid: 6931907dc6e1d5d48a1e057ca55c34ae, type: 3}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
