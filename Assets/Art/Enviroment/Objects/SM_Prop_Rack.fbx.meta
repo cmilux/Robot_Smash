@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: ed148129a8a8594499002b7a4f1434da
+guid: ea02ce59b6647af4398b76630152cfd8
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: ATLAS
-    second: {fileID: 2800000, guid: b1781aa1fc5804d4aa39d8081132370c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Texture_Mat_Wood_Cardboard
-    second: {fileID: 2800000, guid: ee03ad8c3d88f544482ea2592333935e, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
