@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ef895508d15110d4182c35cbff6e04af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 196.82323
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef895508d15110d4182c35cbff6e04af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.12948
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef895508d15110d4182c35cbff6e04af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 273.56256
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef895508d15110d4182c35cbff6e04af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -106,10 +106,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.33662808
+  m_Radius: 0.2920251
   m_Height: 2.3648095
   m_Direction: 1
-  m_Center: {x: 0.18022126, y: 1.3165314, z: 0.12891757}
+  m_Center: {x: -0.014049262, y: 1.3165314, z: 0.079675496}
 --- !u!23 &4411402137083614879 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ef895508d15110d4182c35cbff6e04af, type: 3}
