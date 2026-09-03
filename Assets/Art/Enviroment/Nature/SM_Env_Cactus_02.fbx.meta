@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: c255a26e4b0cc784b9b4d87f1788974c
+guid: eca0b612c4c7abd469997f51c43c5f07
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Roughness
+    second: {fileID: 2100000, guid: 31d9ef1a3ecab6c4f800b2351bc34a53, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
