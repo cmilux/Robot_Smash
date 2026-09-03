@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 21
   nombre: Rivets
   icon: {fileID: 21300000, guid: d4b45de24d899c7479e70ce8ced23f5e, type: 3}
-  maxStock: 1
+  maxStock: 15
   visibleItemID: 21
   itemType: 0
   paintMaterial: {fileID: 0}
