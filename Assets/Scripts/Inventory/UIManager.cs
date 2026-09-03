@@ -79,8 +79,6 @@ public class UIManager : MonoBehaviour
         questPanel.SetActive(true);
         questTitleText.text = quest.questTitle;
 
-        
-
         string objectivesList = "";
         for (int i = 0; i < quest.objectives.Count; i++)
         {

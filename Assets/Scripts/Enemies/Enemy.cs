@@ -187,7 +187,7 @@ public class Enemy : NetworkBehaviour
         //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
         StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
 
-        DropResources();
+        //DropResources();
 
         //Add experience to the killer || agrega experiencia a quien mato al enemigo
         GrantExpToKillerClientRpc(killerClientId, levExpPoints);

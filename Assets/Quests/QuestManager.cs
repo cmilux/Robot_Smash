@@ -48,13 +48,15 @@ public class QuestManager : NetworkBehaviour
     public void StartQuestServerRpc(int questId)
     {
         activeQuestId.Value = questId;      //set the new active quest
-
         objectiveProgress.Clear();          //wipe old progress
-        QuestData quest = allQuest.Find(q => q.questId ==  questId);
+
+        QuestData quest = allQuest.Find(q => q.questId == questId);
         for (int i = 0; i < quest.objectives.Count; i++)
         {
             objectiveProgress.Add(0);   //one progress counter per obj (starts at 0)
         }
+
+        UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
     }
 
     //server side game events call this directly (runs only in server)
@@ -81,12 +83,6 @@ public class QuestManager : NetworkBehaviour
     {
         if (ActiveQuest == null) return;       //no active quest, nothing to update
         if (ActiveQuest.objectives.Count != objectiveProgress.Count) return; // quest data still syncing
-
-        if (ActiveQuest != null)
-        {
-            Debug.Log("Quest is active");
-        }
-
 
         for (int i = 0; i < ActiveQuest.objectives.Count; i++)
         {
@@ -138,6 +134,8 @@ public class QuestManager : NetworkBehaviour
             }
         }
 
+        NotifyQuestCompleteClientRpc();     //tells ui quest is complete BEFORE granting rewards
+
         GrantRewardsClientRpc(totalExp);   //all obj done (tell clients to grant rewards)
 
         //turn the quest off so no future progress report can trigger this
@@ -145,6 +143,13 @@ public class QuestManager : NetworkBehaviour
         activeQuestId.Value = -1;
 
         Debug.Log("Quest is done");
+    }
+
+    [ClientRpc]
+    void NotifyQuestCompleteClientRpc()
+    {
+        //force ui to update showing completed state
+        UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
     }
 
     //runs on every client — each client grants rewards to their own local player only
