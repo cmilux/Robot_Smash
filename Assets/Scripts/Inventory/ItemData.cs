@@ -5,7 +5,8 @@ public enum ItemType
     none,
     weapon,
     paint,
-    saws
+    saws,
+    carBumper
 }
 
 [CreateAssetMenu(fileName ="Nuevo Item", menuName ="Inventory/Item")]

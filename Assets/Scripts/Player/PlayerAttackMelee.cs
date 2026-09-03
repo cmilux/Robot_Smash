@@ -6,7 +6,7 @@ public class PlayerAttackMelee : NetworkBehaviour
 {
     private CarController carController;
 
-    public int damageAmount = 1;
+    public int damageAmount = 20;
 
     [SerializeField] PlayerLevelUI pj;
 

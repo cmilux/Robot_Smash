@@ -12,7 +12,7 @@ public class CarController : NetworkBehaviour
     public float dashDuration = 0.5f;
     public bool isDashing = false;
     public float acceleration = 8f; // how fast it reaches target speed
-
+    private CarBumper carBumper;
     // If true the car cannot move
     public bool isFrozen = false;
 
@@ -23,6 +23,8 @@ public class CarController : NetworkBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        carBumper = GetComponent<CarBumper>();
 
         currentSpeed = speed;
 
@@ -66,7 +68,9 @@ public class CarController : NetworkBehaviour
     }
 
     public void ActivateDash()
-    {
+    {  //no se puede dashear sin paragolpe 
+        if (carBumper == null || !carBumper.isEquipped) return;
+
         //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {

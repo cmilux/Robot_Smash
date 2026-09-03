@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 7695856016492172092}
   - component: {fileID: 7819543308125877676}
   - component: {fileID: 8498195182841326423}
+  - component: {fileID: 5919335108378291995}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -51,6 +52,7 @@ Transform:
   - {fileID: 7110220627884209288}
   - {fileID: 3826258894155861241}
   - {fileID: 6486076332297913434}
+  - {fileID: 6363460552230189030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1361223657341694240
@@ -122,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 83375010
+  GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1
@@ -242,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackMelee
   ShowTopMostFoldoutHeaderGroup: 1
-  damageAmount: 1
+  damageAmount: 10
   pj: {fileID: 0}
 --- !u!114 &6344646766486943117
 MonoBehaviour:
@@ -302,6 +304,7 @@ MonoBehaviour:
   hotbarSlotsContainer: {fileID: 0}
   playerAttack: {fileID: 6344646766486943117}
   carSaws: {fileID: 7695856016492172092}
+  carBumper: {fileID: 5919335108378291995}
   playerRenderer: {fileID: 0}
   defaultMaterial: {fileID: 6818407208222707048, guid: fa6efe0d45640a147bc6b5fccd5bddc8, type: 3}
   dropPoint: {fileID: 6869126209225901810}
@@ -376,6 +379,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.3261719
   m_Center: {x: 0, y: 0.10101795, z: 0.3369751}
+--- !u!114 &5919335108378291995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663539091826855021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b554bbdf75ca84995ebd35790a094e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarBumper
+  ShowTopMostFoldoutHeaderGroup: 1
+  isEquipped: 0
 --- !u!1 &2548054906089729506
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +834,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8948825810248102549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5246435092588666365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6363460552230189030}
+  - component: {fileID: 7583577437742361359}
+  - component: {fileID: 7317291503738220667}
+  m_Layer: 8
+  m_Name: VisibleCarBumper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6363460552230189030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246435092588666365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4539162011906318153}
+  m_Father: {fileID: 8867579207307262118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7583577437742361359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246435092588666365}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2844467, y: 0.5978012, z: 0.779438}
+  m_Center: {x: -0.0064888, y: -0.31786728, z: 0.83683586}
+--- !u!114 &7317291503738220667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246435092588666365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d790675e718864889d55f97b38c136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisibleItem
+  item: {fileID: 11400000, guid: ca30d340c51df1d4da1afb8fe2af92fc, type: 2}
+  visibleItem: {fileID: 5246435092588666365}
 --- !u!1 &5471575835244659251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1457,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
   m_PrefabInstance: {fileID: 3230370612424937713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4140196404106819746
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6363460552230189030}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_Name
+      value: SM_Wpn_Bumper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+--- !u!4 &4539162011906318153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+  m_PrefabInstance: {fileID: 4140196404106819746}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8828139694559379994
 PrefabInstance:

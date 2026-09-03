@@ -26,7 +26,11 @@ public class InventoryManager : NetworkBehaviour
     -1,
     NetworkVariableReadPermission.Everyone,
     NetworkVariableWritePermission.Owner
-);
+    );
+    private NetworkVariable<int> equippedBumperId = new NetworkVariable<int>(
+    -1,
+    NetworkVariableReadPermission.Everyone,
+    NetworkVariableWritePermission.Owner);
     private NetworkVariable<int> currentPaintId = new NetworkVariable<int>(
         -1,
         NetworkVariableReadPermission.Everyone,
@@ -39,6 +43,7 @@ public class InventoryManager : NetworkBehaviour
     [Header("Attack System")]
     public PlayerAttackDistance playerAttack;
     public CarSaws carSaws;
+    public CarBumper carBumper;
 
     [Header("Player Visual")]
     public Renderer playerRenderer;
@@ -53,6 +58,7 @@ public class InventoryManager : NetworkBehaviour
         playerInput = GetComponent<PlayerInput>();
         carController = GetComponent<CarController>();
         carSaws = GetComponent<CarSaws>();
+        carBumper = GetComponent<CarBumper>();
         visibleItems = visibleItemsContainer.GetComponentsInChildren<VisibleItem>(true);
     }
 
@@ -66,6 +72,9 @@ public class InventoryManager : NetworkBehaviour
         // All clients subscribe to the saws changes
         equippedSawsId.OnValueChanged += OnSawsChanged;
         OnSawsChanged(-1, equippedSawsId.Value);
+
+        equippedBumperId.OnValueChanged += OnBumperChanged;
+        OnBumperChanged(-1, equippedBumperId.Value);
 
         // All clients subscribe to the paint changes
         currentPaintId.OnValueChanged += OnPaintChanged;
@@ -99,6 +108,7 @@ public class InventoryManager : NetworkBehaviour
         // clear the events
         equippedWeaponId.OnValueChanged -= OnWeaponChanged;
         equippedSawsId.OnValueChanged -= OnSawsChanged;
+        equippedBumperId.OnValueChanged -= OnBumperChanged;
         currentPaintId.OnValueChanged -= OnPaintChanged;
     }
 
@@ -151,6 +161,33 @@ public class InventoryManager : NetworkBehaviour
             if (newId == -1)
             {
                 carSaws.sawsOn = false;
+            }
+        }
+    }
+    private void OnBumperChanged(int oldId, int newId)
+    {
+        foreach (VisibleItem vItem in visibleItems)
+        {
+            if (vItem.visibleItem != null && vItem.item.itemType == ItemType.carBumper)
+            {
+                // turn off the visual
+                vItem.visibleItem.SetActive(false);
+
+                // turn on the one that matches the new Id
+                if (vItem.item.id == newId)
+                {
+                    vItem.visibleItem.SetActive(true);
+                }
+            }
+        }
+
+        if (carBumper != null)
+        {
+            carBumper.isEquipped = (newId != -1);
+            // Force the bumper off if they get unequipped 
+            if (newId == -1)
+            {
+                carBumper.isEquipped = (newId != -1);
             }
         }
     }
@@ -235,6 +272,10 @@ public class InventoryManager : NetworkBehaviour
                 {
                     EquipSaws(slotToUse.itemData);
                 }
+                else if (slotToUse.itemData.itemType == ItemType.carBumper) 
+                {
+                    EquipBumper(slotToUse.itemData);
+                }
                 else if (slotToUse.itemData.itemType == ItemType.paint)
                 {
                     ApplyPaint(slotToUse.itemData);
@@ -244,6 +285,7 @@ public class InventoryManager : NetworkBehaviour
             {
                 UnequipWeapons();
                 UnequipSaws();
+                UnequipBumper();
                 ResetPaint();
             }
         }
@@ -278,6 +320,16 @@ public class InventoryManager : NetworkBehaviour
         equippedSawsId.Value = -1;
     }
 
+    private void EquipBumper(ItemData bumperToEquipo) 
+    {  
+        if (!IsOwner) return;
+        equippedBumperId.Value = bumperToEquipo.id;
+    }
+    private void UnequipBumper()
+    {
+        if (!IsOwner) return;
+        equippedBumperId.Value = -1;
+    }
     void ApplyPaint(ItemData item)
     {
         if (item.paintMaterial != null)
@@ -314,6 +366,10 @@ public class InventoryManager : NetworkBehaviour
             else if (slotToDrop.itemData.itemType == ItemType.saws)
             {
                 UnequipSaws();
+            }
+            else if (slotToDrop.itemData.itemType == ItemType.carBumper)
+            {
+                UnequipBumper();
             }
             else if (slotToDrop.itemData.itemType == ItemType.paint)
             {
