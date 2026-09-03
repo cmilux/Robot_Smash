@@ -240,13 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2834332697
+  GlobalObjectIdHash: 1647411505
   InScenePlacedSourceGlobalObjectIdHash: 2834332697
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 0
+  m_InScenePlaced: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -351,7 +351,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6769487437545582415}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 3.17
+  m_Radius: 2.28
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
