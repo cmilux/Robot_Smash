@@ -66,6 +66,8 @@ public class UIManager : MonoBehaviour
     // called directly by QuestManager whenever the active quest or progress changes
     public void UpdateQuest(QuestData quest, NetworkList<int> progress)
     {
+        Debug.Log($"[UI] UpdateQuest: quest={quest?.questTitle ?? "NULL"}, progress.Count={progress.Count}, len={quest?.objectives.Count}");
+
         if (quest == null)
         {
             questPanel.SetActive(false);

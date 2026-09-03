@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -138,9 +139,8 @@ public class QuestManager : NetworkBehaviour
 
         GrantRewardsClientRpc(totalExp);   //all obj done (tell clients to grant rewards)
 
-        //turn the quest off so no future progress report can trigger this
-        //apaga la mision para que ningun futuro reporte dispare esto (evita duplicados)
-        activeQuestId.Value = -1;
+        //wait 1 sec before hiding quest (so ui gets time to update)
+        StartCoroutine(HideQuestAfterDelay());
 
         Debug.Log("Quest is done");
     }
@@ -148,6 +148,8 @@ public class QuestManager : NetworkBehaviour
     [ClientRpc]
     void NotifyQuestCompleteClientRpc()
     {
+        Debug.Log($"[CLIENT RPC] NotifyQuestComplete. activeQuestId={activeQuestId.Value}, ActiveQuest={ActiveQuest?.questTitle}");
+
         //force ui to update showing completed state
         UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
     }
@@ -172,5 +174,13 @@ public class QuestManager : NetworkBehaviour
         {
             localInventory.AddItem(reward, 1);
         }
+    }
+
+    private IEnumerator HideQuestAfterDelay()
+    {
+        yield return new WaitForSeconds(1);
+        //turn the quest off so no future progress report can trigger this
+        //apaga la mision para que ningun futuro reporte dispare esto (evita duplicados)
+        activeQuestId.Value = -1;
     }
 }
