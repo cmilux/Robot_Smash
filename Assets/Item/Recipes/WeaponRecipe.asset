@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f0f654b2b2afa344bee03356d2bbfac, type: 3}
-  m_Name: RecipeTest
+  m_Name: WeaponRecipe
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   ingredients:
-  - itemData: {fileID: 11400000, guid: 7775df18e34ceee40ab160209cc6f7e1, type: 2}
-    quantity: 3
-  - itemData: {fileID: 11400000, guid: 2526e41e07396994ba56fadd313c47d5, type: 2}
+  - itemData: {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
+    quantity: 1
+  - itemData: {fileID: 11400000, guid: 28d90d75de6104947b9bf73670058ff9, type: 2}
+    quantity: 1
+  - itemData: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
+    quantity: 1
+  - itemData: {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
     quantity: 1
   result: {fileID: 11400000, guid: e5a244be84ec1e1488e8755accaa4920, type: 2}
   resultQuantity: 1
