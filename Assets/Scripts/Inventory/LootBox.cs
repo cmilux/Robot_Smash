@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ public class LootBox : NetworkBehaviour
 
     private bool isBroken = false;
 
+    // How long to wait after breaking before the item appears
+    public float dropDelay = 2f;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!IsServer) return;
@@ -41,10 +45,18 @@ public class LootBox : NetworkBehaviour
         }
     }
 
-    //Breaks the box and drops one random item
+    //Marks the box as broken and start the coroutine
     private void Break()
     {
         isBroken = true;
+
+        StartCoroutine(DropAfterDelay());
+    }
+
+    //Wait a few seconds and then spawn the item
+    private IEnumerator DropAfterDelay()
+    {   
+        yield return new WaitForSeconds(dropDelay);
 
         //Pick one random option from the list
         LootOption chosen = lootOptions[Random.Range(0, lootOptions.Length)];
