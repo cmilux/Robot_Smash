@@ -13,7 +13,7 @@ public class SawSpin : MonoBehaviour
         if (!carSaws.sawsOn) return;
 
         // Rotate each saw around own axis
-        sawLeft.Rotate(0f, 0f, spinSpeed * Time.deltaTime, Space.Self); // eje Z(gira en este eje por el mesh placeholder)
-        sawRight.Rotate(0f, 0f, spinSpeed * Time.deltaTime, Space.Self); // eje Z(gira en este eje por el mesh placeholder)
+        sawLeft.Rotate(0,spinSpeed * Time.deltaTime, 0f, Space.Self); // eje y
+        sawRight.Rotate(0, spinSpeed * Time.deltaTime, 0f, Space.Self); // eje y
     }
 }
