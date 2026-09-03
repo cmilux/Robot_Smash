@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 8249070631279470476}
   - component: {fileID: 3785315885167464635}
   m_Layer: 6
-  m_Name: Aim
+  m_Name: SM_Wpn_Gun_Machinegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
