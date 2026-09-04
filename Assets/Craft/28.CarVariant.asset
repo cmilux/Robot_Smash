@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 28
   nombre: CarMesh2
-  icon: {fileID: 21300000, guid: 2b80683393af5ed4e8ceda31690925b7, type: 3}
+  icon: {fileID: 21300000, guid: 309015cc23ed3a041b8974dd61a34eed, type: 3}
   maxStock: 1
   visibleItemID: 28
   itemType: 5
