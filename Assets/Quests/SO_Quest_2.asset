@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5505331a42d0e604c816c276bb0f7826, type: 3}
+  m_Name: SO_Quest_2
+  m_EditorClassIdentifier: Assembly-CSharp::QuestData
+  questId: 1
+  questTitle: Control towers
+  description: Visit all control towers
+  objectives:
+  - {fileID: 11400000, guid: fd0b3fb6aa4982649b8414654b37e8b9, type: 2}
+  requiredQuestId: 0
+  rewardItems:
+  - {fileID: 11400000, guid: fff8878de6e3d804889af29c533b6d25, type: 2}
+  - {fileID: 11400000, guid: e58ba0762cfc763408f6fddadd430df6, type: 2}
+  - {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
+  rewardExp: 50
