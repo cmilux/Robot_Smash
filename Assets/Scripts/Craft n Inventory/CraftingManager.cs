@@ -31,6 +31,11 @@ public class CraftingManager : MonoBehaviour
         }
         // Find a recipe that matches the items in the slots
         currentRecipe = FindMatchingRecipe();
+
+        if (currentRecipe != null)
+        {
+            Debug.Log($"Recipe found: {currentRecipe.result.nombre}");
+        }
     }
     public void OnCraftButton()
     {

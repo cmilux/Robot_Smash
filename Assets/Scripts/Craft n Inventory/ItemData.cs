@@ -6,7 +6,8 @@ public enum ItemType
     weapon,
     paint,
     saws,
-    carBumper
+    carBumper,
+    carSkin
 }
 
 [CreateAssetMenu(fileName ="Nuevo Item", menuName ="Inventory/Item")]
@@ -27,5 +28,8 @@ public class ItemData : ScriptableObject
     // El objeto 3D fisico que cae al suelo
     [Header("Drop System")]
     public GameObject dropPrefab;
+
+    [Header("Car Variant")]
+    public CarVariantData carVariant;
 
 }

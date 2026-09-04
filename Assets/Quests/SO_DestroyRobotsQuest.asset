@@ -25,4 +25,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
   - {fileID: 11400000, guid: f2c1b4817ea469542b8f23e73a494480, type: 2}
   - {fileID: 11400000, guid: 6c702444ada5095418949980e1be11e2, type: 2}
+  - {fileID: 11400000, guid: 9fc153219b89cc9448d16a358f403144, type: 2}
+  - {fileID: 11400000, guid: 28d90d75de6104947b9bf73670058ff9, type: 2}
+  - {fileID: 11400000, guid: 6c055dd7c6341584c81631f485622f58, type: 2}
+  - {fileID: 11400000, guid: 60199cb6ede1efb44b690a6dbb9f8f6d, type: 2}
   rewardExp: 10

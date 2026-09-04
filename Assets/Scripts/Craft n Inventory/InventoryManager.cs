@@ -31,6 +31,13 @@ public class InventoryManager : NetworkBehaviour
     -1,
     NetworkVariableReadPermission.Everyone,
     NetworkVariableWritePermission.Owner);
+
+    private NetworkVariable<int> equippedCarVariantId = new NetworkVariable<int>(
+        -1,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+        );
+
     private NetworkVariable<int> currentPaintId = new NetworkVariable<int>(
         -1,
         NetworkVariableReadPermission.Everyone,
@@ -48,6 +55,8 @@ public class InventoryManager : NetworkBehaviour
     [Header("Player Visual")]
     public Renderer playerRenderer;
     public Material defaultMaterial;
+    public MeshFilter carMeshFilter;
+    public Mesh defaultCarMesh;
 
     [Header("Drop Settings")]
     public Transform dropPoint;
@@ -75,6 +84,9 @@ public class InventoryManager : NetworkBehaviour
 
         equippedBumperId.OnValueChanged += OnBumperChanged;
         OnBumperChanged(-1, equippedBumperId.Value);
+
+        equippedCarVariantId.OnValueChanged += OnCarVariantChanged;
+        OnCarVariantChanged(-1, equippedCarVariantId.Value);
 
         // All clients subscribe to the paint changes
         currentPaintId.OnValueChanged += OnPaintChanged;
@@ -110,12 +122,13 @@ public class InventoryManager : NetworkBehaviour
         equippedSawsId.OnValueChanged -= OnSawsChanged;
         equippedBumperId.OnValueChanged -= OnBumperChanged;
         currentPaintId.OnValueChanged -= OnPaintChanged;
+        equippedCarVariantId.OnValueChanged -= OnCarVariantChanged;
     }
 
     // this function runs on all clients when the weapon Id changes
     private void OnWeaponChanged(int oldId, int newId)
     {
-        foreach (VisibleItem vItem in visibleItems )
+        foreach (VisibleItem vItem in visibleItems)
         {
             if (vItem.visibleItem != null && vItem.item.itemType == ItemType.weapon)
             {
@@ -191,6 +204,49 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
+
+    private void OnCarVariantChanged(int oldId, int newId)
+    {
+        Debug.Log($"OnCarVariantChanged called: {oldId} → {newId}");
+
+        if (carMeshFilter == null) { Debug.LogError("carMeshFilter is NULL!"); return; }
+        
+
+        if (carMeshFilter == null)
+        {
+            Debug.LogError("carMeshFilter is NULL!");
+            return;
+        }
+
+        if (newId == -1)
+        {
+            Debug.Log("Setting to default mesh");
+            carMeshFilter.mesh = defaultCarMesh;
+        }
+        else
+        {
+            Debug.Log($"Looking up item ID: {newId}");
+            ItemData variantItem = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
+
+            if (variantItem == null)
+            {
+                Debug.LogError($"ItemData not found for ID {newId}");
+                return;
+            }
+
+            Debug.Log($"Found ItemData: {variantItem.nombre}");
+
+            if (variantItem.carVariant == null)
+            {
+                Debug.LogError($"carVariant is NULL on item {variantItem.nombre}");
+                return;
+            }
+
+            Debug.Log($"Setting mesh to: {variantItem.carVariant.mesh.name}");
+            carMeshFilter.mesh = variantItem.carVariant.mesh;
+        }
+    }
+
     // This function runs on all clients when the paint Id changes
     private void OnPaintChanged(int oldId, int newId)
     {
@@ -222,7 +278,7 @@ public class InventoryManager : NetworkBehaviour
         if (playerInventoryUI == null) return;
 
         if (value.isPressed)
-        {  
+        {
             // Open or close the inventory UI window
             bool isOpening = !playerInventoryUI.activeSelf;
             playerInventoryUI.SetActive(isOpening);
@@ -262,8 +318,12 @@ public class InventoryManager : NetworkBehaviour
         {
             Slot slotToUse = hotbarSlots[index];
 
+            Debug.Log($"Hotbar slot {index}: {slotToUse.itemData?.nombre ?? "empty"}");
+
             if (slotToUse.itemData != null)
             {
+                Debug.Log($"Item type: {slotToUse.itemData.itemType}");
+
                 if (slotToUse.itemData.itemType == ItemType.weapon)
                 {
                     EquipWeapon(slotToUse.itemData);
@@ -272,13 +332,18 @@ public class InventoryManager : NetworkBehaviour
                 {
                     EquipSaws(slotToUse.itemData);
                 }
-                else if (slotToUse.itemData.itemType == ItemType.carBumper) 
+                else if (slotToUse.itemData.itemType == ItemType.carBumper)
                 {
                     EquipBumper(slotToUse.itemData);
                 }
                 else if (slotToUse.itemData.itemType == ItemType.paint)
                 {
                     ApplyPaint(slotToUse.itemData);
+                }
+                else if (slotToUse.itemData.itemType == ItemType.carSkin)
+                {
+                    Debug.Log("Equipping car variant!");
+                    EquipCarVariant(slotToUse.itemData);
                 }
             }
             else
@@ -320,8 +385,8 @@ public class InventoryManager : NetworkBehaviour
         equippedSawsId.Value = -1;
     }
 
-    private void EquipBumper(ItemData bumperToEquipo) 
-    {  
+    private void EquipBumper(ItemData bumperToEquipo)
+    {
         if (!IsOwner) return;
         equippedBumperId.Value = bumperToEquipo.id;
     }
@@ -347,6 +412,12 @@ public class InventoryManager : NetworkBehaviour
             if (!IsOwner) return;
             currentPaintId.Value = -1;
         }
+    }
+
+    private void EquipCarVariant(ItemData variantToEquip)
+    {
+        if(!IsOwner) return;
+        equippedCarVariantId.Value = variantToEquip.id;
     }
 
     // Prepares the item data and asks the server to drop it
