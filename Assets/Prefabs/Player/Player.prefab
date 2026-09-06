@@ -569,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 3112758913659697368}
   serializedVersion: 2
   m_LocalRotation: {x: 0.24878107, y: -0, z: -0, w: 0.96855974}
-  m_LocalPosition: {x: 0, y: 7.199999, z: -12}
+  m_LocalPosition: {x: -0.0000019073486, y: 7.2000027, z: -11.999994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -599,7 +599,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 80
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -797,13 +797,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4520209154127335785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af87e8f935757e646b718e5e8c650731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CamMov
   car: {fileID: 8867579207307262118}
-  sensitivity: 5
+  sensitivity: 2
   maxAngle: 50
 --- !u!1 &4900341552684379547
 GameObject:
