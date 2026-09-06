@@ -209,13 +209,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1519843900910043666, guid: ff67d51b2b50ee94db6ff59b951427ea, type: 3}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 415.42
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.4
+      value: 8.804
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3802,13 +3806,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healer (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1519843900910043666, guid: ff67d51b2b50ee94db6ff59b951427ea, type: 3}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 243.9
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 2.714
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3913,7 +3921,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6961,13 +6969,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4077233879422429083, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1519843900910043666, guid: ff67d51b2b50ee94db6ff59b951427ea, type: 3}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 468.51
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.56
+      value: 5.99
       objectReference: {fileID: 0}
     - target: {fileID: 7881621650030477312, guid: a2a7d5c2f97f57c4aac67e2954ae11f5, type: 3}
       propertyPath: m_LocalPosition.z
