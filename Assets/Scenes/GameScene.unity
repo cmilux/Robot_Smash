@@ -1835,7 +1835,7 @@ GameObject:
   - component: {fileID: 426863139}
   - component: {fileID: 426863142}
   m_Layer: 0
-  m_Name: Net
+  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1924,7 +1924,7 @@ Transform:
   m_GameObject: {fileID: 426863138}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.54913, y: 20.31811, z: 26.685}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
