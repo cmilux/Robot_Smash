@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class RestrictMovement : MonoBehaviour
 {
-    float xfloatMin = 2f;
-    float xfloatMax = 998f;
+    float xfloatMin = 35f;
+    float xfloatMax = 657f;
     float yfloatMin;                //In case they need to be used in the future for heights or something like that
     float yfloatMax;
-    float zfloatMin = 2f;
-    float zfloatMax = 998f;
+    float zfloatMin = 32f;
+    float zfloatMax = 540f;
 
     // Update is called once per frame
     void FixedUpdate()
