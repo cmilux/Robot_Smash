@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 459753635806799329}
   - component: {fileID: 8668231840871655142}
   - component: {fileID: 255090838882674859}
+  - component: {fileID: -857423980699501098}
   m_Layer: 9
   m_Name: Kamikaze_Enemy
   m_TagString: Enemy
@@ -50,13 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2180247388
+  GlobalObjectIdHash: 795196533
   InScenePlacedSourceGlobalObjectIdHash: 795196533
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -136,6 +137,7 @@ MonoBehaviour:
     m_InternalValue: 0
   timeBeforeDestroy: 0
   stopDistance: 0
+  turnForce: 0.05
   _patrolRadius: 30
   _enemyWaiting: 0
   detectionRadius: 15
@@ -190,6 +192,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.9059372, z: 1}
   m_Center: {x: 0, y: 0.2847557, z: 0}
+--- !u!54 &-857423980699501098
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511660602434808902}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5882350554118143225
 GameObject:
   m_ObjectHideFlags: 0
