@@ -17,6 +17,8 @@ public class PlayerAttackDistance : NetworkBehaviour
     public float minVerticalAngle = 10f; // How far up the gun can aim
     public float maxVerticalAngle = 15f; // How far down the gun can aim
 
+    public float returnSpeed = 5f; // How fast the aim returns to center
+
     private GameObject currentEnemy;
 
     // Network variable to share the gun rotation with all players
@@ -27,6 +29,22 @@ public class PlayerAttackDistance : NetworkBehaviour
             NetworkVariableWritePermission.Owner
         );
 
+    private Rigidbody rb;
+
+    // Save the original aim rotation
+    private Quaternion originalAimRotation;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void Start()
+    {
+        // Save the resting rotation of the aim
+        originalAimRotation = aim.localRotation;
+    }
+
     void Update()
     {
         if (IsOwner)
@@ -34,7 +52,6 @@ public class PlayerAttackDistance : NetworkBehaviour
             // Find the closest enemy
             FindNearestEnemy();
 
-            // Aim at the current enemy
             if (currentEnemy != null)
             {
                 // Calculate direction towards the enemy
@@ -76,13 +93,29 @@ public class PlayerAttackDistance : NetworkBehaviour
                     }
                 }
             }
+            else
+            {
+                // No enemy: return the aim to original rotation
+                aim.localRotation = Quaternion.Slerp(
+                    aim.localRotation,
+                    originalAimRotation,
+                    Time.deltaTime * returnSpeed
+                );
+
+                // Update the network rotation
+                if (aim.rotation != aimRotation.Value)
+                {
+                    aimRotation.Value = aim.rotation;
+                }
+            }
         }
         else
         {
-            // Copy the rotation from the owner
+            // Update the aim rotation for other players
             aim.rotation = aimRotation.Value;
         }
     }
+
     void FindNearestEnemy()
     {
         // Get all enemies inside the detection range
@@ -114,20 +147,22 @@ public class PlayerAttackDistance : NetworkBehaviour
 
         currentEnemy = closest;
     }
+
     public void OnAttack(InputValue value)
     {
-        if (!enabled)
-            return;
+        if (!enabled) return;
 
-        if (!IsOwner)
-            return;
+        if (!IsOwner) return;
 
         if (value.isPressed && Time.time >= nextFireTime)
         {
+            Vector3 shooterVelocity = rb.linearVelocity;
+
             // Ask the server to spawn the bullet
             ShootServerRpc(
                 firePoint.position,
-                firePoint.rotation
+                firePoint.rotation,
+                shooterVelocity
             );
 
             nextFireTime = Time.time + cooldownShoot;
@@ -137,14 +172,21 @@ public class PlayerAttackDistance : NetworkBehaviour
     // The server creates the bullet
     // and gives ownership to the player who shot it
     [ServerRpc]
-    void ShootServerRpc(Vector3 position, Quaternion rotation)
+    void ShootServerRpc(
+        Vector3 position,
+        Quaternion rotation,
+        Vector3 shooterVelocity)
     {
         GameObject bullet =
-            Instantiate(
-                bulletPrefab,
-                position,
-                rotation
-            );
+            Instantiate(bulletPrefab, position, rotation);
+
+        PlayerBulletController bulletController =
+            bullet.GetComponent<PlayerBulletController>();
+
+        if (bulletController != null)
+        {
+            bulletController.extraVelocity = shooterVelocity;
+        }
 
         bullet.GetComponent<NetworkObject>()
             .SpawnWithOwnership(OwnerClientId);

@@ -5,6 +5,8 @@ public class PlayerBulletController : NetworkBehaviour
 {
     public float speed = 20f;
     public int damage = 1;
+    //add the car velocity
+    public Vector3 extraVelocity;
 
     private Rigidbody rb;
 
@@ -19,8 +21,15 @@ public class PlayerBulletController : NetworkBehaviour
         // Only the server moves the bullet 
         if (IsServer)
         {
-            // Give the bullet a push forward
-            rb.linearVelocity = transform.forward * speed;
+            Vector3 bulletDirection = transform.forward;
+            // Only keep the part of the shooter velocity that point the same way as the bullet
+            float forwardBoost = Vector3.Dot(extraVelocity, bulletDirection);
+
+            // Ignore it if the shooter was moving backward to the shot
+            forwardBoost = Mathf.Max(forwardBoost, 0f);
+
+            // Give the bullet a push forward boosted by the car speed
+            rb.linearVelocity = bulletDirection * (speed + forwardBoost);
 
             // Delete the bullet after 2 seconds
             Invoke(nameof(DestroyBullet), 2f);

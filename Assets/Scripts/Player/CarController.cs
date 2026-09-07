@@ -32,7 +32,6 @@ public class CarController : NetworkBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
     }
-    //TO DO: fix car climbing hills in little jumps
     void FixedUpdate()
     {
         if (!IsOwner) return;
