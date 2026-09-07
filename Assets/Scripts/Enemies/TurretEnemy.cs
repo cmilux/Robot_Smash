@@ -6,7 +6,7 @@ public class TurretEnemy : Enemy
 {
     [Header("Bullet attack")]
     public GameObject bulletObj;
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
 
     [Header("Cooldown")]
     public float shootingCooldown = 3f;
@@ -48,16 +48,28 @@ public class TurretEnemy : Enemy
         if (bulletTime > 0) return;
         bulletTime = shootingCooldown;
 
-        //Creates a bullet to spawn || spawnea una bala
-        GameObject bullet = Instantiate(bulletObj, spawnPoint.transform.position, spawnPoint.transform.rotation);
-        NetworkObject netObj = bullet.GetComponent<NetworkObject>();
-        netObj.Spawn();
+        RotateTowardsTarget();
 
-        //Adds force and direction to the bullet to shoot player || Agrega fuerza y direccion a la bala del enemigo para atacar al player
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        Vector3 dir = (target.position - spawnPoint.transform.position).normalized;
-        rb.AddForce(dir * shootingSpeed, ForceMode.Impulse);
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            Transform spawnPointsIndex = spawnPoints[i];
 
-        Destroy(bullet, destroyTimer);
+            //Creates a bullet to spawn || spawnea una bala
+            GameObject bullet = Instantiate(
+                bulletObj,
+                spawnPointsIndex.position,
+                spawnPointsIndex.rotation
+            );
+            NetworkObject netObj = bullet.GetComponent<NetworkObject>();
+            netObj.Spawn();
+
+            //Adds force and direction to the bullet to shoot player || Agrega fuerza y direccion a la bala del enemigo para atacar al player
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            //Vector3 dir = (target.position - spawnPointsIndex.position).normalized;
+            Vector3 dir = spawnPointsIndex.forward;
+            rb.AddForce(dir * shootingSpeed, ForceMode.Impulse);
+
+            Destroy(bullet, destroyTimer);
+        }
     }
 }
