@@ -38,7 +38,6 @@ public class PlayerAttackMelee : NetworkBehaviour
     private void OnCollisionEnter(Collision collision)
     {   
         if (!IsOwner) return;
-
         // Check if the object we hit is an Enemy
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -64,6 +63,7 @@ public class PlayerAttackMelee : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!IsOwner) return;
+        if (!carController.isDashing) return;
 
         if (other.gameObject.CompareTag("Enemy"))
         {
