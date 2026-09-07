@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3346250497838683764}
   - component: {fileID: 8721307549695844243}
   - component: {fileID: 6987690610201291851}
+  - component: {fileID: -8389044550019715705}
   m_Layer: 0
   m_Name: ItemSheet
   m_TagString: Untagged
@@ -48,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4023896516
+  GlobalObjectIdHash: 898356041
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -125,6 +126,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4131054, y: 0.059151795, z: 0.4022784}
   m_Center: {x: -0.24263437, y: 0.027033878, z: 0.018233255}
+--- !u!114 &-8389044550019715705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182860935166883976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
 --- !u!1001 &3631115018386205173
 PrefabInstance:
   m_ObjectHideFlags: 0

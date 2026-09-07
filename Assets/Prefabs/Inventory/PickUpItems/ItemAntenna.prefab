@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1194757805695103308}
   - component: {fileID: 7844009777160127445}
   - component: {fileID: 8646706456941842091}
+  - component: {fileID: -3597134945289974802}
   m_Layer: 0
   m_Name: ItemAntenna
   m_TagString: Untagged
@@ -125,6 +126,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-3597134945289974802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47388668718363187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
 --- !u!1001 &4849810262196249448
 PrefabInstance:
   m_ObjectHideFlags: 0

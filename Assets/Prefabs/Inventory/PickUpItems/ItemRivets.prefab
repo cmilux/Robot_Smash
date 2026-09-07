@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8033379229974468061}
   - component: {fileID: 3489211774648624749}
   - component: {fileID: 6603691021508734123}
+  - component: {fileID: 7145025894123665040}
   m_Layer: 0
   m_Name: ItemRivets
   m_TagString: Untagged
@@ -48,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4048822566
+  GlobalObjectIdHash: 1193541908
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -125,6 +126,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.33458287, y: 0.4034524, z: 0.5125687}
   m_Center: {x: 0.019679219, y: 0.24013978, z: 0.176638}
+--- !u!114 &7145025894123665040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328641428040467619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
 --- !u!1001 &2875736333289161635
 PrefabInstance:
   m_ObjectHideFlags: 0

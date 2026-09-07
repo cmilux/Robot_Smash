@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3921639820144095953}
   - component: {fileID: 306794636762340298}
   - component: {fileID: 7690595523537075677}
+  - component: {fileID: 6170816313964676022}
   m_Layer: 0
   m_Name: ItemTurbine
   m_TagString: Untagged
@@ -48,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4183620588
+  GlobalObjectIdHash: 2636340541
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -125,6 +126,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.51026976, y: 0.1088086, z: 0.512176}
   m_Center: {x: 0.00204055, y: 0.055477988, z: -0.003646046}
+--- !u!114 &6170816313964676022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347490518200464347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
 --- !u!1001 &6860909766864529213
 PrefabInstance:
   m_ObjectHideFlags: 0

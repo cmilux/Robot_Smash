@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9010213829068491291}
   - component: {fileID: 8536031647836479543}
   - component: {fileID: 8666826524909186447}
+  - component: {fileID: -2185208281523237138}
   m_Layer: 0
   m_Name: ItemSolarPanel
   m_TagString: Untagged
@@ -54,7 +55,7 @@ MonoBehaviour:
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -125,6 +126,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1745261, y: 0.59564567, z: 0.44181576}
   m_Center: {x: -0.845781, y: 0.9172406, z: 0.009167209}
+--- !u!114 &-2185208281523237138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235546015685732297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
 --- !u!1001 &958430027146568224
 PrefabInstance:
   m_ObjectHideFlags: 0

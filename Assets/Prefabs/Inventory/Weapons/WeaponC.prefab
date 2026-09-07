@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7881776180894738075}
   - component: {fileID: 2300376713145617450}
   - component: {fileID: 5477187798071141577}
+  - component: {fileID: 1393914438413381804}
   m_Layer: 6
   m_Name: WeaponC
   m_TagString: Untagged
@@ -156,6 +157,19 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   itemData: {fileID: 11400000, guid: e5a244be84ec1e1488e8755accaa4920, type: 2}
   quantity: 1
+--- !u!114 &1393914438413381804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458585512828865983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
+  rotateSpeed: 0
 --- !u!1 &1165974602396949081
 GameObject:
   m_ObjectHideFlags: 0
