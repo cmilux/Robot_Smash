@@ -183,24 +183,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hotbar4"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ef52394-a9fc-40a4-9ead-f36ac9b5a2cb"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hotbar5"",
-                    ""type"": ""Button"",
-                    ""id"": ""e2c9f712-89b2-412d-a045-e9669c7f9a16"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""OpenInventory"",
                     ""type"": ""Button"",
                     ""id"": ""9d620a80-6501-47df-a72e-542c717a5cad"",
@@ -571,28 +553,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Hotbar3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""286dd761-aadd-4247-905f-670dccb870b5"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""32291097-42df-4dec-b3c2-a6b5c0df8455"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1221,8 +1181,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Hotbar1 = m_Player.FindAction("Hotbar1", throwIfNotFound: true);
         m_Player_Hotbar2 = m_Player.FindAction("Hotbar2", throwIfNotFound: true);
         m_Player_Hotbar3 = m_Player.FindAction("Hotbar3", throwIfNotFound: true);
-        m_Player_Hotbar4 = m_Player.FindAction("Hotbar4", throwIfNotFound: true);
-        m_Player_Hotbar5 = m_Player.FindAction("Hotbar5", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1328,8 +1286,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Hotbar1;
     private readonly InputAction m_Player_Hotbar2;
     private readonly InputAction m_Player_Hotbar3;
-    private readonly InputAction m_Player_Hotbar4;
-    private readonly InputAction m_Player_Hotbar5;
     private readonly InputAction m_Player_OpenInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -1382,14 +1338,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Hotbar3".
         /// </summary>
         public InputAction @Hotbar3 => m_Wrapper.m_Player_Hotbar3;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar4".
-        /// </summary>
-        public InputAction @Hotbar4 => m_Wrapper.m_Player_Hotbar4;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar5".
-        /// </summary>
-        public InputAction @Hotbar5 => m_Wrapper.m_Player_Hotbar5;
         /// <summary>
         /// Provides access to the underlying input action "Player/OpenInventory".
         /// </summary>
@@ -1450,12 +1398,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Hotbar3.started += instance.OnHotbar3;
             @Hotbar3.performed += instance.OnHotbar3;
             @Hotbar3.canceled += instance.OnHotbar3;
-            @Hotbar4.started += instance.OnHotbar4;
-            @Hotbar4.performed += instance.OnHotbar4;
-            @Hotbar4.canceled += instance.OnHotbar4;
-            @Hotbar5.started += instance.OnHotbar5;
-            @Hotbar5.performed += instance.OnHotbar5;
-            @Hotbar5.canceled += instance.OnHotbar5;
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
@@ -1500,12 +1442,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Hotbar3.started -= instance.OnHotbar3;
             @Hotbar3.performed -= instance.OnHotbar3;
             @Hotbar3.canceled -= instance.OnHotbar3;
-            @Hotbar4.started -= instance.OnHotbar4;
-            @Hotbar4.performed -= instance.OnHotbar4;
-            @Hotbar4.canceled -= instance.OnHotbar4;
-            @Hotbar5.started -= instance.OnHotbar5;
-            @Hotbar5.performed -= instance.OnHotbar5;
-            @Hotbar5.canceled -= instance.OnHotbar5;
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
@@ -1890,20 +1826,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHotbar3(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hotbar4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar4(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hotbar5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar5(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

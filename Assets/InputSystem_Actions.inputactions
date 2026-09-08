@@ -97,24 +97,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hotbar4",
-                    "type": "Button",
-                    "id": "9ef52394-a9fc-40a4-9ead-f36ac9b5a2cb",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar5",
-                    "type": "Button",
-                    "id": "e2c9f712-89b2-412d-a045-e9669c7f9a16",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "OpenInventory",
                     "type": "Button",
                     "id": "9d620a80-6501-47df-a72e-542c717a5cad",
@@ -485,28 +467,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Hotbar3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "286dd761-aadd-4247-905f-670dccb870b5",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "32291097-42df-4dec-b3c2-a6b5c0df8455",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

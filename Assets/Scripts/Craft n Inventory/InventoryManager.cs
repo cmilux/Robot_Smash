@@ -333,8 +333,6 @@ public class InventoryManager : NetworkBehaviour
     public void OnHotbar1(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(0); }
     public void OnHotbar2(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(1); }
     public void OnHotbar3(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(2); }
-    public void OnHotbar4(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(3); }
-    public void OnHotbar5(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(4); }
 
     // Logic to read the hotbar slots and equip weapons or paint
     private void UseHotbarItem(int index)
