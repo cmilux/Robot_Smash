@@ -20,3 +20,8 @@ MonoBehaviour:
   itemType: 4
   paintMaterial: {fileID: 0}
   dropPrefab: {fileID: 9170641559277513034, guid: 85243428bb30d054ca42bf2fedcfdaa0, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 10
+  cooldownBase: 3
+  maxDurability: 10
+  maxAmmo: -1

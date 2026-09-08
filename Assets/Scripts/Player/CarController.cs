@@ -10,7 +10,7 @@ public class CarController : NetworkBehaviour
     // Dash settings
     public float dashSpeed = 50f;
     public float dashDuration = 0.5f;
-    public float dashCooldown = 3f;
+    public float dashCooldownBackup = 3f;//use only if the bumper has no ItemData assigned
     public bool isDashing = false;
     public float acceleration = 8f; // how fast it reaches target speed
 
@@ -97,7 +97,8 @@ public class CarController : NetworkBehaviour
         speed = originalSpeed;
         isDashing = false;
 
-        nextDashTime = Time.time + dashCooldown;
+        float cooldown = carBumper.GetDashCooldown(dashCooldownBackup);
+        nextDashTime = Time.time + cooldown;
     }
 
     void FlipCar()

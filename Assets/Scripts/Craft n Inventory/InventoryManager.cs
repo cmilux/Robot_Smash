@@ -220,10 +220,15 @@ public class InventoryManager : NetworkBehaviour
         if (carBumper != null)
         {
             carBumper.isEquipped = (newId != -1);
-            // Force the bumper off if they get unequipped 
-            if (newId == -1)
+
+            if (newId != -1)
             {
-                carBumper.isEquipped = (newId != -1);
+                ItemData bumperData = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
+                carBumper.SetWeaponData(bumperData);
+            }
+            else
+            {
+                carBumper.SetWeaponData(null);
             }
         }
     }
