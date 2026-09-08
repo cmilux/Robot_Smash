@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5741397238557619470}
   - component: {fileID: 7882534746569353710}
   - component: {fileID: 660966553582692218}
+  - component: {fileID: -3989085455680566185}
   m_Layer: 0
   m_Name: ItemGear
   m_TagString: Untagged
@@ -48,13 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 754880501
+  GlobalObjectIdHash: 1740531436
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -125,6 +126,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5108439, y: 0.08054309, z: 0.520464}
   m_Center: {x: 0.0015167445, y: 0.034912888, z: 0.0037593544}
+--- !u!114 &-3989085455680566185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013468225672891900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
 --- !u!1001 &4472189494276694472
 PrefabInstance:
   m_ObjectHideFlags: 0
