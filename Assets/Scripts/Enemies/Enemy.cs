@@ -21,7 +21,6 @@ public class Enemy : NetworkBehaviour
     protected NavMeshAgent agent;
     public float stopDistance;
     [SerializeField] float turnForce = 0.05f;
-    Rigidbody rb;
 
     [Header("Patrol logic")]
     [SerializeField] float _patrolRadius;   //sets the radius of the patrol area for the enemy
@@ -43,7 +42,6 @@ public class Enemy : NetworkBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
     }
 
     public override void OnNetworkSpawn()
@@ -102,7 +100,9 @@ public class Enemy : NetworkBehaviour
         float angleToTarget = Vector3.Angle(transform.forward, targetDelta);
         Vector3 turnAxis = Vector3.Cross(transform.forward, targetDelta);
 
-        rb.AddTorque(turnAxis * angleToTarget * turnForce);
+        //rb.AddTorque(turnAxis * angleToTarget * turnForce);
+
+        transform.RotateAround(transform.position, turnAxis, Time.deltaTime * turnForce * angleToTarget);
     }
 
     protected void HandlePatrolState()
