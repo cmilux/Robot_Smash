@@ -187,6 +187,17 @@ public class InventoryManager : NetworkBehaviour
             {
                 carSaws.sawsOn = false;
             }
+
+            //pass the equipped ItemData (or null if unequipped)
+            if (newId != -1)
+            {
+                ItemData sawsData = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
+                carSaws.SetWeaponData(sawsData);
+            }
+            else
+            {
+                carSaws.SetWeaponData(null);
+            }
         }
     }
     private void OnBumperChanged(int oldId, int newId)

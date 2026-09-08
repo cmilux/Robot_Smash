@@ -11,12 +11,9 @@ public class CarSaws : NetworkBehaviour
     // True when the player turned the saws on with the button
     public bool sawsOn = false; // deberia ser networkvariable para que el otro jugador vea la rotacion visual
 
-    public int damageAmount = 20;
-
     public float damageRate = 1f; // how often the same enemy can be hit again
 
     public float onDuration = 5f; // how long the saws stay on
-    public float cooldownTime = 3f; // wait time before the player can turning on again
 
     private bool onCooldown = false;
 
@@ -24,9 +21,17 @@ public class CarSaws : NetworkBehaviour
 
     private Dictionary<GameObject, float> nextDamageTime = new Dictionary<GameObject, float>();
 
+    //the current equipped saws  base data (damage, cooldown, etc.)
+    [SerializeField] ItemData equippedWeaponData;
     public override void OnNetworkSpawn()
     {
         shooterClientId = OwnerClientId;
+    }
+
+    //call by InventoryManager when the saws change
+    public void SetWeaponData(ItemData weaponData)
+    {
+        equippedWeaponData = weaponData;
     }
 
     // Called by the Input System when pressing the saw power button(barra espaciadora)
@@ -49,7 +54,10 @@ public class CarSaws : NetworkBehaviour
         yield return new WaitForSeconds(onDuration);  // espera
         sawsOn = false;                         // se apaga
         onCooldown = true;                      // marca que hay que esperar
-        yield return new WaitForSeconds(cooldownTime); // espera de nuevo
+        if (equippedWeaponData != null)
+        {
+            yield return new WaitForSeconds(equippedWeaponData.cooldownBase);
+        }
         onCooldown = false;                     // ahora se puede volver a usar
     }
     private void OnCollisionStay(Collision collision)
@@ -58,6 +66,7 @@ public class CarSaws : NetworkBehaviour
         if (!sawsOn) return;
         if (!IsOwner) return;
         if (!collision.gameObject.CompareTag("Enemy")) return;
+        if (equippedWeaponData == null) return;
 
         // Skip if this enemy was already hit recently
         if (nextDamageTime.TryGetValue(collision.gameObject, out float time) && Time.time < time)
@@ -69,7 +78,7 @@ public class CarSaws : NetworkBehaviour
 
         if (enemy != null)
         {
-            enemy.TakeDamageServerRpc(damageAmount, shooterClientId);
+            enemy.TakeDamageServerRpc(equippedWeaponData.damageBase, shooterClientId);
             nextDamageTime[collision.gameObject] = Time.time + damageRate;
         }
     }
