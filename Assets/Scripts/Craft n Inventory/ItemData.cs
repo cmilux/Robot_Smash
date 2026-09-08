@@ -32,4 +32,11 @@ public class ItemData : ScriptableObject
     [Header("Car Variant")]
     public CarVariantData carVariant;
 
+    [Header("Weapon Stats")]
+
+    public int damageBase= 5;
+    public float cooldownBase= 2f;
+    public int maxDurability = 10;//-1 means it never breaks
+    public int maxAmmo = -1; // -1 means the weapon doesn't use ammunition
+
 }

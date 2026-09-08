@@ -147,6 +147,18 @@ public class InventoryManager : NetworkBehaviour
         if (IsOwner && playerAttack != null)
         {
             playerAttack.enabled = (newId != -1);
+
+            //pass the equipped ItemData (or null if unequipped)
+            if (newId != -1)
+            {
+                ItemData weaponData = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
+
+                playerAttack.SetWeaponData(weaponData);
+            }
+            else
+            {
+                playerAttack.SetWeaponData(null);
+            }
         }
     }
     // this function runs on all clients when the saws Id changes

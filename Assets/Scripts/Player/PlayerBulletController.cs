@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerBulletController : NetworkBehaviour
 {
     public float speed = 20f;
-    public int damage = 1;
+    public int damage; //set by PlayerAttackDistance when the bullet is created
     //add the car velocity
     public Vector3 extraVelocity;
 

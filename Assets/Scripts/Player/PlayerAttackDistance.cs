@@ -8,7 +8,6 @@ public class PlayerAttackDistance : NetworkBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
 
-    public float cooldownShoot = 1;
     public float nextFireTime;
 
     public float detectionRange = 25f;
@@ -19,7 +18,11 @@ public class PlayerAttackDistance : NetworkBehaviour
 
     public float returnSpeed = 5f; // How fast the aim returns to center
 
+    public int currentAmmo; //how much ammo the player currently has left
+
     private GameObject currentEnemy;
+
+    [SerializeField] private ItemData equippedWeaponData;//the current equipped weapon base data (damage, cooldown,etc.)
 
     // Network variable to share the gun rotation with all players
     private NetworkVariable<Quaternion> aimRotation =
@@ -148,11 +151,28 @@ public class PlayerAttackDistance : NetworkBehaviour
         currentEnemy = closest;
     }
 
+    // Call by InventoryManager when the ranged weapon change
+    public void SetWeaponData(ItemData weaponData)
+    {
+        equippedWeaponData = weaponData;
+
+        //refill ammo when a new weapon is equipped (only if it uses ammo)
+        if(weaponData != null && weaponData.maxAmmo >= 0)
+        {
+            currentAmmo = weaponData.maxAmmo;
+        }
+
+    }
     public void OnAttack(InputValue value)
     {
         if (!enabled) return;
 
         if (!IsOwner) return;
+
+        if (equippedWeaponData == null) return;
+
+        // Block fire if this weapon use ammo and there is none left
+        if (equippedWeaponData.maxAmmo >= 0 && currentAmmo <= 0) return;
 
         if (value.isPressed && Time.time >= nextFireTime)
         {
@@ -162,10 +182,16 @@ public class PlayerAttackDistance : NetworkBehaviour
             ShootServerRpc(
                 firePoint.position,
                 firePoint.rotation,
-                shooterVelocity
+                shooterVelocity,
+                equippedWeaponData.damageBase
             );
 
-            nextFireTime = Time.time + cooldownShoot;
+            //only consume ammo if this weapon actually use it
+            if (equippedWeaponData.maxAmmo >= 0)
+            {
+                currentAmmo--;
+            }
+            nextFireTime = Time.time + equippedWeaponData.cooldownBase;
         }
     }
 
@@ -175,7 +201,7 @@ public class PlayerAttackDistance : NetworkBehaviour
     void ShootServerRpc(
         Vector3 position,
         Quaternion rotation,
-        Vector3 shooterVelocity)
+        Vector3 shooterVelocity, int damage)
     {
         GameObject bullet =
             Instantiate(bulletPrefab, position, rotation);
@@ -186,6 +212,7 @@ public class PlayerAttackDistance : NetworkBehaviour
         if (bulletController != null)
         {
             bulletController.extraVelocity = shooterVelocity;
+            bulletController.damage = damage;
         }
 
         bullet.GetComponent<NetworkObject>()
