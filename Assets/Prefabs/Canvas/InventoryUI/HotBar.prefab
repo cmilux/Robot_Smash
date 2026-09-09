@@ -110,6 +110,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7486017634446323754}
     m_Modifications:
+    - target: {fileID: 1326269408790846603, guid: 5b4417630442c8e47b3301c92ce41a1d, type: 3}
+      propertyPath: isHotbarSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6856468674419659267, guid: 5b4417630442c8e47b3301c92ce41a1d, type: 3}
       propertyPath: m_Name
       value: Slot (1)
@@ -212,6 +216,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7486017634446323754}
     m_Modifications:
+    - target: {fileID: 1326269408790846603, guid: 5b4417630442c8e47b3301c92ce41a1d, type: 3}
+      propertyPath: isHotbarSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6856468674419659267, guid: 5b4417630442c8e47b3301c92ce41a1d, type: 3}
       propertyPath: m_Name
       value: Slot

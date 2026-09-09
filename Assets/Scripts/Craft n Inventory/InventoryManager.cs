@@ -474,6 +474,57 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
+    // Called by a Slot when an equipable item land in a hotbar slot
+    public void EquipFromSlot(ItemData itemData)
+    {
+        if (itemData == null) return;
+
+        if (itemData.itemType == ItemType.weapon)
+        {
+            EquipWeapon(itemData);
+        }
+        else if (itemData.itemType == ItemType.saws)
+        {
+            EquipSaws(itemData);
+        }
+        else if (itemData.itemType == ItemType.carBumper)
+        {
+            EquipBumper(itemData);
+        }
+        else if (itemData.itemType == ItemType.paint)
+        {
+            ApplyPaint(itemData);
+        }
+        else if (itemData.itemType == ItemType.carSkin)
+        {
+            EquipCarVariant(itemData);
+        }
+        // Si es un tipo no equipable no hace nada
+    }
+
+    // Called by a Slot when a hotbar slot becomes empty 
+    public void UnequipFromSlot(ItemData itemData)
+    {
+        if (itemData == null) return;
+
+        if (itemData.itemType == ItemType.weapon)
+        {
+            UnequipWeapons();
+        }
+        else if (itemData.itemType == ItemType.saws)
+        {
+            UnequipSaws();
+        }
+        else if (itemData.itemType == ItemType.carBumper)
+        {
+            UnequipBumper();
+        }
+        else if (itemData.itemType == ItemType.paint)
+        {
+            ResetPaint();
+        }
+        // Si es un tipo no equipable no hace nada
+    }
 
     // This code runs only on the Server to instantiate and spawn the object for everyone
     [Rpc(SendTo.Server)]
