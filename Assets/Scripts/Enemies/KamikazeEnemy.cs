@@ -8,7 +8,6 @@ public class KamikazeEnemy : Enemy
     public ParticleSystem _explosion;       //explosion particles
     public float explodeDistance = 10f;     //distance to explode
     public int damage = 1;                  //amount of damage caused by enemy
-    bool kamIsDead = false;                 //bool to check if enemy is dead
     bool methodRun = false;                 //bool to check if distance method has run
 
     protected override void Start()
@@ -59,7 +58,6 @@ public class KamikazeEnemy : Enemy
         agent.isStopped = true;     //Enemy stops
         timeBeforeDestroy = 5;      //Set time to be destroyed
         Die(timeBeforeDestroy);     //Enemy death method is called
-        kamIsDead = true;           //Enemy is dead now
 
         if (target != null)
         {
