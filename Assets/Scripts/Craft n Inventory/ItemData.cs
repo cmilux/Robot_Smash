@@ -36,7 +36,9 @@ public class ItemData : ScriptableObject
 
     public int damageBase= 5;
     public float cooldownBase= 2f;
-    public int maxDurability = 10;//-1 means it never breaks
+    public int maxDurability = -1;//-1 means it never breaks
     public int maxAmmo = -1; // -1 means the weapon doesn't use ammunition
-
+    public int bulletsPerShot = 1; //how many bullets fire
+    public float bulletSpeed = 20;
+    public float spreadAngle = 0f;//0 = no spread (direction accurate)
 }

@@ -128,6 +128,8 @@ public class InventoryManager : NetworkBehaviour
     // this function runs on all clients when the weapon Id changes
     private void OnWeaponChanged(int oldId, int newId)
     {
+        GameObject activeVisual = null;
+
         foreach (VisibleItem vItem in visibleItems)
         {
             if (vItem.visibleItem != null && vItem.item.itemType == ItemType.weapon)
@@ -139,6 +141,8 @@ public class InventoryManager : NetworkBehaviour
                 if (vItem.item.id == newId)
                 {
                     vItem.visibleItem.SetActive(true);
+
+                    activeVisual = vItem.visibleItem;
                 }
             }
         }
@@ -154,6 +158,16 @@ public class InventoryManager : NetworkBehaviour
                 ItemData weaponData = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
 
                 playerAttack.SetWeaponData(weaponData);
+
+                if (activeVisual != null)
+                {
+                    WeaponFirePoints points = activeVisual.GetComponent<WeaponFirePoints>();
+
+                    if (points != null)
+                    {
+                        playerAttack.SetAimAndFirePoints(points.aim, points.firePoints);
+                    }
+                }
             }
             else
             {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5477187798071141577}
   - component: {fileID: 1393914438413381804}
   m_Layer: 6
-  m_Name: WeaponC
+  m_Name: MachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   ShowTopMostFoldoutHeaderGroup: 1
-  itemData: {fileID: 11400000, guid: e5a244be84ec1e1488e8755accaa4920, type: 2}
+  itemData: {fileID: 11400000, guid: 9954c230ce0e78e478403f8ee3d06f36, type: 2}
   quantity: 1
 --- !u!114 &1393914438413381804
 MonoBehaviour:
@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
-  rotateSpeed: 0
+  amplitude: 0.5
+  frequency: 0.01
 --- !u!1 &1165974602396949081
 GameObject:
   m_ObjectHideFlags: 0

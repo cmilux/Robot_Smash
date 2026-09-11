@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerAttackDistance : NetworkBehaviour
 {
     public Transform aim;
-    public Transform firePoint;
+    [HideInInspector] public Transform[] firePoints;
     public GameObject bulletPrefab;
 
     public float nextFireTime;
@@ -40,12 +40,6 @@ public class PlayerAttackDistance : NetworkBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    void Start()
-    {
-        // Save the resting rotation of the aim
-        originalAimRotation = aim.localRotation;
     }
 
     void Update()
@@ -151,6 +145,13 @@ public class PlayerAttackDistance : NetworkBehaviour
         currentEnemy = closest;
     }
 
+    public void SetAimAndFirePoints(Transform newAim, Transform[] newFirePoints)
+    {
+        aim = newAim;
+        firePoints = newFirePoints;
+        originalAimRotation = aim.localRotation; //recalculate resting rotation for this weapon aim
+    }
+
     // Call by InventoryManager when the ranged weapon change
     public void SetWeaponData(ItemData weaponData)
     {
@@ -178,13 +179,17 @@ public class PlayerAttackDistance : NetworkBehaviour
         {
             Vector3 shooterVelocity = rb.linearVelocity;
 
-            // Ask the server to spawn the bullet
-            ShootServerRpc(
-                firePoint.position,
-                firePoint.rotation,
-                shooterVelocity,
-                equippedWeaponData.damageBase
-            );
+            foreach(Transform point in firePoints)
+            {
+                // Ask the server to spawn the bullet
+                ShootServerRpc(
+                    point.position,
+                    point.rotation,
+                    shooterVelocity,
+                    equippedWeaponData.damageBase, equippedWeaponData.bulletSpeed
+                );
+            }
+
 
             //only consume ammo if this weapon actually use it
             if (equippedWeaponData.maxAmmo >= 0)
@@ -201,7 +206,7 @@ public class PlayerAttackDistance : NetworkBehaviour
     void ShootServerRpc(
         Vector3 position,
         Quaternion rotation,
-        Vector3 shooterVelocity, int damage)
+        Vector3 shooterVelocity, int damage, float bulletSpeed)
     {
         GameObject bullet =
             Instantiate(bulletPrefab, position, rotation);
@@ -213,6 +218,7 @@ public class PlayerAttackDistance : NetworkBehaviour
         {
             bulletController.extraVelocity = shooterVelocity;
             bulletController.damage = damage;
+            bulletController.speed = bulletSpeed;
         }
 
         bullet.GetComponent<NetworkObject>()
