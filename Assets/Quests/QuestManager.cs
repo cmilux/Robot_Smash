@@ -41,12 +41,38 @@ public class QuestManager : NetworkBehaviour
 
         //whenever any objective's progress count changes, tell UI to refresh too
         objectiveProgress.OnListChanged += (change) => UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
+
+        // force the initial update — covers late joiners whose NetworkVariable already arrived synced,
+        // so OnValueChanged never actually fires for them since nothing "changed" from their point of view
+        // fuerza la actualizacion inicial — cubre a los que se conectan tarde, cuyo NetworkVariable ya llega
+        // sincronizado, entonces OnValueChanged nunca dispara para ellos porque nada "cambio" desde su perspectiva
+        UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
+
+        // server-only: kick off the quest chain automatically when the game starts
+        // solo el server: arranca la cadena de misiones automaticamente al empezar la partida
+        if (IsServer && activeQuestId.Value == -1)
+        {
+            QuestData firstQuest = allQuest.Find(q => q.requiredQuestId == -1);     //entry point || punto de entrada  
+            if (firstQuest != null)
+            {
+                StartQuestInternal(firstQuest.questId);
+            }
+        }
     }
 
     //server start quest (this needs to be called from the mission giver(npc), a trigger zone, etc)
     //el server inicia la mision(esto se llama desde el npc que da la mision, una zona de trigger, etc)
     [Rpc(SendTo.Server)]
     public void StartQuestServerRpc(int questId)
+    {
+        StartQuestInternal(questId);
+    }
+
+    // shared logic for starting a quest — used by the RPC above AND by the auto-start/auto-advance calls,
+    // so both paths go through the exact same setup instead of duplicating it
+    // logica compartida para arrancar una mision — la usa el RPC de arriba Y las llamadas de auto-inicio/auto-avance,
+    // asi los dos caminos pasan por la misma configuracion en vez de duplicarla
+    private void StartQuestInternal(int questId)
     {
         activeQuestId.Value = questId;      //set the new active quest
         objectiveProgress.Clear();          //wipe old progress
@@ -56,8 +82,6 @@ public class QuestManager : NetworkBehaviour
         {
             objectiveProgress.Add(0);   //one progress counter per obj (starts at 0)
         }
-
-        UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
     }
 
     //server side game events call this directly (runs only in server)
@@ -78,6 +102,29 @@ public class QuestManager : NetworkBehaviour
         ApplyProgress(type, targetId, amount);
     }
 
+    // read-only check any client can call before deciding to fire/consume a trigger
+    // chequeo de solo lectura que cualquier cliente puede llamar antes de decidir si disparar/gastar un trigger
+    public bool CanReportProgress(ObjectiveType type, string targetId)
+    {
+        if (ActiveQuest == null) return false;
+        if (ActiveQuest.objectives.Count != objectiveProgress.Count) return false;
+
+        for (int i = 0; i < ActiveQuest.objectives.Count; i++)
+        {
+            QuestObjective obj = ActiveQuest.objectives[i];
+
+            if (obj.type == type && obj.targetId == targetId)
+            {
+                // if it requires order and the previous one ISN'T done, block it — otherwise allow it
+                // si requiere orden y el anterior NO esta listo, bloquealo — si no, permitilo
+                if (obj.requieresPreviousObj && !PreviousObjectiveComplete(i)) return false;
+                return true;
+            }
+        }
+
+        return false;   // no matching objective at all in the active quest
+    }
+
     //shared logic both entry points (ReportProgress and ReportProgressServerRpc) funnel into
     //logica compartida a la que llegan las dos entradas de arriba (ReportProgress y ReportProgressServerRpc)
     private void ApplyProgress(ObjectiveType type, string targetId, int amount)
@@ -93,6 +140,13 @@ public class QuestManager : NetworkBehaviour
             //solo suma progreso si este evento coincide con el tipo y el target del objetivo
             if (obj.type == type && obj.targetId == targetId)
             {
+                // if this objective is gated by order, make sure everything before it is already done
+                // si este objetivo esta condicionado por orden, chequea que todo lo anterior ya este listo
+                if (obj.requieresPreviousObj && !PreviousObjectiveComplete(i))
+                {
+                    continue;   //event matched, but it's too early — ignore this report and keep looping
+                }
+
                 //Mathf.Min caps progress at the required amount so it can't overshoot
                 //Mathf.Min limita el progreso a la cantidad requerida para que no se pase
                 int newProgress = Mathf.Min(objectiveProgress[i] + amount, obj.requiredAmount);
@@ -102,6 +156,19 @@ public class QuestManager : NetworkBehaviour
         }
 
         CheckQuestComplete();
+    }
+
+    // checks whether every REQUIRED objective before 'index' is already done
+    // chequea si todos los objetivos OBLIGATORIOS anteriores a 'index' ya estan completos
+    private bool PreviousObjectiveComplete(int index)
+    {
+        for (int j = 0; j < index; j++)
+        { 
+            QuestObjective prev = ActiveQuest.objectives[j];
+            if (prev.isOptional) continue;      // optional objectives don't block order either
+            if (objectiveProgress[j] < prev.requiredAmount) return false;
+        }
+        return true;
     }
 
     private void CheckQuestComplete()
@@ -115,10 +182,7 @@ public class QuestManager : NetworkBehaviour
 
             if (obj.isOptional) continue; //if the objective is optional, wont stop the progress of the main objective
 
-            if (objectiveProgress[i] < obj.requiredAmount)
-            {
-                return;     //at least one obj isnt done yet, bail out | al menos un objetivo no esta completo, se corta aca
-            }
+            if (objectiveProgress[i] < obj.requiredAmount) return;      //at least one obj isnt done yet, bail out | al menos un objetivo no esta completo, se corta aca
         }
 
         int totalExp = ActiveQuest.rewardExp;   //if main obj is completed, the quest is done
@@ -139,8 +203,15 @@ public class QuestManager : NetworkBehaviour
 
         GrantRewardsClientRpc(totalExp);   //all obj done (tell clients to grant rewards)
 
+        // find the next quest in the chain BEFORE the delay — ActiveQuest depends on activeQuestId,
+        // which we're about to change, so grab what we need from it now while it's still valid
+        // busca la proxima mision en la cadena ANTES del delay — ActiveQuest depende de activeQuestId,
+        // que estamos por cambiar, asi que agarra lo que necesitas de el ahora mientras sigue siendo valido
+        int completedQuestId = ActiveQuest.questId;
+        QuestData nextQuest = allQuest.Find(q => q.requiredQuestId == completedQuestId);
+
         //wait 1 sec before hiding quest (so ui gets time to update)
-        StartCoroutine(HideQuestAfterDelay());
+        StartCoroutine(AdvanceQuestAfterDelay(nextQuest));
 
         Debug.Log("Quest is done");
     }
@@ -176,11 +247,19 @@ public class QuestManager : NetworkBehaviour
         }
     }
 
-    private IEnumerator HideQuestAfterDelay()
+    private IEnumerator AdvanceQuestAfterDelay(QuestData nextQuest)
     {
         yield return new WaitForSeconds(1);
-        //turn the quest off so no future progress report can trigger this
-        //apaga la mision para que ningun futuro reporte dispare esto (evita duplicados)
-        activeQuestId.Value = -1;
+
+        if (nextQuest != null)
+        {
+            StartQuestInternal(nextQuest.questId);
+        }
+        else
+        {
+            //turn the quest off so no future progress report can trigger this
+            //apaga la mision para que ningun futuro reporte dispare esto (evita duplicados)
+            activeQuestId.Value = -1;
+        }
     }
 }

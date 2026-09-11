@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f489dfb054a81a24881c47f310a0560d, type: 3}
-  m_Name: SO_Obj_Reach_GasStation_3
+  m_Name: SO_Obj3_Q2_ReachBunker
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
   type: 3
-  targetId: GasStation
+  targetId: Bunker
   requiredAmount: 1
-  description: Visit the gas station located close to robot base
+  requieresPreviousObj: 1
+  description: Lleva los resultados al bunker
   isOptional: 0
   bonusExp: 0
