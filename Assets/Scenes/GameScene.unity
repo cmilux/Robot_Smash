@@ -4058,7 +4058,6 @@ Transform:
   - {fileID: 1229992848}
   - {fileID: 1387196862}
   - {fileID: 486927229}
-  - {fileID: 1918333561}
   m_Father: {fileID: 2127431152}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &873132643
@@ -4317,7 +4316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939425901}
   m_Layer: 0
-  m_Name: Q4
+  m_Name: ===Q4===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4335,7 +4334,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 990988963}
+  - {fileID: 1011114723}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &953160502 stripped
@@ -4504,19 +4505,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1918333561}
+    m_TransformParent: {fileID: 939425901}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 293.10004
+      value: 428.14056
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.459999
+      value: 46.5211
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 220.69998
+      value: 343.24365
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4941,19 +4942,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1918333561}
+    m_TransformParent: {fileID: 939425901}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 469.7
+      value: 604.74054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3499985
+      value: 35.4111
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 146.5
+      value: 269.04367
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9650,39 +9651,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2636854643c80124aa14ac18623aed32, type: 3}
---- !u!1 &1918333560
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1918333561}
-  m_Layer: 0
-  m_Name: Q4_Blue_ControlTowers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1918333561
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918333560}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 990988963}
-  - {fileID: 1011114723}
-  m_Father: {fileID: 857468938}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1926330989
 GameObject:
   m_ObjectHideFlags: 0
