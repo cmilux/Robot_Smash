@@ -29,6 +29,9 @@ public class Enemy : NetworkBehaviour
     protected bool _wasPlayerDetected;  //remembers last frame's detection state, so we can catch the exact moment the player leaves range
     public float detectionRadius = 8f;  //how close the player needs to be for this enemy to notice them and stop patrolling
 
+    [Header("Animations")]
+    [SerializeField] Animator animator;
+
     [Header("Player and experience")]
     [SerializeField] PlayerLevelUI playerLevExp;
     public int levExpPoints;
@@ -42,6 +45,7 @@ public class Enemy : NetworkBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public override void OnNetworkSpawn()
@@ -70,6 +74,12 @@ public class Enemy : NetworkBehaviour
         }
 
         target = closestPlayer;         //follows closest player || sigue al player mas cercano
+    }
+
+    protected void UpdateAnimator()
+    {
+        if (agent == null) return;
+        animator?.SetFloat("Speed", agent.velocity.magnitude);
     }
 
     protected void MoveTowardTarget()

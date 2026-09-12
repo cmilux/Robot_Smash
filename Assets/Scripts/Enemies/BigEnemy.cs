@@ -33,6 +33,7 @@ public class BigEnemy : Enemy
         if (isDead.Value) return;      //dead enemies don't act
 
         UpdateTarget();
+        UpdateAnimator();
 
         DetectPlayer();                 //checks distance to target and sets _playerDetected accordingly
 
