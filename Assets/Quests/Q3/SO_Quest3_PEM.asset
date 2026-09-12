@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5505331a42d0e604c816c276bb0f7826, type: 3}
-  m_Name: SO_Quest3_FindTreasure
+  m_Name: SO_Quest3_PEM
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questId: 3
+  questId: 2
   questTitle: Mision 3
   description: Encuentra el tesoro!
   objectives:
   - {fileID: 11400000, guid: d648ac7322aae4b4aa944cba89ac5471, type: 2}
+  - {fileID: 11400000, guid: cd54f3328df1d2e43aa063870371883c, type: 2}
   requiredQuestId: 1
   rewardItems:
   - {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}

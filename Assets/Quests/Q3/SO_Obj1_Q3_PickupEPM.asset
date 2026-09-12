@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f489dfb054a81a24881c47f310a0560d, type: 3}
-  m_Name: SO_Obj1_Q2_FindLetter
+  m_Name: SO_Obj1_Q3_PickupEPM
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
   type: 3
-  targetId: Letter
+  targetId: PickUp
   requiredAmount: 1
-  description: Encuentra la carta
+  requieresPreviousObj: 0
+  description: Encuentra la maquina de activacion PEM
   isOptional: 0
   bonusExp: 0
