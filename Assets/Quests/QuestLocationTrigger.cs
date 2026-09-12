@@ -1,11 +1,12 @@
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 
 public class QuestLocationTrigger : NetworkBehaviour               //UPDATES PROGRESS OF A MISSION
 {
     [SerializeField] ObjectiveType objectiveType = ObjectiveType.ReachLocation;     //ReachLocation para atalaya/bunker, CollectItem para la carta
     [SerializeField] string targetId; // matches the targetId you set on the QuestObjective, e.g. "Watchtower"
-
+    [SerializeField] GameObject turnGameObject;
     [SerializeField] bool destroySelfOnTrigger = false;
 
     private bool alreadyReported = false; // prevents spamming ReportProgress every frame the player stays inside the trigger
@@ -18,7 +19,7 @@ public class QuestLocationTrigger : NetworkBehaviour               //UPDATES PRO
         //only client who owns the car reports (otherwise every client watching it happen, will report too)
         //solo el cliente que es dueno del auto debe reportar (si no, cada auto que ve pasar el auto por el collider, tambien reporta el progreso)
         NetworkObject netObj = other.GetComponentInParent<NetworkObject>();
-        if(netObj == null || !netObj.IsOwner) return;
+        if (netObj == null || !netObj.IsOwner) return;
 
         // check before consuming — lets the player retry later if the order isn't right yet
         // chequea antes de consumir — le permite al jugador reintentar despues si el orden no esta listo todavia
@@ -33,5 +34,12 @@ public class QuestLocationTrigger : NetworkBehaviour               //UPDATES PRO
         {
             NetworkObject.Despawn(false);
         }
+
+        //turn on/off an object after completing an objective
+        if (turnGameObject == null) return;
+        var componentController = turnGameObject.GetComponent<ComponentController>();
+        if(componentController == null) return;
+        componentController.SetEnabled(!componentController.EnabledState);  //EnabledState is part of the ComponentController library and controls on/off game logic. enabled is from MonoBehaviour and controls if the scripts run
+
     }
 }

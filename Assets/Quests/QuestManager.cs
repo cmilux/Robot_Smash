@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class QuestManager : NetworkBehaviour
 {
@@ -59,6 +60,38 @@ public class QuestManager : NetworkBehaviour
             }
         }
     }
+
+    //>>>testing (moving to the next mission)
+#if UNITY_EDITOR
+    private void Update()
+    {
+        // cheat de testeo — solo compila en el editor, nunca llega al build final
+        // testing cheat — only compiles in the Editor, never ships in the final build
+        if (Keyboard.current != null && Keyboard.current.nKey.wasPressedThisFrame)
+        {
+            ForceCompleteQuestServerRpc();
+        }
+    }
+#endif
+
+    [Rpc(SendTo.Server)]
+    private void ForceCompleteQuestServerRpc()
+    {
+        if (ActiveQuest == null) return;
+
+        // fuerza el progreso de TODOS los objetivos obligatorios al maximo — los opcionales quedan como esten
+        // forces progress on EVERY required objective to max — optional ones stay as they are
+        for (int i = 0; i < ActiveQuest.objectives.Count; i++)
+        {
+            QuestObjective obj = ActiveQuest.objectives[i];
+            if (obj.isOptional) continue; // no forzamos los opcionales, asi podes seguir probando el flujo de bonus si queres
+
+            objectiveProgress[i] = obj.requiredAmount;
+        }
+
+        CheckQuestComplete(); // dispara el mismo camino de siempre: rewards, auto-avance, todo igual que si lo hubieras jugado de verdad
+    }
+    //>>>testing (moving to the next mission)
 
     //server start quest (this needs to be called from the mission giver(npc), a trigger zone, etc)
     //el server inicia la mision(esto se llama desde el npc que da la mision, una zona de trigger, etc)

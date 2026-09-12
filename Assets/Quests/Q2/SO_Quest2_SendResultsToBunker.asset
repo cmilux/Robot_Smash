@@ -19,7 +19,6 @@ MonoBehaviour:
   objectives:
   - {fileID: 11400000, guid: 58e7d6fa0c3c1444f850e7c323cf950b, type: 2}
   - {fileID: 11400000, guid: 3300f47525b947246af6feddb70a44af, type: 2}
-  - {fileID: 11400000, guid: 8281e93c6c291064f8b2b2f113384c11, type: 2}
   requiredQuestId: 0
   rewardItems:
   - {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
