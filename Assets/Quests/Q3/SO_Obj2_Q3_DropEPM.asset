@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f489dfb054a81a24881c47f310a0560d, type: 3}
-  m_Name: SO_Obj_Reach_ControlTower_2
+  m_Name: SO_Obj2_Q3_DropEPM
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
   type: 3
-  targetId: ControlTower
-  requiredAmount: 3
-  description: Visit all control towers
+  targetId: DropEPM
+  requiredAmount: 1
+  requieresPreviousObj: 0
+  description: Suelta la maquina de activacion PEM en el helipuerto
   isOptional: 0
   bonusExp: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
   targetId: Key
   requiredAmount: 1
   requieresPreviousObj: 0
-  description: Encuentra la carta
+  description: Encuentra la llave de acceso
   isOptional: 0
   bonusExp: 0
