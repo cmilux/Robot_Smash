@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f489dfb054a81a24881c47f310a0560d, type: 3}
-  m_Name: SO_Obj2_Q3_DropEPM
+  m_Name: SO_Obj1_Q4_DestroyControlTower
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
-  type: 3
-  targetId: DropEPM
-  requiredAmount: 1
-  requieresPreviousObj: 1
-  description: Suelta la maquina de activacion PEM en el helipuerto
+  type: 2
+  targetId: ControlTower
+  requiredAmount: 2
+  requieresPreviousObj: 0
+  description: Destruye las 2 torres de control de color azul del mapa
   isOptional: 0
   bonusExp: 0

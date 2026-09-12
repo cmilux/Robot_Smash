@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f489dfb054a81a24881c47f310a0560d, type: 3}
-  m_Name: SO_Op_Obj_KillEnemies
+  m_Name: SO_Obj2_Q6_DestroyRobotBase
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
-  type: 0
-  targetId: Enemy
-  requiredAmount: 2
-  description: Kill 2 enemies
+  type: 2
+  targetId: RobotBase
+  requiredAmount: 1
+  requieresPreviousObj: 1
+  description: Destruye la base de los robots!
   isOptional: 0
   bonusExp: 0

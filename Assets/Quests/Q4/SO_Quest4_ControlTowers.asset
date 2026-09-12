@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SO_Quest4_ControlTowers
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: 3
-  questTitle: Control towers
+  questTitle: Mision 4
   description: Debes destruir las torres de control azules del mapa
   objectives:
   - {fileID: 11400000, guid: fd0b3fb6aa4982649b8414654b37e8b9, type: 2}

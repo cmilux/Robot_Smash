@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: SO_Quest5_GasStation
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: 4
-  questTitle: GasStation
+  questTitle: Mision 5
   description: Protege la estacion de servicio de la oleada de robot que llega tras
     destruir las torres
   objectives:
   - {fileID: 11400000, guid: 5796b4aa81cfb5249a3deadf72b8d654, type: 2}
-  requiredQuestId: 1
+  - {fileID: 11400000, guid: 4f8817ebaeaa73b41832f850a401eda1, type: 2}
+  requiredQuestId: 3
   rewardItems:
   - {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
   - {fileID: 11400000, guid: 6c055dd7c6341584c81631f485622f58, type: 2}
