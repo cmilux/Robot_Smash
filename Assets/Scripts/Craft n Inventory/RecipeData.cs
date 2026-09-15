@@ -7,6 +7,7 @@ public class RecipeData : ScriptableObject
     public List<RecipeIngredient> ingredients;
     public ItemData result;
     public int resultQuantity = 1;
+    public int requiredLevel;
 }
 
 [System.Serializable]

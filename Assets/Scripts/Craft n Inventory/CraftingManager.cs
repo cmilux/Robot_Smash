@@ -93,6 +93,7 @@ public class CraftingManager : MonoBehaviour
 
     private bool RecipeMatches(RecipeData recipe, Dictionary<ItemData, int> craftingItems)
     {
+        if (PlayerLevelUI.Instance != null && PlayerLevelUI.Instance.CurrentLevel < recipe.requiredLevel) return false;
         // Check that both have the same number of different ingredients
         if (recipe.ingredients.Count != craftingItems.Count)
             return false;
