@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 25.Wheel
+  m_Name: 8.Rope
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 25
-  nombre: Wheel
-  icon: {fileID: 21300000, guid: c2ffe6ff5f4602243a96924ab4838dbb, type: 3}
+  id: 8
+  nombre: Rope
+  icon: {fileID: 21300000, guid: 0a45c328557b2974fb1de660f42108d0, type: 3}
   maxStock: 15
-  visibleItemID: 25
+  visibleItemID: 8
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 6652610885484415202, guid: 6fdacea73c3738b4db2feb41c98ce526, type: 3}
+  dropPrefab: {fileID: 7257092213913500555, guid: 40ec1cf819896fc499b4ef027d48f073, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

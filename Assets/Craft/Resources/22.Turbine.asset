@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 23.Spring
+  m_Name: 22.Turbine
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 23
-  nombre: Spring
-  icon: {fileID: 21300000, guid: 03a46c92b0ad4334da31a70ee8ed5082, type: 3}
+  id: 22
+  nombre: Turbine
+  icon: {fileID: 21300000, guid: e113faa4d8e083a4e980d41e780465e0, type: 3}
   maxStock: 15
-  visibleItemID: 23
+  visibleItemID: 22
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 8816636468798002136, guid: 2636854643c80124aa14ac18623aed32, type: 3}
+  dropPrefab: {fileID: 347490518200464347, guid: c2c3491511f1a844aac30c751e49c8a9, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

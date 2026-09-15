@@ -10,14 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 28.CarVariant
+  m_Name: 23.Wheel
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 28
-  nombre: CarMesh2
-  icon: {fileID: 21300000, guid: 309015cc23ed3a041b8974dd61a34eed, type: 3}
-  maxStock: 1
-  visibleItemID: 28
-  itemType: 5
+  id: 23
+  nombre: Wheel
+  icon: {fileID: 21300000, guid: c2ffe6ff5f4602243a96924ab4838dbb, type: 3}
+  maxStock: 15
+  visibleItemID: 23
+  itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  carVariant: {fileID: 11400000, guid: d7487618c20758d4d92760733acf5338, type: 2}
+  dropPrefab: {fileID: 6652610885484415202, guid: 6fdacea73c3738b4db2feb41c98ce526, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

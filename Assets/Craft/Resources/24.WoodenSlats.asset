@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 20.MetalRods
+  m_Name: 24.WoodenSlats
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 20
-  nombre: MetalRods
-  icon: {fileID: 21300000, guid: 4f3a615784a206e47bf515d2fe0b2a9d, type: 3}
+  id: 24
+  nombre: WoodenStats
+  icon: {fileID: 21300000, guid: 56340a313b48be740827de7c79d346ec, type: 3}
   maxStock: 15
-  visibleItemID: 20
+  visibleItemID: 24
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 5502568312576438811, guid: 8e3dd4a285206a540a0cbe0f41d20010, type: 3}
+  dropPrefab: {fileID: 3110076313166585201, guid: bea5dbb5d8d2cba499890b01901954f9, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

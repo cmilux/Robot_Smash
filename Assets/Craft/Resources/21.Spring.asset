@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 21.Rivets
+  m_Name: 21.Spring
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 21
-  nombre: Rivets
-  icon: {fileID: 21300000, guid: d4b45de24d899c7479e70ce8ced23f5e, type: 3}
+  nombre: Spring
+  icon: {fileID: 21300000, guid: 03a46c92b0ad4334da31a70ee8ed5082, type: 3}
   maxStock: 15
   visibleItemID: 21
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 2328641428040467619, guid: b3eae4aae79fb074889c224b47e06d7b, type: 3}
+  dropPrefab: {fileID: 8816636468798002136, guid: 2636854643c80124aa14ac18623aed32, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

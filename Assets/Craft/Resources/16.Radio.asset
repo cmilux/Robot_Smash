@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 16.Camera
+  m_Name: 16.Radio
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 16
-  nombre: Camera
-  icon: {fileID: 21300000, guid: d0149de3ae5b6e64eb7c69043efddcff, type: 3}
+  nombre: Radio
+  icon: {fileID: 21300000, guid: b9a7c7c4a3bb86a4186314cebf72cbc8, type: 3}
   maxStock: 15
   visibleItemID: 16
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 4445959131089533931, guid: 733803960549e4e44b3e4bd9df8292be, type: 3}
+  dropPrefab: {fileID: 2219490725135688789, guid: 636dce091ca76294db330683a45dff98, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

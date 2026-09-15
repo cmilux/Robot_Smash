@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 8.Drill
+  m_Name: 17.Gear
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 8
-  nombre: Drill
-  icon: {fileID: 21300000, guid: 21e6e309cb28d5140bcc4fc8009eab9c, type: 3}
+  id: 17
+  nombre: Gear
+  icon: {fileID: 21300000, guid: 825aae3924a0af2469479532d6cfb8d5, type: 3}
   maxStock: 15
-  visibleItemID: 8
+  visibleItemID: 17
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 7482435867323963254, guid: c6457b8f78439a748a2f0fb6089f2020, type: 3}
+  dropPrefab: {fileID: 4013468225672891900, guid: 778be5d8fc0aaa0498d7e8ae242fb448, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

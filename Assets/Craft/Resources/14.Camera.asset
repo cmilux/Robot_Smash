@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 27.CarBumper
+  m_Name: 14.Camera
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 27
-  nombre: CarBumper
-  icon: {fileID: 21300000, guid: ba6498883d8de234c90fdd8ef0be98c8, type: 3}
-  maxStock: 1
-  visibleItemID: 27
-  itemType: 4
+  id: 14
+  nombre: Camera
+  icon: {fileID: 21300000, guid: d0149de3ae5b6e64eb7c69043efddcff, type: 3}
+  maxStock: 15
+  visibleItemID: 14
+  itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 9170641559277513034, guid: 85243428bb30d054ca42bf2fedcfdaa0, type: 3}
+  dropPrefab: {fileID: 4445959131089533931, guid: 733803960549e4e44b3e4bd9df8292be, type: 3}
   carVariant: {fileID: 0}
-  damageBase: 10
-  cooldownBase: 3
-  maxDurability: 10
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
   maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

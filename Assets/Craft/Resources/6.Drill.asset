@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 10.Rope
+  m_Name: 6.Drill
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 10
-  nombre: Rope
-  icon: {fileID: 21300000, guid: 0a45c328557b2974fb1de660f42108d0, type: 3}
+  id: 6
+  nombre: Drill
+  icon: {fileID: 21300000, guid: 21e6e309cb28d5140bcc4fc8009eab9c, type: 3}
   maxStock: 15
-  visibleItemID: 10
+  visibleItemID: 6
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 7257092213913500555, guid: 40ec1cf819896fc499b4ef027d48f073, type: 3}
+  dropPrefab: {fileID: 7482435867323963254, guid: c6457b8f78439a748a2f0fb6089f2020, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0

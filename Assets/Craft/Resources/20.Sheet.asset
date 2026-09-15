@@ -10,13 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 6.CircuitBoard
+  m_Name: 20.Sheet
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  id: 6
-  nombre: CircuitBoard
-  icon: {fileID: 21300000, guid: 494f51a2a509157468d00377aed83e28, type: 3}
+  id: 20
+  nombre: Sheet
+  icon: {fileID: 21300000, guid: a2ee41284f8de504684dcb83a7aa1b5f, type: 3}
   maxStock: 15
-  visibleItemID: 6
+  visibleItemID: 20
   itemType: 0
   paintMaterial: {fileID: 0}
-  dropPrefab: {fileID: 4028469759395132739, guid: d51315232db1a6f4a8c985aed8fdd492, type: 3}
+  dropPrefab: {fileID: 9182860935166883976, guid: ed1123ce35a065249bb70b2551338942, type: 3}
+  carVariant: {fileID: 0}
+  damageBase: 0
+  cooldownBase: 0
+  maxDurability: -1
+  maxAmmo: -1
+  bulletsPerShot: 0
+  bulletSpeed: 0
+  spreadAngle: 0
