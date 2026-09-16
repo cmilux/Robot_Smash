@@ -211,8 +211,7 @@ public class PlayerAttackDistance : NetworkBehaviour
         {
             rb.isKinematic = false;
             rb.linearVelocity = bullet.transform.forward * bullet.speed;
-            CancelInvoke(nameof(bullet.DestroyBullet));
-            bullet.Invoke(nameof(bullet.DestroyBullet), 2f);
+            ObjectPoolManager.instance.ReturnPlayerBullet(bullet);
         }
 
         bullet.shooterClientId = OwnerClientId;

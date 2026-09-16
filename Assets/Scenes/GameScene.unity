@@ -2057,7 +2057,7 @@ MonoBehaviour:
   enemyBulletPoolSize: 10
   enemyBulletPrefab: {fileID: -6370925785387550289, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
   kamikazePoolSize: 10
-  kamikazePrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+  kamikazePrefab: {fileID: 8418929402541382791, guid: e7fb3bd73201ec64b9c3871b637ee9c9, type: 3}
   poolParentObj: {fileID: 333757544}
 --- !u!4 &333757547
 Transform:

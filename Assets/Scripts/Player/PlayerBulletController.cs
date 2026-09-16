@@ -29,14 +29,7 @@ public class PlayerBulletController : NetworkBehaviour
             enemy.HandleFollowState();
 
             // Delete the bullet after hitting the enemy
-            DestroyBullet();
+            ObjectPoolManager.instance.ReturnPlayerBullet(this);
         }
-    }
-
-    // delete the bullet from the game for everyone
-    public void DestroyBullet()
-    {
-        CancelInvoke(nameof(DestroyBullet));
-        ObjectPoolManager.instance.ReturnPlayerBullet(this);
     }
 }

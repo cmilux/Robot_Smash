@@ -49,6 +49,40 @@ public class Enemy : NetworkBehaviour
         if (IsServer)
         {
             health.Value = maxHealth;                   //sets enemies to max health (set on inspector individually) || salud maxima de los enemigos (se pone manualmente en el inspector de cada uno)
+            isDead.Value = false;
+        }
+    }
+
+    public virtual void Initialize()
+    {
+        _playerDetected = false;
+        _wasPlayerDetected = false;
+
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
+        if (agent != null)
+        {
+            Debug.Log($"[Enemy] Agent found. Currently enabled: {agent.enabled}");
+            agent.enabled = true;
+            Debug.Log($"[Enemy] Agent enabled set to: {agent.enabled}");
+
+            Debug.Log($"[Enemy] Agent on NavMesh: {agent.isOnNavMesh}");
+
+            if (agent.isOnNavMesh)
+            {
+                agent.ResetPath();
+                Debug.Log("[Enemy] Agent path reset");
+            }
+            else
+            {
+                Debug.LogError("[Enemy] Agent NOT on NavMesh!");
+            }
+        }
+        else
+        {
+            Debug.LogError("[Enemy] Agent is NULL!");
         }
     }
 
@@ -200,10 +234,7 @@ public class Enemy : NetworkBehaviour
 
         agent.isStopped = true;
 
-        //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
-        StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
-
-        //DropResources();
+        ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, delay);
 
         //Add experience to the killer || agrega experiencia a quien mato al enemigo
         GrantExpToKillerClientRpc(killerClientId, levExpPoints);
