@@ -303,9 +303,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Craft
       objectReference: {fileID: 0}
+    - target: {fileID: 5353000762669335788, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5406123168289145373, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
       propertyPath: m_Color.a
       value: 0.45490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657605363111647048, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 5928960804934341272, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
       propertyPath: m_Color.a
@@ -395,12 +403,17 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.45490196
       objectReference: {fileID: 0}
+    - target: {fileID: 6507066257957376784, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
+      propertyPath: resultSlot
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8241676261414480279, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
       propertyPath: m_Color.a
       value: 0.45490196
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8799669681284409795, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8434e2dd11fb6f840a1198784aece0ee, type: 3}
