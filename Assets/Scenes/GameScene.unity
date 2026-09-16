@@ -1819,6 +1819,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &229449033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 229449034}
+  m_Layer: 0
+  m_Name: EnemiesSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &229449034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229449033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80.11, y: 37.3, z: 218.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 385631787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &233723469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2066439697240455492, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -2276,7 +2307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
-  _questId: 0
+  _questId: 4
   _enemyConfig: []
   _respawnDelay: 5
 --- !u!1 &381083528 stripped
@@ -2487,6 +2518,7 @@ Transform:
   - {fileID: 1838129678}
   - {fileID: 1542873669}
   - {fileID: 2074951003}
+  - {fileID: 229449034}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &385631788
@@ -2502,7 +2534,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
   _questId: 0
-  _enemyConfig: []
+  _enemyConfig:
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 229449034}
+    respawnDelay: 2
+  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+    spawnPoint: {fileID: 229449034}
+    respawnDelay: 4
   _respawnDelay: 5
 --- !u!1 &392415355 stripped
 GameObject:
@@ -3927,7 +3965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
-  _questId: 0
+  _questId: 1
   _enemyConfig: []
   _respawnDelay: 5
 --- !u!1001 &740962252
@@ -4605,8 +4643,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
-  _questId: 0
-  _enemyConfig: []
+  _questId: 5
+  _enemyConfig:
+  - enemyPrefab: {fileID: 0}
+    spawnPoint: {fileID: 0}
+    respawnDelay: 5
   _respawnDelay: 5
 --- !u!1 &939425900
 GameObject:
@@ -4654,7 +4695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
-  _questId: 0
+  _questId: 3
   _enemyConfig: []
   _respawnDelay: 5
 --- !u!1 &953160502 stripped
@@ -8035,7 +8076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1506976481
 Transform:
   m_ObjectHideFlags: 0
@@ -8100,7 +8141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
-  _questId: 0
+  _questId: 2
   _enemyConfig: []
   _respawnDelay: 5
 --- !u!1 &1540798434 stripped

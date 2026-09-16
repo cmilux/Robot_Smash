@@ -22,7 +22,7 @@ public class KamikazeEnemy : Enemy
 
     private void Update()
     {
-        Debug.Log($"[Kamikaze] Update. IsServer={IsServer}, isDead={isDead.Value}, target={target}");
+        //Debug.Log($"[Kamikaze] Update. IsServer={IsServer}, isDead={isDead.Value}, target={target}");
 
         if (!IsServer) return;         //server-only — clients don't run enemy AI logic, they just see the result
         if (isDead.Value) return;      //dead enemies don't act
@@ -30,7 +30,7 @@ public class KamikazeEnemy : Enemy
         UpdateTarget();                 //re-check who the closest player is every frame
         if (target == null)
         {
-            Debug.Log("[Kamikaze] No target, doing patrol");
+            //Debug.Log("[Kamikaze] No target, doing patrol");
             return;
         }
 
@@ -38,12 +38,12 @@ public class KamikazeEnemy : Enemy
 
         if (!_playerDetected)
         {
-            Debug.Log("[Kamikaze] Player not detected, patrol");
+            //Debug.Log("[Kamikaze] Player not detected, patrol");
             HandlePatrolState();        //player is out of range — keep wandering patrol points
         }
         else
         {
-            Debug.Log("[Kamikaze] Player detected, moving toward");
+            //Debug.Log("[Kamikaze] Player detected, moving toward");
             MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
         }
     }

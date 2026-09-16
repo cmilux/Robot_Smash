@@ -58,12 +58,21 @@ public class QuestArea : MonoBehaviour
     {
         foreach (EnemySpawnConfig config in _enemyConfig)
         {
+            Debug.Log($"trying to get enemie: {config.enemyPrefab.name}");
+
             Enemy enemy = ObjectPoolManager.instance.GetEnemy(config.enemyPrefab);
+
+            if (enemy == null)
+            {
+                Debug.Log($"enemies null for {config.enemyPrefab.name}");
+            }
+
             enemy.transform.position = config.spawnPoint.position;
             enemy.SetSpawnPoint(config.spawnPoint.position);
             enemy.gameObject.SetActive(true);
 
             _activeEnemies.Add(enemy);
+            Debug.Log($"spawned {config.enemyPrefab.name} at {config.spawnPoint.name}");
         }
     }
 

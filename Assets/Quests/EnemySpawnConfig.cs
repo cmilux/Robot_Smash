@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class EnemySpawnConfig : MonoBehaviour
+public class EnemySpawnConfig
 {
     public Enemy enemyPrefab;
     public Transform spawnPoint;
