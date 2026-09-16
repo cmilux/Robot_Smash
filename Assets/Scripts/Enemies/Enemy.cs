@@ -21,6 +21,7 @@ public class Enemy : NetworkBehaviour
     protected NavMeshAgent agent;
     public float stopDistance;
     [SerializeField] float turnForce = 0.05f;
+    Vector3 _spawnPoint;
 
     [Header("Patrol logic")]
     [SerializeField] float _patrolRadius;   //sets the radius of the patrol area for the enemy
@@ -55,6 +56,12 @@ public class Enemy : NetworkBehaviour
 
     public virtual void Initialize()
     {
+        // Reset to last known spawn point if it exists
+        if (_spawnPoint != Vector3.zero)
+        {
+            transform.position = _spawnPoint;
+        }
+
         _playerDetected = false;
         _wasPlayerDetected = false;
 
@@ -62,28 +69,25 @@ public class Enemy : NetworkBehaviour
         {
             agent = GetComponent<NavMeshAgent>();
         }
+
         if (agent != null)
         {
-            Debug.Log($"[Enemy] Agent found. Currently enabled: {agent.enabled}");
             agent.enabled = true;
-            Debug.Log($"[Enemy] Agent enabled set to: {agent.enabled}");
-
-            Debug.Log($"[Enemy] Agent on NavMesh: {agent.isOnNavMesh}");
-
             if (agent.isOnNavMesh)
             {
                 agent.ResetPath();
-                Debug.Log("[Enemy] Agent path reset");
-            }
-            else
-            {
-                Debug.LogError("[Enemy] Agent NOT on NavMesh!");
             }
         }
-        else
-        {
-            Debug.LogError("[Enemy] Agent is NULL!");
-        }
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        _spawnPoint = newSpawnPoint;
+    }
+
+    public Vector3 GetSpawnPoint()
+    {
+        return _spawnPoint;
     }
 
     public void UpdateTarget()

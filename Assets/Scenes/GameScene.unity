@@ -2056,8 +2056,20 @@ MonoBehaviour:
   playerBulletPrefab: {fileID: 5500572145646739805, guid: 5e35427a7810fc24fb9bcb3cf792bdb9, type: 3}
   enemyBulletPoolSize: 10
   enemyBulletPrefab: {fileID: -6370925785387550289, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
+  spawnKamikazePoolSize: 0
+  spawnKamikazePrefab: {fileID: 0}
   kamikazePoolSize: 10
   kamikazePrefab: {fileID: 8418929402541382791, guid: e7fb3bd73201ec64b9c3871b637ee9c9, type: 3}
+  kamikazeMediumPrefab: {fileID: 0}
+  kamikazeHardPrefab: {fileID: 0}
+  turretPoolSize: 0
+  turretPrefab: {fileID: 0}
+  turretMediumPrefab: {fileID: 0}
+  turretHardPrefab: {fileID: 0}
+  bigEnemyPoolSize: 0
+  bigPrefab: {fileID: 0}
+  bigMediumPrefab: {fileID: 0}
+  bigHardPrefab: {fileID: 0}
   poolParentObj: {fileID: 333757544}
 --- !u!4 &333757547
 Transform:
@@ -2228,6 +2240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 379249842}
+  - component: {fileID: 379249843}
   m_Layer: 0
   m_Name: ===Q5===
   m_TagString: Untagged
@@ -2251,6 +2264,21 @@ Transform:
   - {fileID: 1755891013}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &379249843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379249841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestArea
+  _questId: 0
+  _enemyConfig: []
+  _respawnDelay: 5
 --- !u!1 &381083528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4a76b494eabf6204a8476d1e3e8c6a04, type: 3}
@@ -2435,6 +2463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 385631787}
+  - component: {fileID: 385631788}
   m_Layer: 0
   m_Name: ===Q1===
   m_TagString: Untagged
@@ -2460,6 +2489,21 @@ Transform:
   - {fileID: 2074951003}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &385631788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385631786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestArea
+  _questId: 0
+  _enemyConfig: []
+  _respawnDelay: 5
 --- !u!1 &392415355 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -3846,6 +3890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715309984}
+  - component: {fileID: 715309985}
   m_Layer: 0
   m_Name: ===Q2===
   m_TagString: Untagged
@@ -3870,6 +3915,21 @@ Transform:
   - {fileID: 1429619515}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &715309985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715309983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestArea
+  _questId: 0
+  _enemyConfig: []
+  _respawnDelay: 5
 --- !u!1001 &740962252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4509,6 +4569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931162471}
+  - component: {fileID: 931162472}
   m_Layer: 0
   m_Name: ===Q6===
   m_TagString: Untagged
@@ -4532,6 +4593,21 @@ Transform:
   - {fileID: 1657346731}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &931162472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931162470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestArea
+  _questId: 0
+  _enemyConfig: []
+  _respawnDelay: 5
 --- !u!1 &939425900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,6 +4617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 939425901}
+  - component: {fileID: 939425902}
   m_Layer: 0
   m_Name: ===Q4===
   m_TagString: Untagged
@@ -4565,6 +4642,21 @@ Transform:
   - {fileID: 1011114723}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &939425902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939425900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestArea
+  _questId: 0
+  _enemyConfig: []
+  _respawnDelay: 5
 --- !u!1 &953160502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7646959769859544527, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -7971,6 +8063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528734299}
+  - component: {fileID: 1528734300}
   m_Layer: 0
   m_Name: ===Q3===
   m_TagString: Untagged
@@ -7995,6 +8088,21 @@ Transform:
   - {fileID: 596753435}
   m_Father: {fileID: 620593770}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1528734300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528734298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30f64a86601c8c46ac54bec4ab664ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestArea
+  _questId: 0
+  _enemyConfig: []
+  _respawnDelay: 5
 --- !u!1 &1540798434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ae1b7e3b0ad72649aa330933d4e1542, type: 3}
