@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -202,8 +203,20 @@ public class PlayerAttackDistance : NetworkBehaviour
     void ShootServerRpc(Vector3 pos, Quaternion rotation)
     {
         PlayerBulletController bullet = ObjectPoolManager.instance.GetPlayerBullet();
-        bullet.transform.position = pos;
-        bullet.transform.rotation = rotation;
+
+        NetworkTransform netTransform = bullet.GetComponent<NetworkTransform>();
+        if (netTransform != null)
+        {
+            netTransform.Teleport(pos, rotation, bullet.transform.localScale);
+        }
+        else
+        {
+            bullet.transform.position = pos;
+            bullet.transform.rotation = rotation;
+        }
+
+        bullet.shooterClientId = OwnerClientId;
+        bullet.gameObject.SetActive(true);
 
         //set velocity and other state directly on server
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -211,10 +224,7 @@ public class PlayerAttackDistance : NetworkBehaviour
         {
             rb.isKinematic = false;
             rb.linearVelocity = bullet.transform.forward * bullet.speed;
-            ObjectPoolManager.instance.ReturnPlayerBullet(bullet);
+            //ObjectPoolManager.instance.ReturnPlayerBullet(bullet);
         }
-
-        bullet.shooterClientId = OwnerClientId;
-        bullet.gameObject.SetActive(true);
     }
 }

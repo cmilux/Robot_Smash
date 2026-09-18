@@ -124,6 +124,8 @@ public class ObjectPoolManager : NetworkBehaviour
     private IEnumerator ReturnEnemyBulletDelayCoroutine(TurretBullet bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        bullet.NotifyReturnClientRpc();
         ReturnEnemyBullet(bullet);
     }
 
@@ -160,6 +162,8 @@ public class ObjectPoolManager : NetworkBehaviour
     private IEnumerator ReturnEnemyAfterDelayCoroutine(Enemy enemy, float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        enemy.NotifyDespawnClientRpc();
 
         if (enemy is KamikazeEnemy kam)
         {

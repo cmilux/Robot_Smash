@@ -1,11 +1,14 @@
+using Unity.Netcode;
+using Unity.Netcode.Components;
+using Unity.Profiling;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
-using Unity.Profiling;
 using UnityEngine.Profiling;
-using Unity.Netcode;
+using UnityEngine.UIElements;
+using static UnityEditor.FilePathAttribute;
+using static UnityEditor.PlayerSettings;
 
 public class BigEnemy : Enemy
 {
@@ -70,7 +73,17 @@ public class BigEnemy : Enemy
 
             //Pool a kamikaze in the big enemy radius || Pool kamikazes en un radio del enemigo
             KamikazeEnemy kam = ObjectPoolManager.instance.GetKamikaze();
-            kam.transform.position = spawnPos;
+
+            NetworkTransform netTransform = kam.GetComponent<NetworkTransform>();
+            if (netTransform != null)
+            {
+                netTransform.Teleport(spawnPos, kam.transform.rotation, kam.transform.localScale);
+            }
+            else
+            {
+                kam.transform.position = spawnPos;
+            }
+
             kam.gameObject.SetActive(true);
 
             kam.Initialize();

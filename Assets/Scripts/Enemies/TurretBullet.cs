@@ -20,7 +20,15 @@ public class TurretBullet : NetworkBehaviour
                 playerHealth.LoseHealthServerRpc(damage);
             }
 
+            NotifyReturnClientRpc();
             ObjectPoolManager.instance.ReturnEnemyBullet(this);
         }
+    }
+
+    [ClientRpc]
+    public void NotifyReturnClientRpc()
+    {
+        if (IsServer) return;
+        gameObject.SetActive(false);
     }
 }

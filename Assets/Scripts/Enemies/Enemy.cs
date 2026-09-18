@@ -266,6 +266,13 @@ public class Enemy : NetworkBehaviour
         }    
     }
 
+    [ClientRpc]
+    public void NotifyDespawnClientRpc()
+    {
+        if(IsServer) return;
+        gameObject.SetActive(false);
+    }
+
     void DropResources()
     {
         if (resourcesObj == null) return;

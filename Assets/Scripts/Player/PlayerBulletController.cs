@@ -30,8 +30,17 @@ public class PlayerBulletController : NetworkBehaviour
             //if bullet hits enemy, follow player
             enemy.HandleFollowState();
 
+            NotifyReturnClientRpc();
+
             // Delete the bullet after hitting the enemy
             ObjectPoolManager.instance.ReturnPlayerBullet(this);
         }
+    }
+
+    [ClientRpc]
+    public void NotifyReturnClientRpc()
+    {
+        if(IsServer) return;
+        gameObject.SetActive(false);
     }
 }
