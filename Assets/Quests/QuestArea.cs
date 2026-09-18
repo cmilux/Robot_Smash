@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class QuestArea : MonoBehaviour
 {
@@ -11,20 +12,29 @@ public class QuestArea : MonoBehaviour
 
     List<Enemy> _activeEnemies = new List<Enemy>();
     bool _questActive = false;
+    bool _subscribed = false;
 
     private void OnEnable()
     {
-        if (QuestManager.Instance != null)
+        _subscribed = false; // reset flag when enabled
+    }
+
+    private void Update()
+    {
+        // Try to subscribe once QuestManager is available
+        if (!_subscribed && QuestManager.Instance != null)
         {
             QuestManager.Instance.OnQuestChanged += HandleQuestChanged;
+            _subscribed = true;
         }
     }
 
     private void OnDisable()
     {
-        if (QuestManager.Instance != null)
+        if (_subscribed && QuestManager.Instance != null)
         {
             QuestManager.Instance.OnQuestChanged -= HandleQuestChanged;
+            _subscribed = false;
         }
     }
 
@@ -42,14 +52,12 @@ public class QuestArea : MonoBehaviour
 
     private void StartQuest()
     {
-        Debug.Log($"[QuestArea] Quest {_questId} started");
         _questActive = true;
         SpawnAllEnemies();
     }
 
     private void EndQuest()
     {
-        Debug.Log($"[QuestArea] Quest {_questId} ended");
         _questActive = false;
         DespawnAllEnemies();
     }
@@ -58,22 +66,32 @@ public class QuestArea : MonoBehaviour
     {
         foreach (EnemySpawnConfig config in _enemyConfig)
         {
-            Debug.Log($"trying to get enemie: {config.enemyPrefab.name}");
-
             Enemy enemy = ObjectPoolManager.instance.GetEnemy(config.enemyPrefab);
 
-            if (enemy == null)
+            if (enemy == null) continue;
+
+            Vector3 spawnPos = config.spawnPoint.position;
+            if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
             {
-                Debug.Log($"enemies null for {config.enemyPrefab.name}");
+                spawnPos = hit.position;
             }
 
-            enemy.transform.position = config.spawnPoint.position;
-            enemy.SetSpawnPoint(config.spawnPoint.position);
-            enemy.gameObject.SetActive(true);
+            // Use Warp to place agent properly on NavMesh
+            enemy.transform.position = spawnPos;
+
+            // Initialize with a small delay to let agent settle
+            enemy.SetSpawnPoint(spawnPos);
+            StartCoroutine(InitializeEnemyDelayed(enemy));
 
             _activeEnemies.Add(enemy);
-            Debug.Log($"spawned {config.enemyPrefab.name} at {config.spawnPoint.name}");
         }
+    }
+
+    private IEnumerator InitializeEnemyDelayed(Enemy enemy)
+    {
+        yield return null; // wait one frame
+        enemy.Initialize();
+        enemy.gameObject.SetActive(true);
     }
 
     public void DespawnAllEnemies()

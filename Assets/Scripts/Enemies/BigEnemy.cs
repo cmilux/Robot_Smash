@@ -53,8 +53,6 @@ public class BigEnemy : Enemy
 
     void SpawnKamikaze()
     {
-        Debug.Log("[BIG ENEMY] spawnkam called");
-
         if (currentEnemies >= maxEnemies) return;
 
         //Cooldown to spawn enemies
@@ -70,15 +68,12 @@ public class BigEnemy : Enemy
         {
             spawnPos = hit.position;
 
-            Debug.Log("[big enemy] about to get kam from pool");
             //Pool a kamikaze in the big enemy radius || Pool kamikazes en un radio del enemigo
             KamikazeEnemy kam = ObjectPoolManager.instance.GetKamikaze();
             kam.transform.position = spawnPos;
             kam.gameObject.SetActive(true);
 
-            Debug.Log("[BIG ENEMY] about to call initialize");
             kam.Initialize();
-            Debug.Log("[BIG ENEMY] Initialize called");
         }
     }
 

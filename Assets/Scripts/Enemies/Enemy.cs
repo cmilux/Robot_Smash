@@ -45,6 +45,24 @@ public class Enemy : NetworkBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void LateUpdate()
+    {
+        if (!IsServer) return;
+        if (isDead.Value) return;
+
+        UpdateTarget();
+        DetectPlayer();
+
+        if (!_playerDetected)
+        {
+            HandlePatrolState();
+        }
+        else
+        {
+            MoveTowardTarget();
+        }
+    }
+
     public override void OnNetworkSpawn()
     {
         if (IsServer)
@@ -56,12 +74,6 @@ public class Enemy : NetworkBehaviour
 
     public virtual void Initialize()
     {
-        // Reset to last known spawn point if it exists
-        if (_spawnPoint != Vector3.zero)
-        {
-            transform.position = _spawnPoint;
-        }
-
         _playerDetected = false;
         _wasPlayerDetected = false;
 
@@ -73,6 +85,12 @@ public class Enemy : NetworkBehaviour
         if (agent != null)
         {
             agent.enabled = true;
+
+            if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+            {
+                agent.Warp(hit.position);
+            }
+
             if (agent.isOnNavMesh)
             {
                 agent.ResetPath();
@@ -210,8 +228,6 @@ public class Enemy : NetworkBehaviour
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]       //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
-        Debug.Log($"Hit by clientId: {attackerClientId} | Server clientId: {NetworkManager.Singleton.LocalClientId}");
-
         if (isDead.Value) return;
 
         //Takes damage from enemies
@@ -236,15 +252,18 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        agent.isStopped = true;
+        if (isDead.Value)
+        {
+            agent.isStopped = true;
 
-        ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, delay);
+            ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, timeBeforeDestroy);
 
-        //Add experience to the killer || agrega experiencia a quien mato al enemigo
-        GrantExpToKillerClientRpc(killerClientId, levExpPoints);
+            //Add experience to the killer || agrega experiencia a quien mato al enemigo
+            GrantExpToKillerClientRpc(killerClientId, levExpPoints);
 
-        //reports using the enemy's tag as targetId
-        QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag);
+            //reports using the enemy's tag as targetId
+            QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag);
+        }    
     }
 
     void DropResources()

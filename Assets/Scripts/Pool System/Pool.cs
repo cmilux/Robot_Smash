@@ -13,18 +13,17 @@ public class Pool<T> where T : MonoBehaviour
         prefab = prefabToPool;
         parent = poolParent;
 
-        //pre spawn objs
         for (int i = 0; i < initialSize; i++)
         {
             T obj = Object.Instantiate(prefab, parent);
-            obj.gameObject.SetActive(false);
 
-            //if its a network obj spawn it
             NetworkObject netObj = obj.GetComponent<NetworkObject>();
             if (netObj != null)
             {
-                netObj.Spawn();
+                netObj.Spawn(); // Spawn while active (default state after Instantiate)
             }
+
+            obj.gameObject.SetActive(false); // then deactivate
 
             availableObj.Enqueue(obj);
         }
@@ -47,6 +46,7 @@ public class Pool<T> where T : MonoBehaviour
                 netObj.Spawn ();
             }
 
+            obj.gameObject.SetActive(false);
             return obj;
         }
     }

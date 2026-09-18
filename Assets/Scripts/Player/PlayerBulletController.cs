@@ -17,6 +17,8 @@ public class PlayerBulletController : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(!IsServer) return; 
+
         // Get enemy script
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 

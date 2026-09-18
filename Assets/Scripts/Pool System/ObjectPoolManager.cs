@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ObjectPoolManager : NetworkBehaviour
 {
@@ -57,7 +58,18 @@ public class ObjectPoolManager : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        poolParentObj.transform.SetParent(transform);
+        //Find a valid navmesh position from pool spawning
+        Vector3 poolSpawnPos = Vector3.zero;
+        if (NavMesh.SamplePosition(Vector3.zero, out NavMeshHit hit, 50f, NavMesh.AllAreas))
+        {
+            poolSpawnPos = hit.position;
+        }
+
+        //create pool parent at valid position
+        poolParentObj = new GameObject("===PooledObj===");
+        poolParentObj.transform.position = poolSpawnPos;
+
+        //poolParentObj.transform.SetParent(transform);
 
         playerBulletPool = new Pool<PlayerBulletController>(
             playerBulletPrefab,
@@ -74,8 +86,6 @@ public class ObjectPoolManager : NetworkBehaviour
             spawnKamikazePrefab,
             spawnKamikazePoolSize);
 
-        Debug.Log("[ObjectPoolManager] Player bullet pool initialized on server");
-
         // Kamikaze pools
         kamikazePool = new Pool<KamikazeEnemy>(kamikazePrefab, kamikazePoolSize);
         kamikazeMediumPool = new Pool<KamikazeEnemy>(kamikazeMediumPrefab, kamikazePoolSize);
@@ -91,7 +101,6 @@ public class ObjectPoolManager : NetworkBehaviour
         bigMediumPool = new Pool<BigEnemy>(bigMediumPrefab, bigEnemyPoolSize);
         bigHardPool = new Pool<BigEnemy>(bigHardPrefab, bigEnemyPoolSize);
 
-        Debug.Log("[ObjectPoolManager] All enemy pools initialized");
     }
 
     //player bullet get and return
@@ -118,24 +127,13 @@ public class ObjectPoolManager : NetworkBehaviour
         ReturnEnemyBullet(bullet);
     }
 
-    //return enemies
-    public void ReturnEnemyAfterDelay(Enemy enemy, float delay)
-    {
-        StartCoroutine(ReturnEnemyAfterDelayCoroutine(enemy, delay));
-    }
-
-    private IEnumerator ReturnEnemyAfterDelayCoroutine(Enemy enemy, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        if (enemy is KamikazeEnemy kamikaze)
-        {
-            ReturnKamikaze(kamikaze);
-        }
-    }
-
+    //get enemies
     public Enemy GetEnemy(Enemy prefab)
     {
+        if (prefab == null) return null;
+
+        string prefabName = prefab.name.ToLower();
+
         if (prefab is KamikazeEnemy kam)
         {
             if (prefab.name.Contains("Medium")) return kamikazeMediumPool.Get();
@@ -154,6 +152,37 @@ public class ObjectPoolManager : NetworkBehaviour
             if (prefab.name.Contains("Hard")) return bigHardPool.Get();
             return bigPool.Get();
         }
+
         return null;
+    }
+
+    //return enemies
+    private IEnumerator ReturnEnemyAfterDelayCoroutine(Enemy enemy, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (enemy is KamikazeEnemy kam)
+        {
+            if (kam.name.Contains("Medium")) kamikazeMediumPool.Return(kam);
+            else if (kam.name.Contains("Hard")) kamikazeHardPool.Return(kam);
+            else kamikazePool.Return(kam);
+        }
+        else if (enemy is TurretEnemy tur)
+        {
+            if (tur.name.Contains("Medium")) turretMediumPool.Return(tur);
+            else if (tur.name.Contains("Hard")) turretHardPool.Return(tur);
+            else turretPool.Return(tur);
+        }
+        else if (enemy is BigEnemy big)
+        {
+            if(big.name.Contains("Medium")) bigMediumPool.Return(big);
+            else if(big.name.Contains("Hard")) bigHardPool.Return(big);
+            else bigPool.Return(big);
+        }
+    }
+
+    public void ReturnEnemyAfterDelay(Enemy enemy, float delay)
+    {
+        StartCoroutine(ReturnEnemyAfterDelayCoroutine(enemy, delay));
     }
 }
