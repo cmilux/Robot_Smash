@@ -211,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663539091826855021}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.3644939, z: -0, w: 0.9312058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 118.7, y: 31.44, z: 105.60428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -222,7 +222,7 @@ Transform:
   - {fileID: 5006602380329793620}
   - {fileID: 6486076332297913434}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 42.753, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1361223657341694240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 83375010
+  GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1
@@ -549,7 +549,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.3261719
+  m_Radius: 2
   m_Center: {x: 0, y: 0.10101795, z: 0.3369751}
 --- !u!114 &5919335108378291995
 MonoBehaviour:
@@ -758,7 +758,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.2894754
+  m_Radius: 2.3
   m_Center: {x: 0, y: 0.026423454, z: 0.32815552}
 --- !u!1 &3061763682965626647
 GameObject:
@@ -880,8 +880,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3112758913659697368}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24878132, y: 0.00000011920929, z: -0.000000022351742, w: 0.96855974}
-  m_LocalPosition: {x: -0.0000019073486, y: 7.2000027, z: -11.999994}
+  m_LocalRotation: {x: 0.24878119, y: -0, z: -0, w: 0.96855974}
+  m_LocalPosition: {x: 0, y: 7.2000027, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
