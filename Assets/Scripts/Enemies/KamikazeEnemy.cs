@@ -52,10 +52,9 @@ public class KamikazeEnemy : Enemy
     {
         if (isDead.Value) return;
 
-        PlayExplosionClientRpc();
+        isDead.Value = true;
         agent.isStopped = true;     //Enemy stops
-        timeBeforeDestroy = 5;      //Set time to be destroyed
-        Die(timeBeforeDestroy);     //Enemy death method is called
+        PlayExplosionClientRpc();
 
         if (target != null)
         {
@@ -67,6 +66,8 @@ public class KamikazeEnemy : Enemy
                 playerHealth.LoseHealthServerRpc(damage);
             }
         }
+
+        Die(timeBeforeDestroy);     //Enemy death method is called
     }
 
     [ClientRpc]

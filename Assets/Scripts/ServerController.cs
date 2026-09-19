@@ -4,16 +4,34 @@ using UnityEngine.InputSystem;
 
 public class ServerController : MonoBehaviour
 {
-    void Update()
-    {
-        if (Keyboard.current.hKey.wasPressedThisFrame)
-        {
-            NetworkManager.Singleton.StartHost(); //Starts hosts || Iniciamos el Host
-        }
+    InputSystem_Actions _controls;
 
-        if (Keyboard.current.cKey.wasPressedThisFrame)
-        {
-            NetworkManager.Singleton.StartClient(); //Starts client || Iniciamos como client
-        }
+    private void Awake()
+    {
+        _controls = new InputSystem_Actions();
+    }
+
+    private void OnEnable()
+    {
+        _controls.Server.Enable();
+        _controls.Server.StartHost.performed += OnStartHost;
+        _controls.Server.StartClient.performed += OnStartClient;
+    }
+
+    private void OnDisable()
+    {
+        _controls.Server.StartHost.performed -= OnStartHost;
+        _controls.Server.StartClient.performed -= OnStartClient;
+        _controls.Server.Disable();
+    }
+
+    private void OnStartHost(InputAction.CallbackContext context)
+    {
+        NetworkManager.Singleton.StartHost(); //Starts hosts || Iniciamos el Host
+    }
+
+    private void OnStartClient(InputAction.CallbackContext context)
+    {
+        NetworkManager.Singleton.StartClient(); //Starts client || Iniciamos como client
     }
 }
