@@ -252,10 +252,10 @@ public class Enemy : NetworkBehaviour
     {
         if (!IsServer) return;
 
+        agent.isStopped = true;
+
         if (isDead.Value)
         {
-            agent.isStopped = true;
-
             ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, timeBeforeDestroy);
 
             //Add experience to the killer || agrega experiencia a quien mato al enemigo
