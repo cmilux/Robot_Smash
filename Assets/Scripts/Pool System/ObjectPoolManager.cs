@@ -37,15 +37,17 @@ public class ObjectPoolManager : NetworkBehaviour
     [SerializeField] BigEnemy bigMediumPrefab;
     [SerializeField] BigEnemy bigHardPrefab;
 
-    //bullets || municion
+    //ammunition pools
     private Pool<PlayerBulletController> playerBulletPool;
     private Pool<TurretBullet> enemyBulletPool;
     private Pool<KamikazeEnemy> spawnKamikazePool;
 
+    //enemies pools
     private Pool<KamikazeEnemy> kamikazePool, kamikazeMediumPool, kamikazeHardPool;
     private Pool<TurretEnemy> turretPool, turretMediumPool, turretHardPool;
     private Pool<BigEnemy> bigPool, bigMediumPool, bigHardPool;
 
+    //pool parent game object
     [SerializeField] GameObject poolParentObj;
 
     private void Awake()
@@ -69,8 +71,7 @@ public class ObjectPoolManager : NetworkBehaviour
         poolParentObj = new GameObject("===PooledObj===");
         poolParentObj.transform.position = poolSpawnPos;
 
-        //poolParentObj.transform.SetParent(transform);
-
+        # region Ammunition Pools
         playerBulletPool = new Pool<PlayerBulletController>(
             playerBulletPrefab,
             playerBulletPoolSize,
@@ -85,7 +86,9 @@ public class ObjectPoolManager : NetworkBehaviour
         spawnKamikazePool = new Pool<KamikazeEnemy>(
             spawnKamikazePrefab,
             spawnKamikazePoolSize);
+        #endregion
 
+        #region Enemy pools
         // Kamikaze pools
         kamikazePool = new Pool<KamikazeEnemy>(kamikazePrefab, kamikazePoolSize);
         kamikazeMediumPool = new Pool<KamikazeEnemy>(kamikazeMediumPrefab, kamikazePoolSize);
@@ -100,12 +103,27 @@ public class ObjectPoolManager : NetworkBehaviour
         bigPool = new Pool<BigEnemy>(bigPrefab, bigEnemyPoolSize);
         bigMediumPool = new Pool<BigEnemy>(bigMediumPrefab, bigEnemyPoolSize);
         bigHardPool = new Pool<BigEnemy>(bigHardPrefab, bigEnemyPoolSize);
+        #endregion
 
     }
 
     //player bullet get and return
     public PlayerBulletController GetPlayerBullet() => playerBulletPool.Get();
     public void ReturnPlayerBullet(PlayerBulletController playerBullet) => playerBulletPool.Return(playerBullet);
+
+    //return player bullets
+    public void ReturnPlayerBulletAfterDelay(PlayerBulletController bullet, float delay)
+    {
+        StartCoroutine(ReturnPlayerBulletDelayCoroutine(bullet, delay));
+    }
+
+    private IEnumerator ReturnPlayerBulletDelayCoroutine(PlayerBulletController bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        bullet.NotifyReturnClientRpc();
+        ReturnPlayerBullet(bullet);
+    }
 
     //enemy bullet get and return
     public TurretBullet GetEnemyBullet() => enemyBulletPool.Get();
@@ -129,7 +147,7 @@ public class ObjectPoolManager : NetworkBehaviour
         ReturnEnemyBullet(bullet);
     }
 
-    //get enemies
+    //get enemies from pool
     public Enemy GetEnemy(Enemy prefab)
     {
         if (prefab == null) return null;
@@ -158,7 +176,7 @@ public class ObjectPoolManager : NetworkBehaviour
         return null;
     }
 
-    //return enemies
+    //return enemies to pool coroutine
     private IEnumerator ReturnEnemyAfterDelayCoroutine(Enemy enemy, float delay)
     {
         yield return new WaitForSeconds(delay);

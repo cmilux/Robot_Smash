@@ -202,8 +202,10 @@ public class PlayerAttackDistance : NetworkBehaviour
     [ServerRpc]
     void ShootServerRpc(Vector3 pos, Quaternion rotation)
     {
+        //pool a bullet
         PlayerBulletController bullet = ObjectPoolManager.instance.GetPlayerBullet();
 
+        //get net transform from buller
         NetworkTransform netTransform = bullet.GetComponent<NetworkTransform>();
         if (netTransform != null)
         {
@@ -224,7 +226,6 @@ public class PlayerAttackDistance : NetworkBehaviour
         {
             rb.isKinematic = false;
             rb.linearVelocity = bullet.transform.forward * bullet.speed;
-            //ObjectPoolManager.instance.ReturnPlayerBullet(bullet);
         }
     }
 }

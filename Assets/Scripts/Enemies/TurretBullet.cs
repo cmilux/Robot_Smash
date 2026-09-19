@@ -25,6 +25,7 @@ public class TurretBullet : NetworkBehaviour
         }
     }
 
+    //let the clients know the game obj is off
     [ClientRpc]
     public void NotifyReturnClientRpc()
     {

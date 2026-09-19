@@ -4,15 +4,25 @@ using UnityEngine;
 public class PlayerBulletController : NetworkBehaviour
 {
     public float speed;
-    [SerializeField] int damage = 10;
+    [SerializeField] int _damage = 10;
+    [SerializeField] float _destroyTimer;
     //add the car velocity
     public Vector3 extraVelocity;
-    private Rigidbody rb;
+    private Rigidbody _rb;
     public ulong shooterClientId;       // Saves the ID of the player who shot this bullet
 
     public override void OnNetworkSpawn()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        if (IsServer)
+        {
+            CancelInvoke(nameof(ReturnToPoolTimeout));
+            Invoke(nameof(ReturnToPoolTimeout), _destroyTimer);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -25,18 +35,30 @@ public class PlayerBulletController : NetworkBehaviour
         if (enemy != null)
         {
             // Apply damage to enemy
-            enemy.TakeDamageServerRpc(damage, shooterClientId);
+            enemy.TakeDamageServerRpc(_damage, shooterClientId);
 
             //if bullet hits enemy, follow player
             enemy.HandleFollowState();
 
+            CancelInvoke(nameof(ReturnToPoolTimeout));
+
             NotifyReturnClientRpc();
 
             // Delete the bullet after hitting the enemy
-            ObjectPoolManager.instance.ReturnPlayerBullet(this);
+            ObjectPoolManager.instance.ReturnPlayerBulletAfterDelay(this, 2f);
         }
     }
 
+    private void ReturnToPoolTimeout()
+    {
+        if (!IsServer) return;
+        if(!gameObject.activeSelf) return;
+
+        NotifyReturnClientRpc();
+        ObjectPoolManager.instance.ReturnPlayerBullet(this);
+    }
+
+    //let the clients know the game obj is off
     [ClientRpc]
     public void NotifyReturnClientRpc()
     {

@@ -266,6 +266,7 @@ public class Enemy : NetworkBehaviour
         }    
     }
 
+    //let the clients know the game obj is off
     [ClientRpc]
     public void NotifyDespawnClientRpc()
     {
