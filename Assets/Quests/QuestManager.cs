@@ -10,6 +10,8 @@ public class QuestManager : NetworkBehaviour
     //static singleton, any script can call QuestManager.Instance
     public static QuestManager Instance { get; private set; }
 
+    public event System.Action<int> OnQuestChanged;
+
     //every quest in the game, dragged in via inspector
     [SerializeField] private List<QuestData> allQuest;
 
@@ -115,6 +117,8 @@ public class QuestManager : NetworkBehaviour
         {
             objectiveProgress.Add(0);   //one progress counter per obj (starts at 0)
         }
+
+        OnQuestChanged?.Invoke(questId);
     }
 
     //server side game events call this directly (runs only in server)

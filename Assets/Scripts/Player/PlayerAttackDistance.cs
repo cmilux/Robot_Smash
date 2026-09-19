@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -184,9 +185,7 @@ public class PlayerAttackDistance : NetworkBehaviour
                 // Ask the server to spawn the bullet
                 ShootServerRpc(
                     point.position,
-                    point.rotation,
-                    shooterVelocity,
-                    equippedWeaponData.damageBase, equippedWeaponData.bulletSpeed
+                    point.rotation
                 );
             }
 
@@ -200,28 +199,33 @@ public class PlayerAttackDistance : NetworkBehaviour
         }
     }
 
-    // The server creates the bullet
-    // and gives ownership to the player who shot it
     [ServerRpc]
-    void ShootServerRpc(
-        Vector3 position,
-        Quaternion rotation,
-        Vector3 shooterVelocity, int damage, float bulletSpeed)
+    void ShootServerRpc(Vector3 pos, Quaternion rotation)
     {
-        GameObject bullet =
-            Instantiate(bulletPrefab, position, rotation);
+        //pool a bullet
+        PlayerBulletController bullet = ObjectPoolManager.instance.GetPlayerBullet();
 
-        PlayerBulletController bulletController =
-            bullet.GetComponent<PlayerBulletController>();
-
-        if (bulletController != null)
+        //get net transform from buller
+        NetworkTransform netTransform = bullet.GetComponent<NetworkTransform>();
+        if (netTransform != null)
         {
-            bulletController.extraVelocity = shooterVelocity;
-            bulletController.damage = damage;
-            bulletController.speed = bulletSpeed;
+            netTransform.Teleport(pos, rotation, bullet.transform.localScale);
+        }
+        else
+        {
+            bullet.transform.position = pos;
+            bullet.transform.rotation = rotation;
         }
 
-        bullet.GetComponent<NetworkObject>()
-            .SpawnWithOwnership(OwnerClientId);
+        bullet.shooterClientId = OwnerClientId;
+        bullet.gameObject.SetActive(true);
+
+        //set velocity and other state directly on server
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.linearVelocity = bullet.transform.forward * bullet.speed;
+        }
     }
 }
