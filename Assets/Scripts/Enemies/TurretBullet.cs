@@ -20,11 +20,16 @@ public class TurretBullet : NetworkBehaviour
                 playerHealth.LoseHealthServerRpc(damage);
             }
 
-            if (NetworkObject != null && NetworkObject.IsSpawned)
-            {
-                //Despawns bullet || Elimina la bala
-                NetworkObject.Despawn();
-            }
+            NotifyReturnClientRpc();
+            ObjectPoolManager.instance.ReturnEnemyBullet(this);
         }
+    }
+
+    //let the clients know the game obj is off
+    [ClientRpc]
+    public void NotifyReturnClientRpc()
+    {
+        if (IsServer) return;
+        gameObject.SetActive(false);
     }
 }
