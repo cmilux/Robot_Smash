@@ -4,13 +4,17 @@ using UnityEngine;
 public class PlayerBulletController : NetworkBehaviour
 {
     public float speed;
-    [SerializeField] int _damage = 10;
+    [SerializeField] int _damage;
     [SerializeField] float _destroyTimer;
     //add the car velocity
     public Vector3 extraVelocity;
     private Rigidbody _rb;
     public ulong shooterClientId;       // Saves the ID of the player who shot this bullet
 
+    public void SetDamage(int damage)
+    {
+        _damage = damage;
+    }
     public override void OnNetworkSpawn()
     {
         _rb = GetComponent<Rigidbody>();

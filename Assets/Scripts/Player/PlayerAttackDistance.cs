@@ -1,3 +1,4 @@
+using System;
 using Unity.Netcode;
 using Unity.Netcode.Components;
 using UnityEngine;
@@ -173,9 +174,6 @@ public class PlayerAttackDistance : NetworkBehaviour
 
         if (equippedWeaponData == null) return;
 
-        // Block fire if this weapon use ammo and there is none left
-        if (equippedWeaponData.maxAmmo >= 0 && currentAmmo <= 0) return;
-
         if (value.isPressed && Time.time >= nextFireTime)
         {
             Vector3 shooterVelocity = rb.linearVelocity;
@@ -185,7 +183,10 @@ public class PlayerAttackDistance : NetworkBehaviour
                 // Ask the server to spawn the bullet
                 ShootServerRpc(
                     point.position,
-                    point.rotation
+                    point.rotation,
+                    rb.linearVelocity,
+                    equippedWeaponData.damageBase,
+                    equippedWeaponData.bulletSpeed
                 );
             }
 
@@ -200,7 +201,7 @@ public class PlayerAttackDistance : NetworkBehaviour
     }
 
     [ServerRpc]
-    void ShootServerRpc(Vector3 pos, Quaternion rotation)
+    void ShootServerRpc(Vector3 pos, Quaternion rotation, Vector3 shooterVelocity, int damage, float bulletSpeed)
     {
         //pool a bullet
         PlayerBulletController bullet = ObjectPoolManager.instance.GetPlayerBullet();
@@ -218,6 +219,10 @@ public class PlayerAttackDistance : NetworkBehaviour
         }
 
         bullet.shooterClientId = OwnerClientId;
+        bullet.SetDamage(damage);  
+        bullet.speed = bulletSpeed;
+        bullet.extraVelocity = shooterVelocity;
+
         bullet.gameObject.SetActive(true);
 
         //set velocity and other state directly on server
@@ -225,7 +230,12 @@ public class PlayerAttackDistance : NetworkBehaviour
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.linearVelocity = bullet.transform.forward * bullet.speed;
+
+            Vector3 bulletDirection = bullet.transform.forward;
+            float forwardBoost = Vector3.Dot(shooterVelocity, bulletDirection);
+            forwardBoost = Mathf.Max(forwardBoost, 0f);
+
+            rb.linearVelocity = bulletDirection * (bulletSpeed + forwardBoost);
         }
     }
 }
