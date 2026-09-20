@@ -91,6 +91,7 @@ public class PlayerAttackDistance : NetworkBehaviour
                         aimRotation.Value = aim.rotation;
                     }
                 }
+                TryShoot();
             }
             else
             {
@@ -166,16 +167,14 @@ public class PlayerAttackDistance : NetworkBehaviour
         }
 
     }
-    public void OnAttack(InputValue value)
+    public void TryShoot()
     {
         if (!enabled) return;
 
-        if (!IsOwner) return;
-
         if (equippedWeaponData == null) return;
+        if (Time.time < nextFireTime) return;
 
-        if (value.isPressed && Time.time >= nextFireTime)
-        {
+        
             Vector3 shooterVelocity = rb.linearVelocity;
 
             foreach(Transform point in firePoints)
@@ -189,15 +188,7 @@ public class PlayerAttackDistance : NetworkBehaviour
                     equippedWeaponData.bulletSpeed
                 );
             }
-
-
-            //only consume ammo if this weapon actually use it
-            if (equippedWeaponData.maxAmmo >= 0)
-            {
-                currentAmmo--;
-            }
             nextFireTime = Time.time + equippedWeaponData.cooldownBase;
-        }
     }
 
     [ServerRpc]
