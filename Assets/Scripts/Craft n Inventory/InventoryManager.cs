@@ -79,6 +79,11 @@ public class InventoryManager : NetworkBehaviour
             { ItemType.saws, equippedSawsId },
             { ItemType.carBumper, equippedBumperId },
         };
+
+        if(playerAttack != null)
+        {
+            playerAttack.OnWeaponBroke += HandleWeaponBroke;
+        }
     }
 
     public override void OnNetworkSpawn()
@@ -133,6 +138,12 @@ public class InventoryManager : NetworkBehaviour
         equippedBumperId.OnValueChanged -= OnBumperChanged;
         currentPaintId.OnValueChanged -= OnPaintChanged;
         equippedCarVariantId.OnValueChanged -= OnCarVariantChanged;
+
+        if(playerAttack != null)
+        {
+            playerAttack.OnWeaponBroke -= HandleWeaponBroke;
+        }
+
     }
 
     // this function runs on all clients when the weapon Id changes
@@ -256,7 +267,6 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
-
     private void OnCarVariantChanged(int oldId, int newId)
     {
         Debug.Log($"OnCarVariantChanged called: {oldId} → {newId}");
@@ -483,5 +493,30 @@ public class InventoryManager : NetworkBehaviour
         }
         // Spawn the object so all clients can see it
         droppedItem.GetComponent<NetworkObject>().Spawn();
+    }
+
+    private void HandleWeaponBroke()
+    {
+        if (!IsOwner) return;
+
+        if (equippedIds.TryGetValue(ItemType.weapon, out NetworkVariable<int> slot))
+        {
+            slot.Value = -1;
+        }
+        ClearSlotOfType(ItemType.weapon);
+    }
+    private void ClearSlotOfType(ItemType type)
+    {
+        if (hotbarSlotsContainer == null) return;
+
+        Slot[] hotbarSlots = hotbarSlotsContainer.GetComponentsInChildren<Slot>(true);
+        foreach (Slot slot in hotbarSlots)
+        {
+            if (slot.itemData != null && slot.itemData.itemType == type)
+            {
+                slot.ClearItem();
+                break;
+            }
+        }
     }
 }

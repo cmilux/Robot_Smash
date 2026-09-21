@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackDistance : NetworkBehaviour
 {
+    public event Action OnWeaponBroke;
+
     public Transform aim;
     [HideInInspector] public Transform[] firePoints;
     public GameObject bulletPrefab;
@@ -19,6 +21,8 @@ public class PlayerAttackDistance : NetworkBehaviour
     public float maxVerticalAngle = 15f; // How far down the gun can aim
 
     public float returnSpeed = 5f; // How fast the aim returns to center
+
+    public int currentDurability;
 
     private GameObject currentEnemy;
 
@@ -108,6 +112,11 @@ public class PlayerAttackDistance : NetworkBehaviour
     public void SetWeaponData(ItemData weaponData)
     {
         equippedWeaponData = weaponData;
+
+        if(equippedWeaponData != null)
+        {
+            currentDurability = weaponData.maxDurability;
+        }
     }
     void AimAtEnemy()
     {
@@ -185,7 +194,27 @@ public class PlayerAttackDistance : NetworkBehaviour
                     equippedWeaponData.bulletSpeed
                 );
             }
-            nextFireTime = Time.time + equippedWeaponData.cooldownBase;
+        nextFireTime = Time.time + equippedWeaponData.cooldownBase;
+
+        UseDurability();//each shot
+    }
+    void UseDurability()
+    {
+        if(equippedWeaponData.maxDurability < 0) return;  //never breaks
+
+        currentDurability--;
+
+        if(currentDurability <= 0)
+        {
+            BreakWeapon();
+        }
+    }
+    void BreakWeapon()
+    {
+        equippedWeaponData = null;
+        enabled = false;
+
+        OnWeaponBroke?.Invoke();//el inventorymanager se suscribe
     }
 
     [ServerRpc]
