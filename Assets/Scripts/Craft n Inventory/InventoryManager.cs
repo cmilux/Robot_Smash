@@ -83,6 +83,7 @@ public class InventoryManager : NetworkBehaviour
         if(playerAttack != null)
         {
             playerAttack.OnWeaponBroke += HandleWeaponBroke;
+            playerAttack.OnDurabilityChanged += HandleDurabilityChanged;
         }
     }
 
@@ -142,6 +143,7 @@ public class InventoryManager : NetworkBehaviour
         if(playerAttack != null)
         {
             playerAttack.OnWeaponBroke -= HandleWeaponBroke;
+            playerAttack.OnDurabilityChanged -= HandleDurabilityChanged;
         }
 
     }
@@ -505,6 +507,12 @@ public class InventoryManager : NetworkBehaviour
         }
         ClearSlotOfType(ItemType.weapon);
     }
+    private void HandleDurabilityChanged(int current, int max)
+    {
+        if (!IsOwner) return;
+
+        UpdateHotbarDurabilityBar(ItemType.weapon, current,max);
+    }
     private void ClearSlotOfType(ItemType type)
     {
         if (hotbarSlotsContainer == null) return;
@@ -515,6 +523,20 @@ public class InventoryManager : NetworkBehaviour
             if (slot.itemData != null && slot.itemData.itemType == type)
             {
                 slot.ClearItem();
+                break;
+            }
+        }
+    }
+    private void UpdateHotbarDurabilityBar(ItemType type ,int current, int max)
+    {
+        if (hotbarSlotsContainer == null) return;
+
+        Slot[] hotbarSlots = hotbarSlotsContainer.GetComponentsInChildren<Slot>(true);
+        foreach (Slot slot in hotbarSlots)
+        {
+            if (slot.itemData != null && slot.itemData.itemType == type)
+            {
+                slot.SetDurability(current, max);
                 break;
             }
         }

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerAttackDistance : NetworkBehaviour
 {
     public event Action OnWeaponBroke;
+    public event Action<int, int> OnDurabilityChanged;
 
     public Transform aim;
     [HideInInspector] public Transform[] firePoints;
@@ -116,6 +117,8 @@ public class PlayerAttackDistance : NetworkBehaviour
         if(equippedWeaponData != null)
         {
             currentDurability = weaponData.maxDurability;
+
+            OnDurabilityChanged?.Invoke(currentDurability, weaponData.maxDurability);
         }
     }
     void AimAtEnemy()
@@ -203,6 +206,7 @@ public class PlayerAttackDistance : NetworkBehaviour
         if(equippedWeaponData.maxDurability < 0) return;  //never breaks
 
         currentDurability--;
+        OnDurabilityChanged?.Invoke(currentDurability, equippedWeaponData.maxDurability);
 
         if(currentDurability <= 0)
         {

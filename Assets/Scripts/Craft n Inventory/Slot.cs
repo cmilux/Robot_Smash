@@ -11,6 +11,9 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     [HideInInspector] public ItemData itemData;
     [HideInInspector] public int quantity;
 
+    [Header("Durability")]
+    public Image durabilityBar; 
+
     public Image icon;
 
     public TextMeshProUGUI quantityText;
@@ -22,6 +25,18 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         quantityText = transform.Find("Quantity")?.GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    public void SetDurability(int current, int max)
+    {
+        if (durabilityBar == null) return;
+
+        if(max <= 0)// never breaks
+        {
+            durabilityBar.gameObject.SetActive(false);
+            return;
+        }
+        durabilityBar.gameObject.SetActive(true);
+        durabilityBar.fillAmount = Mathf.Clamp01((float) current/max);
+    }
     //Put an item into this slot and update the UI
     public void SetItem(ItemData itemData, int quantity)
     {
@@ -45,6 +60,8 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
         icon.sprite = itemData.icon;
         quantityText.text = quantity.ToString();
+
+        if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
 
         if (isHotbarSlot)
         {
@@ -72,7 +89,9 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         quantity = 0; 
         icon.sprite = null;
         quantityText.text = "";
-    }
+
+        if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
+}
 
     //encontrar el InventoryManager del jugador local
     private InventoryManager GetLocalInventoryManager()
