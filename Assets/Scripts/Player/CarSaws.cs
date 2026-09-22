@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -21,6 +22,10 @@ public class CarSaws : NetworkBehaviour
 
     private Dictionary<GameObject, float> nextDamageTime = new Dictionary<GameObject, float>();
 
+    public int currentDurability;
+
+    public event Action OnWeaponBroke;
+    public event Action<int, int> OnDurabilityChanged;
     //the current equipped saws  base data (damage, cooldown, etc.)
     [SerializeField] ItemData equippedWeaponData;
     public override void OnNetworkSpawn()
@@ -32,6 +37,12 @@ public class CarSaws : NetworkBehaviour
     public void SetWeaponData(ItemData weaponData)
     {
         equippedWeaponData = weaponData;
+
+        if(equippedWeaponData != null)
+        {
+            currentDurability = equippedWeaponData.maxDurability;
+            OnDurabilityChanged?.Invoke(currentDurability, weaponData.maxDurability);
+        }
     }
 
     // Called by the Input System when pressing the saw power button(barra espaciadora)
@@ -40,11 +51,11 @@ public class CarSaws : NetworkBehaviour
         if (!IsOwner) return;
         if (!isEquipped) return;
         if (!value.isPressed) return;
-
         if (sawsOn) return; // already spinning ignore extra press
-
         if (onCooldown) return; // still waiting to be usable again
+        if(equippedWeaponData == null) return;
 
+        UseDurability();
         StartCoroutine(SawsOnRoutine());
     }
     // Turns the saws on, wait, then turns them off automatic
@@ -81,5 +92,26 @@ public class CarSaws : NetworkBehaviour
             enemy.TakeDamageServerRpc(equippedWeaponData.damageBase, shooterClientId);
             nextDamageTime[collision.gameObject] = Time.time + damageRate;
         }
+    }
+
+    public void UseDurability()
+    {
+        if (equippedWeaponData.maxDurability < 0) return;
+
+        currentDurability--;
+        OnDurabilityChanged?.Invoke(currentDurability, equippedWeaponData.maxDurability);
+        
+        if(currentDurability <= 0)
+        {
+            BreakWeapon();
+            OnWeaponBroke?.Invoke();
+        }
+    }
+
+    void BreakWeapon()
+    {
+        equippedWeaponData = null;
+        isEquipped = false;
+        sawsOn = false;
     }
 }

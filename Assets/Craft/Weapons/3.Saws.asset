@@ -23,8 +23,7 @@ MonoBehaviour:
   carVariant: {fileID: 0}
   damageBase: 10
   cooldownBase: 5
-  maxDurability: 15
-  maxAmmo: -1
+  maxDurability: 5
   bulletsPerShot: 1
   bulletSpeed: 20
   spreadAngle: 0

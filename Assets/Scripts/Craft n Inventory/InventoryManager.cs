@@ -83,7 +83,17 @@ public class InventoryManager : NetworkBehaviour
         if(playerAttack != null)
         {
             playerAttack.OnWeaponBroke += HandleWeaponBroke;
-            playerAttack.OnDurabilityChanged += HandleDurabilityChanged;
+            playerAttack.OnDurabilityChanged += HandleWeaponDurabilityChanged;
+        }
+        if(carSaws != null)
+        {
+            carSaws.OnWeaponBroke += HandleSawsBroke;
+            carSaws.OnDurabilityChanged += HandleSawsDurabilityChanged;
+        }
+        if(carBumper != null)
+        {
+            carBumper.OnWeaponBroke += HandleBumperBroke;
+            carBumper.OnDurabilityChanged += HandleBumperDurabilityChanged;
         }
     }
 
@@ -143,9 +153,18 @@ public class InventoryManager : NetworkBehaviour
         if(playerAttack != null)
         {
             playerAttack.OnWeaponBroke -= HandleWeaponBroke;
-            playerAttack.OnDurabilityChanged -= HandleDurabilityChanged;
+            playerAttack.OnDurabilityChanged -= HandleBumperDurabilityChanged;
         }
-
+        if(carSaws != null)
+        {
+            carSaws.OnWeaponBroke -= HandleSawsBroke;
+            carSaws.OnDurabilityChanged -= HandleSawsDurabilityChanged;
+        }
+        if(carBumper != null)
+        {
+            carBumper.OnWeaponBroke -= HandleBumperBroke;
+            carBumper.OnDurabilityChanged -= HandleBumperDurabilityChanged;
+        }
     }
 
     // this function runs on all clients when the weapon Id changes
@@ -500,18 +519,40 @@ public class InventoryManager : NetworkBehaviour
     private void HandleWeaponBroke()
     {
         if (!IsOwner) return;
-
-        if (equippedIds.TryGetValue(ItemType.weapon, out NetworkVariable<int> slot))
-        {
-            slot.Value = -1;
-        }
+        if (equippedIds.TryGetValue(ItemType.weapon, out NetworkVariable<int> slot)) slot.Value = -1;
         ClearSlotOfType(ItemType.weapon);
     }
-    private void HandleDurabilityChanged(int current, int max)
+
+    private void HandleWeaponDurabilityChanged(int current, int max)
     {
         if (!IsOwner) return;
+        UpdateHotbarDurabilityBar(ItemType.weapon, current, max);
+    }
 
-        UpdateHotbarDurabilityBar(ItemType.weapon, current,max);
+    private void HandleSawsBroke()
+    {
+        if (!IsOwner) return;
+        if (equippedIds.TryGetValue(ItemType.saws, out NetworkVariable<int> slot)) slot.Value = -1;
+        ClearSlotOfType(ItemType.saws);
+    }
+
+    private void HandleSawsDurabilityChanged(int current, int max)
+    {
+        if (!IsOwner) return;
+        UpdateHotbarDurabilityBar(ItemType.saws, current, max);
+    }
+
+    private void HandleBumperBroke()
+    {
+        if (!IsOwner) return;
+        if (equippedIds.TryGetValue(ItemType.carBumper, out NetworkVariable<int> slot)) slot.Value = -1;
+        ClearSlotOfType(ItemType.carBumper);
+    }
+
+    private void HandleBumperDurabilityChanged(int current, int max)
+    {
+        if (!IsOwner) return;
+        UpdateHotbarDurabilityBar(ItemType.carBumper, current, max);
     }
     private void ClearSlotOfType(ItemType type)
     {
