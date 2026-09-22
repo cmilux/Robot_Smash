@@ -153,7 +153,7 @@ public class InventoryManager : NetworkBehaviour
         if(playerAttack != null)
         {
             playerAttack.OnWeaponBroke -= HandleWeaponBroke;
-            playerAttack.OnDurabilityChanged -= HandleBumperDurabilityChanged;
+            playerAttack.OnDurabilityChanged -= HandleWeaponDurabilityChanged;
         }
         if(carSaws != null)
         {
