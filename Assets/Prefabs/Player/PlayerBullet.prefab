@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5739366280798919114}
   m_Layer: 7
   m_Name: PlayerBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,10 +180,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3085749a97f85148b924bc3f981bbbd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletController
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBulletController
   ShowTopMostFoldoutHeaderGroup: 1
   speed: 20
-  damage: 10
+  _damage: 10
+  _destroyTimer: 2
+  extraVelocity: {x: 0, y: 0, z: 0}
+  shooterClientId: 0
 --- !u!114 &5739366280798919114
 MonoBehaviour:
   m_ObjectHideFlags: 0

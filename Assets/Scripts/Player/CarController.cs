@@ -10,8 +10,10 @@ public class CarController : NetworkBehaviour
     // Dash settings
     public float dashSpeed = 50f;
     public float dashDuration = 0.5f;
+    public float dashCooldownBackup = 3f;//use only if the bumper has no ItemData assigned
     public bool isDashing = false;
     public float acceleration = 8f; // how fast it reaches target speed
+
     private CarBumper carBumper;
     // If true the car cannot move
     public bool isFrozen = false;
@@ -19,6 +21,7 @@ public class CarController : NetworkBehaviour
     private Rigidbody rb;
     private Vector2 moveInput;
     private float currentSpeed;
+    private float nextDashTime;
 
     void Awake()
     {
@@ -69,10 +72,13 @@ public class CarController : NetworkBehaviour
     public void ActivateDash()
     {  //no se puede dashear sin paragolpe 
         if (carBumper == null || !carBumper.isEquipped) return;
+        if (Time.time < nextDashTime) return;
 
         //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {
+            carBumper.UseDurability();
+
             StartCoroutine(DashRoutine());
         }
     }
@@ -92,6 +98,9 @@ public class CarController : NetworkBehaviour
         // Return to normal speed after waiting
         speed = originalSpeed;
         isDashing = false;
+
+        float cooldown = carBumper.GetDashCooldown(dashCooldownBackup);
+        nextDashTime = Time.time + cooldown;
     }
 
     void FlipCar()

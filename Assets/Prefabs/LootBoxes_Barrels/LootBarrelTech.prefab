@@ -108,7 +108,8 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 60199cb6ede1efb44b690a6dbb9f8f6d, type: 2}
     minAmount: 2
     maxAmount: 4
-  hitsToBreak: 3
+  hitsToBreak: 1
+  dropDelay: 2
 --- !u!1001 &1764930478445761523
 PrefabInstance:
   m_ObjectHideFlags: 0

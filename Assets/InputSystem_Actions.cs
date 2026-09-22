@@ -183,24 +183,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hotbar4"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ef52394-a9fc-40a4-9ead-f36ac9b5a2cb"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hotbar5"",
-                    ""type"": ""Button"",
-                    ""id"": ""e2c9f712-89b2-412d-a045-e9669c7f9a16"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""OpenInventory"",
                     ""type"": ""Button"",
                     ""id"": ""9d620a80-6501-47df-a72e-542c717a5cad"",
@@ -576,30 +558,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""286dd761-aadd-4247-905f-670dccb870b5"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""32291097-42df-4dec-b3c2-a6b5c0df8455"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8451440e-014c-46e7-a120-44f47fc9393c"",
                     ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79d80ca2-06e7-4a88-b6ca-996e3040313d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1142,6 +1113,87 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecb8b410-29a5-484a-93d5-1dcd29ee5e5b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Server"",
+            ""id"": ""e08fae7d-3177-462c-b855-b855448f75a7"",
+            ""actions"": [
+                {
+                    ""name"": ""StartHost"",
+                    ""type"": ""Button"",
+                    ""id"": ""a65ff93a-ab1c-4151-a17e-53d0d990c5e8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StartClient"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b52e169-1063-4ff8-9b4e-5317b3e0d4aa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e4eb0a16-f31c-4056-a59d-f24a94635ccf"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartHost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6dc8652c-3275-4c37-a4d4-94546d274846"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartHost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""374f0085-73bd-46d1-b9c0-28e40526a2a0"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartClient"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a901230d-a82c-472e-9869-fd9172d66b82"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartClient"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1221,8 +1273,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Hotbar1 = m_Player.FindAction("Hotbar1", throwIfNotFound: true);
         m_Player_Hotbar2 = m_Player.FindAction("Hotbar2", throwIfNotFound: true);
         m_Player_Hotbar3 = m_Player.FindAction("Hotbar3", throwIfNotFound: true);
-        m_Player_Hotbar4 = m_Player.FindAction("Hotbar4", throwIfNotFound: true);
-        m_Player_Hotbar5 = m_Player.FindAction("Hotbar5", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1237,12 +1287,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_OpenInventory = m_UI.FindAction("OpenInventory", throwIfNotFound: true);
+        // Server
+        m_Server = asset.FindActionMap("Server", throwIfNotFound: true);
+        m_Server_StartHost = m_Server.FindAction("StartHost", throwIfNotFound: true);
+        m_Server_StartClient = m_Server.FindAction("StartClient", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Server.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Server.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1328,8 +1383,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Hotbar1;
     private readonly InputAction m_Player_Hotbar2;
     private readonly InputAction m_Player_Hotbar3;
-    private readonly InputAction m_Player_Hotbar4;
-    private readonly InputAction m_Player_Hotbar5;
     private readonly InputAction m_Player_OpenInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -1382,14 +1435,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Hotbar3".
         /// </summary>
         public InputAction @Hotbar3 => m_Wrapper.m_Player_Hotbar3;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar4".
-        /// </summary>
-        public InputAction @Hotbar4 => m_Wrapper.m_Player_Hotbar4;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar5".
-        /// </summary>
-        public InputAction @Hotbar5 => m_Wrapper.m_Player_Hotbar5;
         /// <summary>
         /// Provides access to the underlying input action "Player/OpenInventory".
         /// </summary>
@@ -1450,12 +1495,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Hotbar3.started += instance.OnHotbar3;
             @Hotbar3.performed += instance.OnHotbar3;
             @Hotbar3.canceled += instance.OnHotbar3;
-            @Hotbar4.started += instance.OnHotbar4;
-            @Hotbar4.performed += instance.OnHotbar4;
-            @Hotbar4.canceled += instance.OnHotbar4;
-            @Hotbar5.started += instance.OnHotbar5;
-            @Hotbar5.performed += instance.OnHotbar5;
-            @Hotbar5.canceled += instance.OnHotbar5;
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
@@ -1500,12 +1539,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Hotbar3.started -= instance.OnHotbar3;
             @Hotbar3.performed -= instance.OnHotbar3;
             @Hotbar3.canceled -= instance.OnHotbar3;
-            @Hotbar4.started -= instance.OnHotbar4;
-            @Hotbar4.performed -= instance.OnHotbar4;
-            @Hotbar4.canceled -= instance.OnHotbar4;
-            @Hotbar5.started -= instance.OnHotbar5;
-            @Hotbar5.performed -= instance.OnHotbar5;
-            @Hotbar5.canceled -= instance.OnHotbar5;
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
@@ -1748,6 +1781,113 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // Server
+    private readonly InputActionMap m_Server;
+    private List<IServerActions> m_ServerActionsCallbackInterfaces = new List<IServerActions>();
+    private readonly InputAction m_Server_StartHost;
+    private readonly InputAction m_Server_StartClient;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Server".
+    /// </summary>
+    public struct ServerActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public ServerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Server/StartHost".
+        /// </summary>
+        public InputAction @StartHost => m_Wrapper.m_Server_StartHost;
+        /// <summary>
+        /// Provides access to the underlying input action "Server/StartClient".
+        /// </summary>
+        public InputAction @StartClient => m_Wrapper.m_Server_StartClient;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Server; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="ServerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(ServerActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="ServerActions" />
+        public void AddCallbacks(IServerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ServerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ServerActionsCallbackInterfaces.Add(instance);
+            @StartHost.started += instance.OnStartHost;
+            @StartHost.performed += instance.OnStartHost;
+            @StartHost.canceled += instance.OnStartHost;
+            @StartClient.started += instance.OnStartClient;
+            @StartClient.performed += instance.OnStartClient;
+            @StartClient.canceled += instance.OnStartClient;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="ServerActions" />
+        private void UnregisterCallbacks(IServerActions instance)
+        {
+            @StartHost.started -= instance.OnStartHost;
+            @StartHost.performed -= instance.OnStartHost;
+            @StartHost.canceled -= instance.OnStartHost;
+            @StartClient.started -= instance.OnStartClient;
+            @StartClient.performed -= instance.OnStartClient;
+            @StartClient.canceled -= instance.OnStartClient;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="ServerActions.UnregisterCallbacks(IServerActions)" />.
+        /// </summary>
+        /// <seealso cref="ServerActions.UnregisterCallbacks(IServerActions)" />
+        public void RemoveCallbacks(IServerActions instance)
+        {
+            if (m_Wrapper.m_ServerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="ServerActions.AddCallbacks(IServerActions)" />
+        /// <seealso cref="ServerActions.RemoveCallbacks(IServerActions)" />
+        /// <seealso cref="ServerActions.UnregisterCallbacks(IServerActions)" />
+        public void SetCallbacks(IServerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ServerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ServerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="ServerActions" /> instance referencing this action map.
+    /// </summary>
+    public ServerActions @Server => new ServerActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1891,20 +2031,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHotbar3(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Hotbar4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar4(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hotbar5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar5(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1996,5 +2122,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenInventory(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Server" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="ServerActions.AddCallbacks(IServerActions)" />
+    /// <seealso cref="ServerActions.RemoveCallbacks(IServerActions)" />
+    public interface IServerActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "StartHost" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStartHost(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "StartClient" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStartClient(InputAction.CallbackContext context);
     }
 }

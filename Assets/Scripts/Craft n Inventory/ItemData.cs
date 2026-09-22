@@ -32,4 +32,12 @@ public class ItemData : ScriptableObject
     [Header("Car Variant")]
     public CarVariantData carVariant;
 
+    [Header("Weapon Stats")]
+
+    public int damageBase= 5;
+    public float cooldownBase= 2f;
+    public int maxDurability = -1;//-1 means it never breaks
+    public int bulletsPerShot = 1; //how many bullets fire
+    public float bulletSpeed = 20;
+    public float spreadAngle = 0f;//0 = no spread (direction accurate)
 }

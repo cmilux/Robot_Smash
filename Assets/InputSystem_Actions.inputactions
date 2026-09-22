@@ -97,24 +97,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hotbar4",
-                    "type": "Button",
-                    "id": "9ef52394-a9fc-40a4-9ead-f36ac9b5a2cb",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar5",
-                    "type": "Button",
-                    "id": "e2c9f712-89b2-412d-a045-e9669c7f9a16",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "OpenInventory",
                     "type": "Button",
                     "id": "9d620a80-6501-47df-a72e-542c717a5cad",
@@ -490,30 +472,19 @@
                 },
                 {
                     "name": "",
-                    "id": "286dd761-aadd-4247-905f-670dccb870b5",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "32291097-42df-4dec-b3c2-a6b5c0df8455",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8451440e-014c-46e7-a120-44f47fc9393c",
                     "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79d80ca2-06e7-4a88-b6ca-996e3040313d",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1054,6 +1025,87 @@
                     "processors": "",
                     "groups": "",
                     "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecb8b410-29a5-484a-93d5-1dcd29ee5e5b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Server",
+            "id": "e08fae7d-3177-462c-b855-b855448f75a7",
+            "actions": [
+                {
+                    "name": "StartHost",
+                    "type": "Button",
+                    "id": "a65ff93a-ab1c-4151-a17e-53d0d990c5e8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartClient",
+                    "type": "Button",
+                    "id": "3b52e169-1063-4ff8-9b4e-5317b3e0d4aa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e4eb0a16-f31c-4056-a59d-f24a94635ccf",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartHost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6dc8652c-3275-4c37-a4d4-94546d274846",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartHost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "374f0085-73bd-46d1-b9c0-28e40526a2a0",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartClient",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a901230d-a82c-472e-9869-fd9172d66b82",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartClient",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

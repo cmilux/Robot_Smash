@@ -11,15 +11,32 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     [HideInInspector] public ItemData itemData;
     [HideInInspector] public int quantity;
 
+    [Header("Durability")]
+    public Image durabilityBar; 
+
     public Image icon;
 
     public TextMeshProUGUI quantityText;
+
+    public bool isHotbarSlot = false;
     private void Start()
     {
         // Find the text object that shows the item count
         quantityText = transform.Find("Quantity")?.GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    public void SetDurability(int current, int max)
+    {
+        if (durabilityBar == null) return;
+
+        if(max <= 0)// never breaks
+        {
+            durabilityBar.gameObject.SetActive(false);
+            return;
+        }
+        durabilityBar.gameObject.SetActive(true);
+        durabilityBar.fillAmount = Mathf.Clamp01((float) current/max);
+    }
     //Put an item into this slot and update the UI
     public void SetItem(ItemData itemData, int quantity)
     {
@@ -27,20 +44,67 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         if (quantityText == null) Debug.LogError("QUANTITY TEXT IS NULL", this);
         if (itemData == null) Debug.LogError("ITEMDATA IS NULL", this);
 
+        //si este slot es del hotbar y ya tenia algo distinto,desequipar eso primero
+        if (isHotbarSlot && this.itemData != null && this.itemData != itemData)
+        {
+            InventoryManager inventoryManager = GetLocalInventoryManager();
+
+            if (inventoryManager != null)
+            {
+                inventoryManager.UnequipFromSlot(this.itemData);
+            }
+        }
+
         this.itemData = itemData;
         this.quantity = quantity;
 
         icon.sprite = itemData.icon;
         quantityText.text = quantity.ToString();
+
+        if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
+
+        if (isHotbarSlot)
+        {
+            InventoryManager inventoryManager = GetLocalInventoryManager();
+
+            if (inventoryManager != null)
+            {
+                inventoryManager.EquipFromSlot(itemData);
+            }
+        }
     }
 
     // Empty this slot and clean the UI
     public void ClearItem()
-    {
+    {   
+        if(isHotbarSlot && itemData != null)
+        {
+            InventoryManager inventoryManager = GetLocalInventoryManager();
+            if (inventoryManager != null)
+            {
+                inventoryManager.UnequipFromSlot(itemData);
+            }
+        }
         itemData = null;
         quantity = 0; 
         icon.sprite = null;
         quantityText.text = "";
+
+        if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
+}
+
+    //encontrar el InventoryManager del jugador local
+    private InventoryManager GetLocalInventoryManager()
+    {
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.LocalClient != null)
+        {
+            var localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject;
+            if (localPlayerObject != null)
+            {
+                return localPlayerObject.GetComponent<InventoryManager>();
+            }
+        }
+        return null;
     }
 
     // Called exactly when the player starts dragging the item
@@ -79,18 +143,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         // Lo solto afuera de la interfaz?
         if (eventData.pointerEnter == null)
         {
-            // Buscar el InventoryManager del JUGADOR LOCAL en lugar de usar FindFirstObjectByType
-            InventoryManager inventoryManager = null;
-
-            // Get the local player object using Unity Netcode
-            if (NetworkManager.Singleton != null && NetworkManager.Singleton.LocalClient != null)
-            {
-                var localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject;
-                if (localPlayerObject != null)
-                {
-                    inventoryManager = localPlayerObject.GetComponent<InventoryManager>();
-                }
-            }
+            InventoryManager inventoryManager = GetLocalInventoryManager();
             // If we found the local player, drop the item on the floor
             if (inventoryManager != null)
             {
@@ -105,12 +158,17 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
             Slot targetSlot = eventData.pointerEnter.GetComponent<Slot>();
 
             if(targetSlot != null && targetSlot != this)
-            {    
+            {
                 //If its empty we save it here
-                if(targetSlot.itemData == null)
+                if (targetSlot.itemData == null)
                 {
-                    targetSlot.SetItem(itemData, quantity);
-                    ClearItem();
+                    // Guardar los datos antes de limpiar porque ClearItem los borra
+                    ItemData movingItem = itemData;
+                    int movingQuantity = quantity;
+
+                    ClearItem();                                  
+                    targetSlot.SetItem(movingItem, movingQuantity);
+
                     return;
                 }
                 //If its the same slot, we try to add the quanty at least some.
@@ -135,12 +193,34 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                 {
                     // Swap the two different items using a temporary variable
                     ItemData tempItemData = targetSlot.itemData;
-
                     int tempQuantity = targetSlot.quantity;
 
-                    targetSlot.SetItem(itemData,quantity);
+                    bool bothAreHotbar = this.isHotbarSlot && targetSlot.isHotbarSlot;
 
-                    this.SetItem(tempItemData, tempQuantity);
+                    if (bothAreHotbar)
+                    { //actualiza los datos visuales y reequipa directamente lo que corresponde a cada uno
+                        targetSlot.itemData = itemData;
+                        targetSlot.quantity = quantity;
+                        targetSlot.icon.sprite = itemData.icon;
+                        targetSlot.quantityText.text = quantity.ToString();
+
+                        this.itemData = tempItemData;
+                        this.quantity = tempQuantity;
+                        this.icon.sprite = tempItemData.icon;
+                        this.quantityText.text = tempQuantity.ToString();
+
+                        InventoryManager inventoryManager = GetLocalInventoryManager();
+                        if (inventoryManager != null)
+                        {
+                            inventoryManager.EquipFromSlot(itemData);       // equipa lo que quedo en targetSlot
+                            inventoryManager.EquipFromSlot(tempItemData);    // equipa lo que quedo en this
+                        }
+                    }
+                    else
+                    {
+                        targetSlot.SetItem(itemData, quantity);
+                        this.SetItem(tempItemData, tempQuantity);
+                    }
                 }
             }
         }

@@ -19,6 +19,9 @@ public class QuestObjective : ScriptableObject
     public ObjectiveType type;                  //type of obj
     public string targetId;                     //enemy tag, itemdata id or location id
     public int requiredAmount = 1;             //how many kills/items/etc are needed
+
+    public bool requieresPreviousObj = false;   //if true, this objective can't make progress until every non-optional objective BEFORE it in the list is complete
+
     [TextArea] public string description;       //shown in the quest ui
 
     public bool isOptional = false;             //if true, this obj doesnt block quest completion (bonus)

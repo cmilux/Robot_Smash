@@ -1,14 +1,18 @@
+using System;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttackDistance : NetworkBehaviour
 {
+    public event Action OnWeaponBroke;
+    public event Action<int, int> OnDurabilityChanged;
+
     public Transform aim;
-    public Transform firePoint;
+    [HideInInspector] public Transform[] firePoints;
     public GameObject bulletPrefab;
 
-    public float cooldownShoot = 1;
     public float nextFireTime;
 
     public float detectionRange = 25f;
@@ -19,7 +23,11 @@ public class PlayerAttackDistance : NetworkBehaviour
 
     public float returnSpeed = 5f; // How fast the aim returns to center
 
+    public int currentDurability;
+
     private GameObject currentEnemy;
+
+    [SerializeField] private ItemData equippedWeaponData;//the current equipped weapon base data (damage, cooldown,etc.)
 
     // Network variable to share the gun rotation with all players
     private NetworkVariable<Quaternion> aimRotation =
@@ -39,12 +47,6 @@ public class PlayerAttackDistance : NetworkBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Start()
-    {
-        // Save the resting rotation of the aim
-        originalAimRotation = aim.localRotation;
-    }
-
     void Update()
     {
         if (IsOwner)
@@ -54,59 +56,12 @@ public class PlayerAttackDistance : NetworkBehaviour
 
             if (currentEnemy != null)
             {
-                // Calculate direction towards the enemy
-                Vector3 direction = currentEnemy.transform.position - aim.position;
-
-                if (direction != Vector3.zero)
-                {
-                    // Rotate the aim towards the enemy
-                    aim.LookAt(aim.position + direction);
-
-                    // Get the current local rotation
-                    Vector3 angles = aim.localEulerAngles;
-
-                    // Convert X from 0-360 to -180 to 180
-                    float verticalAngle = angles.x;
-
-                    if (verticalAngle > 180f)
-                    {
-                        verticalAngle -= 360f;
-                    }
-
-                    // Limit the X rotation
-                    // Negative values = up
-                    // Positive values = down
-                    verticalAngle = Mathf.Clamp(
-                        verticalAngle,
-                        -minVerticalAngle,
-                        maxVerticalAngle
-                    );
-
-                    // Apply the limited X rotation
-                    angles.x = verticalAngle;
-                    aim.localEulerAngles = angles;
-
-                    // Update the network rotation if it changed
-                    if (aim.rotation != aimRotation.Value)
-                    {
-                        aimRotation.Value = aim.rotation;
-                    }
-                }
+                AimAtEnemy();
+                TryShoot();
             }
             else
             {
-                // No enemy: return the aim to original rotation
-                aim.localRotation = Quaternion.Slerp(
-                    aim.localRotation,
-                    originalAimRotation,
-                    Time.deltaTime * returnSpeed
-                );
-
-                // Update the network rotation
-                if (aim.rotation != aimRotation.Value)
-                {
-                    aimRotation.Value = aim.rotation;
-                }
+                ReturnAimToCenter();
             }
         }
         else
@@ -147,48 +102,161 @@ public class PlayerAttackDistance : NetworkBehaviour
 
         currentEnemy = closest;
     }
+    public void SetAimAndFirePoints(Transform newAim, Transform[] newFirePoints)
+    {
+        aim = newAim;
+        firePoints = newFirePoints;
+        originalAimRotation = aim.localRotation; //recalculate resting rotation for this weapon aim
+    }
 
-    public void OnAttack(InputValue value)
+    // Call by InventoryManager when the ranged weapon change
+    public void SetWeaponData(ItemData weaponData)
+    {
+        equippedWeaponData = weaponData;
+
+        if(equippedWeaponData != null)
+        {
+            currentDurability = weaponData.maxDurability;
+
+            OnDurabilityChanged?.Invoke(currentDurability, weaponData.maxDurability);
+        }
+    }
+    void AimAtEnemy()
+    {
+        // Calculate direction towards the enemy
+        Vector3 direction = currentEnemy.transform.position - aim.position;
+
+        if (direction != Vector3.zero)
+        {
+            // Rotate the aim towards the enemy
+            aim.LookAt(aim.position + direction);
+
+            // Get the current local rotation
+            Vector3 angles = aim.localEulerAngles;
+
+            // Convert X from 0-360 to -180 to 180
+            float verticalAngle = angles.x;
+
+            if (verticalAngle > 180f)
+            {
+                verticalAngle -= 360f;
+            }
+            // Limit the X rotation
+            // Negative values = up
+            // Positive values = down
+            verticalAngle = Mathf.Clamp(
+                verticalAngle,
+                -minVerticalAngle,
+                maxVerticalAngle
+            );
+
+            // Apply the limited X rotation
+            angles.x = verticalAngle;
+            aim.localEulerAngles = angles;
+
+            // Update the network rotation if it changed
+            if (aim.rotation != aimRotation.Value)
+            {
+                aimRotation.Value = aim.rotation;
+            }
+        }
+    }
+    void ReturnAimToCenter()
+    {
+        // No enemy: return the aim to original rotation
+        aim.localRotation = Quaternion.Slerp(
+            aim.localRotation,
+            originalAimRotation,
+            Time.deltaTime * returnSpeed
+        );
+
+        // Update the network rotation
+        if (aim.rotation != aimRotation.Value)
+        {
+            aimRotation.Value = aim.rotation;
+        }
+    }
+    public void TryShoot()
     {
         if (!enabled) return;
 
-        if (!IsOwner) return;
+        if (equippedWeaponData == null) return;
+        if (Time.time < nextFireTime) return;
 
-        if (value.isPressed && Time.time >= nextFireTime)
-        {
+        
             Vector3 shooterVelocity = rb.linearVelocity;
 
-            // Ask the server to spawn the bullet
-            ShootServerRpc(
-                firePoint.position,
-                firePoint.rotation,
-                shooterVelocity
-            );
+            foreach(Transform point in firePoints)
+            {
+                // Ask the server to spawn the bullet
+                ShootServerRpc(
+                    point.position,
+                    point.rotation,
+                    rb.linearVelocity,
+                    equippedWeaponData.damageBase,
+                    equippedWeaponData.bulletSpeed
+                );
+            }
+        nextFireTime = Time.time + equippedWeaponData.cooldownBase;
 
-            nextFireTime = Time.time + cooldownShoot;
+        UseDurability();//each shot
+    }
+    void UseDurability()
+    {
+        if(equippedWeaponData.maxDurability < 0) return;  //never breaks
+
+        currentDurability--;
+        OnDurabilityChanged?.Invoke(currentDurability, equippedWeaponData.maxDurability);
+
+        if(currentDurability <= 0)
+        {
+            BreakWeapon();
         }
     }
-
-    // The server creates the bullet
-    // and gives ownership to the player who shot it
-    [ServerRpc]
-    void ShootServerRpc(
-        Vector3 position,
-        Quaternion rotation,
-        Vector3 shooterVelocity)
+    void BreakWeapon()
     {
-        GameObject bullet =
-            Instantiate(bulletPrefab, position, rotation);
+        equippedWeaponData = null;
+        enabled = false;
 
-        PlayerBulletController bulletController =
-            bullet.GetComponent<PlayerBulletController>();
+        OnWeaponBroke?.Invoke();//el inventorymanager se suscribe
+    }
 
-        if (bulletController != null)
+    [ServerRpc]
+    void ShootServerRpc(Vector3 pos, Quaternion rotation, Vector3 shooterVelocity, int damage, float bulletSpeed)
+    {
+        //pool a bullet
+        PlayerBulletController bullet = ObjectPoolManager.instance.GetPlayerBullet();
+
+        //get net transform from buller
+        NetworkTransform netTransform = bullet.GetComponent<NetworkTransform>();
+        if (netTransform != null)
         {
-            bulletController.extraVelocity = shooterVelocity;
+            netTransform.Teleport(pos, rotation, bullet.transform.localScale);
+        }
+        else
+        {
+            bullet.transform.position = pos;
+            bullet.transform.rotation = rotation;
         }
 
-        bullet.GetComponent<NetworkObject>()
-            .SpawnWithOwnership(OwnerClientId);
+        bullet.shooterClientId = OwnerClientId;
+        bullet.SetDamage(damage);  
+        bullet.speed = bulletSpeed;
+        bullet.extraVelocity = shooterVelocity;
+
+        bullet.gameObject.SetActive(true);
+
+        //set velocity and other state directly on server
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+
+            Vector3 bulletDirection = bullet.transform.forward;
+            float forwardBoost = Vector3.Dot(shooterVelocity, bulletDirection);
+            forwardBoost = Mathf.Max(forwardBoost, 0f);
+
+            rb.linearVelocity = bulletDirection * (bulletSpeed + forwardBoost);
+        }
     }
 }

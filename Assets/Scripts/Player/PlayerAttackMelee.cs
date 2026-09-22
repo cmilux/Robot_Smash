@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerAttackMelee : NetworkBehaviour
 {
     private CarController carController;
+    private CarBumper carBumper;
 
-    public int damageAmount = 20;
+    public int damageBackUp = 10;
 
     [SerializeField] PlayerLevelUI pj;
 
@@ -16,6 +17,7 @@ public class PlayerAttackMelee : NetworkBehaviour
     private void Awake()
     {
         carController = GetComponent<CarController>();
+        carBumper = GetComponent<CarBumper>();
     }
 
     public override void OnNetworkSpawn()
@@ -47,9 +49,11 @@ public class PlayerAttackMelee : NetworkBehaviour
                 Enemy enemy = collision.gameObject.GetComponent<Enemy>();
 
                 if (enemy != null)
-                {
+                {   
+                    int damage = carBumper.GetDamage(damageBackUp);
+
                     // Ask the server to reduce health from the enemy
-                    enemy.TakeDamageServerRpc(damageAmount, shooterClientId);
+                    enemy.TakeDamageServerRpc(damage, shooterClientId);
 
                     if (enemy.isDead.Value == true)
                     {
@@ -71,7 +75,8 @@ public class PlayerAttackMelee : NetworkBehaviour
 
             if (enemy != null)
             {
-                enemy.TakeDamageServerRpc(damageAmount, shooterClientId);
+                int damage = carBumper.GetDamage(damageBackUp);
+                enemy.TakeDamageServerRpc(damage, shooterClientId);
             }
         }
     }

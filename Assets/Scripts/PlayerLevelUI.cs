@@ -9,6 +9,7 @@ public class PlayerLevelUI : MonoBehaviour
     [SerializeField] AnimationCurve expCurve;
     int currentLevel;
     int totalExp;
+    public int CurrentLevel => currentLevel;
 
     //one shared copy across everything
     public static PlayerLevelUI Instance { get; private set; }      //anyone can read it, but only the class itself can write to it
