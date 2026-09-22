@@ -21,6 +21,7 @@ public class Enemy : NetworkBehaviour
     protected NavMeshAgent agent;
     public float stopDistance;
     [SerializeField] float turnForce = 0.05f;
+    Vector3 _spawnPoint;
 
     [Header("Patrol logic")]
     [SerializeField] float _patrolRadius;   //sets the radius of the patrol area for the enemy
@@ -48,12 +49,67 @@ public class Enemy : NetworkBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    private void LateUpdate()
+    {
+        if (!IsServer) return;
+        if (isDead.Value) return;
+
+        UpdateTarget();
+        DetectPlayer();
+
+        if (!_playerDetected)
+        {
+            HandlePatrolState();
+        }
+        else
+        {
+            MoveTowardTarget();
+        }
+    }
+
     public override void OnNetworkSpawn()
     {
         if (IsServer)
         {
             health.Value = maxHealth;                   //sets enemies to max health (set on inspector individually) || salud maxima de los enemigos (se pone manualmente en el inspector de cada uno)
+            isDead.Value = false;
         }
+    }
+
+    public virtual void Initialize()
+    {
+        _playerDetected = false;
+        _wasPlayerDetected = false;
+
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+        if (agent != null)
+        {
+            agent.enabled = true;
+
+            if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 2f, NavMesh.AllAreas))
+            {
+                agent.Warp(hit.position);
+            }
+
+            if (agent.isOnNavMesh)
+            {
+                agent.ResetPath();
+            }
+        }
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        _spawnPoint = newSpawnPoint;
+    }
+
+    public Vector3 GetSpawnPoint()
+    {
+        return _spawnPoint;
     }
 
     public void UpdateTarget()
@@ -182,8 +238,6 @@ public class Enemy : NetworkBehaviour
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]       //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
-        Debug.Log($"Hit by clientId: {attackerClientId} | Server clientId: {NetworkManager.Singleton.LocalClientId}");
-
         if (isDead.Value) return;
 
         //Takes damage from enemies
@@ -210,16 +264,24 @@ public class Enemy : NetworkBehaviour
 
         agent.isStopped = true;
 
-        //Enemy will "destroy" after some time set in parameter || el enemigo muere luego de un tiempo determinado
-        StartCoroutine(DespawnAfterDelay(timeBeforeDestroy));
+        if (isDead.Value)
+        {
+            ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, timeBeforeDestroy);
 
-        //DropResources();
+            //Add experience to the killer || agrega experiencia a quien mato al enemigo
+            GrantExpToKillerClientRpc(killerClientId, levExpPoints);
 
-        //Add experience to the killer || agrega experiencia a quien mato al enemigo
-        GrantExpToKillerClientRpc(killerClientId, levExpPoints);
+            //reports using the enemy's tag as targetId
+            QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag);
+        }    
+    }
 
-        //reports using the enemy's tag as targetId
-        QuestManager.Instance.ReportProgress(ObjectiveType.KillEnemy, gameObject.tag);
+    //let the clients know the game obj is off
+    [ClientRpc]
+    public void NotifyDespawnClientRpc()
+    {
+        if(IsServer) return;
+        gameObject.SetActive(false);
     }
 
     void DropResources()

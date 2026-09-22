@@ -16,6 +16,6 @@ MonoBehaviour:
   targetId: WatchTower
   requiredAmount: 1
   requieresPreviousObj: 1
-  description: Lleva la carta al atalaya
+  description: Lleva la llave de acceso al atalaya
   isOptional: 0
   bonusExp: 0

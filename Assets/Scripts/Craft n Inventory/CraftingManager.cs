@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Unity.Netcode;
 public class CraftingManager : MonoBehaviour
 {
     [Header("Crafting Slots")]
@@ -41,11 +42,20 @@ public class CraftingManager : MonoBehaviour
     {
         if (currentRecipe == null) return;
 
-        //Show the crafted item in the result slot
-        resultSlot.SetItem(currentRecipe.result, currentRecipe.resultQuantity);
+        Inventory playerInventory = GetLocalPlayerInventory();
 
-        //Remove the required ingredients from the crafting slots
-        ConsumeIngredients(currentRecipe);
+        if (playerInventory != null)
+        {
+            int leftover = playerInventory.AddItem(currentRecipe.result, currentRecipe.resultQuantity);
+
+            if(leftover < currentRecipe.resultQuantity)
+            {
+                //Remove the required ingredients from the crafting slots
+                ConsumeIngredients(currentRecipe);
+            }
+        }
+
+
     }
     private bool AllSlotsEmpty()
     {
@@ -93,6 +103,7 @@ public class CraftingManager : MonoBehaviour
 
     private bool RecipeMatches(RecipeData recipe, Dictionary<ItemData, int> craftingItems)
     {
+        if (PlayerLevelUI.Instance != null && PlayerLevelUI.Instance.CurrentLevel < recipe.requiredLevel) return false;
         // Check that both have the same number of different ingredients
         if (recipe.ingredients.Count != craftingItems.Count)
             return false;
@@ -145,5 +156,19 @@ public class CraftingManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private Inventory GetLocalPlayerInventory()
+    {
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.LocalClient != null)
+        {
+            var localPlayerObject = NetworkManager.Singleton.LocalClient.PlayerObject;
+
+            if (localPlayerObject != null)
+            {
+                return localPlayerObject.GetComponent<Inventory>();
+            }
+        }
+        return null;
     }
 }

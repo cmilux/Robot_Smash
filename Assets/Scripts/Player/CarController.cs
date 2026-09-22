@@ -77,6 +77,8 @@ public class CarController : NetworkBehaviour
         //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {
+            carBumper.UseDurability();
+
             StartCoroutine(DashRoutine());
         }
     }

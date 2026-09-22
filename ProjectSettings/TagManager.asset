@@ -13,6 +13,7 @@ TagManager:
   - Healer
   - ItemReward
   - Bunker
+  - Bullet
   layers:
   - Default
   - TransparentFX

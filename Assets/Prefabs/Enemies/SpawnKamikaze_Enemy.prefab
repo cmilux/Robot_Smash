@@ -135,14 +135,15 @@ MonoBehaviour:
       MinSecondsBetweenUpdates: 0
       MaxSecondsBetweenUpdates: 0
     m_InternalValue: 0
-  timeBeforeDestroy: 0
+  timeBeforeDestroy: 2
   stopDistance: 0
+  turnForce: 0.05
   _patrolRadius: 20
   _enemyWaiting: 0
   detectionRadius: 15
-  playerLevExp: {fileID: 0}
+  playerLevExp: {fileID: 2591345576030242021, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
   levExpPoints: 150
-  target: {fileID: 0}
+  target: {fileID: 8867579207307262118, guid: ba276fce49ff6f748b9849597471a7ea, type: 3}
   resourcesObj: {fileID: 0}
   spawnResPoint: {fileID: 0}
   _explosion: {fileID: 5582185301062415785}
@@ -176,7 +177,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109011744752369539}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5

@@ -54,22 +54,19 @@ public class TurretEnemy : Enemy
         {
             Transform spawnPointsIndex = spawnPoints[i];
 
-            //Creates a bullet to spawn || spawnea una bala
-            GameObject bullet = Instantiate(
-                bulletObj,
-                spawnPointsIndex.position,
-                spawnPointsIndex.rotation
-            );
-            NetworkObject netObj = bullet.GetComponent<NetworkObject>();
-            netObj.Spawn();
+            TurretBullet bullet = ObjectPoolManager.instance.GetEnemyBullet();
+            bullet.transform.position = spawnPointsIndex.transform.position;
+            bullet.transform.rotation = spawnPointsIndex.transform.rotation;
 
-            //Adds force and direction to the bullet to shoot player || Agrega fuerza y direccion a la bala del enemigo para atacar al player
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            //Vector3 dir = (target.position - spawnPointsIndex.position).normalized;
-            Vector3 dir = spawnPointsIndex.forward;
-            rb.AddForce(dir * shootingSpeed, ForceMode.Impulse);
+            rb.isKinematic = false;
+            Vector3 dir = (target.position - spawnPointsIndex.transform.position).normalized;
+            rb.linearVelocity = dir * shootingSpeed;
 
-            Destroy(bullet, destroyTimer);
+            bullet.gameObject.SetActive(true);
+
+            ObjectPoolManager.instance.ReturnEnemyBulletAfterDelay(bullet, destroyTimer);
         }
+            
     }
 }

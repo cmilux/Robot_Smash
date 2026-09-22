@@ -1,11 +1,14 @@
+using Unity.Netcode;
+using Unity.Netcode.Components;
+using Unity.Profiling;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Pool;
-using UnityEngine.UIElements;
-using Unity.Profiling;
 using UnityEngine.Profiling;
-using Unity.Netcode;
+using UnityEngine.UIElements;
+using static UnityEditor.FilePathAttribute;
+using static UnityEditor.PlayerSettings;
 
 public class BigEnemy : Enemy
 {
@@ -67,10 +70,24 @@ public class BigEnemy : Enemy
 
         if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, spawnRadius, NavMesh.AllAreas))
         {
-            //Spawn kamikaze in the big enemy radius || spawn kamikazes en un radio del enemigo
-            GameObject kam = Instantiate(kamikazeEnemy, spawnPos, Quaternion.identity);
-            NetworkObject netObj = kam.GetComponent<NetworkObject>();
-            netObj.Spawn();
+            spawnPos = hit.position;
+
+            //Pool a kamikaze in the big enemy radius || Pool kamikazes en un radio del enemigo
+            KamikazeEnemy kam = ObjectPoolManager.instance.GetKamikaze();
+
+            NetworkTransform netTransform = kam.GetComponent<NetworkTransform>();
+            if (netTransform != null)
+            {
+                netTransform.Teleport(spawnPos, kam.transform.rotation, kam.transform.localScale);
+            }
+            else
+            {
+                kam.transform.position = spawnPos;
+            }
+
+            kam.gameObject.SetActive(true);
+
+            kam.Initialize();
         }
     }
 
@@ -85,27 +102,27 @@ public class BigEnemy : Enemy
         if (spawnTime > 0) return;
         spawnTime = spawnCooldown;
 
-        //Instantiate a bullet in every spawn point
+        //Pool a bullet in every spawn point
         for (int i = 0; i < spawnBulletsPoint.Length; i++)
         {
             Transform spawnPointIndex = spawnBulletsPoint[i];
 
-            //Spawn bullets
-            GameObject bullet = Instantiate(
-                bulletObj,
-                spawnPointIndex.position,
-                spawnPointIndex.rotation);
-            NetworkObject netObj = bullet.GetComponent<NetworkObject>();
-            netObj.Spawn();
+            //Pool bullets
+            TurretBullet bullet = ObjectPoolManager.instance.GetEnemyBullet();
+            bullet.transform.position = spawnPointIndex.position;
+            bullet.transform.rotation = spawnPointIndex.rotation;
 
             //Get the bullet rigidbody
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            //Spawn bullets forward
+            rb.isKinematic = false;
+            //Pool bullets forward
             Vector3 dir = spawnPointIndex.forward;
             //Apply force to the bullets direction || aplica fuerza a la direccion de disparo de la bala
-            rb.AddForce(dir * 15f, ForceMode.Impulse);
+            rb.linearVelocity = dir * 15f;
 
-            StartCoroutine(DespawnBullet(netObj, destroyTimer));    //Destroy bullet (enemy class)
+            bullet.gameObject.SetActive(true);
+
+            ObjectPoolManager.instance.ReturnEnemyBulletAfterDelay(bullet, destroyTimer);
         }
     }
 

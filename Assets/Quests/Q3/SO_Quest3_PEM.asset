@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: 2
   questTitle: Mision 3
-  description: Encuentra el tesoro!
+  description: 'Debes encontrar la maquina de activacion PEM y dejarla en su punto
+    de activacion!
+
+'
   objectives:
   - {fileID: 11400000, guid: d648ac7322aae4b4aa944cba89ac5471, type: 2}
   - {fileID: 11400000, guid: cd54f3328df1d2e43aa063870371883c, type: 2}

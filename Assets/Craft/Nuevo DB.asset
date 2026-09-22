@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Nuevo DB
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataBase
   items:
-  - {fileID: 11400000, guid: 7775df18e34ceee40ab160209cc6f7e1, type: 2}
-  - {fileID: 11400000, guid: 304e7340c4dca764aaa4f3e07139fd7a, type: 2}
+  - {fileID: 11400000, guid: 628d826ebed9e1a449df745b21a82da6, type: 2}
   - {fileID: 11400000, guid: e5a244be84ec1e1488e8755accaa4920, type: 2}
   - {fileID: 11400000, guid: 9954c230ce0e78e478403f8ee3d06f36, type: 2}
   - {fileID: 11400000, guid: 80c69a28e81174d43a290ad1c9fbe7ab, type: 2}
@@ -41,8 +40,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50875b9e17aabe4468bedf3bff089337, type: 2}
   - {fileID: 11400000, guid: ca30d340c51df1d4da1afb8fe2af92fc, type: 2}
   - {fileID: 11400000, guid: da272732c92f63c4799372b6ba038c52, type: 2}
+  - {fileID: 11400000, guid: 989c81d480d961e4a9a5e8333f48c12f, type: 2}
   recipes:
   - {fileID: 11400000, guid: 5a4dfe820ba1d834e96d4e987d6cf29b, type: 2}
   - {fileID: 11400000, guid: 3e2a4123f654e9c48b5218cba821e0ca, type: 2}
   - {fileID: 11400000, guid: d4839a78805af8844bf2bba875eb40ee, type: 2}
   - {fileID: 11400000, guid: 94f0c4d6f84f3424a83c8b5530fef6bb, type: 2}
+  - {fileID: 11400000, guid: e2263f5a836e26740bbc76153597a4e4, type: 2}

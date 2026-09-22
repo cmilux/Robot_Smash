@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: 1
   questTitle: Mision 2
-  description: Debes buscar la carta perdida en el mapa, llevarla al atalaya y entregar
-    los resultados a los ingenieros en el bunker
+  description: Debes buscar la llave de acceso y llevarla al atalaya!
   objectives:
   - {fileID: 11400000, guid: 58e7d6fa0c3c1444f850e7c323cf950b, type: 2}
   - {fileID: 11400000, guid: 3300f47525b947246af6feddb70a44af, type: 2}

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -44,6 +45,8 @@ public class InventoryManager : NetworkBehaviour
         NetworkVariableWritePermission.Owner
     );
 
+    private Dictionary<ItemType, NetworkVariable<int>> equippedIds;
+
     [Header("Hotbar")]
     public GameObject hotbarSlotsContainer;
 
@@ -69,6 +72,29 @@ public class InventoryManager : NetworkBehaviour
         carSaws = GetComponent<CarSaws>();
         carBumper = GetComponent<CarBumper>();
         visibleItems = visibleItemsContainer.GetComponentsInChildren<VisibleItem>(true);
+
+        equippedIds = new Dictionary<ItemType, NetworkVariable<int>>
+        {
+            { ItemType.weapon, equippedWeaponId },
+            { ItemType.saws, equippedSawsId },
+            { ItemType.carBumper, equippedBumperId },
+        };
+
+        if(playerAttack != null)
+        {
+            playerAttack.OnWeaponBroke += HandleWeaponBroke;
+            playerAttack.OnDurabilityChanged += HandleWeaponDurabilityChanged;
+        }
+        if(carSaws != null)
+        {
+            carSaws.OnWeaponBroke += HandleSawsBroke;
+            carSaws.OnDurabilityChanged += HandleSawsDurabilityChanged;
+        }
+        if(carBumper != null)
+        {
+            carBumper.OnWeaponBroke += HandleBumperBroke;
+            carBumper.OnDurabilityChanged += HandleBumperDurabilityChanged;
+        }
     }
 
     public override void OnNetworkSpawn()
@@ -123,6 +149,22 @@ public class InventoryManager : NetworkBehaviour
         equippedBumperId.OnValueChanged -= OnBumperChanged;
         currentPaintId.OnValueChanged -= OnPaintChanged;
         equippedCarVariantId.OnValueChanged -= OnCarVariantChanged;
+
+        if(playerAttack != null)
+        {
+            playerAttack.OnWeaponBroke -= HandleWeaponBroke;
+            playerAttack.OnDurabilityChanged -= HandleWeaponDurabilityChanged;
+        }
+        if(carSaws != null)
+        {
+            carSaws.OnWeaponBroke -= HandleSawsBroke;
+            carSaws.OnDurabilityChanged -= HandleSawsDurabilityChanged;
+        }
+        if(carBumper != null)
+        {
+            carBumper.OnWeaponBroke -= HandleBumperBroke;
+            carBumper.OnDurabilityChanged -= HandleBumperDurabilityChanged;
+        }
     }
 
     // this function runs on all clients when the weapon Id changes
@@ -246,7 +288,6 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
-
     private void OnCarVariantChanged(int oldId, int newId)
     {
         Debug.Log($"OnCarVariantChanged called: {oldId} → {newId}");
@@ -363,77 +404,18 @@ public class InventoryManager : NetworkBehaviour
             if (slotToUse.itemData != null)
             {
                 Debug.Log($"Item type: {slotToUse.itemData.itemType}");
-
-                if (slotToUse.itemData.itemType == ItemType.weapon)
-                {
-                    EquipWeapon(slotToUse.itemData);
-                }
-                else if (slotToUse.itemData.itemType == ItemType.saws)
-                {
-                    EquipSaws(slotToUse.itemData);
-                }
-                else if (slotToUse.itemData.itemType == ItemType.carBumper)
-                {
-                    EquipBumper(slotToUse.itemData);
-                }
-                else if (slotToUse.itemData.itemType == ItemType.paint)
-                {
-                    ApplyPaint(slotToUse.itemData);
-                }
-                else if (slotToUse.itemData.itemType == ItemType.carSkin)
-                {
-                    Debug.Log("Equipping car variant!");
-                    EquipCarVariant(slotToUse.itemData);
-                }
+                EquipFromSlot(slotToUse.itemData);
             }
             else
             {
-                UnequipWeapons();
-                UnequipSaws();
-                UnequipBumper();
+                foreach (var kvp in equippedIds)
+                {
+                    if (!IsOwner) break;
+                    kvp.Value.Value = -1;
+                }
                 ResetPaint();
             }
         }
-    }
-
-    // only update the networkVariable 
-    private void EquipWeapon(ItemData weaponToEquip)
-    {
-        if (!IsOwner) return;
-
-        // cuando este valor cambia OnWeaponChanged se ejecuta en todos los clientes automaticamente
-        equippedWeaponId.Value = weaponToEquip.id;
-    }
-
-    private void UnequipWeapons()
-    {
-        if (!IsOwner) return;
-
-        equippedWeaponId.Value = -1;
-    }
-    private void EquipSaws(ItemData sawsToEquip)
-    {
-        if (!IsOwner) return;
-
-        equippedSawsId.Value = sawsToEquip.id;
-    }
-
-    private void UnequipSaws()
-    {
-        if (!IsOwner) return;
-
-        equippedSawsId.Value = -1;
-    }
-
-    private void EquipBumper(ItemData bumperToEquipo)
-    {
-        if (!IsOwner) return;
-        equippedBumperId.Value = bumperToEquipo.id;
-    }
-    private void UnequipBumper()
-    {
-        if (!IsOwner) return;
-        equippedBumperId.Value = -1;
     }
     void ApplyPaint(ItemData item)
     {
@@ -470,22 +452,7 @@ public class InventoryManager : NetworkBehaviour
             // Call the Server Rpc to handle spawning the item
             DropItemServerRpc(slotToDrop.itemData.id, slotToDrop.quantity);
 
-            if (slotToDrop.itemData.itemType == ItemType.weapon)
-            {
-                UnequipWeapons();
-            }
-            else if (slotToDrop.itemData.itemType == ItemType.saws)
-            {
-                UnequipSaws();
-            }
-            else if (slotToDrop.itemData.itemType == ItemType.carBumper)
-            {
-                UnequipBumper();
-            }
-            else if (slotToDrop.itemData.itemType == ItemType.paint)
-            {
-                ResetPaint();
-            }
+            UnequipFromSlot(slotToDrop.itemData);
         }
     }
     // Called by a Slot when an equipable item land in a hotbar slot
@@ -493,25 +460,20 @@ public class InventoryManager : NetworkBehaviour
     {
         if (itemData == null) return;
 
-        if (itemData.itemType == ItemType.weapon)
-        {
-            EquipWeapon(itemData);
-        }
-        else if (itemData.itemType == ItemType.saws)
-        {
-            EquipSaws(itemData);
-        }
-        else if (itemData.itemType == ItemType.carBumper)
-        {
-            EquipBumper(itemData);
-        }
-        else if (itemData.itemType == ItemType.paint)
+        if (itemData.itemType == ItemType.paint)
         {
             ApplyPaint(itemData);
+            return;
         }
-        else if (itemData.itemType == ItemType.carSkin)
+        if (itemData.itemType == ItemType.carSkin)
         {
             EquipCarVariant(itemData);
+            return;
+        }
+        if (equippedIds.TryGetValue(itemData.itemType, out NetworkVariable<int> slot))
+        {
+            if (!IsOwner) return;
+            slot.Value = itemData.id;
         }
         // Si es un tipo no equipable no hace nada
     }
@@ -521,21 +483,16 @@ public class InventoryManager : NetworkBehaviour
     {
         if (itemData == null) return;
 
-        if (itemData.itemType == ItemType.weapon)
-        {
-            UnequipWeapons();
-        }
-        else if (itemData.itemType == ItemType.saws)
-        {
-            UnequipSaws();
-        }
-        else if (itemData.itemType == ItemType.carBumper)
-        {
-            UnequipBumper();
-        }
-        else if (itemData.itemType == ItemType.paint)
+        if (itemData.itemType == ItemType.paint)
         {
             ResetPaint();
+            return;
+        }
+
+        if (equippedIds.TryGetValue(itemData.itemType, out NetworkVariable<int> slot))
+        {
+            if (!IsOwner) return;
+            slot.Value = -1;
         }
         // Si es un tipo no equipable no hace nada
     }
@@ -557,5 +514,72 @@ public class InventoryManager : NetworkBehaviour
         }
         // Spawn the object so all clients can see it
         droppedItem.GetComponent<NetworkObject>().Spawn();
+    }
+
+    private void HandleWeaponBroke()
+    {
+        if (!IsOwner) return;
+        if (equippedIds.TryGetValue(ItemType.weapon, out NetworkVariable<int> slot)) slot.Value = -1;
+        ClearSlotOfType(ItemType.weapon);
+    }
+
+    private void HandleWeaponDurabilityChanged(int current, int max)
+    {
+        if (!IsOwner) return;
+        UpdateHotbarDurabilityBar(ItemType.weapon, current, max);
+    }
+
+    private void HandleSawsBroke()
+    {
+        if (!IsOwner) return;
+        if (equippedIds.TryGetValue(ItemType.saws, out NetworkVariable<int> slot)) slot.Value = -1;
+        ClearSlotOfType(ItemType.saws);
+    }
+
+    private void HandleSawsDurabilityChanged(int current, int max)
+    {
+        if (!IsOwner) return;
+        UpdateHotbarDurabilityBar(ItemType.saws, current, max);
+    }
+
+    private void HandleBumperBroke()
+    {
+        if (!IsOwner) return;
+        if (equippedIds.TryGetValue(ItemType.carBumper, out NetworkVariable<int> slot)) slot.Value = -1;
+        ClearSlotOfType(ItemType.carBumper);
+    }
+
+    private void HandleBumperDurabilityChanged(int current, int max)
+    {
+        if (!IsOwner) return;
+        UpdateHotbarDurabilityBar(ItemType.carBumper, current, max);
+    }
+    private void ClearSlotOfType(ItemType type)
+    {
+        if (hotbarSlotsContainer == null) return;
+
+        Slot[] hotbarSlots = hotbarSlotsContainer.GetComponentsInChildren<Slot>(true);
+        foreach (Slot slot in hotbarSlots)
+        {
+            if (slot.itemData != null && slot.itemData.itemType == type)
+            {
+                slot.ClearItem();
+                break;
+            }
+        }
+    }
+    private void UpdateHotbarDurabilityBar(ItemType type ,int current, int max)
+    {
+        if (hotbarSlotsContainer == null) return;
+
+        Slot[] hotbarSlots = hotbarSlotsContainer.GetComponentsInChildren<Slot>(true);
+        foreach (Slot slot in hotbarSlots)
+        {
+            if (slot.itemData != null && slot.itemData.itemType == type)
+            {
+                slot.SetDurability(current, max);
+                break;
+            }
+        }
     }
 }
