@@ -121,6 +121,8 @@ public class ObjectPoolManager : NetworkBehaviour
     {
         yield return new WaitForSeconds(delay);
 
+        if (bullet == null || bullet.NetworkObject == null || !bullet.NetworkObject.IsSpawned) yield break;
+
         bullet.NotifyReturnClientRpc();
         ReturnPlayerBullet(bullet);
     }

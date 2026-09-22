@@ -49,7 +49,7 @@ public class PlayerBulletController : NetworkBehaviour
             NotifyReturnClientRpc();
 
             // Delete the bullet after hitting the enemy
-            ObjectPoolManager.instance.ReturnPlayerBulletAfterDelay(this, 2f);
+            ObjectPoolManager.instance.ReturnPlayerBullet(this);
         }
     }
 
