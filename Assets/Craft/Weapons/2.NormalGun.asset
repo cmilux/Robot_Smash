@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 2.MachineGun
+  m_Name: 2.NormalGun
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 2
   nombre: NormalGun
@@ -23,7 +23,7 @@ MonoBehaviour:
   carVariant: {fileID: 0}
   damageBase: 3
   cooldownBase: 1
-  maxDurability: 20
+  maxDurability: -1
   bulletsPerShot: 2
   bulletSpeed: 20
   spreadAngle: 0

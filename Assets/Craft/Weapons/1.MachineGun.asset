@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f966e4127c94e47a6d6678b12a25dd, type: 3}
-  m_Name: 1.NormalGun
+  m_Name: 1.MachineGun
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 1
-  nombre: NormalGun
+  nombre: MachineGun
   icon: {fileID: 21300000, guid: 6677597725e89fe409ae62749411bbf1, type: 3}
   maxStock: 1
   visibleItemID: 1
@@ -21,10 +21,9 @@ MonoBehaviour:
   paintMaterial: {fileID: 0}
   dropPrefab: {fileID: 458585512828865983, guid: 44ea72b10d9b26d4cbd330727c6fe2b9, type: 3}
   carVariant: {fileID: 0}
-  damageBase: 10
-  cooldownBase: 1
-  maxDurability: -1
-  maxAmmo: -1
+  damageBase: 5
+  cooldownBase: 0.6
+  maxDurability: 30
   bulletsPerShot: 1
   bulletSpeed: 20
   spreadAngle: 0
