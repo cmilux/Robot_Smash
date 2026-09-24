@@ -6386,8 +6386,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149061544}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18913044, y: 0.6292305, z: -0.16162206, w: 0.7363267}
-  m_LocalPosition: {x: 96.006714, y: 28.949999, z: 68.269264}
+  m_LocalRotation: {x: 0.24878122, y: 0, z: 0, w: 0.96855974}
+  m_LocalPosition: {x: 118.7, y: 38.640003, z: 93.60428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7221,6 +7221,73 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7199011585352219447, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
+--- !u!1001 &1334826986
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1652878189}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0282134572802844683d385e4d658804, type: 3}
+      propertyPath: m_Name
+      value: SM_Int_AccessKey
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0282134572802844683d385e4d658804, type: 3}
+--- !u!4 &1334826987 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0282134572802844683d385e4d658804, type: 3}
+  m_PrefabInstance: {fileID: 1334826986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1334826988 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 0282134572802844683d385e4d658804, type: 3}
+  m_PrefabInstance: {fileID: 1334826986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1347515056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9055,6 +9122,8 @@ GameObject:
   - component: {fileID: 1652878192}
   - component: {fileID: 1652878191}
   - component: {fileID: 1652878190}
+  - component: {fileID: 1652878193}
+  - component: {fileID: 1652878194}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -9070,11 +9139,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652878188}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 262.7, y: 24.8, z: 456.1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 263, y: 27.92, z: 459.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1334826987}
   m_Father: {fileID: 715309984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1652878190
@@ -9092,8 +9162,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: Key
-  turnGameObject: {fileID: 0}
-  destroySelfOnTrigger: 1
+  turnGameObject: {fileID: 1652878188}
+  destroySelfOnTrigger: 0
 --- !u!65 &1652878191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9113,8 +9183,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.3849487, y: 3.8390503, z: 7.4079895}
-  m_Center: {x: -2.292572, y: 1.4195251, z: 3.2039948}
+  m_Size: {x: 6.8350854, y: 3.8390503, z: 7.4079895}
+  m_Center: {x: 0.3292837, y: 0, z: 0}
 --- !u!114 &1652878192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9141,6 +9211,40 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1652878193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652878188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
+  amplitude: 0.5
+  frequency: 0.01
+--- !u!114 &1652878194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652878188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 1
+  Components:
+  - name: SM_Int_AccessKey (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1334826988}
 --- !u!1 &1657346730
 GameObject:
   m_ObjectHideFlags: 0

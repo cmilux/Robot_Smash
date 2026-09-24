@@ -673,6 +673,7 @@ MonoBehaviour:
   sawsOn: 0
   damageRate: 0.5
   onDuration: 5
+  currentDurability: 0
   equippedWeaponData: {fileID: 0}
 --- !u!114 &7819543308125877676
 MonoBehaviour:
@@ -726,6 +727,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   isEquipped: 0
   equippedWeaponData: {fileID: 0}
+  currentDurability: 0
 --- !u!1 &2172538646586169815
 GameObject:
   m_ObjectHideFlags: 0
