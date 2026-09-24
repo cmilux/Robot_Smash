@@ -57,12 +57,21 @@ public class BigEnemy : Enemy
 
     void SpawnKamikaze()
     {
-        if (currentEnemies >= maxEnemies) return;
+        if (currentEnemies >= maxEnemies)
+        {
+            animator.SetBool("DidSpawn3", true);
+            return;
+        }
+
+        agent.isStopped = true;
 
         //Cooldown to spawn enemies
         spawnTime -= Time.deltaTime;
         if (spawnTime > 0) return;
         spawnTime = spawnCooldown;
+
+        animator.SetBool("IsSpawning", true);
+        animator.SetBool("IsShooting", false);
 
         //calculates a radius from enemy position || calcula un radio basado en la posicion del enemigo
         Vector3 spawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
@@ -93,9 +102,13 @@ public class BigEnemy : Enemy
 
     void Shoot()
     {
-        if (currentEnemies < maxEnemies) return;
+        if (currentEnemies < maxEnemies)
+        {
+            animator.SetBool("DidSpawn3", false);
+            return;
+        }
 
-        agent.isStopped = false;
+        agent.isStopped = true;
 
         //Cooldown to spawn bullets
         spawnTime -= Time.deltaTime;
@@ -107,11 +120,14 @@ public class BigEnemy : Enemy
         {
             Transform spawnPointIndex = spawnBulletsPoint[i];
 
+            animator.SetBool("IsSpawning", false);
+            animator.SetBool("IsShooting", true);
+
             //Pool bullets
             TurretBullet bullet = ObjectPoolManager.instance.GetEnemyBullet();
             bullet.transform.position = spawnPointIndex.position;
             bullet.transform.rotation = spawnPointIndex.rotation;
-
+            
             //Get the bullet rigidbody
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.isKinematic = false;

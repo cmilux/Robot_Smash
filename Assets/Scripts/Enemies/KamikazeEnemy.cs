@@ -40,11 +40,22 @@ public class KamikazeEnemy : Enemy
         {
             //Debug.Log("[Kamikaze] Player not detected, patrol");
             HandlePatrolState();        //player is out of range — keep wandering patrol points
+
+            if (_enemyWaiting)
+            {
+                animator.SetBool("IsStopped", true);
+                animator.SetBool("IsPlayerDetected", false);
+            }
+            else
+            {
+                animator.SetBool("IsStopped", false); 
+                animator.SetBool("IsPlayerDetected", false);
+            }
         }
         else
         {
-            //Debug.Log("[Kamikaze] Player detected, moving toward");
             MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
+            animator.SetBool("IsPlayerDetected", true);
         }
     }
 

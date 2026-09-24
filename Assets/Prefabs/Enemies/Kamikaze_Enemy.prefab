@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 5494925390241543896}
   - {fileID: 4994103607834533101}
+  - {fileID: 3969069314682254831}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5833921558152304150
@@ -140,6 +141,7 @@ MonoBehaviour:
   _patrolRadius: 30
   _enemyWaiting: 0
   detectionRadius: 15
+  animator: {fileID: 0}
   playerLevExp: {fileID: 0}
   levExpPoints: 200
   target: {fileID: 0}
@@ -5027,6 +5029,98 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1001 &3503324414046671364
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7465576872638547918}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      propertyPath: m_Name
+      value: SK_Enemy_Kamikaze_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1002414700926665402}
+  m_SourcePrefab: {fileID: 100100000, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+--- !u!4 &3969069314682254831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+  m_PrefabInstance: {fileID: 3503324414046671364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4350238850635378517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+  m_PrefabInstance: {fileID: 3503324414046671364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1002414700926665402
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350238850635378517}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 964c8d3eeb38b924891c61e8e0eaab60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4811013973212412678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5078,6 +5172,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e7411dcba5997824288568b73d36c35b, type: 3}
       propertyPath: m_Name
       value: SK_Enemy_Kamikaze_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7411dcba5997824288568b73d36c35b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

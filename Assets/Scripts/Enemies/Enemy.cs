@@ -25,13 +25,13 @@ public class Enemy : NetworkBehaviour
 
     [Header("Patrol logic")]
     [SerializeField] float _patrolRadius;   //sets the radius of the patrol area for the enemy
-    [SerializeField] bool _enemyWaiting;    //checks whether the enemy is waiting to go to the next patrol point or not
+    [SerializeField] protected bool _enemyWaiting;    //checks whether the enemy is waiting to go to the next patrol point or not
     protected bool _playerDetected;  //checks whether the enemy has detected the player or not
     protected bool _wasPlayerDetected;  //remembers last frame's detection state, so we can catch the exact moment the player leaves range
     public float detectionRadius = 8f;  //how close the player needs to be for this enemy to notice them and stop patrolling
 
     [Header("Animations")]
-    [SerializeField] Animator animator;
+    [SerializeField] protected Animator animator;
 
     [Header("Player and experience")]
     [SerializeField] PlayerLevelUI playerLevExp;
@@ -99,6 +99,11 @@ public class Enemy : NetworkBehaviour
             {
                 agent.ResetPath();
             }
+        }
+
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
         }
     }
 
