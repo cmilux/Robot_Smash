@@ -121,6 +121,14 @@ public class PlayerAttackDistance : NetworkBehaviour
             OnDurabilityChanged?.Invoke(currentDurability, weaponData.maxDurability);
         }
     }
+    public float GetCooldownRemaining()
+    {
+        return Math.Max(0,nextFireTime - Time.time);
+    }
+    public float GetCooldownMax()
+    {
+        return equippedWeaponData != null  ? equippedWeaponData.cooldownBase : 0f;
+    }
     void AimAtEnemy()
     {
         // Calculate direction towards the enemy

@@ -101,6 +101,7 @@ public class CarController : NetworkBehaviour
 
         float cooldown = carBumper.GetDashCooldown(dashCooldownBackup);
         nextDashTime = Time.time + cooldown;
+        carBumper.SetNextDashReadyTime(nextDashTime);   
     }
 
     void FlipCar()
