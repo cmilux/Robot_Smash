@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5253812063509334930}
   - component: {fileID: 3139572291754427567}
   - component: {fileID: 9121084111671174071}
-  - component: {fileID: 3581991528844147508}
   - component: {fileID: 7813606030034596426}
   m_Layer: 0
   m_Name: BumperPickUp
@@ -99,33 +98,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1615653, y: 0.6285447, z: 0.9657533}
   m_Center: {x: -0.0034585, y: 0.027991116, z: 0.19042462}
---- !u!54 &3581991528844147508
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9170641559277513034}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &7813606030034596426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
-  rotateSpeed: 0
+  amplitude: 1
+  frequency: 0.01
 --- !u!1001 &3637827819578888329
 PrefabInstance:
   m_ObjectHideFlags: 0
