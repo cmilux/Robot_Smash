@@ -2577,7 +2577,10 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
     spawnPoint: {fileID: 458163911}
     respawnDelay: 4
-  _respawnDelay: 5
+  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
+    spawnPoint: {fileID: 458163911}
+    respawnDelay: 1
+  _respawnDelay: 2
 --- !u!1 &392415355 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}

@@ -36,8 +36,22 @@ public class TurretEnemy : Enemy
         }
         else
         {
+            animator.SetBool("IsStopped", false);
+            animator.SetBool("IsAttacking", true);
+
             MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
             ShootPlayer();
+        }
+
+        if (_enemyWaiting)
+        {
+            animator.SetBool("IsStopped", true);
+            animator.SetBool("IsAttacking", false);
+        }
+        else if(!_enemyWaiting && !_playerDetected)
+        {
+            animator.SetBool("IsStopped", false);
+            animator.SetBool("IsAttacking", false);
         }
     }
 
