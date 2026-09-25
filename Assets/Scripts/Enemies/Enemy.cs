@@ -268,6 +268,7 @@ public class Enemy : NetworkBehaviour
         if (!IsServer) return;
 
         agent.isStopped = true;
+        agent.GetComponentInChildren<Animator>().enabled = false;
 
         if (isDead.Value)
         {

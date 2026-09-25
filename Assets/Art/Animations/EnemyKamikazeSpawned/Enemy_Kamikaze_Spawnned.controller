@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1582449838073610682, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+  m_Motion: {fileID: 7400000, guid: 0f8aa9d419ab05d4b83c35ed865d878f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -90,7 +90,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_Kamikaze
+  m_Name: Enemy_Kamikaze_Spawnned
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsStopped
@@ -209,7 +209,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_Kamikaze_Walking
+  m_Name: Enemy_Kamikaze_Spawned_Walking
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -224,7 +224,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8730008409285076315, guid: 81c1b31d6c28b2a4ba5abd3661d257c5, type: 3}
+  m_Motion: {fileID: 7400000, guid: 475dc844967a1bb42b17b6e475cf593d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -237,7 +237,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_Kamikaze_Idle
+  m_Name: Enemy_Kamikaze_Spawned_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -252,7 +252,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 14def830be0fb2644b3a0e304c942c96, type: 2}
+  m_Motion: {fileID: 7400000, guid: 381764d09670e4043921fc0428130c5b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
