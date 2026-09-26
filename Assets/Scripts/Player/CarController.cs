@@ -4,45 +4,74 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class CarController : NetworkBehaviour
 {
+    [Header("Movement")]
+    private Rigidbody _rb;
+    private Vector2 _moveInput;
     public float speed = 10f;
+    private float _currentSpeed;
     public float turnSpeed = 100f;
+    public float acceleration = 8f;     //how fast it reaches target speed
+    public bool isFrozen = false;       //If true the car cannot move
 
-    // Dash settings
+    [Header("Dash")]
+    private CarBumper _carBumper;
     public float dashSpeed = 50f;
     public float dashDuration = 0.5f;
-    public float dashCooldownBackup = 3f;//use only if the bumper has no ItemData assigned
+    public float dashCooldownBackup = 3f;   //use only if the bumper has no ItemData assigned
     public bool isDashing = false;
-    public float acceleration = 8f; // how fast it reaches target speed
+    private float _nextDashTime;
 
-    private CarBumper carBumper;
-    // If true the car cannot move
-    public bool isFrozen = false;
-
-    private Rigidbody rb;
-    private Vector2 moveInput;
-    private float currentSpeed;
-    private float nextDashTime;
+    [Header("Animator")]
+    [SerializeField] Animator _animator;
+    private NetworkVariable<float> _netSpeed = new NetworkVariable<float>(
+        0f,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+        );
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
 
-        carBumper = GetComponent<CarBumper>();
+        _carBumper = GetComponent<CarBumper>();
 
-        currentSpeed = speed;
+        if(_animator == null) _animator = GetComponentInChildren<Animator>();
+
+        _currentSpeed = speed;
 
         Cursor.visible = false;
-
         Cursor.lockState = CursorLockMode.Locked;
     }
     void FixedUpdate()
     {
         if (!IsOwner) return;
 
-        // If inventory its open frozen would be true
-        if (isFrozen) return;
+        if (isFrozen) return;       // If inventory its open frozen would be true
 
-        float moveAmount = moveInput.y * speed;
+        HandleMov();
+        HandleRotation();
+        //FlipCar();
+        UpdateAnimationSpeed();
+    }
+
+    private void Update()
+    {
+        // Applies to owner AND remote clients — reads whatever networkSpeed currently holds
+        // aplica al dueño Y a los clientes remotos — lee lo que tenga networkSpeed en ese momento
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", _netSpeed.Value);
+        }
+    }
+
+    public void OnMove(InputValue value)
+    {
+        _moveInput = value.Get<Vector2>();
+    }
+
+    void HandleMov()
+    {
+        float moveAmount = _moveInput.y * speed;
 
         if (isDashing)
         {
@@ -52,32 +81,37 @@ public class CarController : NetworkBehaviour
         // Set the target velocity in the car forward direction
         Vector3 targetVelocity = transform.forward * moveAmount;
         // Keep the current vertical velocity
-        targetVelocity.y = rb.linearVelocity.y;
+        targetVelocity.y = _rb.linearVelocity.y;
 
         // move smoothly towards the target velocity
-        rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
-
-        // Rotation
-        float turn = moveInput.x * turnSpeed * Time.fixedDeltaTime;
-        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
-        rb.MoveRotation(rb.rotation * turnRotation);
-
-        //FlipCar();      //flip car
+        _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
     }
-    public void OnMove(InputValue value)
+
+    void HandleRotation()
     {
-        moveInput = value.Get<Vector2>();
+        float turn = _moveInput.x * turnSpeed * Time.fixedDeltaTime;
+        Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
+        _rb.MoveRotation(_rb.rotation * turnRotation);
+    }
+
+    void UpdateAnimationSpeed()
+    {
+        float fowardVelocity = Vector3.Dot(_rb.linearVelocity, transform.forward);
+        float normalizeSpeed = Mathf.Clamp(fowardVelocity / speed, -1f, 1f);
+
+        _netSpeed.Value = normalizeSpeed;
     }
 
     public void ActivateDash()
-    {  //no se puede dashear sin paragolpe 
-        if (carBumper == null || !carBumper.isEquipped) return;
-        if (Time.time < nextDashTime) return;
+    {  
+        //no se puede dashear sin paragolpe 
+        if (_carBumper == null || !_carBumper.isEquipped) return;
+        if (Time.time < _nextDashTime) return;
 
         //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {
-            carBumper.UseDurability();
+            _carBumper.UseDurability();
 
             StartCoroutine(DashRoutine());
         }
@@ -99,9 +133,9 @@ public class CarController : NetworkBehaviour
         speed = originalSpeed;
         isDashing = false;
 
-        float cooldown = carBumper.GetDashCooldown(dashCooldownBackup);
-        nextDashTime = Time.time + cooldown;
-        carBumper.SetNextDashReadyTime(nextDashTime);   
+        float cooldown = _carBumper.GetDashCooldown(dashCooldownBackup);
+        _nextDashTime = Time.time + cooldown;
+        _carBumper.SetNextDashReadyTime(_nextDashTime);   
     }
 
     void FlipCar()
@@ -111,7 +145,7 @@ public class CarController : NetworkBehaviour
         float z = euler.z > 180 ? euler.z - 360 : euler.z;
         if (Mathf.Abs(x) > 60f || Mathf.Abs(z) > 60f)
         {
-            rb.MoveRotation(Quaternion.Euler(0f, euler.y, 0f));
+            _rb.MoveRotation(Quaternion.Euler(0f, euler.y, 0f));
         }
     }
 }
