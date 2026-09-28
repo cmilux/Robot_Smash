@@ -19,8 +19,11 @@ public class QuestLocation : NetworkBehaviour               //UPDATES PROGRESS O
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Bullet")) return;
-        TryReport(collision.gameObject);    }
+        //if (!collision.gameObject.CompareTag("MeleeWeapon")) return;
+        if (!collision.collider.CompareTag("MeleeWeapon")) return;
+        Debug.Log($"[QuestLocation] {collision.gameObject.name} collided with {gameObject.name}");
+        TryReport(collision.collider.gameObject);    
+    }
 
     private void TryReport(GameObject source)
     {
@@ -36,16 +39,24 @@ public class QuestLocation : NetworkBehaviour               //UPDATES PROGRESS O
         if (!QuestManager.Instance.CanReportProgress(objectiveType, targetId)) return;
 
         alreadyReported = true;
+        CompletedObjectivesServerRpc();
+    }
+
+    // the server does the report, the toggle and the despawn, so every client sees the result
+    // el servidor realiza el reporte, apaga y prende, asi cada cliente ve el resultado
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+    private void CompletedObjectivesServerRpc()
+    {
         QuestManager.Instance.ReportProgressServerRpc(objectiveType, targetId, 1);
+
+        ToggleObjects();
 
         // for narrative pickups like the letter — remove the object once it's been "collected"
         // para pickups narrativos como la carta — elimina el objeto una vez "recolectado"
-        if (destroySelfOnTrigger && IsServer && NetworkObject.IsSpawned)
+        if (destroySelfOnTrigger && NetworkObject.IsSpawned)
         {
             NetworkObject.Despawn(false);
         }
-
-        ToggleObjects();
     }
 
     private void ToggleObjects()

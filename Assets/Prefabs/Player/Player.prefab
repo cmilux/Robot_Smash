@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 83375010
+  GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   DeferredDespawnTick: 0
   Ownership: 1
@@ -481,12 +481,13 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   speed: 25
   turnSpeed: 100
+  acceleration: 8
+  isFrozen: 0
   dashSpeed: 50
   dashDuration: 0.5
   dashCooldownBackup: 3
   isDashing: 0
-  acceleration: 8
-  isFrozen: 0
+  _animator: {fileID: 0}
 --- !u!114 &8942512084302758237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,7 +1536,7 @@ GameObject:
   - component: {fileID: 7317291503738220667}
   m_Layer: 8
   m_Name: VisibleCarBumper
-  m_TagString: Untagged
+  m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1603,7 +1604,7 @@ GameObject:
   - component: {fileID: 3325168438292039475}
   m_Layer: 0
   m_Name: GO_SawLeft
-  m_TagString: Untagged
+  m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1899,7 +1900,7 @@ GameObject:
   - component: {fileID: 7447975561767811316}
   m_Layer: 0
   m_Name: GO_SawRight
-  m_TagString: Untagged
+  m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

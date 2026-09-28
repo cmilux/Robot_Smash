@@ -14,6 +14,7 @@ TagManager:
   - ItemReward
   - Bunker
   - Bullet
+  - MeleeWeapon
   layers:
   - Default
   - TransparentFX

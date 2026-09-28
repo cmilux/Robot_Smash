@@ -5382,6 +5382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ab7a98bfe2539bf4c9f4082aedb20f7e, type: 2}
     - target: {fileID: 919132149155446097, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_Name
       value: SM_Bld_ControlTower (3)
@@ -5447,7 +5451,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 2
   targetId: ControlTower
-  turnGameObject: []
+  turnGameObject:
+  - {fileID: 990988964}
   destroySelfOnTrigger: 0
 --- !u!23 &990988968 stripped
 MeshRenderer:
@@ -5829,6 +5834,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ab7a98bfe2539bf4c9f4082aedb20f7e, type: 2}
     - target: {fileID: 919132149155446097, guid: 7e8ff823e3bbb8a4bb21e6675ff86adf, type: 3}
       propertyPath: m_Name
       value: SM_Bld_ControlTower (4)
@@ -5894,7 +5903,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 2
   targetId: ControlTower
-  turnGameObject: []
+  turnGameObject:
+  - {fileID: 1011114724}
   destroySelfOnTrigger: 0
 --- !u!23 &1011114728 stripped
 MeshRenderer:
