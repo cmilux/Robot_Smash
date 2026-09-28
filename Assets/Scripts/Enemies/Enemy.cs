@@ -33,6 +33,9 @@ public class Enemy : NetworkBehaviour
     [Header("Animations")]
     [SerializeField] protected Animator animator;
 
+    [Header("Quests")]
+    [SerializeField] QuestArea _questArea;
+
     [Header("Player and experience")]
     [SerializeField] PlayerLevelUI playerLevExp;
     public int levExpPoints;
@@ -80,6 +83,12 @@ public class Enemy : NetworkBehaviour
     {
         _playerDetected = false;
         _wasPlayerDetected = false;
+
+        if (IsServer)
+        {
+            health.Value = maxHealth;
+            isDead.Value = false;
+        }
 
         if (agent == null)
         {
@@ -240,6 +249,11 @@ public class Enemy : NetworkBehaviour
         agent.SetDestination(target.position);
     }
 
+    public void SetQuestArea(QuestArea area)
+    {
+        _questArea = area;
+    }
+
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]       //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
@@ -272,6 +286,8 @@ public class Enemy : NetworkBehaviour
 
         if (isDead.Value)
         {
+            _questArea?.OnEnemyDied(this);
+
             ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, timeBeforeDestroy);
 
             //Add experience to the killer || agrega experiencia a quien mato al enemigo

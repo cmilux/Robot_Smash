@@ -559,6 +559,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8201954178586565456}
     m_Modifications:
+    - target: {fileID: 832973802640620701, guid: 8ccf8fb3817bf704196e355d2b19a9c4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.627451
+      objectReference: {fileID: 0}
     - target: {fileID: 1287990460834803372, guid: 8ccf8fb3817bf704196e355d2b19a9c4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -662,6 +666,10 @@ PrefabInstance:
     - target: {fileID: 1646020781286731043, guid: 8ccf8fb3817bf704196e355d2b19a9c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010786872368049915, guid: 8ccf8fb3817bf704196e355d2b19a9c4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.627451
       objectReference: {fileID: 0}
     - target: {fileID: 4033311208034636399, guid: 8ccf8fb3817bf704196e355d2b19a9c4, type: 3}
       propertyPath: m_Name

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2197731265708835098}
   - component: {fileID: 1802901919762336138}
   - component: {fileID: 5339404103558342363}
+  - component: {fileID: 108914174246351831}
   m_Layer: 0
   m_Name: Healer
   m_TagString: Healer
@@ -30,9 +31,9 @@ Transform:
   m_GameObject: {fileID: 2876095499056714678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.75, y: 9.75, z: 290.75}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,9 +114,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.0718759
-  m_Height: 3.9196537
+  m_Height: 2.7348118
   m_Direction: 1
-  m_Center: {x: 0.0041535697, y: -0.055526417, z: 0.01341629}
+  m_Center: {x: 0.0041536093, y: -0.0066432953, z: 0.01341629}
 --- !u!114 &1802901919762336138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +155,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
+  amplitude: 1
+  frequency: 0.01
+--- !u!114 &108914174246351831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876095499056714678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59c036a570cca348982cd869c6fe30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealer
+  healing: 15

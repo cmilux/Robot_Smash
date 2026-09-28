@@ -47,6 +47,8 @@ public class InventoryManager : NetworkBehaviour
 
     private Dictionary<ItemType, NetworkVariable<int>> equippedIds;
 
+    private Slot[] hotbarSlotsCache;
+
     [Header("Hotbar")]
     public GameObject hotbarSlotsContainer;
 
@@ -96,7 +98,27 @@ public class InventoryManager : NetworkBehaviour
             carBumper.OnDurabilityChanged += HandleBumperDurabilityChanged;
         }
     }
-
+    private void Update()
+    {
+        if (!IsOwner) return; 
+        if (hotbarSlotsCache == null) return;
+        foreach(Slot slot in hotbarSlotsCache)
+        {
+            if(slot.itemData == null) continue;
+            if(slot.itemData.itemType == ItemType.weapon && playerAttack != null)
+            {
+                slot.SetCooldown(playerAttack.GetCooldownRemaining(), playerAttack.GetCooldownMax());
+            }
+            else if(slot.itemData.itemType == ItemType.saws && carSaws != null)
+            {
+                slot.SetCooldown(carSaws.GetCooldownRemaining(), carSaws.GetCooldownMax());
+            }
+            else if(slot.itemData.itemType == ItemType.carBumper && carBumper != null)
+            {
+                slot.SetCooldown(carBumper.GetDashCooldownRemaining(), carBumper.GetCooldownMax(carController.dashCooldownBackup));
+            }
+        }
+    }
     public override void OnNetworkSpawn()
     {
         // All clients subscribe to the weapon changes
@@ -124,6 +146,7 @@ public class InventoryManager : NetworkBehaviour
         playerInventoryUI = GameObject.Find("InventoryUI").transform.Find("Inventory").gameObject;
         craftingUI = GameObject.Find("InventoryUI").transform.Find("Craft").gameObject;
         hotbarSlotsContainer = GameObject.Find("HotBar");
+        CacheHotbarSlots();
 
         // Hide the inventory UI at the start
         if (playerInventoryUI != null)
@@ -581,5 +604,11 @@ public class InventoryManager : NetworkBehaviour
                 break;
             }
         }
+    }
+
+    private void CacheHotbarSlots()
+    {
+        if(hotbarSlotsContainer == null) return;
+        hotbarSlotsCache = hotbarSlotsContainer.GetComponentsInChildren<Slot>(true); 
     }
 }

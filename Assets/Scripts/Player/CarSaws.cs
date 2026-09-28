@@ -22,6 +22,8 @@ public class CarSaws : NetworkBehaviour
 
     private Dictionary<GameObject, float> nextDamageTime = new Dictionary<GameObject, float>();
 
+    private float nextReadyTime;
+
     public int currentDurability;
 
     public event Action OnWeaponBroke;
@@ -45,6 +47,14 @@ public class CarSaws : NetworkBehaviour
         }
     }
 
+    public float GetCooldownRemaining()
+    {
+        return Math.Max(0, nextReadyTime - Time.time);
+    }
+    public float GetCooldownMax()
+    {
+        return equippedWeaponData != null ? equippedWeaponData.cooldownBase : 0f;
+    }
     // Called by the Input System when pressing the saw power button(barra espaciadora)
     public void OnSawsPower(InputValue value)
     {
@@ -67,6 +77,7 @@ public class CarSaws : NetworkBehaviour
         onCooldown = true;                      // marca que hay que esperar
         if (equippedWeaponData != null)
         {
+            nextReadyTime = Time.time + equippedWeaponData.cooldownBase;
             yield return new WaitForSeconds(equippedWeaponData.cooldownBase);
         }
         onCooldown = false;                     // ahora se puede volver a usar

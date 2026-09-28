@@ -12,7 +12,9 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     [HideInInspector] public int quantity;
 
     [Header("Durability")]
-    public Image durabilityBar; 
+    public Image durabilityBar;
+
+    public Image cooldownOverlay;
 
     public Image icon;
 
@@ -24,7 +26,18 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         // Find the text object that shows the item count
         quantityText = transform.Find("Quantity")?.GetComponentInChildren<TextMeshProUGUI>();
     }
+    public void SetCooldown(float remaining, float max)
+    {
+        if (cooldownOverlay == null) return;
 
+        if(max <= 0)
+        {
+            cooldownOverlay.fillAmount = 0f;
+            return;
+        }
+
+        cooldownOverlay.fillAmount = remaining / max;
+    }
     public void SetDurability(int current, int max)
     {
         if (durabilityBar == null) return;
@@ -91,6 +104,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         quantityText.text = "";
 
         if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
+        if(cooldownOverlay != null) cooldownOverlay.gameObject.SetActive(false);
 }
 
     //encontrar el InventoryManager del jugador local

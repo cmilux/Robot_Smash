@@ -16,6 +16,7 @@ MonoBehaviour:
   targetId: ControlTower
   requiredAmount: 2
   requieresPreviousObj: 0
-  description: Destruye las 2 torres de control de color azul del mapa
+  description: Destruye las 2 torres de control azules utilizando un arma cuerpo
+    a cuerpo
   isOptional: 0
   bonusExp: 0

@@ -7,8 +7,6 @@ using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.Profiling;
 using UnityEngine.UIElements;
-using static UnityEditor.FilePathAttribute;
-using static UnityEditor.PlayerSettings;
 
 public class BigEnemy : Enemy
 {

@@ -13,7 +13,7 @@ public class CarBumper : NetworkBehaviour
 
     public event Action OnWeaponBroke;
     public event Action<int, int> OnDurabilityChanged;
-
+    private float nextReadyTime;
     //call by InventoryManager when the bumper change
     public void SetWeaponData(ItemData weaponData)
     {
@@ -24,6 +24,18 @@ public class CarBumper : NetworkBehaviour
             currentDurability = equippedWeaponData.maxDurability;
             OnDurabilityChanged?.Invoke(currentDurability,weaponData.maxDurability);
         }
+    }
+    public void SetNextDashReadyTime(float time)
+    {
+        nextReadyTime = time;
+    }
+    public float GetDashCooldownRemaining()
+    {
+        return Math.Max(0,nextReadyTime - Time.time);
+    }
+    public float GetCooldownMax(float backup)
+    {
+        return equippedWeaponData != null ? equippedWeaponData.cooldownBase : backup;
     }
 
     //return the bumper dash cooldown. Use backup only if no ItemData was assigned yet.
