@@ -3053,6 +3053,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 385631787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &461581494
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1542873669}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_Name
+      value: PH_Eng_Cube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+--- !u!4 &461581495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+  m_PrefabInstance: {fileID: 461581494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &461581496 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+  m_PrefabInstance: {fileID: 461581494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &466774253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3170,7 +3237,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: 
-  turnGameObject: {fileID: 0}
+  turnGameObject: []
   destroySelfOnTrigger: 0
 --- !u!208 &486927236
 NavMeshObstacle:
@@ -3415,6 +3482,7 @@ GameObject:
   - component: {fileID: 596753438}
   - component: {fileID: 596753437}
   - component: {fileID: 596753436}
+  - component: {fileID: 596753439}
   m_Layer: 0
   m_Name: Drop_EPMMachine
   m_TagString: Untagged
@@ -3453,7 +3521,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: DropEPM
-  turnGameObject: {fileID: 1783486385}
+  turnGameObject:
+  - {fileID: 596753434}
   destroySelfOnTrigger: 0
 --- !u!65 &596753437
 BoxCollider:
@@ -3502,6 +3571,26 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &596753439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596753434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: SM_Int_EpmMachine (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1783486386}
 --- !u!1 &604963406 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -3981,6 +4070,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 319745978275758484, guid: aa3bd507f8e718c429c624678d05194f, type: 3}
   m_PrefabInstance: {fileID: 699531205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &700227032
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1838129678}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.82
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.44
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_Name
+      value: PH_Eng_Cube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+--- !u!4 &700227033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+  m_PrefabInstance: {fileID: 700227032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &700227034 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+  m_PrefabInstance: {fileID: 700227032}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &703650879
 GameObject:
@@ -5291,7 +5447,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 2
   targetId: ControlTower
-  turnGameObject: {fileID: 990988964}
+  turnGameObject: []
   destroySelfOnTrigger: 0
 --- !u!23 &990988968 stripped
 MeshRenderer:
@@ -5738,7 +5894,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 2
   targetId: ControlTower
-  turnGameObject: {fileID: 1011114724}
+  turnGameObject: []
   destroySelfOnTrigger: 0
 --- !u!23 &1011114728 stripped
 MeshRenderer:
@@ -7877,7 +8033,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: 
-  turnGameObject: {fileID: 0}
+  turnGameObject: []
   destroySelfOnTrigger: 0
 --- !u!208 &1387196869
 NavMeshObstacle:
@@ -8088,7 +8244,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: WatchTower
-  turnGameObject: {fileID: 1776705817}
+  turnGameObject:
+  - {fileID: 1776705817}
   destroySelfOnTrigger: 0
 --- !u!65 &1429619517
 BoxCollider:
@@ -8325,7 +8482,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: PickUp
-  turnGameObject: {fileID: 1467238003}
+  turnGameObject:
+  - {fileID: 1467238003}
   destroySelfOnTrigger: 0
 --- !u!65 &1467238006
 BoxCollider:
@@ -8394,6 +8552,73 @@ MonoBehaviour:
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 1768382922}
+--- !u!1001 &1472286870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2074951003}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+      propertyPath: m_Name
+      value: PH_Eng_Cube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+--- !u!4 &1472286871 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+  m_PrefabInstance: {fileID: 1472286870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1472286872 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 930fee5b01489d74e9969d90ae7a81ea, type: 3}
+  m_PrefabInstance: {fileID: 1472286870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1483092176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8761,6 +8986,7 @@ GameObject:
   - component: {fileID: 1542873671}
   - component: {fileID: 1542873668}
   - component: {fileID: 1542873670}
+  - component: {fileID: 1542873672}
   m_Layer: 0
   m_Name: Engineer_1 (1)
   m_TagString: Untagged
@@ -8801,7 +9027,8 @@ Transform:
   m_LocalPosition: {x: 275.7, y: 36.247, z: 323.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 461581495}
   m_Father: {fileID: 385631787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1542873670
@@ -8819,7 +9046,9 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: Engineers
-  turnGameObject: {fileID: 0}
+  turnGameObject:
+  - {fileID: 1542873667}
+  - {fileID: 1652878188}
   destroySelfOnTrigger: 0
 --- !u!114 &1542873671
 MonoBehaviour:
@@ -8847,6 +9076,31 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1542873672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542873667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 1
+  Components:
+  - name: Engineer_1 (1) (Box Collider)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1542873668}
+  - name: PH_Eng_Cube (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 461581496}
 --- !u!1001 &1546090676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9490,7 +9744,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: Key
-  turnGameObject: {fileID: 1652878188}
+  turnGameObject:
+  - {fileID: 1652878188}
   destroySelfOnTrigger: 0
 --- !u!65 &1652878191
 BoxCollider:
@@ -9835,7 +10090,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 2
   targetId: RobotBase
-  turnGameObject: {fileID: 1657346730}
+  turnGameObject: []
   destroySelfOnTrigger: 0
 --- !u!1 &1657460598 stripped
 GameObject:
@@ -10091,7 +10346,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: GasStation
-  turnGameObject: {fileID: 0}
+  turnGameObject: []
   destroySelfOnTrigger: 0
 --- !u!1 &1765474226 stripped
 GameObject:
@@ -10421,19 +10676,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af27225bea1c3f14c89589e13a7b791f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1783486388}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af27225bea1c3f14c89589e13a7b791f, type: 3}
 --- !u!4 &1783486384 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: af27225bea1c3f14c89589e13a7b791f, type: 3}
-  m_PrefabInstance: {fileID: 1783486383}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1783486385 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: af27225bea1c3f14c89589e13a7b791f, type: 3}
   m_PrefabInstance: {fileID: 1783486383}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &1783486386 stripped
@@ -10441,26 +10688,6 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: af27225bea1c3f14c89589e13a7b791f, type: 3}
   m_PrefabInstance: {fileID: 1783486383}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1783486388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783486385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
-  ShowTopMostFoldoutHeaderGroup: 1
-  StartEnabled: 0
-  Components:
-  - name: SM_Int_EpmMachine (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 1783486386}
 --- !u!1001 &1797737831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10674,6 +10901,7 @@ GameObject:
   - component: {fileID: 1838129680}
   - component: {fileID: 1838129677}
   - component: {fileID: 1838129679}
+  - component: {fileID: 1838129681}
   m_Layer: 0
   m_Name: Engineer_1
   m_TagString: Untagged
@@ -10714,7 +10942,8 @@ Transform:
   m_LocalPosition: {x: 93.19, y: 32.96, z: 252.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 700227033}
   m_Father: {fileID: 385631787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1838129679
@@ -10732,7 +10961,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: Engineers
-  turnGameObject: {fileID: 0}
+  turnGameObject:
+  - {fileID: 1838129676}
   destroySelfOnTrigger: 0
 --- !u!114 &1838129680
 MonoBehaviour:
@@ -10760,6 +10990,31 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1838129681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838129676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 1
+  Components:
+  - name: Engineer_1 (Box Collider)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1838129677}
+  - name: PH_Eng_Cube (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 700227034}
 --- !u!1001 &1853398648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11420,6 +11675,7 @@ GameObject:
   - component: {fileID: 2074951005}
   - component: {fileID: 2074951002}
   - component: {fileID: 2074951004}
+  - component: {fileID: 2074951006}
   m_Layer: 0
   m_Name: Engineer_1 (2)
   m_TagString: Untagged
@@ -11460,7 +11716,8 @@ Transform:
   m_LocalPosition: {x: 249.29, y: 24.32, z: 224.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1472286871}
   m_Father: {fileID: 385631787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2074951004
@@ -11478,7 +11735,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: Engineers
-  turnGameObject: {fileID: 1652878188}
+  turnGameObject:
+  - {fileID: 2074951001}
   destroySelfOnTrigger: 0
 --- !u!114 &2074951005
 MonoBehaviour:
@@ -11506,6 +11764,31 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &2074951006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074951001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 1
+  Components:
+  - name: Engineer_1 (2) (Box Collider)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 2074951002}
+  - name: PH_Eng_Cube (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1472286872}
 --- !u!1 &2075676680
 GameObject:
   m_ObjectHideFlags: 0
