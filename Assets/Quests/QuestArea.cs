@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,9 +9,15 @@ public class QuestArea : MonoBehaviour
 {
     [SerializeField] int _questId;   //matches questdata.questid
     [SerializeField] EnemySpawnConfig[] _enemyConfig;
-    [SerializeField] float _respawnDelay = 5f;
+    //[SerializeField] float _respawnDelay = 5f;        unncesesary since enemyspawnconfig has it
 
-    List<Enemy> _activeEnemies = new List<Enemy>();
+    private class SpawnedEnemy
+    {
+        public Enemy enemy;
+        public EnemySpawnConfig config;
+    }
+
+    List<SpawnedEnemy> _activeEnemies = new List<SpawnedEnemy>();
     bool _questActive = false;
     bool _subscribed = false;
 
@@ -59,7 +66,7 @@ public class QuestArea : MonoBehaviour
     private void EndQuest()
     {
         _questActive = false;
-        DespawnAllEnemies();
+        //DespawnAllEnemies();
     }
 
     public void SpawnAllEnemies()
@@ -68,23 +75,40 @@ public class QuestArea : MonoBehaviour
         {
             Enemy enemy = ObjectPoolManager.instance.GetEnemy(config.enemyPrefab);
 
-            if (enemy == null) continue;
-
-            Vector3 spawnPos = config.spawnPoint.position;
-            if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+            for (int i = 0; i < config.amount; i++)
             {
-                spawnPos = hit.position;
+                SpawnEnemy(config);
             }
-
-            // Use Warp to place agent properly on NavMesh
-            enemy.transform.position = spawnPos;
-
-            // Initialize with a small delay to let agent settle
-            enemy.SetSpawnPoint(spawnPos);
-            StartCoroutine(InitializeEnemyDelayed(enemy));
-
-            _activeEnemies.Add(enemy);
         }
+    }
+
+    private void SpawnEnemy(EnemySpawnConfig config)
+    {
+        Enemy enemy = ObjectPoolManager.instance.GetEnemy(config.enemyPrefab);
+
+        if (enemy == null) return;
+
+        Vector3 spawnPos = config.spawnPoint.position;
+        
+        if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+        {
+            spawnPos = hit.position;
+        }
+
+        // Use Warp to place agent properly on NavMesh
+        enemy.transform.position = spawnPos;
+
+        // Initialize with a small delay to let agent settle
+        enemy.SetSpawnPoint(spawnPos);
+        enemy.SetQuestArea(this);
+        
+        StartCoroutine(InitializeEnemyDelayed(enemy));
+
+        _activeEnemies.Add(new SpawnedEnemy
+        {
+            enemy = enemy,
+            config = config
+        });
     }
 
     private IEnumerator InitializeEnemyDelayed(Enemy enemy)
@@ -96,8 +120,10 @@ public class QuestArea : MonoBehaviour
 
     public void DespawnAllEnemies()
     {
-        foreach (Enemy enemy in _activeEnemies)
+        foreach (SpawnedEnemy spawnedEnemy in _activeEnemies)
         {
+            Enemy enemy = spawnedEnemy.enemy;
+
             if (enemy != null && enemy.gameObject.activeSelf)
             {
                 enemy.gameObject.SetActive(false);
@@ -110,19 +136,25 @@ public class QuestArea : MonoBehaviour
     {
         if(!_questActive) return;
 
-        _activeEnemies.Remove(enemy);
-        StartCoroutine(RespawnEnemyAfterDelay(enemy, _respawnDelay));
+        SpawnedEnemy spawnedEnemy = _activeEnemies.Find(
+            x => x.enemy == enemy
+            );
+
+        if(spawnedEnemy == null) return;
+
+        EnemySpawnConfig config = spawnedEnemy.config;
+
+        _activeEnemies.Remove(spawnedEnemy);
+
+        StartCoroutine(RespawnEnemyAfterDelay(config));
     }
 
-    private IEnumerator RespawnEnemyAfterDelay(Enemy enemy, float delay)
+    private IEnumerator RespawnEnemyAfterDelay(EnemySpawnConfig config)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(config.respawnDelay);
 
-        if (_questActive && enemy != null)
-        {
-            enemy.Initialize();
-            enemy.gameObject.SetActive(true);
-            _activeEnemies.Add(enemy);
-        }
+        if (!_questActive) yield break;
+
+        SpawnEnemy(config);
     }
 }
