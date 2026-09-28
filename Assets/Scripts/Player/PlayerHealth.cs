@@ -75,11 +75,13 @@ public class PlayerHealth : NetworkBehaviour
     {
         if (other.CompareTag("Healer"))
         {
+            if (health.Value == maxHealth) return;
+
             PlayerHealer healer = other.GetComponent<PlayerHealer>();
 
             health.Value = health.Value + healer.healing;
 
-            if (health.Value == maxHealth)
+            if (health.Value >= maxHealth)
             {
                 health.Value = maxHealth;
             }
