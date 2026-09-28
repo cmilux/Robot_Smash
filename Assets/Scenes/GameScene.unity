@@ -9566,7 +9566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
   ShowTopMostFoldoutHeaderGroup: 1
-  StartEnabled: 1
+  StartEnabled: 0
   Components:
   - name: SM_Int_AccessKey (Mesh Renderer)
     InvertEnabled: 0
@@ -11478,7 +11478,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: Engineers
-  turnGameObject: {fileID: 0}
+  turnGameObject: {fileID: 1652878188}
   destroySelfOnTrigger: 0
 --- !u!114 &2074951005
 MonoBehaviour:
