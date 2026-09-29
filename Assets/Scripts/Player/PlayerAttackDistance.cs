@@ -8,7 +8,7 @@ public class PlayerAttackDistance : NetworkBehaviour
 {
     public event Action OnWeaponBroke;
     public event Action<int, int> OnDurabilityChanged;
-
+    public event Action OnShoot;
     public Transform aim;
     [HideInInspector] public Transform[] firePoints;
     public GameObject bulletPrefab;
@@ -206,6 +206,7 @@ public class PlayerAttackDistance : NetworkBehaviour
                 );
             }
         nextFireTime = Time.time + equippedWeaponData.cooldownBase;
+        OnShoot?.Invoke();
 
         UseDurability();//each shot
     }
