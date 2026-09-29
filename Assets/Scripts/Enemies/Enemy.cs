@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Netcode;
 using System.Collections;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : NetworkBehaviour
 {
@@ -16,6 +17,7 @@ public class Enemy : NetworkBehaviour
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
     public float timeBeforeDestroy;
+    [SerializeField] protected Image _enemyHealthFill;
 
     [Header("Enemy movement")]
     protected NavMeshAgent agent;
@@ -72,11 +74,15 @@ public class Enemy : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        health.OnValueChanged += OnHealthChanged;
+
         if (IsServer)
         {
             health.Value = maxHealth;                   //sets enemies to max health (set on inspector individually) || salud maxima de los enemigos (se pone manualmente en el inspector de cada uno)
             isDead.Value = false;
         }
+
+        UpdateEnemyHealth(health.Value, maxHealth);
     }
 
     public virtual void Initialize()
@@ -261,6 +267,7 @@ public class Enemy : NetworkBehaviour
 
         //Takes damage from enemies
         health.Value -= damageAmount;
+        int currentHealth = health.Value;
         killerClientId = attackerClientId;      //who killed the enemy || quien mato al enemigo
 
         if (health.Value <= 0)
@@ -275,6 +282,16 @@ public class Enemy : NetworkBehaviour
 
             Die(timeBeforeDestroy);                             //Call Die method with parameter
         }
+    }
+
+    void OnHealthChanged(int prevValue, int newValue)
+    {
+        UpdateEnemyHealth(newValue, maxHealth);
+    }
+
+    void UpdateEnemyHealth(int current, int max)
+    {
+        if (_enemyHealthFill != null) _enemyHealthFill.fillAmount = (float)current / max;
     }
 
     protected virtual void Die(float delay)
@@ -348,6 +365,8 @@ public class Enemy : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
+        health.OnValueChanged -= OnHealthChanged;
+
         gameObject.SetActive(false);        //turn game obj off after despawn || apaga el objeto desp de ser despawneado
         base.OnNetworkDespawn();
     }

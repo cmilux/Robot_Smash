@@ -18,7 +18,8 @@ public class UIManager : MonoBehaviour
     [Header("Craft")]
     [SerializeField] GameObject craftPanel;
 
-    [Header("Health")]
+    [Header("Player Health")]
+    
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Image healthFill;
 
@@ -50,13 +51,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void UpdateHealth(int current, int max)
+    public void UpdatePlayerHealth(int current, int max)
     {
         if (healthText != null) healthText.text = $"HP: {current}";
         if (healthFill != null) healthFill.fillAmount = (float)current / max;
     }
 
-    public void UpdateExp(int current, int max, int level)
+    public void UpdatePlayerExp(int current, int max, int level)
     {
         if (levelText != null) levelText.text = level.ToString();
         if (expText != null) expText.text = $"{current} exp / {max} exp";
