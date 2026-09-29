@@ -3,20 +3,28 @@ using UnityEngine;
 
 public class VFXItemPickUp : MonoBehaviour
 {
-    float rotateSpeed = 50f;
-    [SerializeField] float amplitude = 0.5f;
-    [SerializeField] float frequency = 0.01f;
+    float _rotateSpeed = 50f;
+    [SerializeField] float _amplitude = 0.5f;
+    [SerializeField] float _frequency = 0.01f;
 
-    void FixedUpdate()
+    Vector3 _startPos;
+
+    private void Start()
     {
-        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
+        _startPos = transform.position;
+    }
+
+    void Update()
+    {
+        //rotate item
+        transform.Rotate(Vector3.up * _rotateSpeed * Time.deltaTime);
 
         //si no queremos q flote borrar esto
         //si queremos q flote, borrar rigidbody
         transform.position = new Vector3(
-            transform.position.x,
-            transform.position.y + Mathf.Sin(Time.time * amplitude) * frequency,
-            transform.position.z
+            _startPos.x,
+            _startPos.y + Mathf.Sin(Time.time * _frequency) * _amplitude,
+            _startPos.z
             );
     }
 }

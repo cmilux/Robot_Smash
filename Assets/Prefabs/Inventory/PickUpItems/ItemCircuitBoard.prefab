@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 938711718970526171}
   - component: {fileID: 6327832759754874621}
   - component: {fileID: 6427287104591198141}
-  - component: {fileID: 4192226732083387516}
   - component: {fileID: -6296612512979808005}
   m_Layer: 0
   m_Name: ItemCircuitBoard
@@ -56,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0114756, y: 0.82954085, z: 0.29781932}
-  m_Center: {x: -0.00093889236, y: 0.77019805, z: -0.11522164}
+  m_Size: {x: 1.0114756, y: 0.9066472, z: 0.31659526}
+  m_Center: {x: -0.00093889236, y: 0.020079851, z: 0.034052048}
 --- !u!114 &6327832759754874621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,33 +98,6 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   itemData: {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
   quantity: 1
---- !u!54 &4192226732083387516
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4028469759395132739}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &-6296612512979808005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
-  amplitude: 0.5
-  frequency: 0.01
+  _amplitude: 0.25
+  _frequency: 0.5
 --- !u!1001 &7428215586295378053
 PrefabInstance:
   m_ObjectHideFlags: 0

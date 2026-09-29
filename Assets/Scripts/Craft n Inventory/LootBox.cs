@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LootBox : NetworkBehaviour
@@ -24,6 +25,9 @@ public class LootBox : NetworkBehaviour
 
     // How long to wait after breaking before the item appears
     public float dropDelay = 2f;
+
+    [Header("Item Spawn Height")]
+    [SerializeField] float _itemHeight = 0.2f;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -64,9 +68,28 @@ public class LootBox : NetworkBehaviour
         //Pick a random amount between the min and max
         int amount = Random.Range(chosen.minAmount, chosen.maxAmount + 1);
 
-        GameObject droppedItem = Instantiate(chosen.item.dropPrefab, transform.position, Quaternion.identity);
+        //find the ground below the lot
+        Vector3 spawnPos = transform.position;
+
+        if (Physics.Raycast(
+            transform.position + Vector3.up * 2f,
+            Vector3.down,
+            out RaycastHit hit,
+            10f))
+        {
+            //spawn the item slightly above the ground
+            spawnPos = hit.point + Vector3.up * _itemHeight;
+        }
+
+        //spawn the item 
+        GameObject droppedItem = Instantiate(
+            chosen.item.dropPrefab,
+            spawnPos, 
+            Quaternion.identity
+            );
 
         ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
+        
         if (pickup != null)
         {
             pickup.quantity = amount;
@@ -75,7 +98,10 @@ public class LootBox : NetworkBehaviour
         NetworkObject netObj = droppedItem.GetComponent<NetworkObject>();
         netObj.Spawn();
 
-        QuestManager.Instance.ReportProgress(ObjectiveType.DestroyObject, chosen.item.id.ToString());
+        QuestManager.Instance.ReportProgress(
+            ObjectiveType.DestroyObject,
+            chosen.item.id.ToString()
+            );
 
         NetworkObject.Despawn(false);
     }
