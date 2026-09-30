@@ -8,7 +8,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: ATLAS
-    second: {fileID: 2800000, guid: 2441361c499e663468fae2ce0457aba6, type: 3}
+    second: {fileID: 2800000, guid: 6e0c24a80298c9946ad198167b14bfcc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: caras
+    second: {fileID: 2800000, guid: 8fb1dd3bef4f5a0469ba1df5e7b2b14c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
