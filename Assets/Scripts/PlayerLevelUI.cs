@@ -49,7 +49,7 @@ public class PlayerLevelUI : MonoBehaviour
         int start = totalExp - prevLevExp;      //how much exp was earned in current level || cuanta exp gano en el nivel actual
         int end = nextLevExp - prevLevExp;      //total exp needed to complete this level || exp total necesaria para completar el nivel actual
 
-        UIManager.Instance.UpdateExp(start, end, currentLevel);
+        UIManager.Instance.UpdatePlayerExp(start, end, currentLevel);
     }
 
     //samples the animation curve to get the exp threshold for a given level || evalua la curva de animacion para obtener el umbral de exp de un nivel

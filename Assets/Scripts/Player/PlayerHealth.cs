@@ -39,7 +39,7 @@ public class PlayerHealth : NetworkBehaviour
         if (!IsOwner) return;
 
         //Update ui references if value changes || actualiza la ui si los valores cambian
-        UIManager.Instance.UpdateHealth(newValue, maxHealth);
+        UIManager.Instance.UpdatePlayerHealth(newValue, maxHealth);
     }
 
     //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
