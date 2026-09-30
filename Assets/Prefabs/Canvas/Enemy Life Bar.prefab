@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4484864184252143358}
   - component: {fileID: 349233902296951303}
   m_Layer: 5
-  m_Name: 'Enemy Life Bar '
+  m_Name: Enemy Life Bar
   m_TagString: ExpUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
