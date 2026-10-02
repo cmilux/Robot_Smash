@@ -35,8 +35,13 @@ public class Enemy : NetworkBehaviour
     [Header("Animations")]
     [SerializeField] protected Animator animator;
 
-    [Header("Quests")]
+    [Header("Quests and pools")]
     [SerializeField] QuestArea _questArea;
+    private NetworkVariable<bool> _poolActive = new NetworkVariable<bool>(
+        false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server
+        );
 
     [Header("Player and experience")]
     [SerializeField] PlayerLevelUI playerLevExp;
@@ -83,6 +88,9 @@ public class Enemy : NetworkBehaviour
         }
 
         UpdateEnemyHealth(health.Value, maxHealth);
+
+        _poolActive.OnValueChanged += OnPoolActiveChanged;
+        if (!IsServer) gameObject.SetActive(_poolActive.Value); // late joiners read the current value
     }
 
     public virtual void Initialize()
@@ -120,6 +128,13 @@ public class Enemy : NetworkBehaviour
         {
             animator = GetComponentInChildren<Animator>();
         }
+    }
+
+    [ClientRpc]
+    public void NotifyActivateClientRpc()
+    {
+        if (IsServer) return;
+        gameObject.SetActive(true);
     }
 
     public void SetSpawnPoint(Vector3 newSpawnPoint)
@@ -260,6 +275,20 @@ public class Enemy : NetworkBehaviour
         _questArea = area;
     }
 
+    #region Sync Pools
+    // server only: tells clients to show or hide this enemy
+    public void SyncActiveState(bool value)
+    {
+        if(IsServer) _poolActive.Value = value;
+    }
+
+    void OnPoolActiveChanged(bool prev, bool next)
+    {
+        if (!IsServer) gameObject.SetActive(next);
+    }
+
+    #endregion
+
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]       //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
@@ -366,6 +395,7 @@ public class Enemy : NetworkBehaviour
     public override void OnNetworkDespawn()
     {
         health.OnValueChanged -= OnHealthChanged;
+        _poolActive.OnValueChanged -= OnPoolActiveChanged;
 
         gameObject.SetActive(false);        //turn game obj off after despawn || apaga el objeto desp de ser despawneado
         base.OnNetworkDespawn();

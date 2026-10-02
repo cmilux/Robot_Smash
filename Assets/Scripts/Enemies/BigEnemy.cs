@@ -95,6 +95,8 @@ public class BigEnemy : Enemy
             kam.gameObject.SetActive(true);
 
             kam.Initialize();
+
+            kam.SyncActiveState(true);
         }
     }
 
@@ -123,20 +125,36 @@ public class BigEnemy : Enemy
 
             //Pool bullets
             TurretBullet bullet = ObjectPoolManager.instance.GetEnemyBullet();
-            bullet.transform.position = spawnPointIndex.position;
-            bullet.transform.rotation = spawnPointIndex.rotation;
-            
+            bullet.gameObject.SetActive(true);
+
+            //bullet.transform.position = spawnPointIndex.position;
+            //bullet.transform.rotation = spawnPointIndex.rotation;
+
+            var nt = bullet.GetComponent<NetworkTransform>();
+            if (nt != null)
+            {
+                nt.Teleport(
+                    spawnPointIndex.position,
+                    spawnPointIndex.rotation,
+                    bullet.transform.localScale
+                    );
+            }
+            else
+                bullet.transform.SetPositionAndRotation(
+                    spawnPointIndex.position, 
+                    spawnPointIndex.rotation
+                    );
+
+            bullet.ResetTrail();
+
             //Get the bullet rigidbody
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.isKinematic = false;
-            //Pool bullets forward
-            Vector3 dir = spawnPointIndex.forward;
-            //Apply force to the bullets direction || aplica fuerza a la direccion de disparo de la bala
-            rb.linearVelocity = dir * 15f;
+            rb.linearVelocity = (target.position - spawnPointIndex.position).normalized * 15f;
 
-            bullet.gameObject.SetActive(true);
+            bullet.NotifySpawnClientRpc(spawnPointIndex.position, spawnPointIndex.rotation);
 
-            ObjectPoolManager.instance.ReturnEnemyBulletAfterDelay(bullet, destroyTimer);
+            //ObjectPoolManager.instance.ReturnEnemyBulletAfterDelay(bullet, destroyTimer);
         }
     }
 

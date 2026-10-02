@@ -235,6 +235,7 @@ public class PlayerAttackDistance : NetworkBehaviour
     {
         //pool a bullet
         PlayerBulletController bullet = ObjectPoolManager.instance.GetPlayerBullet();
+        bullet.gameObject.SetActive(true);
 
         //get net transform from buller
         NetworkTransform netTransform = bullet.GetComponent<NetworkTransform>();
@@ -244,16 +245,15 @@ public class PlayerAttackDistance : NetworkBehaviour
         }
         else
         {
-            bullet.transform.position = pos;
-            bullet.transform.rotation = rotation;
+            bullet.transform.SetPositionAndRotation(pos, rotation);
         }
+
+        bullet.ResetTrail();
 
         bullet.shooterClientId = OwnerClientId;
         bullet.SetDamage(damage);  
         bullet.speed = bulletSpeed;
         bullet.extraVelocity = shooterVelocity;
-
-        bullet.gameObject.SetActive(true);
 
         //set velocity and other state directly on server
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -262,10 +262,11 @@ public class PlayerAttackDistance : NetworkBehaviour
             rb.isKinematic = false;
 
             Vector3 bulletDirection = bullet.transform.forward;
-            float forwardBoost = Vector3.Dot(shooterVelocity, bulletDirection);
-            forwardBoost = Mathf.Max(forwardBoost, 0f);
+            float forwardBoost = Mathf.Max(Vector3.Dot(shooterVelocity, bulletDirection), 0f);
 
             rb.linearVelocity = bulletDirection * (bulletSpeed + forwardBoost);
+
+            bullet.NotifySpawnClientRpc(pos, rotation);
         }
     }
 }

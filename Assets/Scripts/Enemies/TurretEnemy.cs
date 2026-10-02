@@ -1,4 +1,5 @@
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -69,17 +70,32 @@ public class TurretEnemy : Enemy
             Transform spawnPointsIndex = spawnPoints[i];
 
             TurretBullet bullet = ObjectPoolManager.instance.GetEnemyBullet();
-            bullet.transform.position = spawnPointsIndex.transform.position;
-            bullet.transform.rotation = spawnPointsIndex.transform.rotation;
+            bullet.gameObject.SetActive(true);
+
+            var nt = bullet.GetComponent<NetworkTransform>();
+            if (nt != null)
+            {
+                nt.Teleport(
+                    spawnPointsIndex.position,
+                    spawnPointsIndex.rotation,
+                    bullet.transform.localScale
+                    );
+            }
+            else
+                bullet.transform.SetPositionAndRotation(
+                    spawnPointsIndex.position, 
+                    spawnPointsIndex.rotation
+                    );
+
+            bullet.ResetTrail();
 
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.isKinematic = false;
-            Vector3 dir = (target.position - spawnPointsIndex.transform.position).normalized;
-            rb.linearVelocity = dir * shootingSpeed;
+            rb.linearVelocity = (target.position - spawnPointsIndex.position).normalized * shootingSpeed;
 
-            bullet.gameObject.SetActive(true);
+            bullet.NotifySpawnClientRpc(spawnPointsIndex.position, spawnPointsIndex.rotation);
 
-            ObjectPoolManager.instance.ReturnEnemyBulletAfterDelay(bullet, destroyTimer);
+            //ObjectPoolManager.instance.ReturnEnemyBulletAfterDelay(bullet, destroyTimer);
         }
             
     }

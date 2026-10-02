@@ -116,6 +116,7 @@ public class QuestArea : MonoBehaviour
         yield return null; // wait one frame
         enemy.Initialize();
         enemy.gameObject.SetActive(true);
+        enemy.SyncActiveState(true);
     }
 
     public void DespawnAllEnemies()

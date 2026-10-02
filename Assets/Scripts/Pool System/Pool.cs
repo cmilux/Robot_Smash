@@ -53,6 +53,7 @@ public class Pool<T> where T : MonoBehaviour
 
     public void Return(T obj)
     {
+        if (!obj.gameObject.activeSelf) return;
         obj.gameObject.SetActive(false);
         availableObj.Enqueue(obj);
     }

@@ -144,7 +144,7 @@ public class ObjectPoolManager : NetworkBehaviour
     private IEnumerator ReturnEnemyBulletDelayCoroutine(TurretBullet bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
-
+        if(bullet == null ||  !bullet.gameObject.activeSelf) yield break;
         bullet.NotifyReturnClientRpc();
         ReturnEnemyBullet(bullet);
     }
@@ -183,7 +183,7 @@ public class ObjectPoolManager : NetworkBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        enemy.NotifyDespawnClientRpc();
+        enemy.SyncActiveState(false);
 
         if (enemy is KamikazeEnemy kam)
         {
