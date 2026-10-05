@@ -9,7 +9,7 @@ NativeFormatImporter:
 AssetOrigin:
   serializedVersion: 1
   productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Volcano02_Brush.brush
-  uploadId: 511657
+  packageName: Terrain Asset Pack | Terrain Sample
+  packageVersion: 2.1.0
+  assetPath: Assets/TerrainExternalAssets/TerrainSampleAssets/TerrainBrushes/Terrainstamp_Volcano02_Brush.brush
+  uploadId: 998046

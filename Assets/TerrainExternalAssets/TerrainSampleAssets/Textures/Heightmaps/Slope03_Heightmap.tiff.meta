@@ -123,7 +123,7 @@ TextureImporter:
 AssetOrigin:
   serializedVersion: 1
   productId: 145808
-  packageName: Terrain Sample Asset Pack
-  packageVersion: 2.0.1
-  assetPath: Assets/TerrainSampleAssets/Textures/Heightmaps/Slope03_Heightmap.tiff
-  uploadId: 511657
+  packageName: Terrain Asset Pack | Terrain Sample
+  packageVersion: 2.1.0
+  assetPath: Assets/TerrainExternalAssets/TerrainSampleAssets/Textures/Heightmaps/Slope03_Heightmap.tiff
+  uploadId: 998046

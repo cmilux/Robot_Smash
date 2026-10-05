@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dd902ff2a6f685041be127af00c09664
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 145808
+  packageName: Terrain Asset Pack | Terrain Sample
+  packageVersion: 2.1.0
+  assetPath: Assets/TerrainSampleAssets/Prefabs/Heather_B.prefab
+  uploadId: 998046
