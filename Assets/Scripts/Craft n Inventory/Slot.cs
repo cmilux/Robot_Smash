@@ -20,6 +20,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
     public TextMeshProUGUI quantityText;
 
+   [SerializeField] private Sprite _emptySlot;
     public bool isHotbarSlot = false;
     private void Start()
     {
@@ -75,6 +76,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         quantityText.text = quantity.ToString();
 
         if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
+        if (cooldownOverlay != null) cooldownOverlay.gameObject.SetActive(true);
 
         if (isHotbarSlot)
         {
@@ -100,7 +102,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         }
         itemData = null;
         quantity = 0; 
-        icon.sprite = null;
+        icon.sprite = _emptySlot;
         quantityText.text = "";
 
         if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
