@@ -31,6 +31,9 @@ public class QuestManager : NetworkBehaviour
     //busqueda rapida de los datos de la mision activa actual
     private QuestData ActiveQuest => allQuest.Find(q => q.questId == activeQuestId.Value);
 
+    //lets other scripts read which quest is active without exposing the NetworkVariable itself
+    //permite a otros scripts leer que mision esta activa sin exponer la NetworkVariable
+    public int CurrentQuestId => activeQuestId.Value;
 
     private void Awake()
     {
