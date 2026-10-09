@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
   type: 2
   targetId: ControlTower
-  requiredAmount: 2
+  requiredAmount: 3
   requieresPreviousObj: 0
   description: Destruye las 2 torres de control azules utilizando un arma cuerpo
     a cuerpo
