@@ -87,16 +87,14 @@ public class LootBox : NetworkBehaviour
             spawnPos, 
             Quaternion.identity
             );
-
+        NetworkObject netObj = droppedItem.GetComponent<NetworkObject>();
+        netObj.Spawn();
         ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
         
         if (pickup != null)
         {
-            pickup.quantity = amount;
+            pickup.Initialize(amount, -1);
         }
-
-        NetworkObject netObj = droppedItem.GetComponent<NetworkObject>();
-        netObj.Spawn();
 
         QuestManager.Instance.ReportProgress(
             ObjectiveType.DestroyObject,

@@ -36,13 +36,13 @@ public class CarSaws : NetworkBehaviour
     }
 
     //call by InventoryManager when the saws change
-    public void SetWeaponData(ItemData weaponData)
+    public void SetWeaponData(ItemData weaponData, int savedDurability = -1)
     {
         equippedWeaponData = weaponData;
 
         if(equippedWeaponData != null)
         {
-            currentDurability = equippedWeaponData.maxDurability;
+            currentDurability = savedDurability >= 0 ? savedDurability : weaponData.maxDurability;
             OnDurabilityChanged?.Invoke(currentDurability, weaponData.maxDurability);
         }
     }

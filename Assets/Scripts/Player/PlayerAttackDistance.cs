@@ -110,13 +110,12 @@ public class PlayerAttackDistance : NetworkBehaviour
     }
 
     // Call by InventoryManager when the ranged weapon change
-    public void SetWeaponData(ItemData weaponData)
-    {
-        equippedWeaponData = weaponData;
+    public void SetWeaponData(ItemData weaponData, int savedDurability = -1)
+    {   equippedWeaponData = weaponData;
 
         if(equippedWeaponData != null)
         {
-            currentDurability = weaponData.maxDurability;
+            currentDurability = savedDurability >= 0 ? savedDurability : weaponData.maxDurability;
 
             OnDurabilityChanged?.Invoke(currentDurability, weaponData.maxDurability);
         }

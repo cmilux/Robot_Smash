@@ -38,11 +38,14 @@ public class Inventory : NetworkBehaviour
 
         if (itemOnGround != null)
         {
-            int itemsLeftOver = AddItem(itemOnGround.itemData, itemOnGround.quantity);
+            int groundQuantity = itemOnGround.quantity.Value;
+            int groundDurability = itemOnGround.durability.Value;
+
+            int itemsLeftOver = AddItem(itemOnGround.itemData, groundQuantity, groundDurability);
 
             //how many actually got stored (could be less than requested if inventory was near full)
             //cuantos realmente se guardaron (puede ser menos de lo pedido si el inventario estaba casi lleno)
-            int amountPickedUp = itemOnGround.quantity - itemsLeftOver;
+            int amountPickedUp = groundQuantity - itemsLeftOver;
 
             //only report to the quest system if the player actually picked something up from the world
             //solo reporta al sistema de misiones si el jugador realmente recogio algo del mundo
@@ -55,15 +58,15 @@ public class Inventory : NetworkBehaviour
             {
                 itemOnGround.Pickup();
             }
-            else if (itemsLeftOver < itemOnGround.quantity)
+            else if (itemsLeftOver < groundQuantity)
             {
-                itemOnGround.quantity = itemsLeftOver;
+                itemOnGround.SetQuantityServerRpc(itemsLeftOver);
             }
         }
     }
 
     //logic to distribute items into existing stacks or empty slots, returning leftover amounts
-    public int AddItem(ItemData itemData, int quantity)
+    public int AddItem(ItemData itemData, int quantity, int durability = -1)
     {
         int quantityToSave = quantity;
 
@@ -79,7 +82,7 @@ public class Inventory : NetworkBehaviour
                 // ej: Espacio disponible = 20 y queremos sumar 30 cubos, cantidad a almacenar es 20.
                 int quantityToStore = Mathf.Min(availableSpace, quantityToSave); //quantityToStore = cantidadaalmacenar, quantytoTosave = cantidad a guardar 
 
-                slots[i].SetItem(itemData, slots[i].quantity + quantityToStore);
+                slots[i].SetItem(itemData, slots[i].quantity + quantityToStore, durability);
                 quantityToSave -= quantityToStore;
 
                 // If we saved all items, stop here
@@ -99,7 +102,7 @@ public class Inventory : NetworkBehaviour
                 {
                     int quantityToStore = Mathf.Min(itemData.maxStock, quantityToSave);
 
-                    slots[i].SetItem(itemData, quantityToStore);
+                    slots[i].SetItem(itemData, quantityToStore, durability);
                     quantityToSave -= quantityToStore;
 
                     //If we saved all items, stop here

@@ -15,13 +15,12 @@ public class CarBumper : NetworkBehaviour
     public event Action<int, int> OnDurabilityChanged;
     private float nextReadyTime;
     //call by InventoryManager when the bumper change
-    public void SetWeaponData(ItemData weaponData)
-    {
-        equippedWeaponData = weaponData;
+    public void SetWeaponData(ItemData weaponData, int savedDurability = -1)
+    {   equippedWeaponData = weaponData;
 
         if(equippedWeaponData != null)
         {
-            currentDurability = equippedWeaponData.maxDurability;
+            currentDurability = savedDurability >= 0 ? savedDurability : weaponData.maxDurability;
             OnDurabilityChanged?.Invoke(currentDurability,weaponData.maxDurability);
         }
     }

@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 {
     [HideInInspector] public ItemData itemData;
     [HideInInspector] public int quantity;
+    [HideInInspector] public int currentDurability;
 
     [Header("Durability")]
     public Image durabilityBar;
@@ -52,7 +53,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         durabilityBar.fillAmount = Mathf.Clamp01((float) current/max);
     }
     //Put an item into this slot and update the UI
-    public void SetItem(ItemData itemData, int quantity)
+    public void SetItem(ItemData itemData, int quantity, int durability = -1)
     {
         if (icon == null) Debug.LogError("ICON IS NULL", this);
         if (quantityText == null) Debug.LogError("QUANTITY TEXT IS NULL", this);
@@ -74,8 +75,16 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
         icon.sprite = itemData.icon;
         quantityText.text = quantity.ToString();
+        currentDurability = durability;
 
-        if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
+        if (durability >= 0 && itemData.maxDurability > 0)
+        {
+            SetDurability(durability, itemData.maxDurability);
+        }
+        else if (durabilityBar != null)
+        {
+            durabilityBar.gameObject.SetActive(false);
+        }
         if (cooldownOverlay != null) cooldownOverlay.gameObject.SetActive(true);
 
         if (isHotbarSlot)
@@ -84,7 +93,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
             if (inventoryManager != null)
             {
-                inventoryManager.EquipFromSlot(itemData);
+                inventoryManager.EquipFromSlot(itemData, currentDurability);
             }
         }
     }
@@ -104,6 +113,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
         quantity = 0; 
         icon.sprite = _emptySlot;
         quantityText.text = "";
+        currentDurability = -1;
 
         if (durabilityBar != null) durabilityBar.gameObject.SetActive(false);
         if(cooldownOverlay != null) cooldownOverlay.gameObject.SetActive(false);
@@ -181,9 +191,10 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                     // Guardar los datos antes de limpiar porque ClearItem los borra
                     ItemData movingItem = itemData;
                     int movingQuantity = quantity;
+                    int movingDurability = currentDurability;
 
                     ClearItem();                                  
-                    targetSlot.SetItem(movingItem, movingQuantity);
+                    targetSlot.SetItem(movingItem, movingQuantity, movingDurability);
 
                     return;
                 }
@@ -192,14 +203,14 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                 {
                     if(targetSlot.quantity + quantity <= itemData.maxStock)// pude sumar todo
                     {
-                        targetSlot.SetItem(itemData, targetSlot.quantity + quantity);
+                        targetSlot.SetItem(itemData, targetSlot.quantity + quantity, currentDurability);
                         ClearItem();
                     }
                     else //sumo lo que se pueda
                     {
                         int quantityToMove = itemData.maxStock - targetSlot.quantity;
 
-                        targetSlot.SetItem(itemData, itemData.maxStock);
+                        targetSlot.SetItem(itemData, itemData.maxStock, currentDurability);
 
                         this.SetItem(itemData, quantity - quantityToMove);
                     }
@@ -210,6 +221,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                     // Swap the two different items using a temporary variable
                     ItemData tempItemData = targetSlot.itemData;
                     int tempQuantity = targetSlot.quantity;
+                    int tempDurability = targetSlot.currentDurability;
 
                     bool bothAreHotbar = this.isHotbarSlot && targetSlot.isHotbarSlot;
 
@@ -217,25 +229,27 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                     { //actualiza los datos visuales y reequipa directamente lo que corresponde a cada uno
                         targetSlot.itemData = itemData;
                         targetSlot.quantity = quantity;
+                        targetSlot.currentDurability = currentDurability;
                         targetSlot.icon.sprite = itemData.icon;
                         targetSlot.quantityText.text = quantity.ToString();
 
                         this.itemData = tempItemData;
                         this.quantity = tempQuantity;
+                        this.currentDurability = tempDurability;
                         this.icon.sprite = tempItemData.icon;
                         this.quantityText.text = tempQuantity.ToString();
 
                         InventoryManager inventoryManager = GetLocalInventoryManager();
                         if (inventoryManager != null)
                         {
-                            inventoryManager.EquipFromSlot(itemData);       // equipa lo que quedo en targetSlot
-                            inventoryManager.EquipFromSlot(tempItemData);    // equipa lo que quedo en this
+                            inventoryManager.EquipFromSlot(itemData,currentDurability);       // equipa lo que quedo en targetSlot
+                            inventoryManager.EquipFromSlot(tempItemData, tempDurability);    // equipa lo que quedo en this
                         }
                     }
                     else
                     {
-                        targetSlot.SetItem(itemData, quantity);
-                        this.SetItem(tempItemData, tempQuantity);
+                        targetSlot.SetItem(itemData, quantity, currentDurability);
+                        this.SetItem(tempItemData, tempQuantity, tempDurability);
                     }
                 }
             }

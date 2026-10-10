@@ -6,8 +6,21 @@ public class ItemPickup : NetworkBehaviour
 {
     public ItemData itemData;
 
-    public int quantity = 1;
+    public NetworkVariable<int> quantity = new NetworkVariable<int>(1);
 
+    public NetworkVariable<int> durability = new NetworkVariable<int>(-1);
+
+    public void Initialize(int newQuantity, int newDurability)
+    {
+        if (!IsServer) return;
+        quantity.Value = newQuantity;
+        durability.Value = newDurability;  
+    }
+    [Rpc(SendTo.Server)]
+    public void SetQuantityServerRpc(int newQuantity)// el cliente pide reducir la cantidad cuando el inventario estaba casi lleno
+    {
+        quantity.Value = newQuantity;   
+    }
     // This is called when a player picks up the item
     public void Pickup()
     {

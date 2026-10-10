@@ -406,40 +406,7 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
-
-    // Hotbar shortcuts linked to the Input System
-    public void OnHotbar1(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(0); }
-    public void OnHotbar2(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(1); }
-    public void OnHotbar3(InputValue value) { if (!IsOwner) return; if (value.isPressed) UseHotbarItem(2); }
-
-    // Logic to read the hotbar slots and equip weapons or paint
-    private void UseHotbarItem(int index)
-    {
-        if (hotbarSlotsContainer == null) return;
-        Slot[] hotbarSlots = hotbarSlotsContainer.GetComponentsInChildren<Slot>(true);
-
-        if (index < hotbarSlots.Length)
-        {
-            Slot slotToUse = hotbarSlots[index];
-
-            Debug.Log($"Hotbar slot {index}: {slotToUse.itemData?.nombre ?? "empty"}");
-
-            if (slotToUse.itemData != null)
-            {
-                Debug.Log($"Item type: {slotToUse.itemData.itemType}");
-                EquipFromSlot(slotToUse.itemData);
-            }
-            else
-            {
-                foreach (var kvp in equippedIds)
-                {
-                    if (!IsOwner) break;
-                    kvp.Value.Value = -1;
-                }
-                ResetPaint();
-            }
-        }
-    }
+  
     void ApplyPaint(ItemData item)
     {
         if (item.paintMaterial != null)
@@ -473,13 +440,13 @@ public class InventoryManager : NetworkBehaviour
         if (slotToDrop.itemData != null && slotToDrop.itemData.dropPrefab != null)
         {
             // Call the Server Rpc to handle spawning the item
-            DropItemServerRpc(slotToDrop.itemData.id, slotToDrop.quantity);
+            DropItemServerRpc(slotToDrop.itemData.id, slotToDrop.quantity, slotToDrop.currentDurability);
 
             UnequipFromSlot(slotToDrop.itemData);
         }
     }
     // Called by a Slot when an equipable item land in a hotbar slot
-    public void EquipFromSlot(ItemData itemData)
+    public void EquipFromSlot(ItemData itemData, int durability = -1)
     {
         if (itemData == null) return;
 
@@ -497,6 +464,19 @@ public class InventoryManager : NetworkBehaviour
         {
             if (!IsOwner) return;
             slot.Value = itemData.id;
+
+            if(itemData.itemType == ItemType.weapon)
+            {
+                playerAttack.SetWeaponData(itemData,durability);
+            }
+            else if(itemData.itemType == ItemType.saws)
+            {
+                carSaws.SetWeaponData(itemData, durability);
+            }
+            else if(itemData.itemType == ItemType.carBumper)
+            {
+                carBumper.SetWeaponData(itemData, durability);
+            }
         }
         // Si es un tipo no equipable no hace nada
     }
@@ -522,21 +502,22 @@ public class InventoryManager : NetworkBehaviour
 
     // This code runs only on the Server to instantiate and spawn the object for everyone
     [Rpc(SendTo.Server)]
-    private void DropItemServerRpc(int itemId, int quantity)
+    private void DropItemServerRpc(int itemId, int quantity, int durability)
     {
         ItemData itemToDrop = GameManager.instance.itemDataBase.SearchItem(itemId.ToString());
         if (itemToDrop == null) return;
 
         // Create the item in the server world
         GameObject droppedItem = Instantiate(itemToDrop.dropPrefab, dropPoint.position, dropPoint.rotation);
+
+        droppedItem.GetComponent<NetworkObject>().Spawn();
+
         ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
 
         if (pickup != null)
         {
-            pickup.quantity = quantity;
+            pickup.Initialize(quantity, durability);
         }
-        // Spawn the object so all clients can see it
-        droppedItem.GetComponent<NetworkObject>().Spawn();
     }
 
     private void HandleWeaponBroke()
@@ -600,6 +581,7 @@ public class InventoryManager : NetworkBehaviour
         {
             if (slot.itemData != null && slot.itemData.itemType == type)
             {
+                slot.currentDurability = current;
                 slot.SetDurability(current, max);
                 break;
             }
