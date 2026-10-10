@@ -4,6 +4,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 // This script controls one single slot in the UI and handles Drag and Drop
@@ -25,6 +26,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
    [SerializeField] private Sprite _emptySlot;
     public bool isHotbarSlot = false;
    [SerializeField] private List<ItemType> _allowedTypes = new List<ItemType>();
+    private int _draggedAmount;
     private void Start()
     {
         // Find the text object that shows the item count
@@ -99,6 +101,44 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
             }
         }
     }
+    private int MoveAmountTo(Slot target, int amount)
+    {
+        if (amount <= 0) return 0;
+        if(amount > quantity)
+        {
+            amount = quantity;
+        }
+        int moved;
+
+        if(target.itemData == null)
+        {
+            moved = Mathf.Min(amount, itemData.maxStock);
+            target.SetItem(itemData, moved,currentDurability);
+        }
+        else if(target.itemData == itemData)
+        {
+            int space = itemData.maxStock - target.quantity;
+            moved = Mathf.Min(amount, space);
+
+            if (moved <= 0) return 0;
+            target.SetItem(itemData, target.quantity + moved, target.currentDurability);
+        }
+        else
+        {
+            return 0;
+        }
+
+        int remaining = quantity - moved;
+        if(remaining > 0)
+        {
+            SetItem(itemData, remaining, currentDurability);
+        }
+        else
+        {
+            ClearItem();
+        }
+        return moved;
+    }
     public bool CanAccept(ItemData item)
     {
         if (item == null) return false;
@@ -148,8 +188,21 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     {
         if(itemData == null) return;
 
-        // Hide the real item slot text and icon while dragging
-        quantityText.text = "";
+        var kb = Keyboard.current;
+        if (kb != null && kb.ctrlKey.isPressed)
+        {
+            _draggedAmount = 1;
+        }
+        else if(kb != null && kb.shiftKey.isPressed)
+        {
+            _draggedAmount = Mathf.Max(1, quantity / 2);
+        }
+        else
+        {
+            _draggedAmount = quantity;
+        }
+            // Hide the real item slot text and icon while dragging
+            quantityText.text = "";
         icon.enabled = false;
 
         // Show the moving icon (ghost icon) with the item picture
@@ -183,8 +236,16 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
             // If we found the local player, drop the item on the floor
             if (inventoryManager != null)
             {
-                inventoryManager.DropItem(this);
-                ClearItem();
+                inventoryManager.DropItem(this, _draggedAmount);
+                int remaining = quantity - _draggedAmount;
+                if(remaining > 0)
+                {
+                    SetItem(itemData, remaining, currentDurability);
+                }
+                else
+                {
+                    ClearItem();
+                }
             }
             return;
         }
@@ -196,36 +257,22 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
             if(targetSlot != null && targetSlot != this)
             {
                 if (!targetSlot.CanAccept(itemData)) return;
+                if(_draggedAmount < quantity)
+                {
+                    MoveAmountTo(targetSlot, _draggedAmount);
+                    return;
+                }
                 if (targetSlot.itemData != null && targetSlot.itemData != itemData && !CanAccept(targetSlot.itemData)) return;
                 //If its empty we save it here
                 if (targetSlot.itemData == null)
                 {
-                    // Guardar los datos antes de limpiar porque ClearItem los borra
-                    ItemData movingItem = itemData;
-                    int movingQuantity = quantity;
-                    int movingDurability = currentDurability;
-
-                    ClearItem();                                  
-                    targetSlot.SetItem(movingItem, movingQuantity, movingDurability);
-
+                    MoveAmountTo(targetSlot, quantity);
                     return;
                 }
                 //If its the same slot, we try to add the quanty at least some.
                 else if(targetSlot.itemData == itemData)
                 {
-                    if(targetSlot.quantity + quantity <= itemData.maxStock)// pude sumar todo
-                    {
-                        targetSlot.SetItem(itemData, targetSlot.quantity + quantity, currentDurability);
-                        ClearItem();
-                    }
-                    else //sumo lo que se pueda
-                    {
-                        int quantityToMove = itemData.maxStock - targetSlot.quantity;
-
-                        targetSlot.SetItem(itemData, itemData.maxStock, currentDurability);
-
-                        this.SetItem(itemData, quantity - quantityToMove);
-                    }
+                    MoveAmountTo(targetSlot, quantity);
                 }
                 // si no esta vacio y tampoco es el mismo item
                 else

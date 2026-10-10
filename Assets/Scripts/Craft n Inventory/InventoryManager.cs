@@ -432,16 +432,20 @@ public class InventoryManager : NetworkBehaviour
     }
 
     // Prepares the item data and asks the server to drop it
-    public void DropItem(Slot slotToDrop)
+    public void DropItem(Slot slotToDrop, int amount)
     {
         if (!IsOwner) return;
+        if(amount <= 0) return;
 
         if (slotToDrop.itemData != null && slotToDrop.itemData.dropPrefab != null)
         {
             // Call the Server Rpc to handle spawning the item
-            DropItemServerRpc(slotToDrop.itemData.id, slotToDrop.quantity, slotToDrop.currentDurability);
+            DropItemServerRpc(slotToDrop.itemData.id, amount, slotToDrop.currentDurability);
 
-            UnequipFromSlot(slotToDrop.itemData);
+            if(amount >= slotToDrop.quantity)
+            {
+                UnequipFromSlot(slotToDrop.itemData);
+            }
         }
     }
     // Called by a Slot when an equipable item land in a hotbar slot
