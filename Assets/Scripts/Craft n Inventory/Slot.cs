@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.Netcode;
 using Unity.VisualScripting;
@@ -23,6 +24,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
    [SerializeField] private Sprite _emptySlot;
     public bool isHotbarSlot = false;
+   [SerializeField] private List<ItemType> _allowedTypes = new List<ItemType>();
     private void Start()
     {
         // Find the text object that shows the item count
@@ -96,6 +98,14 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                 inventoryManager.EquipFromSlot(itemData, currentDurability);
             }
         }
+    }
+    public bool CanAccept(ItemData item)
+    {
+        if (item == null) return false;
+
+        if (_allowedTypes == null || _allowedTypes.Count == 0) return true;
+
+        return _allowedTypes.Contains(item.itemType);
     }
 
     // Empty this slot and clean the UI
@@ -185,6 +195,8 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
 
             if(targetSlot != null && targetSlot != this)
             {
+                if (!targetSlot.CanAccept(itemData)) return;
+                if (targetSlot.itemData != null && targetSlot.itemData != itemData && !CanAccept(targetSlot.itemData)) return;
                 //If its empty we save it here
                 if (targetSlot.itemData == null)
                 {

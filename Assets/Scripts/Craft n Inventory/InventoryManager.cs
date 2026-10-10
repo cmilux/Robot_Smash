@@ -406,7 +406,6 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
-  
     void ApplyPaint(ItemData item)
     {
         if (item.paintMaterial != null)

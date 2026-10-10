@@ -75,7 +75,7 @@ public class Inventory : NetworkBehaviour
         for (int i = 0; i < slots.Count; i++)
         {
             //1_si encontramos ese item en el slot y la cantidad que tiene es menor a la cantidad maxima del slot
-            if (slots[i].itemData == itemData && slots[i].quantity < itemData.maxStock)
+            if (slots[i].itemData == itemData && slots[i].quantity < itemData.maxStock && !slots[i].isHotbarSlot)
             {
                 int availableSpace = itemData.maxStock - slots[i].quantity;
 
@@ -98,7 +98,7 @@ public class Inventory : NetworkBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                if (slots[i].itemData == null)
+                if (slots[i].itemData == null && !slots[i].isHotbarSlot)
                 {
                     int quantityToStore = Mathf.Min(itemData.maxStock, quantityToSave);
 
