@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1667125457
+  GlobalObjectIdHash: 4086617735
   InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
@@ -125,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretBullet
   ShowTopMostFoldoutHeaderGroup: 1
   damage: 10
+  _trailRenderer: {fileID: 0}
+  _lifeTime: 5
 --- !u!135 &113237295562287286
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -325,7 +328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7902193201715773559, guid: 75dd4f07778688c47ba894d3a9013ce6, type: 3}
+  - {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
