@@ -5,6 +5,21 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Basic
+    second: {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Faces
+    second: {fileID: 2100000, guid: b8c8098d56e9e78419203fb484329421, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Transparente
+    second: {fileID: 2100000, guid: b1cbcda52a5de424eaab115748734e84, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: ATLAS

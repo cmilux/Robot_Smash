@@ -262,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
   GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
+  m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0

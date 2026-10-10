@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -33,6 +34,12 @@ public class QuestArea : MonoBehaviour
         {
             QuestManager.Instance.OnQuestChanged += HandleQuestChanged;
             _subscribed = true;
+
+            //catch up: our quest may have started before we subscribed
+            if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer && QuestManager.Instance.CurrentQuestId == _questId)
+            {
+                HandleQuestChanged(QuestManager.Instance.CurrentQuestId);
+            }
         }
     }
 

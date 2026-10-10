@@ -3,7 +3,12 @@ guid: 51108e279ac87684cb6f9c34127d6ed3
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Atlas_SolarPanel
+    second: {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
