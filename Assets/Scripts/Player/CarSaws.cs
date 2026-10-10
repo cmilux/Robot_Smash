@@ -56,17 +56,16 @@ public class CarSaws : NetworkBehaviour
         return equippedWeaponData != null ? equippedWeaponData.cooldownBase : 0f;
     }
     // Called by the Input System when pressing the saw power button(barra espaciadora)
-    public void OnSawsPower(InputValue value)
+    public void TrySawsOn()
     {
         if (!IsOwner) return;
         if (!isEquipped) return;
-        if (!value.isPressed) return;
         if (sawsOn) return; // already spinning ignore extra press
         if (onCooldown) return; // still waiting to be usable again
         if(equippedWeaponData == null) return;
 
-        UseDurability();
         StartCoroutine(SawsOnRoutine());
+        UseDurability();
     }
     // Turns the saws on, wait, then turns them off automatic
     private IEnumerator SawsOnRoutine()
@@ -123,6 +122,5 @@ public class CarSaws : NetworkBehaviour
     {
         equippedWeaponData = null;
         isEquipped = false;
-        sawsOn = false;
     }
 }

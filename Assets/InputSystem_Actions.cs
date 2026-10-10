@@ -138,45 +138,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SawsPower"",
+                    ""name"": ""MeleeAction"",
                     ""type"": ""Button"",
                     ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hotbar1"",
-                    ""type"": ""Button"",
-                    ""id"": ""3ae8f51c-6c8a-4f9a-bdfe-39a973125b7f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hotbar2"",
-                    ""type"": ""Button"",
-                    ""id"": ""64f747a9-d77c-4402-83f6-a94c1c503766"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hotbar3"",
-                    ""type"": ""Button"",
-                    ""id"": ""fe69fbad-2038-423f-8b8f-eb007f29a97c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -415,45 +379,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8cbb2f4b-a784-49cc-8d5e-c010b8c7f4e6"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d8bf24bf-3f2f-4160-a97c-38ec1eb520ba"",
-                    ""path"": ""<XRController>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""eb40bb66-4559-4dfa-9a2f-820438abb426"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""SawsPower"",
+                    ""action"": ""MeleeAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -464,7 +395,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""SawsPower"",
+                    ""action"": ""MeleeAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -475,7 +406,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""SawsPower"",
+                    ""action"": ""MeleeAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -520,39 +451,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Crouch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""afe7c3e6-9fda-41f6-9284-d303b340470d"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3326a366-8a8e-46a3-b170-202799512f7c"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee9b0de0-4c3a-4aca-911e-2a01bb76aae3"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hotbar3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1268,11 +1166,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
-        m_Player_SawsPower = m_Player.FindAction("SawsPower", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        m_Player_Hotbar1 = m_Player.FindAction("Hotbar1", throwIfNotFound: true);
-        m_Player_Hotbar2 = m_Player.FindAction("Hotbar2", throwIfNotFound: true);
-        m_Player_Hotbar3 = m_Player.FindAction("Hotbar3", throwIfNotFound: true);
+        m_Player_MeleeAction = m_Player.FindAction("MeleeAction", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1378,11 +1272,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Crouch;
-    private readonly InputAction m_Player_SawsPower;
-    private readonly InputAction m_Player_Dash;
-    private readonly InputAction m_Player_Hotbar1;
-    private readonly InputAction m_Player_Hotbar2;
-    private readonly InputAction m_Player_Hotbar3;
+    private readonly InputAction m_Player_MeleeAction;
     private readonly InputAction m_Player_OpenInventory;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -1416,25 +1306,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         /// <summary>
-        /// Provides access to the underlying input action "Player/SawsPower".
+        /// Provides access to the underlying input action "Player/MeleeAction".
         /// </summary>
-        public InputAction @SawsPower => m_Wrapper.m_Player_SawsPower;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Dash".
-        /// </summary>
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar1".
-        /// </summary>
-        public InputAction @Hotbar1 => m_Wrapper.m_Player_Hotbar1;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar2".
-        /// </summary>
-        public InputAction @Hotbar2 => m_Wrapper.m_Player_Hotbar2;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hotbar3".
-        /// </summary>
-        public InputAction @Hotbar3 => m_Wrapper.m_Player_Hotbar3;
+        public InputAction @MeleeAction => m_Wrapper.m_Player_MeleeAction;
         /// <summary>
         /// Provides access to the underlying input action "Player/OpenInventory".
         /// </summary>
@@ -1480,21 +1354,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
-            @SawsPower.started += instance.OnSawsPower;
-            @SawsPower.performed += instance.OnSawsPower;
-            @SawsPower.canceled += instance.OnSawsPower;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
-            @Hotbar1.started += instance.OnHotbar1;
-            @Hotbar1.performed += instance.OnHotbar1;
-            @Hotbar1.canceled += instance.OnHotbar1;
-            @Hotbar2.started += instance.OnHotbar2;
-            @Hotbar2.performed += instance.OnHotbar2;
-            @Hotbar2.canceled += instance.OnHotbar2;
-            @Hotbar3.started += instance.OnHotbar3;
-            @Hotbar3.performed += instance.OnHotbar3;
-            @Hotbar3.canceled += instance.OnHotbar3;
+            @MeleeAction.started += instance.OnMeleeAction;
+            @MeleeAction.performed += instance.OnMeleeAction;
+            @MeleeAction.canceled += instance.OnMeleeAction;
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
@@ -1524,21 +1386,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
-            @SawsPower.started -= instance.OnSawsPower;
-            @SawsPower.performed -= instance.OnSawsPower;
-            @SawsPower.canceled -= instance.OnSawsPower;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
-            @Hotbar1.started -= instance.OnHotbar1;
-            @Hotbar1.performed -= instance.OnHotbar1;
-            @Hotbar1.canceled -= instance.OnHotbar1;
-            @Hotbar2.started -= instance.OnHotbar2;
-            @Hotbar2.performed -= instance.OnHotbar2;
-            @Hotbar2.canceled -= instance.OnHotbar2;
-            @Hotbar3.started -= instance.OnHotbar3;
-            @Hotbar3.performed -= instance.OnHotbar3;
-            @Hotbar3.canceled -= instance.OnHotbar3;
+            @MeleeAction.started -= instance.OnMeleeAction;
+            @MeleeAction.performed -= instance.OnMeleeAction;
+            @MeleeAction.canceled -= instance.OnMeleeAction;
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
@@ -1996,40 +1846,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCrouch(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "SawsPower" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "MeleeAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSawsPower(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDash(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hotbar1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar1(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hotbar2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar2(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hotbar3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHotbar3(InputAction.CallbackContext context);
+        void OnMeleeAction(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "OpenInventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

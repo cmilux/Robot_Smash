@@ -14,10 +14,12 @@ public class PlayerAttackMelee : NetworkBehaviour
     // The network ID of the player who is attacking
     ulong shooterClientId;
 
+    private CarSaws carSaws;
     private void Awake()
     {
         carController = GetComponent<CarController>();
         carBumper = GetComponent<CarBumper>();
+        carSaws = GetComponent<CarSaws>();
     }
 
     public override void OnNetworkSpawn()
@@ -27,11 +29,18 @@ public class PlayerAttackMelee : NetworkBehaviour
     }
 
     // Automatically called by the Input System when pressing Shift Key
-    public void OnDash(InputValue value)
-    {   
-        if (value.isPressed)
+    public void OnMeleeAction(InputValue value)
+    {   if (!IsOwner) return;
+        if(!value.isPressed) return;
+
+        if(carSaws != null && carSaws.isEquipped)
         {
-            // Tell the car to start the speed boost
+            carSaws.TrySawsOn();
+            return;
+        }
+        
+        if(carBumper !=  null && carBumper.isEquipped)
+        {
             carController.ActivateDash();
         }
     }

@@ -52,45 +52,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SawsPower",
+                    "name": "MeleeAction",
                     "type": "Button",
                     "id": "f1ba0d36-48eb-4cd5-b651-1c94a6531f70",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "641cd816-40e6-41b4-8c3d-04687c349290",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar1",
-                    "type": "Button",
-                    "id": "3ae8f51c-6c8a-4f9a-bdfe-39a973125b7f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar2",
-                    "type": "Button",
-                    "id": "64f747a9-d77c-4402-83f6-a94c1c503766",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hotbar3",
-                    "type": "Button",
-                    "id": "fe69fbad-2038-423f-8b8f-eb007f29a97c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -329,45 +293,12 @@
                 },
                 {
                     "name": "",
-                    "id": "f2e9ba44-c423-42a7-ad56-f20975884794",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8cbb2f4b-a784-49cc-8d5e-c010b8c7f4e6",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d8bf24bf-3f2f-4160-a97c-38ec1eb520ba",
-                    "path": "<XRController>/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "XR",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "eb40bb66-4559-4dfa-9a2f-820438abb426",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SawsPower",
+                    "action": "MeleeAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -378,7 +309,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SawsPower",
+                    "action": "MeleeAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -389,7 +320,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "SawsPower",
+                    "action": "MeleeAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -434,39 +365,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "afe7c3e6-9fda-41f6-9284-d303b340470d",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3326a366-8a8e-46a3-b170-202799512f7c",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ee9b0de0-4c3a-4aca-911e-2a01bb76aae3",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hotbar3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
