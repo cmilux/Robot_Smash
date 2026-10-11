@@ -119,7 +119,7 @@ public class CraftingManager : MonoBehaviour
         Inventory inventory = GetLocalPlayerInventory();
         if (inventory == null) return false;
 
-        return inventory.HasItem(recipe.result);
+        return inventory.HasItemInInventory(recipe.result);
 
     }
     private bool RecipeMatches(RecipeData recipe, Dictionary<ItemData, int> craftingItems)

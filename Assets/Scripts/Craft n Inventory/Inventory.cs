@@ -118,12 +118,13 @@ public class Inventory : NetworkBehaviour
         return quantityToSave;
     }
     //the player already had the exact item in any slot ? in hotbar or inventory
-    public bool HasItem(ItemData item)
+    public bool HasItemInInventory(ItemData item)
     {
         if(item == null) return false;
 
         foreach(Slot slot in slots)
         {
+            if (slot.isHotbarSlot) continue; //lo equipado no cuenta
             if(slot.itemData == item) return true;
         }
         return false;
