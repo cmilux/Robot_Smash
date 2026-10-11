@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4743547350346972833}
   - component: {fileID: 3046782827334783702}
   m_Layer: 0
-  m_Name: LootBarrelMech
+  m_Name: LootBarrelRare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
   GlobalObjectIdHash: 3001814834
   InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
@@ -96,20 +97,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LootBox
   ShowTopMostFoldoutHeaderGroup: 1
   lootOptions:
-  - item: {fileID: 11400000, guid: 9fc153219b89cc9448d16a358f403144, type: 2}
-    minAmount: 2
-    maxAmount: 4
-  - item: {fileID: 11400000, guid: fff8878de6e3d804889af29c533b6d25, type: 2}
-    minAmount: 2
-    maxAmount: 4
-  - item: {fileID: 11400000, guid: 9e7c2396a9d58b44e819888105e9b747, type: 2}
-    minAmount: 2
-    maxAmount: 4
-  - item: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
-    minAmount: 2
-    maxAmount: 4
+  - item: {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
+    minAmount: 1
+    maxAmount: 2
+  - item: {fileID: 11400000, guid: bcab96fa27ff98c48a64db39dde92f9c, type: 2}
+    minAmount: 1
+    maxAmount: 2
+  - item: {fileID: 11400000, guid: 13829129fed345f4bb8aa14a951e3402, type: 2}
+    minAmount: 1
+    maxAmount: 2
+  - item: {fileID: 11400000, guid: 0bb87ecca6496c943883c939c80ab3b4, type: 2}
+    minAmount: 1
+    maxAmount: 2
   hitsToBreak: 1
-  dropDelay: 2
+  dropDelay: 1.2
   _itemHeight: 0.2
 --- !u!1001 &651790233799508425
 PrefabInstance:

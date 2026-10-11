@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MachineGunRecipe
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   ingredients:
-  - itemData: {fileID: 11400000, guid: 9fc153219b89cc9448d16a358f403144, type: 2}
-    quantity: 1
-  - itemData: {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
-    quantity: 1
+  - itemData: {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
+    quantity: 5
+  - itemData: {fileID: 11400000, guid: bcab96fa27ff98c48a64db39dde92f9c, type: 2}
+    quantity: 2
   result: {fileID: 11400000, guid: 9954c230ce0e78e478403f8ee3d06f36, type: 2}
   resultQuantity: 1
   requiredLevel: 2

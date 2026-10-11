@@ -13,13 +13,10 @@ MonoBehaviour:
   m_Name: SawsRecipe
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   ingredients:
-  - itemData: {fileID: 11400000, guid: 9fc153219b89cc9448d16a358f403144, type: 2}
-    quantity: 1
-  - itemData: {fileID: 11400000, guid: 13829129fed345f4bb8aa14a951e3402, type: 2}
-    quantity: 1
-  - itemData: {fileID: 11400000, guid: fff8878de6e3d804889af29c533b6d25, type: 2}
-    quantity: 1
-  - itemData: {fileID: 11400000, guid: 0ca03c06be283c64980d002a1a035405, type: 2}
-    quantity: 1
+  - itemData: {fileID: 11400000, guid: e58ba0762cfc763408f6fddadd430df6, type: 2}
+    quantity: 4
+  - itemData: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
+    quantity: 2
   result: {fileID: 11400000, guid: 80c69a28e81174d43a290ad1c9fbe7ab, type: 2}
   resultQuantity: 1
+  requiredLevel: 0
