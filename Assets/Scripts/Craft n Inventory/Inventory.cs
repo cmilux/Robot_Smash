@@ -117,4 +117,15 @@ public class Inventory : NetworkBehaviour
         // Inventory is full, return the total amount of leftover items
         return quantityToSave;
     }
+    //the player already had the exact item in any slot ? in hotbar or inventory
+    public bool HasItem(ItemData item)
+    {
+        if(item == null) return false;
+
+        foreach(Slot slot in slots)
+        {
+            if(slot.itemData == item) return true;
+        }
+        return false;
+    }
 }

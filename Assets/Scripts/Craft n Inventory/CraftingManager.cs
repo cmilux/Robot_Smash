@@ -12,6 +12,9 @@ public class CraftingManager : MonoBehaviour
     public Button craftButton;
 
     private RecipeData currentRecipe;
+    private bool _resultAlreadyOwned;
+
+    private float _nextCheckTime;
     private void Start()
     {
         //Connect the button by code
@@ -19,6 +22,8 @@ public class CraftingManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Time.time < _nextCheckTime) return;
+        _nextCheckTime = Time.time + 0.2f;
         //Check for a valid recipe
         CheckRecipe();
     }
@@ -28,19 +33,25 @@ public class CraftingManager : MonoBehaviour
         if (AllSlotsEmpty())
         {
             currentRecipe = null;
+            _resultAlreadyOwned = false;
+            UpdateCraftButton();
             return;
         }
         // Find a recipe that matches the items in the slots
         currentRecipe = FindMatchingRecipe();
+        _resultAlreadyOwned = AlreadyOwnsResult(currentRecipe);
+        UpdateCraftButton();
+    }
+    private void UpdateCraftButton()
+    {
+        if (craftButton == null) return;
 
-        if (currentRecipe != null)
-        {
-            Debug.Log($"Recipe found: {currentRecipe.result.nombre}");
-        }
+        craftButton.interactable = (currentRecipe != null && !_resultAlreadyOwned);
     }
     public void OnCraftButton()
     {
         if (currentRecipe == null) return;
+        if (_resultAlreadyOwned) return;
 
         Inventory playerInventory = GetLocalPlayerInventory();
 
@@ -100,7 +111,17 @@ public class CraftingManager : MonoBehaviour
         // No matching recipe was found
         return null;
     }
+    private bool AlreadyOwnsResult(RecipeData recipe)
+    {
+        if(recipe == null) return false;
+        if(recipe.result.itemType == ItemType.none) return false;
 
+        Inventory inventory = GetLocalPlayerInventory();
+        if (inventory == null) return false;
+
+        return inventory.HasItem(recipe.result);
+
+    }
     private bool RecipeMatches(RecipeData recipe, Dictionary<ItemData, int> craftingItems)
     {
         if (PlayerLevelUI.Instance != null && PlayerLevelUI.Instance.CurrentLevel < recipe.requiredLevel) return false;
