@@ -17,7 +17,6 @@ public class BigEnemy : Enemy
     public GameObject bulletObj;
     public Transform[] spawnBulletsPoint;
     float spawnRadius = 5f;
-    float destroyTimer = 5f;
 
     [Header("Cooldown time")]
     public float spawnCooldown = 3f;

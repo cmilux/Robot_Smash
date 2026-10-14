@@ -35,6 +35,9 @@ public class Enemy : NetworkBehaviour
     [Header("Animations")]
     [SerializeField] protected Animator animator;
 
+    [Header("Explosion Attack")]
+    public ParticleSystem _explosion;       //explosion particles
+
     [Header("Quests and pools")]
     [SerializeField] QuestArea _questArea;
     private NetworkVariable<bool> _poolActive = new NetworkVariable<bool>(
@@ -137,6 +140,7 @@ public class Enemy : NetworkBehaviour
         gameObject.SetActive(true);
     }
 
+    #region SpawnPoints
     public void SetSpawnPoint(Vector3 newSpawnPoint)
     {
         _spawnPoint = newSpawnPoint;
@@ -146,6 +150,7 @@ public class Enemy : NetworkBehaviour
     {
         return _spawnPoint;
     }
+    #endregion
 
     public void UpdateTarget()
     {
@@ -173,6 +178,13 @@ public class Enemy : NetworkBehaviour
         animator?.SetFloat("Speed", agent.velocity.magnitude);
     }
 
+    [ClientRpc]
+    public void PlayExplosionClientRpc()
+    {
+        _explosion.Play();          //Play particles on clients scene too
+    }
+
+    #region Patrol
     protected void MoveTowardTarget()
     {
         if (!IsServer) return;
@@ -269,7 +281,7 @@ public class Enemy : NetworkBehaviour
         if (!IsServer) return;
         agent.SetDestination(target.position);
     }
-
+#endregion
     public void SetQuestArea(QuestArea area)
     {
         _questArea = area;
@@ -333,6 +345,8 @@ public class Enemy : NetworkBehaviour
         if (isDead.Value)
         {
             _questArea?.OnEnemyDied(this);
+
+            PlayExplosionClientRpc();
 
             ObjectPoolManager.instance.ReturnEnemyAfterDelay(this, timeBeforeDestroy);
 

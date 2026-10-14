@@ -4,8 +4,8 @@ using UnityEngine.AI;
 
 public class KamikazeEnemy : Enemy
 {
-    [Header("Explosion Attack")]
-    public ParticleSystem _explosion;       //explosion particles
+    //[Header("Explosion Attack")]
+    //public ParticleSystem _explosion;       //explosion particles
     public float explodeDistance = 10f;     //distance to explode
     public int damage = 1;                  //amount of damage caused by enemy
 
@@ -79,12 +79,6 @@ public class KamikazeEnemy : Enemy
         }
 
         Die(timeBeforeDestroy);     //Enemy death method is called
-    }
-
-    [ClientRpc]
-    void PlayExplosionClientRpc()
-    {
-        _explosion.Play();          //Play particles on clients scene too
     }
 
     private void OnCollisionEnter(Collision collision)

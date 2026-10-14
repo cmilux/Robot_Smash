@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
   GlobalObjectIdHash: 795196533
   InScenePlacedSourceGlobalObjectIdHash: 795196533
+  m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
@@ -243,14 +244,14 @@ MonoBehaviour:
   _patrolRadius: 30
   _enemyWaiting: 0
   detectionRadius: 15
-  animator: {fileID: 0}
+  animator: {fileID: 1002414700926665402}
+  _explosion: {fileID: 4995779627933072742}
   _questArea: {fileID: 0}
   playerLevExp: {fileID: 0}
   levExpPoints: 200
   target: {fileID: 0}
   resourcesObj: {fileID: 2344226651918682138, guid: fcb2ddcb59d2d4d4498600d34f3bc514, type: 3}
   spawnResPoint: {fileID: 0}
-  _explosion: {fileID: 4995779627933072742}
   explodeDistance: 10
   damage: 1
 --- !u!195 &8668231840871655142
