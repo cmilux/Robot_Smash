@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Quest", menuName = "Quest")]
+[CreateAssetMenu(fileName = "New Quest", menuName = "Quests/Quest")]
 public class QuestData : ScriptableObject
 {
     public int questId;                         //unique ID (like ItemData)
