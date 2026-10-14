@@ -9,6 +9,7 @@ public class InventoryManager : NetworkBehaviour
     [Header("UI")]
     public GameObject playerInventoryUI;
     public GameObject craftingUI;
+    public GameObject recipesUI;
 
     private PlayerInput playerInput;
     private CarController carController;
@@ -145,6 +146,7 @@ public class InventoryManager : NetworkBehaviour
         // Find and link the UI elements for the local player
         playerInventoryUI = GameObject.Find("InventoryUI").transform.Find("Inventory").gameObject;
         craftingUI = GameObject.Find("InventoryUI").transform.Find("Craft").gameObject;
+        recipesUI = GameObject.Find("InventoryUI").transform.Find("Recipes").gameObject;
         hotbarSlotsContainer = GameObject.Find("HotBar");
         CacheHotbarSlots();
 
@@ -157,7 +159,10 @@ public class InventoryManager : NetworkBehaviour
         {
             craftingUI.SetActive(false);
         }
-
+        if (recipesUI != null)
+        {
+            recipesUI.SetActive(false);
+        }
         if (playerAttack != null)
         {
             playerAttack.enabled = false;
@@ -389,6 +394,7 @@ public class InventoryManager : NetworkBehaviour
             bool isOpening = !playerInventoryUI.activeSelf;
             playerInventoryUI.SetActive(isOpening);
             craftingUI.SetActive(isOpening);
+            recipesUI.SetActive(isOpening);
             // Change controls and mouse state depending on open/closed state
             if (isOpening)
             {
