@@ -67,6 +67,11 @@ public class CarController : NetworkBehaviour
     public void OnMove(InputValue value)
     {
         _moveInput = value.Get<Vector2>();
+
+        if (IsOwner && _moveInput.sqrMagnitude > 0.1f)
+        {
+            TutorialEvents.Raise(TutorialStep.Move);
+        }
     }
 
     void HandleMov()

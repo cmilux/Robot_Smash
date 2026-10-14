@@ -72,7 +72,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7902193201715773559, guid: 75dd4f07778688c47ba894d3a9013ce6, type: 3}
+  - {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
   GlobalObjectIdHash: 2560525688
   InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
   _destroyTimer: 2
   extraVelocity: {x: 0, y: 0, z: 0}
   shooterClientId: 0
+  _trailRenderer: {fileID: 0}
 --- !u!114 &5739366280798919114
 MonoBehaviour:
   m_ObjectHideFlags: 0
