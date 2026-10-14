@@ -301,6 +301,7 @@ public class Enemy : NetworkBehaviour
 
     #endregion
 
+    #region EnemyHealth
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]       //sends information to server and everyone can call this method || envia la informacion al server y cualquiera puede llamar al metodo
     public virtual void TakeDamageServerRpc(int damageAmount, ulong attackerClientId)
     {
@@ -358,13 +359,7 @@ public class Enemy : NetworkBehaviour
         }    
     }
 
-    //let the clients know the game obj is off
-    [ClientRpc]
-    public void NotifyDespawnClientRpc()
-    {
-        if(IsServer) return;
-        gameObject.SetActive(false);
-    }
+    #endregion
 
     void DropResources()
     {
@@ -378,6 +373,13 @@ public class Enemy : NetworkBehaviour
         }
     }
 
+    //let the clients know the game obj is off
+    [ClientRpc]
+    public void NotifyDespawnClientRpc()
+    {
+        if (IsServer) return;
+        gameObject.SetActive(false);
+    }
 
     [ClientRpc]
     void GrantExpToKillerClientRpc(ulong clientId, int expAmount)
