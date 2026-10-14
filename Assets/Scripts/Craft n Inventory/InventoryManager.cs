@@ -402,6 +402,9 @@ public class InventoryManager : NetworkBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 carController.isFrozen = true;
+
+                //update tutorial step
+                TutorialEvents.Raise(TutorialStep.OpenInventory);
             }
             else
             {

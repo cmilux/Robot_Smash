@@ -70,6 +70,7 @@ public class CarController : NetworkBehaviour
 
         if (IsOwner && _moveInput.sqrMagnitude > 0.1f)
         {
+            //update tutorial step
             TutorialEvents.Raise(TutorialStep.Move);
         }
     }

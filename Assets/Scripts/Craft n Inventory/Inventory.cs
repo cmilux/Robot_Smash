@@ -52,6 +52,9 @@ public class Inventory : NetworkBehaviour
             if (amountPickedUp > 0)
             {
                 QuestManager.Instance.ReportProgressServerRpc(ObjectiveType.CollectItem, itemOnGround.itemData.id.ToString(), amountPickedUp);
+
+                //update tutorial step
+                TutorialEvents.Raise(TutorialStep.PickUp);
             }
 
             if (itemsLeftOver == 0)
