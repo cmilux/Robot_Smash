@@ -1056,7 +1056,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 519596895214660546, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_Name
-      value: RobotBase
+      value: RobotBase1
       objectReference: {fileID: 0}
     - target: {fileID: 1318792296022969253, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1107,136 +1107,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
---- !u!23 &167216763 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4869804885676211807, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216764 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6296913176205465501, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216765 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3590220667299166458, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216766 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1873168377164611552, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216767 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9107028414342459003, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216768 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7613352866113370396, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216769 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3577458342342290534, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216770 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 357428574219092349, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216771 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 174792347420630334, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216772 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6897359195226722291, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216773 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7281469055775896295, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216774 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 9108361742342368620, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216775 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3190161821128288778, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216776 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1189308981067775619, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216777 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6279902006325187522, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216778 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3617471444443853081, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216779 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5209397264864983392, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216780 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4986955906583137896, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216781 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7203150905105877598, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216783 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1268091223647997365, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216785 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1394083033076883339, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216787 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7380309927130975523, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216788 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2550413613078169725, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &167216789 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8860348455703264475, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &167216790 stripped
-NavMeshObstacle:
-  m_CorrespondingSourceObject: {fileID: 6039883356968036326, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &167216791 stripped
-MeshCollider:
-  m_CorrespondingSourceObject: {fileID: 7577317694634165355, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
-  m_PrefabInstance: {fileID: 167216762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &185566995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2037,7 +1907,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 519596895214660546, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_Name
-      value: RobotBase
+      value: RobotBase4
       objectReference: {fileID: 0}
     - target: {fileID: 1318792296022969253, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6266,7 +6136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 519596895214660546, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_Name
-      value: RobotBase
+      value: RobotBase2
       objectReference: {fileID: 0}
     - target: {fileID: 1318792296022969253, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6328,7 +6198,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 519596895214660546, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_Name
-      value: RobotBase (1)
+      value: RobotBase6
       objectReference: {fileID: 0}
     - target: {fileID: 1318792296022969253, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6565,7 +6435,6 @@ GameObject:
   - component: {fileID: 1401409638}
   - component: {fileID: 1401409641}
   - component: {fileID: 1401409640}
-  - component: {fileID: 1401409639}
   m_Layer: 0
   m_Name: PH_EnemiesFactory
   m_TagString: Untagged
@@ -6588,27 +6457,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1657346731}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1401409639
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401409637}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1401409640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8144,7 +7992,7 @@ GameObject:
   - component: {fileID: 1657346735}
   - component: {fileID: 1657346736}
   m_Layer: 0
-  m_Name: RobotBase
+  m_Name: RobotBase5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8208,156 +8056,11 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   StartEnabled: 1
   Components:
-  - name: RobotBase (Mesh Collider)
+  - name: PH_EnemiesFactory (Mesh Renderer)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
-    Component: {fileID: 167216791}
-  - name: RobotBase (Nav Mesh Obstacle)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216790}
-  - name: SM_Int_Box (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216789}
-  - name: SM_Int_Box (1) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216788}
-  - name: SM_Int_Box (2) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216787}
-  - name: SM_Int_Box (3) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 0}
-  - name: SM_Int_Box (4) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216785}
-  - name: SM_Int_Box (5) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 0}
-  - name: SM_Int_Box (6) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216783}
-  - name: SM_Int_Box (7) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 0}
-  - name: SM_Prop_GasCylinder (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216781}
-  - name: SM_Prop_GasCylinder (1) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216780}
-  - name: SM_Prop_GasCylinder (2) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216779}
-  - name: SM_Prop_GasCylinder (3) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216778}
-  - name: SM_Prop_MetalArm_01 (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216777}
-  - name: SM_Prop_MetalArm_01 (1) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216776}
-  - name: SM_Prop_MetalArm_02 (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216775}
-  - name: SM_Prop_MetalArm_02 (1) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216774}
-  - name: SM_Prop_Rack (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216773}
-  - name: SM_Prop_Rack (1) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216772}
-  - name: SM_Prop_Rack (2) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216771}
-  - name: SM_Prop_Rack (3) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216770}
-  - name: SM_Prop_Rack (4) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216769}
-  - name: SM_Prop_Rack (5) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216768}
-  - name: SM_Prop_Rack (6) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216767}
-  - name: SM_Prop_Rack (8) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216766}
-  - name: SM_Prop_Rack (7) (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216765}
-  - name: SM_Bld_RobotBase_Hangar (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216764}
-  - name: SM_Prop_ConveyorBelt (Mesh Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 167216763}
-  - name: RobotBase (Box Collider)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 1657346734}
+    Component: {fileID: 1401409640}
 --- !u!65 &1657346734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8444,7 +8147,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 519596895214660546, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_Name
-      value: RobotBase
+      value: RobotBase3
       objectReference: {fileID: 0}
     - target: {fileID: 1318792296022969253, guid: 2f1cd4868b6e13746adc13e50f59e683, type: 3}
       propertyPath: m_LocalPosition.x
