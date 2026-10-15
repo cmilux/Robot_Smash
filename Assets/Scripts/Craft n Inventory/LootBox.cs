@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +27,9 @@ public class LootBox : NetworkBehaviour
     // How long to wait after breaking before the item appears
     public float dropDelay = 2f;
 
+    //every player who hit this box, so each one gets credit for the tutorial step
+    HashSet<ulong> _hitters = new HashSet<ulong>();
+
     [Header("Item Spawn Height")]
     [SerializeField] float _itemHeight = 0.2f;
 
@@ -34,6 +38,10 @@ public class LootBox : NetworkBehaviour
         if (!IsServer) return;
         if (isBroken) return;
         if (!collision.gameObject.CompareTag("Player")) return;
+
+        //remember who hit it (the collider might be a child, so look in parents)
+        NetworkObject playerNetObj = collision.gameObject.GetComponentInParent<NetworkObject>();
+        if (playerNetObj != null) _hitters.Add(playerNetObj.OwnerClientId);
 
         OnHit();
     }
@@ -53,6 +61,12 @@ public class LootBox : NetworkBehaviour
     private void Break()
     {
         isBroken = true;
+
+        //tell every player who hit the box that it broke
+        foreach (ulong clientId in _hitters)
+        {
+            NotifyBoxBrokenClientRpc(clientId);
+        }
 
         StartCoroutine(DropAfterDelay());
     }
@@ -102,6 +116,14 @@ public class LootBox : NetworkBehaviour
             );
 
         NetworkObject.Despawn(false);
+    }
+
+    //runs on every client (and host), only the matching player raises the tutorial event
+    [ClientRpc]
+    private void NotifyBoxBrokenClientRpc(ulong clientId)
+    {
+        if (NetworkManager.Singleton.LocalClientId != clientId) return;
+        TutorialEvents.Raise(TutorialStep.HitBox);
     }
 
     public override void OnNetworkDespawn()

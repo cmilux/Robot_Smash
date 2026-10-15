@@ -1996,6 +1996,10 @@ MonoBehaviour:
     message: Usa WASD para moverte
     showDelay: 0
     doneDelay: 1
+  - id: 1
+    message: Golpea un barril/caja
+    showDelay: 0
+    doneDelay: 1
   - id: 2
     message: Acercate a un objeto
     showDelay: 0
