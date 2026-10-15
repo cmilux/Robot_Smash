@@ -19,4 +19,4 @@ MonoBehaviour:
     quantity: 2
   result: {fileID: 11400000, guid: e5a244be84ec1e1488e8755accaa4920, type: 2}
   resultQuantity: 1
-  requiredLevel: 1
+  requiredLevel: 0

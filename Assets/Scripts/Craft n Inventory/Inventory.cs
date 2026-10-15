@@ -53,7 +53,7 @@ public class Inventory : NetworkBehaviour
             {
                 QuestManager.Instance.ReportProgressServerRpc(ObjectiveType.CollectItem, itemOnGround.itemData.id.ToString(), amountPickedUp);
 
-                //update tutorial step
+                // tutorial step to teach player to pick up an object
                 TutorialEvents.Raise(TutorialStep.PickUp);
             }
 

@@ -123,6 +123,8 @@ public class LootBox : NetworkBehaviour
     private void NotifyBoxBrokenClientRpc(ulong clientId)
     {
         if (NetworkManager.Singleton.LocalClientId != clientId) return;
+
+        //tutorial step to teach player to hit a loot box
         TutorialEvents.Raise(TutorialStep.HitBox);
     }
 

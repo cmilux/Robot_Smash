@@ -9,7 +9,9 @@ public enum TutorialStep
     OpenInventory,
     Craft,
     Equip,
-    Drop
+    Drop,
+    DistanceAttack,
+    MeleeAttack
 }
 
 //Local only event hub (not network).

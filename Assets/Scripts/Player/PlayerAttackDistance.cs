@@ -189,7 +189,6 @@ public class PlayerAttackDistance : NetworkBehaviour
 
         if (equippedWeaponData == null) return;
         if (Time.time < nextFireTime) return;
-
         
             Vector3 shooterVelocity = rb.linearVelocity;
 
@@ -206,6 +205,9 @@ public class PlayerAttackDistance : NetworkBehaviour
             }
         nextFireTime = Time.time + equippedWeaponData.cooldownBase;
         OnShoot?.Invoke();
+
+        //tutorial step to teach the player how to attack
+        TutorialEvents.Raise(TutorialStep.DistanceAttack);
 
         UseDurability();//each shot
     }

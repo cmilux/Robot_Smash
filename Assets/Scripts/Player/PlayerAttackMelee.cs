@@ -36,12 +36,19 @@ public class PlayerAttackMelee : NetworkBehaviour
         if(carSaws != null && carSaws.isEquipped)
         {
             carSaws.TrySawsOn();
+
+            //NOT SET IN GAME YET - tutorial step to teach the player how to attack
+            TutorialEvents.Raise(TutorialStep.MeleeAttack);
+            
             return;
         }
         
         if(carBumper !=  null && carBumper.isEquipped)
         {
             carController.ActivateDash();
+
+            //NOT SET IN GAME YET - tutorial step to teach the player how to attack
+            TutorialEvents.Raise(TutorialStep.MeleeAttack);
         }
     }
 
@@ -63,6 +70,9 @@ public class PlayerAttackMelee : NetworkBehaviour
 
                     // Ask the server to reduce health from the enemy
                     enemy.TakeDamageServerRpc(damage, shooterClientId);
+
+                    //NOT SET IN GAME YET - tutorial step to teach the player how to attack
+                    TutorialEvents.Raise(TutorialStep.MeleeAttack);
 
                     if (enemy.isDead.Value == true)
                     {

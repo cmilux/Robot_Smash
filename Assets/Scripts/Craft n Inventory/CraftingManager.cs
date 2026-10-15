@@ -63,6 +63,9 @@ public class CraftingManager : MonoBehaviour
             {
                 //Remove the required ingredients from the crafting slots
                 ConsumeIngredients(currentRecipe);
+
+                //tutorial step to teach to craft
+                TutorialEvents.Raise(TutorialStep.Craft);
             }
         }
 

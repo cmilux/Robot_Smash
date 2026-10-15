@@ -403,7 +403,7 @@ public class InventoryManager : NetworkBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 carController.isFrozen = true;
 
-                //update tutorial step
+                // tutorial step to teach player to open inventory
                 TutorialEvents.Raise(TutorialStep.OpenInventory);
             }
             else
@@ -451,6 +451,10 @@ public class InventoryManager : NetworkBehaviour
             // Call the Server Rpc to handle spawning the item
             DropItemServerRpc(slotToDrop.itemData.id, amount, slotToDrop.currentDurability);
 
+            //NOT SET ON GAME YET - tutorial step to teach player to drop an object
+            //(waiting for testing sessions to see if the inventory gets fulled easily)
+            TutorialEvents.Raise(TutorialStep.Drop);
+
             if(amount >= slotToDrop.quantity)
             {
                 UnequipFromSlot(slotToDrop.itemData);
@@ -480,6 +484,9 @@ public class InventoryManager : NetworkBehaviour
             if(itemData.itemType == ItemType.weapon)
             {
                 playerAttack.SetWeaponData(itemData,durability);
+
+                //tutorial step to teach player how to equip a weapon
+                TutorialEvents.Raise(TutorialStep.Equip);
             }
             else if(itemData.itemType == ItemType.saws)
             {
