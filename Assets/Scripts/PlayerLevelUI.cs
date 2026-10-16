@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
+using System;
 
 public class PlayerLevelUI : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerLevelUI : MonoBehaviour
     int currentLevel;
     int totalExp;
     public int CurrentLevel => currentLevel;
+
+    public event Action<int> OnLevelChanged;
 
     //one shared copy across everything
     public static PlayerLevelUI Instance { get; private set; }      //anyone can read it, but only the class itself can write to it
@@ -38,6 +41,7 @@ public class PlayerLevelUI : MonoBehaviour
         while (totalExp >= GetExpForLevel(currentLevel + 1))
         {
             currentLevel++;     //Level up player if exp needed for that level was reached || sube de nivel al player si tiene la experiencia necesaria
+            OnLevelChanged?.Invoke(currentLevel);
         }
     }
 
