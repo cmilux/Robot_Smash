@@ -15,7 +15,9 @@ public class RecipeEntryUi : MonoBehaviour
     [Header("Result")]
     [SerializeField] private Image _iconResult;
 
-    private static readonly Color LockedTint = new Color(0.35f, 0.35f, 0.35f);
+    [Header("Locked")]
+    [SerializeField] private TextMeshProUGUI _lockedText;
+    [SerializeField] private GameObject _lockedOverlay;
 
     public void Configure(RecipeData recipe, bool unlocked)
     {
@@ -36,9 +38,7 @@ public class RecipeEntryUi : MonoBehaviour
 
         _iconResult.sprite = recipe.result.icon;
 
-        Color tint = unlocked ? Color.white : LockedTint;
-        _iconA.color = tint;
-        _iconB.color = tint;
-        _iconResult.color = tint;
+        _lockedOverlay.SetActive(!unlocked);
+        _lockedText.text = $"Nivel {recipe.requiredLevel}";
     }
 }
