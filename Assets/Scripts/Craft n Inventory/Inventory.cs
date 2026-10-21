@@ -72,7 +72,10 @@ public class Inventory : NetworkBehaviour
     public int AddItem(ItemData itemData, int quantity, int durability = -1)
     {
         int quantityToSave = quantity;
-
+        if(itemData != null && itemData.itemType != ItemType.none && HasItemInInventory(itemData))
+        {
+            return quantity;
+        }
         //Primero buscamos los slots que ya tengan ese item y no esten llenos(para completar el stock)
         // Find slots with the same item to fill them up
         for (int i = 0; i < slots.Count; i++)
