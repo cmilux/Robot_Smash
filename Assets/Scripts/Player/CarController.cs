@@ -11,7 +11,6 @@ public class CarController : NetworkBehaviour
     private float _currentSpeed;
     public float turnSpeed = 100f;
     public float acceleration = 8f;     //how fast it reaches target speed
-    public bool isFrozen = false;       //If true the car cannot move
 
     [Header("Dash")]
     private CarBumper _carBumper;
@@ -45,8 +44,6 @@ public class CarController : NetworkBehaviour
     void FixedUpdate()
     {
         if (!IsOwner) return;
-
-        if (isFrozen) return;       // If inventory its open frozen would be true
 
         HandleMov();
         HandleRotation();

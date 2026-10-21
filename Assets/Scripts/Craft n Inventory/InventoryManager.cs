@@ -398,20 +398,16 @@ public class InventoryManager : NetworkBehaviour
             // Change controls and mouse state depending on open/closed state
             if (isOpening)
             {
-                playerInput.SwitchCurrentActionMap("UI");
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-                carController.isFrozen = true;
 
                 // tutorial step to teach player to open inventory
                 TutorialEvents.Raise(TutorialStep.OpenInventory);
             }
             else
             {
-                playerInput.SwitchCurrentActionMap("Player");
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                carController.isFrozen = false;
             }
         }
     }
