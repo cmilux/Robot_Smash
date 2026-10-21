@@ -13,7 +13,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     [HideInInspector] public ItemData itemData;
     [HideInInspector] public int quantity;
     [HideInInspector] public int currentDurability;
-
+    private bool _isDragging;
     [Header("Durability")]
     public Image durabilityBar;
 
@@ -187,7 +187,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     public void OnBeginDrag(PointerEventData eventData)
     {
         if(itemData == null) return;
-
+        _isDragging = true;
         var kb = Keyboard.current;
         if (kb != null && kb.ctrlKey.isPressed)
         {
@@ -223,7 +223,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
     public void OnEndDrag(PointerEventData eventData)
     {
         if (itemData == null) return;
-
+        _isDragging = false;
         // Show the normal slot UI again
         icon.enabled = true;
         UIManager.Instance.ghostIcon.enabled = false;
@@ -311,6 +311,20 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandl
                         this.SetItem(tempItemData, tempQuantity, tempDurability);
                     }
                 }
+            }
+        }
+    }
+    private void OnDisable()
+    {
+        if (itemData == null) return;
+        if (_isDragging)
+        {   
+            _isDragging = false;
+            icon.enabled = true;
+            quantityText.text = quantity.ToString();
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.ghostIcon.enabled = false;
             }
         }
     }
