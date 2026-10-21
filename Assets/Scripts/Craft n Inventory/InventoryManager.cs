@@ -17,6 +17,7 @@ public class InventoryManager : NetworkBehaviour
     [Header("Visual Weapons")]
     public GameObject visibleItemsContainer;
     private VisibleItem[] visibleItems;
+    [SerializeField] private ItemData _defaultWeapon;
 
     // Network variables to share the current weapon and paint with all players
     private NetworkVariable<int> equippedWeaponId = new NetworkVariable<int>(
@@ -163,10 +164,6 @@ public class InventoryManager : NetworkBehaviour
         {
             recipesUI.SetActive(false);
         }
-        if (playerAttack != null)
-        {
-            playerAttack.enabled = false;
-        }
     }
 
     public override void OnNetworkDespawn()
@@ -199,49 +196,47 @@ public class InventoryManager : NetworkBehaviour
     private void OnWeaponChanged(int oldId, int newId)
     {
         GameObject activeVisual = null;
-
-        foreach (VisibleItem vItem in visibleItems)
+        int idToUse;
+        if(newId == -1)
         {
-            if (vItem.visibleItem != null && vItem.item.itemType == ItemType.weapon)
-            {
-                // turn off the visual
-                vItem.visibleItem.SetActive(false);
-
-                // turn on the one that matches the new Id
-                if (vItem.item.id == newId)
-                {
-                    vItem.visibleItem.SetActive(true);
-
-                    activeVisual = vItem.visibleItem;
-                }
-            }
+            idToUse = _defaultWeapon.id;
         }
-
-        // Enable or disable the attack script only for the owner
-        if (IsOwner && playerAttack != null)
+        else
         {
-            playerAttack.enabled = (newId != -1);
-
-            //pass the equipped ItemData (or null if unequipped)
-            if (newId != -1)
+            idToUse = newId;
+        }
+            foreach (VisibleItem vItem in visibleItems)
             {
-                ItemData weaponData = GameManager.instance.itemDataBase.SearchItem(newId.ToString());
-
-                playerAttack.SetWeaponData(weaponData);
-
-                if (activeVisual != null)
+                if (vItem.visibleItem != null && vItem.item.itemType == ItemType.weapon)
                 {
-                    WeaponFirePoints points = activeVisual.GetComponent<WeaponFirePoints>();
+                    // turn off the visual
+                    vItem.visibleItem.SetActive(false);
 
-                    if (points != null)
+                    // turn on the one that matches the new Id
+                    if (vItem.item.id == idToUse)
                     {
-                        playerAttack.SetAimAndFirePoints(points.aim, points.firePoints);
+                        vItem.visibleItem.SetActive(true);
+
+                        activeVisual = vItem.visibleItem;
                     }
                 }
             }
-            else
+        if (IsOwner && playerAttack != null)
+        {
+            playerAttack.enabled = true;
+
+            ItemData weaponData = GameManager.instance.itemDataBase.SearchItem(idToUse.ToString());
+
+            playerAttack.SetWeaponData(weaponData);
+
+            if (activeVisual != null)
             {
-                playerAttack.SetWeaponData(null);
+                WeaponFirePoints points = activeVisual.GetComponent<WeaponFirePoints>();
+
+                if (points != null)
+                {
+                    playerAttack.SetAimAndFirePoints(points.aim, points.firePoints);
+                }
             }
         }
     }

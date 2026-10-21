@@ -14902,7 +14902,6 @@ MonoBehaviour:
   speed: 25
   turnSpeed: 100
   acceleration: 8
-  isFrozen: 0
   dashSpeed: 50
   dashDuration: 0.5
   dashCooldownBackup: 3
@@ -15054,6 +15053,7 @@ MonoBehaviour:
   craftingUI: {fileID: 0}
   recipesUI: {fileID: 0}
   visibleItemsContainer: {fileID: 1663539091826855021}
+  _defaultWeapon: {fileID: 11400000, guid: 9954c230ce0e78e478403f8ee3d06f36, type: 2}
   hotbarSlotsContainer: {fileID: 0}
   playerAttack: {fileID: 6344646766486943117}
   carSaws: {fileID: 7695856016492172092}
