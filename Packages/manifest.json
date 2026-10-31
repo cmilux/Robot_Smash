@@ -12,6 +12,7 @@
     "com.unity.multiplayer.playmode": "2.0.2",
     "com.unity.multiplayer.tools": "2.2.12",
     "com.unity.netcode.gameobjects": "2.13.3",
+    "com.unity.postprocessing": "3.5.1",
     "com.unity.render-pipelines.high-definition": "17.3.0",
     "com.unity.render-pipelines.universal": "17.3.0",
     "com.unity.services.multiplayer": "2.4.1",
