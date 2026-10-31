@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -44,6 +45,7 @@ public class CarController : NetworkBehaviour
     void FixedUpdate()
     {
         if (!IsOwner) return;
+        if (_rb.isKinematic) return;
 
         HandleMov();
         HandleRotation();
@@ -96,6 +98,9 @@ public class CarController : NetworkBehaviour
         Quaternion turnRotation = Quaternion.Euler(0f, turn, 0f);
         _rb.MoveRotation(_rb.rotation * turnRotation);
     }
+
+    //clear stuck input after the player input was disabled || limpia input trabado tras desabilitar el player input
+    public void ResetInput() => _moveInput = Vector2.zero;
 
     void UpdateAnimationSpeed()
     {

@@ -74,7 +74,6 @@ public class PlayerHealth : NetworkBehaviour
                 ShowGameOverClientRpc();        //everyone dead == game over || todos muertos = game over
             else
                 StartCoroutine(RespawnRoutine());       //someone alive = respawn || alguien vivo = respawn
-
         }
     }
 
@@ -118,7 +117,8 @@ public class PlayerHealth : NetworkBehaviour
         if (nt != null) nt.Teleport(position, rotation, transform.localScale);
         else transform.SetPositionAndRotation(position, rotation);
 
-        //falta mas aca
+        GetComponent<Inventory>().ClearAllSlots();
+        FindFirstObjectByType<CraftingManager>()?.ClearCraftingSlots();
     }
 
     void OnDeadChange(bool prev, bool dead)
@@ -130,13 +130,19 @@ public class PlayerHealth : NetworkBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = dead;       //so it doesnt fall through the ground without colliders || para quue no se caiga al vacio sin colliders
             GetComponent<PlayerInput>().enabled = !dead;
+
+            if (dead)
+            {
+                GetComponent<CarController>().ResetInput();
+                GetComponent<InventoryManager>().CloseInventory();
+            }
         }
     }
 
     [ClientRpc]
     void ShowGameOverClientRpc()
     {
-        //falta aca
+        UIManager.Instance.ShowGameOver();
     }
 
     public override void OnNetworkDespawn()

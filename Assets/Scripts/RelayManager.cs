@@ -38,8 +38,15 @@ public class RelayManager : MonoBehaviour
         _hostButton.interactable = false;
         _joinButton.interactable = false;
 
-        await UnityServices.InitializeAsync();
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        //when coming back to the lobby, services are already initialized and signed in
+        //(the session survives scene loads), so repeating these calls throws an exception
+        //al volver al lobby los servicios ya estan inicializados y logueados
+        //(la sesion sobrevive a las escenas), repetir estas llamadas tira una excepcion
+        if (UnityServices.State == ServicesInitializationState.Uninitialized)
+            await UnityServices.InitializeAsync();
+
+        if (!AuthenticationService.Instance.IsSignedIn)
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
         _hostButton.onClick.AddListener(CreateRelay);
         _joinButton.onClick.AddListener(() => JoinRelay(_joinInputField.text));
@@ -65,7 +72,7 @@ public class RelayManager : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.OnClientConnectedCallback += OnPlayersChanged;
-            NetworkManager.Singleton.OnClientDisconnectCallback -= OnPlayersChanged;
+            NetworkManager.Singleton.OnClientDisconnectCallback += OnPlayersChanged;
 
             NetworkManager.Singleton.StartHost();
 
@@ -99,7 +106,7 @@ public class RelayManager : MonoBehaviour
             var relayServerData = AllocationUtils.ToRelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
-            NetworkManager.Singleton.OnClientConnectedCallback += OnJoinFailedKicked;
+            NetworkManager.Singleton.OnClientDisconnectCallback += OnJoinFailedKicked;
             NetworkManager.Singleton.StartClient();     //no loadScene here, the hosts scene load brings us in
 
             _hostButton.gameObject.SetActive(false);
@@ -160,6 +167,6 @@ public class RelayManager : MonoBehaviour
 
         NetworkManager.Singleton.OnClientConnectedCallback -= OnPlayersChanged;
         NetworkManager.Singleton.OnClientDisconnectCallback -= OnPlayersChanged;
-        NetworkManager.Singleton.OnClientConnectedCallback -= OnJoinFailedKicked;
+        NetworkManager.Singleton.OnClientDisconnectCallback -= OnJoinFailedKicked;
     }
 }

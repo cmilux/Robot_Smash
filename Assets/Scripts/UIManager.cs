@@ -1,9 +1,11 @@
 using NUnit;
+using System;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -33,10 +35,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI questTitleText;
     [SerializeField] TextMeshProUGUI questObjectivesText;
 
+    [Header("Game Over")]
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] Button gameOverMenuButton;
+    [SerializeField] string menuSceneName = "Lobby";
+
     void Awake()
     {
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
+    }
+
+    private void Start()
+    {
+        if(gameOverPanel != null) gameOverPanel.SetActive(false);
+        if (gameOverMenuButton != null) gameOverMenuButton.onClick.AddListener(ReturnToMenu);
     }
 
     private void Update()
@@ -102,5 +115,27 @@ public class UIManager : MonoBehaviour
         }
 
         questObjectivesText.text = objectivesList;
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverPanel.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    void ReturnToMenu()
+    {
+        //network manager survives scene loads, so needs to be shut it down and destroy it
+        //otherwise the lobby own copy will duplicate it
+        //el network manager sobrevive a las escenas, apagarlo y destruirlo evita duplicados en lobby
+        NetworkManager nm = NetworkManager.Singleton;
+        if (nm != null)
+        {
+            nm.Shutdown();
+            Destroy(nm.gameObject);
+        }
+
+        SceneManager.LoadScene(menuSceneName);
     }
 }

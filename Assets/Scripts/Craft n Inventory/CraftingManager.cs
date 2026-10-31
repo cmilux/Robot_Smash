@@ -71,6 +71,16 @@ public class CraftingManager : MonoBehaviour
 
 
     }
+
+    public void ClearCraftingSlots()
+    {
+        foreach (Slot slot in craftingSlots)
+        {
+            if (slot.itemData != null) slot.ClearItem();
+        }
+        if(resultSlot != null && resultSlot.itemData != null) resultSlot.ClearItem();
+    }
+
     private bool AllSlotsEmpty()
     {
         foreach (Slot slot in craftingSlots)

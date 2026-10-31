@@ -51,6 +51,9 @@ public class PlayerAttackDistance : NetworkBehaviour
     {
         if (IsOwner)
         {
+            //dead players cant shoot || los jugadores muertos no pueden disparar
+            if (GetComponent<PlayerHealth>().isDead.Value) return;
+
             // Find the closest enemy
             FindNearestEnemy();
 

@@ -406,6 +406,19 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
+
+    public void CloseInventory()
+    {
+        if(!IsOwner) return;
+
+        if(playerInventoryUI != null) playerInventoryUI.SetActive(false);
+        if(craftingUI != null) craftingUI.SetActive(false);
+        if(recipesUI != null) recipesUI.SetActive(false);
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void ApplyPaint(ItemData item)
     {
         if (item.paintMaterial != null)
@@ -452,6 +465,7 @@ public class InventoryManager : NetworkBehaviour
             }
         }
     }
+
     // Called by a Slot when an equipable item land in a hotbar slot
     public void EquipFromSlot(ItemData itemData, int durability = -1)
     {
@@ -499,6 +513,14 @@ public class InventoryManager : NetworkBehaviour
         if (itemData.itemType == ItemType.paint)
         {
             ResetPaint();
+            return;
+        }
+
+        //MARTI: NO SE SI ESTE METODO ESTA EN FUNCIONAMIENTO PERO POR LAS DUDAS. TAMBIEN LO DE PINTURA NI IDEA SI LO DEJAMOS O QUE (ESTO ES POR LOGICA DE MUERTE)
+        if (itemData.itemType == ItemType.carSkin)          
+        {
+            if(!IsOwner) return;
+            equippedCarVariantId.Value = -1;
             return;
         }
 

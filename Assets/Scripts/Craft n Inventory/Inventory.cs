@@ -135,4 +135,15 @@ public class Inventory : NetworkBehaviour
         }
         return false;
     }
+
+    //empties inventory and hotbar || vacia el inventario y la hotbar
+    public void ClearAllSlots()
+    {
+        if(!IsOwner) return;
+
+        foreach (Slot slot in slots)
+        {
+            if(slot.itemData != null) slot.ClearItem();
+        }
+    }
 }
