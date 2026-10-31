@@ -2,6 +2,10 @@ using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using Unity.Netcode.Components;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class PlayerHealth : NetworkBehaviour
 {
@@ -12,12 +16,19 @@ public class PlayerHealth : NetworkBehaviour
         NetworkVariableWritePermission.Server);
 
     public int maxHealth = 50;
-    public bool isDead = false;
+    public NetworkVariable<bool> isDead = new NetworkVariable<bool>(
+        false,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
+
+    [SerializeField] float _respawnDelay = 5f;
 
     public override void OnNetworkSpawn()
     {
         // Listen for health changes to update the UI
         health.OnValueChanged += OnHealthChange;
+
+        isDead.OnValueChanged += OnDeadChange;
 
         // Only the server can set the starting health
         if (IsServer)
@@ -47,7 +58,7 @@ public class PlayerHealth : NetworkBehaviour
     public void LoseHealthServerRpc(int damage)
     {
         // If the player is already dead do nothing
-        if (isDead) return;
+        if (isDead.Value) return;
 
         // Take damage
         health.Value -= damage;
@@ -57,18 +68,84 @@ public class PlayerHealth : NetworkBehaviour
         {
             health.Value = 0;
 
-            isDead = true;
+            isDead.Value = true;
 
-            // The server removes the dead player from the game
-            NetworkObject.Despawn(true);
+            if (AreAllPlayersDead())
+                ShowGameOverClientRpc();        //everyone dead == game over || todos muertos = game over
+            else
+                StartCoroutine(RespawnRoutine());       //someone alive = respawn || alguien vivo = respawn
 
         }
     }
+
+    bool AreAllPlayersDead()
+    {
+        foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList)
+        {
+            if (client.PlayerObject == null) continue;
+
+            PlayerHealth ph = client.PlayerObject.GetComponent<PlayerHealth>();
+            if (ph != null && !ph.isDead.Value) return false;
+        }
+        return true;
+    }
+
+    IEnumerator RespawnRoutine()
+    {
+        yield return new WaitForSeconds(_respawnDelay);
+
+        //the other player may have died while we waited || el otro jugador pudo morir mientras esperabamos
+        if (AreAllPlayersDead()) yield break;
+
+        Transform point = PlayerSpawner.instance.GetSpawnPoint();
+
+        health.Value = maxHealth;
+        isDead.Value = false;
+
+        RespawnOwnerRpc(point.position, point.rotation);
+    }
+
+    //runs on the cars owner, its the one w move authority || corre en el dueno del auto, que es quien tiene autoridad del movimiento
+    [Rpc(SendTo.Owner)]
+    void RespawnOwnerRpc(Vector3 position, Quaternion rotation)
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;     //before touching velocity || antes de tocar la velocidad
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        NetworkTransform nt = GetComponent<NetworkTransform>();
+        if (nt != null) nt.Teleport(position, rotation, transform.localScale);
+        else transform.SetPositionAndRotation(position, rotation);
+
+        //falta mas aca
+    }
+
+    void OnDeadChange(bool prev, bool dead)
+    {
+        foreach (Renderer r in GetComponentsInChildren<Renderer>(true)) r.enabled = !dead;
+        foreach (Collider c in GetComponentsInChildren<Collider>(true)) c.enabled = !dead;
+        
+        if (IsOwner)
+        {
+            GetComponent<Rigidbody>().isKinematic = dead;       //so it doesnt fall through the ground without colliders || para quue no se caiga al vacio sin colliders
+            GetComponent<PlayerInput>().enabled = !dead;
+        }
+    }
+
+    [ClientRpc]
+    void ShowGameOverClientRpc()
+    {
+        //falta aca
+    }
+
     public override void OnNetworkDespawn()
     {
         // Stop listening for health changes to prevent errors
         // Siempre es buena práctica desvincular el evento al salir de la red
         health.OnValueChanged -= OnHealthChange;
+
+        isDead.OnValueChanged -= OnDeadChange;
     }
 
     private void OnTriggerEnter(Collider other)
