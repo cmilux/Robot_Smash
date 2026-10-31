@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class VFXItemPickUp : MonoBehaviour
 {
-    float _rotateSpeed = 50f;
+    [SerializeField] float _rotateSpeed = 50f;
     [SerializeField] float _amplitude = 0.5f;
     [SerializeField] float _frequency = 0.01f;
 
