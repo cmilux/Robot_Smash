@@ -6,8 +6,12 @@ using System.Collections.Generic;
 
 public class PlayerSpawner : NetworkBehaviour
 {
+    public static PlayerSpawner instance {  get; private set; }
+
     [SerializeField] NetworkObject _playerPrefab;
     [SerializeField] Transform[] _spawnPoints;
+
+    private void Awake() => instance = this;
 
     public override void OnNetworkSpawn()
     {
@@ -32,4 +36,7 @@ public class PlayerSpawner : NetworkBehaviour
             i++;
         }
     }
+
+    //random spawn point for respawns || spawn point random para los respawns
+    public Transform GetSpawnPoint() => _spawnPoints[Random.Range(0, _spawnPoints.Length)];
 }
