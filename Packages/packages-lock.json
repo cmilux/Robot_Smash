@@ -7,7 +7,7 @@
       "dependencies": {}
     },
     "com.unity.ai.navigation": {
-      "version": "2.0.15",
+      "version": "2.0.16",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -43,7 +43,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
-      "version": "2.6.7",
+      "version": "2.6.8",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -71,12 +71,10 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.28",
+      "version": "2.0.29",
       "depth": 0,
       "source": "registry",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.33"
-      },
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
@@ -230,7 +228,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.authentication": {
-      "version": "3.7.0",
+      "version": "3.8.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -270,24 +268,24 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.multiplayer": {
-      "version": "2.3.3",
+      "version": "2.4.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.transport": "2.7.3",
-        "com.unity.collections": "2.6.7",
-        "com.unity.services.qos": "1.4.1",
+        "com.unity.transport": "2.7.4",
+        "com.unity.collections": "2.6.8",
+        "com.unity.services.qos": "1.5.1",
         "com.unity.services.core": "1.18.0",
         "com.unity.services.wire": "1.5.1",
         "com.unity.services.deployment": "1.7.2",
         "com.unity.nuget.newtonsoft-json": "3.2.2",
         "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.services.authentication": "3.7.0"
+        "com.unity.services.authentication": "3.8.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.services.qos": {
-      "version": "1.4.1",
+      "version": "1.5.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -380,7 +378,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.transport": {
-      "version": "2.7.3",
+      "version": "2.7.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -409,7 +407,7 @@
       }
     },
     "com.unity.visualscripting": {
-      "version": "1.9.12",
+      "version": "1.9.13",
       "depth": 0,
       "source": "registry",
       "dependencies": {
