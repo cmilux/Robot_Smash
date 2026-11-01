@@ -458,11 +458,6 @@ public class InventoryManager : NetworkBehaviour
             //NOT SET ON GAME YET - tutorial step to teach player to drop an object
             //(waiting for testing sessions to see if the inventory gets fulled easily)
             TutorialEvents.Raise(TutorialStep.Drop);
-
-            if(amount >= slotToDrop.quantity)
-            {
-                UnequipFromSlot(slotToDrop.itemData);
-            }
         }
     }
 
