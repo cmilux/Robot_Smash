@@ -617,6 +617,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5671875
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.4371111
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.43283334
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.34170374
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 328496283924473603, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1456033559655448090, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -828,6 +860,14 @@ PrefabInstance:
     - target: {fileID: 8201954178586565456, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388511361864090415, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388511361864090415, guid: f1b1ffc071abcd04886b53d86d949d57, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2057,35 +2097,36 @@ MonoBehaviour:
   - id: 0
     message: Usa WASD para moverte
     showDelay: 0
-    doneDelay: 0.5
+    doneDelay: 0.1
   - id: 1
     message: Golpea un barril/caja
     showDelay: 0
-    doneDelay: 0.5
+    doneDelay: 0.1
   - id: 2
     message: Acercate a un objeto
     showDelay: 0
-    doneDelay: 0.5
+    doneDelay: 0.1
   - id: 3
-    message: Abre el inventario con la tecla TAB
+    message: Abre el inventario con la tecla E
     showDelay: 0
-    doneDelay: 0.5
+    doneDelay: 0.1
   - id: 4
     message: Arrastra los recursos debajo y presiona craftear
     showDelay: 0
-    doneDelay: 0.5
+    doneDelay: 0.1
   - id: 5
     message: Equipa el arma en la barra de objetos
     showDelay: 0
-    doneDelay: 0.5
-  - id: 7
-    message: Acercate a un enemigo
+    doneDelay: 0.1
+  - id: 8
+    message: Acercate a un enemigo y presiona ESPACIO
     showDelay: 0
-    doneDelay: 0.5
+    doneDelay: 0.1
   _popupRoot: {fileID: 29496551}
   _popupGroup: {fileID: 2003943933}
   _messageText: {fileID: 2060706433}
   _fadeTime: 0.25
+  _unlockAfterStep: 4
 --- !u!4 &362049207
 Transform:
   m_ObjectHideFlags: 0
@@ -3095,6 +3136,82 @@ Transform:
   - {fileID: 1106603722}
   m_Father: {fileID: 379249842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &550842232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550842234}
+  - component: {fileID: 550842233}
+  - component: {fileID: 550842235}
+  m_Layer: 0
+  m_Name: BridgeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &550842233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550842232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 3511760224
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  m_InScenePlacedDisabledByDefault: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!4 &550842234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550842232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 831.9093, y: 497.99908, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550842235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550842232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6045d6bd1d8734a45873e95cfd96f0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BridgeController
+  ShowTopMostFoldoutHeaderGroup: 1
+  _enableBridgeWhenOpen:
+  - {fileID: 1076197678}
+  _disableBridgeWhenOpen: []
 --- !u!1 &557818752
 GameObject:
   m_ObjectHideFlags: 0
@@ -4775,7 +4892,7 @@ PrefabInstance:
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].item
       value: 
-      objectReference: {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
+      objectReference: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[1].item
       value: 
@@ -10169,10 +10286,10 @@ RectTransform:
   - {fileID: 2060706432}
   m_Father: {fileID: 29496555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.37, y: 0.8454075}
-  m_AnchorMax: {x: 0.63000005, y: 0.9378519}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.25300002, y: 0.8454075}
+  m_AnchorMax: {x: 0.78256255, y: 0.9378149}
+  m_AnchoredPosition: {x: 3.992981, y: 0}
+  m_SizeDelta: {x: -8.894196, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2003943933
 CanvasGroup:
@@ -10919,7 +11036,7 @@ PrefabInstance:
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].item
       value: 
-      objectReference: {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
+      objectReference: {fileID: 11400000, guid: e58ba0762cfc763408f6fddadd430df6, type: 2}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[1].item
       value: 
@@ -10930,11 +11047,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].maxAmount
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].minAmount
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[1].maxAmount
@@ -11326,3 +11443,4 @@ SceneRoots:
   - {fileID: 1733303056}
   - {fileID: 333757547}
   - {fileID: 222467211}
+  - {fileID: 550842234}

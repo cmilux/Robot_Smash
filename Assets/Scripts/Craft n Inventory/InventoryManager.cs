@@ -489,9 +489,6 @@ public class InventoryManager : NetworkBehaviour
             if(itemData.itemType == ItemType.weapon)
             {
                 playerAttack.SetWeaponData(itemData,durability);
-
-                //tutorial step to teach player how to equip a weapon
-                TutorialEvents.Raise(TutorialStep.Equip);
             }
             else if(itemData.itemType == ItemType.saws)
             {
@@ -501,6 +498,9 @@ public class InventoryManager : NetworkBehaviour
             {
                 carBumper.SetWeaponData(itemData, durability);
             }
+
+            //tutorial step to teach player how to equip a weapon
+            TutorialEvents.Raise(TutorialStep.Equip);
         }
         // Si es un tipo no equipable no hace nada
     }

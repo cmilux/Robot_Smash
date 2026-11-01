@@ -30,6 +30,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _messageText;
     [SerializeField] float _fadeTime = 0.25f;
 
+    [Header("Bridge unlock")]
+    //step that unlocks the bridge when completed
+    [SerializeField] TutorialStep _unlockAfterStep = TutorialStep.Craft;
+
     int _index = -1;
     bool _running;
     Coroutine _routine;
@@ -42,13 +46,19 @@ public class TutorialManager : MonoBehaviour
         _popupGroup.alpha = 0f;
         _popupRoot.SetActive(false);
 
-        if (_steps.Count == 0 || !TutorialSettings.Enabled) yield break;
-
         //wait until the local player exists (playerspawner spawns it after the scene loads)
         yield return new WaitUntil(() =>
             NetworkManager.Singleton != null &&
             NetworkManager.Singleton.LocalClient != null &&
             NetworkManager.Singleton.LocalClient.PlayerObject != null);
+
+        //no tutorial: unloock the bridge right away
+        if (_steps.Count == 0 || !TutorialSettings.Enabled)
+        {
+            TutorialEvents.RaiseCompleted();
+            yield break;
+        }
+
 
         _running = true;
         ShowStep(0);
@@ -75,6 +85,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (!_running || _index < 0) return;
         if (_steps[_index].id != done) return;      //ignore events that arent the current step
+        if (done == _unlockAfterStep) TutorialEvents.RaiseCompleted();
 
         if (_routine != null) StopCoroutine(_routine);
         _routine = StartCoroutine(CompleteRoutine(_steps[_index]));
@@ -116,5 +127,6 @@ public class TutorialManager : MonoBehaviour
     void FinishTutorial()
     {
         _running = false;
+        TutorialEvents.RaiseCompleted();
     }
 }

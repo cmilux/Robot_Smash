@@ -19,7 +19,11 @@ public enum TutorialStep
 //always guards calls with isowner so remote player dont trigger own tutorial
 public class TutorialEvents : MonoBehaviour
 {
+    //raised when a tutorial step is completed
     public static event Action<TutorialStep> OnStepDone;
-
     public static void Raise(TutorialStep step) => OnStepDone?.Invoke(step);
+
+    //raised when tutorial is done/skipped
+    public static event Action OnTutorialCompleted;
+    public static void RaiseCompleted() => OnTutorialCompleted?.Invoke();
 }
