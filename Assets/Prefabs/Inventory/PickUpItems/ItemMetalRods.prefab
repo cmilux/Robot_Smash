@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1794856977397459626}
   - component: {fileID: 6551546511908898906}
   - component: {fileID: -2950996809627209805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemMetalRods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038c1875ec70b5e4db0586dda91a5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VFXItemPickUp
+  _rotateSpeed: 50
   _amplitude: 0.25
   _frequency: 0.5
 --- !u!1001 &6391666598554356230
@@ -178,6 +179,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0eb5717a8ec379944ab762cd7fd22bd5, type: 3}
       propertyPath: m_Name
       value: 'SM_Int_MetalRods '
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0eb5717a8ec379944ab762cd7fd22bd5, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -240,6 +245,10 @@ PrefabInstance:
     - target: {fileID: 8955089423901774949, guid: 5d468737ae5179d48bac3caf7361a5ca, type: 3}
       propertyPath: m_Name
       value: ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955089423901774949, guid: 5d468737ae5179d48bac3caf7361a5ca, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

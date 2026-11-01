@@ -14871,7 +14871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 83375010
+  GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -15077,7 +15077,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   ShowTopMostFoldoutHeaderGroup: 1
   maxHealth: 1000
-  isDead: 0
+  isDead:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
+  _respawnDelay: 5
 --- !u!114 &7695856016492172092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54721,7 +54726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4658166322544171145}
   - component: {fileID: 3325168438292039475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GO_SawLeft
   m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
@@ -54922,7 +54927,7 @@ Transform:
   m_GameObject: {fileID: 5697024783316401160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.63, y: -0.55, z: 2.517929}
+  m_LocalPosition: {x: 3.63, y: -0.55, z: 2.517929}
   m_LocalScale: {x: 1.8903, y: 0.75184, z: 3.4211}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59865,7 +59870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7813130807181086252}
   - component: {fileID: 7447975561767811316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GO_SawRight
   m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
@@ -79932,9 +79937,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3050995866564637373, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
       propertyPath: m_Name
       value: SM_Wpn_SawBlade_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842236611149255522, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80065,9 +80082,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3050995866564637373, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
       propertyPath: m_Name
       value: SM_Wpn_SawBlade_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842236611149255522, guid: 8384d46c90d6b8447ab84a30d56c1336, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
