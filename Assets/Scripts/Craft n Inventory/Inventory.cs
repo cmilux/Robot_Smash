@@ -65,6 +65,18 @@ public class Inventory : NetworkBehaviour
             {
                 itemOnGround.SetQuantityServerRpc(itemsLeftOver);
             }
+            else
+            {
+                if (itemOnGround.itemData != null && itemOnGround.itemData.itemType != ItemType.none && HasItemInInventory(itemOnGround.itemData))
+                {
+                    UIManager.Instance.ShowMessageWarningInventory("Ya tenés esta arma");
+                }
+                else
+                {
+                    UIManager.Instance.ShowMessageWarningInventory("Inventario lleno");
+                }
+
+            }
         }
     }
 

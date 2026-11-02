@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System.Collections;
 public class UIManager : MonoBehaviour
 {
     //one shared copy across everything
@@ -39,6 +39,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Button gameOverMenuButton;
     [SerializeField] string menuSceneName = "Lobby";
+
+    [Header("Inventory Warnings")]
+    [SerializeField] GameObject inventoryWarnings;
+    [SerializeField] TextMeshProUGUI inventoryWarningsText;
+    [SerializeField] float warningDuration = 2f;
+    private Coroutine _warningCoroutine; 
 
     void Awake()
     {
@@ -137,5 +143,18 @@ public class UIManager : MonoBehaviour
         }
 
         SceneManager.LoadScene(menuSceneName);
+    }
+
+    public void ShowMessageWarningInventory(string text)
+    {
+        inventoryWarnings.SetActive(true);
+        inventoryWarningsText.text = text;
+        if (_warningCoroutine!= null) StopCoroutine(_warningCoroutine);
+        _warningCoroutine = StartCoroutine(HideWarningAfterDelay());
+    }
+    private IEnumerator HideWarningAfterDelay()
+    {
+        yield return new WaitForSeconds(warningDuration);
+        inventoryWarnings.SetActive(false);
     }
 }
