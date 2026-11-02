@@ -144,8 +144,6 @@ public class BigEnemy : Enemy
                     spawnPointIndex.rotation
                     );
 
-            bullet.ResetTrail();
-
             //Get the bullet rigidbody
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.isKinematic = false;

@@ -12,13 +12,8 @@ public class PlayerBulletController : NetworkBehaviour
     public Vector3 extraVelocity;
     private Rigidbody _rb;
     public ulong shooterClientId;       // Saves the ID of the player who shot this bullet
-    [SerializeField] TrailRenderer _trailRenderer;
     bool _shotActive;   // client side: true between NotifySpawn and NotifyReturn
 
-    private void Awake()
-    {
-        if(_trailRenderer == null) _trailRenderer = GetComponent<TrailRenderer>();
-    }
 
     public override void OnNetworkSpawn()
     {
@@ -64,28 +59,15 @@ public class PlayerBulletController : NetworkBehaviour
         _damage = damage;
     }
 
-    public void ResetTrail()
-    {
-        if(_trailRenderer == null) return;
-
-        _trailRenderer.emitting = false;
-        _trailRenderer.Clear();
-    }
-
     [ClientRpc]
     public void NotifySpawnClientRpc(Vector3 pos, Quaternion rot)
     {
         if (IsServer) return;
 
-        ResetTrail();
-
         //move bullet directly to its real spawn point
         transform.SetPositionAndRotation(pos, rot);
         
         gameObject.SetActive(true);
-
-        //start recording the trail from the correct position
-        _trailRenderer.emitting = true;
 
         _shotActive = true;
     }
@@ -110,9 +92,6 @@ public class PlayerBulletController : NetworkBehaviour
     public void NotifyReturnClientRpc()
     {
         if(IsServer) return;
-
-        _trailRenderer.emitting = false;
-        _trailRenderer.Clear();
 
         gameObject.SetActive(false);
         _shotActive = false;

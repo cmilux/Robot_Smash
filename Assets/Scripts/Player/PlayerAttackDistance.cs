@@ -252,8 +252,6 @@ public class PlayerAttackDistance : NetworkBehaviour
             bullet.transform.SetPositionAndRotation(pos, rotation);
         }
 
-        bullet.ResetTrail();
-
         bullet.shooterClientId = OwnerClientId;
         bullet.SetDamage(damage);  
         bullet.speed = bulletSpeed;

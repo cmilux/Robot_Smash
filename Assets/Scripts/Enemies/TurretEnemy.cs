@@ -87,8 +87,6 @@ public class TurretEnemy : Enemy
                     spawnPointsIndex.rotation
                     );
 
-            bullet.ResetTrail();
-
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.isKinematic = false;
             rb.linearVelocity = (target.position - spawnPointsIndex.position).normalized * shootingSpeed;
