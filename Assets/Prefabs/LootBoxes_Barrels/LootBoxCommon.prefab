@@ -112,9 +112,12 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     minAmount: 3
     maxAmount: 5
-  hitsToBreak: 1
-  dropDelay: 1
-  _itemHeight: 0.2
+  dropDelay: 0.8
+  canRespawn: 1
+  _model: {fileID: 220825193220837120}
+  respawnTimeMin: 40
+  respawnTimeMax: 80
+  _itemHeight: 1.5
 --- !u!1001 &1139954440991650385
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,6 +175,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 225b076055d360145a6c80b24c038afb, type: 3}
+--- !u!1 &220825193220837120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 225b076055d360145a6c80b24c038afb, type: 3}
+  m_PrefabInstance: {fileID: 1139954440991650385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &602171711903946170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 225b076055d360145a6c80b24c038afb, type: 3}

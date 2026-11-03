@@ -18,49 +18,39 @@ public class LootBox : NetworkBehaviour
     //All the items this box could drop (set in the inspector)
     public LootOption[] lootOptions;
 
-    //How many hits the box needs before breaking
-    public int hitsToBreak = 3;
-    private int hitsTaken = 0;
-
-    private bool isBroken = false;
-
     // How long to wait after breaking before the item appears
     public float dropDelay = 2f;
+
+    [Header("Respawn")]
+    public bool canRespawn = true;
+    private NetworkVariable<bool> isBroken = new NetworkVariable<bool>(false);
+    [SerializeField] GameObject _model;
+    public float respawnTimeMin = 40f;
+    public float respawnTimeMax = 80f;
 
     //every player who hit this box, so each one gets credit for the tutorial step
     HashSet<ulong> _hitters = new HashSet<ulong>();
 
     [Header("Item Spawn Height")]
-    [SerializeField] float _itemHeight = 0.2f;
+    [SerializeField] float _itemHeight = 1f;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!IsServer) return;
-        if (isBroken) return;
+        if (isBroken.Value) return;
         if (!collision.gameObject.CompareTag("Player")) return;
 
         //remember who hit it (the collider might be a child, so look in parents)
         NetworkObject playerNetObj = collision.gameObject.GetComponentInParent<NetworkObject>();
         if (playerNetObj != null) _hitters.Add(playerNetObj.OwnerClientId);
 
-        OnHit();
-    }
-
-    // Called every time the box gets hit//FIX!
-    private void OnHit()
-    {
-        hitsTaken++;
-
-        if (hitsTaken >= hitsToBreak)
-        {
-            Break();
-        }
+        Break();
     }
 
     //Marks the box as broken and start the coroutine
     private void Break()
     {
-        isBroken = true;
+        isBroken.Value = true;
 
         //tell every player who hit the box that it broke
         foreach (ulong clientId in _hitters)
@@ -70,7 +60,15 @@ public class LootBox : NetworkBehaviour
 
         StartCoroutine(DropAfterDelay());
     }
-
+    private void ApplyBrokenState(bool broken)
+    {
+        _model.SetActive(!broken);
+        gameObject.GetComponent<Collider>().enabled = !broken;
+    }
+    private void OnBrokenChanged(bool oldValue, bool newValue)
+    {
+        ApplyBrokenState(newValue);
+    }
     //Wait a few seconds and then spawn the item
     private IEnumerator DropAfterDelay()
     {   
@@ -114,8 +112,17 @@ public class LootBox : NetworkBehaviour
             ObjectiveType.DestroyObject,
             chosen.item.id.ToString()
             );
+        if (!canRespawn)
+        {
+            NetworkObject.Despawn(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(Random.Range(respawnTimeMin, respawnTimeMax));
+            _hitters.Clear();
+            isBroken.Value = false;
+        }
 
-        NetworkObject.Despawn(false);
     }
 
     //runs on every client (and host), only the matching player raises the tutorial event
@@ -127,9 +134,14 @@ public class LootBox : NetworkBehaviour
         //tutorial step to teach player to hit a loot box
         TutorialEvents.Raise(TutorialStep.HitBox);
     }
-
+    public override void OnNetworkSpawn()
+    {
+        isBroken.OnValueChanged += OnBrokenChanged;
+        ApplyBrokenState(isBroken.Value);
+    }
     public override void OnNetworkDespawn()
     {
+        isBroken.OnValueChanged -= OnBrokenChanged;
         gameObject.SetActive(false);
         base.OnNetworkDespawn();
     }
