@@ -5396,11 +5396,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].maxAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].minAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[1].maxAmount
@@ -13052,11 +13052,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].maxAmount
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[0].minAmount
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3507376688042911206, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: lootOptions.Array.data[1].maxAmount

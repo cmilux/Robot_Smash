@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BumperRecipe
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   ingredients:
-  - itemData: {fileID: 11400000, guid: e58ba0762cfc763408f6fddadd430df6, type: 2}
-    quantity: 8
-  - itemData: {fileID: 11400000, guid: 13829129fed345f4bb8aa14a951e3402, type: 2}
+  - itemData: {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
     quantity: 4
+  - itemData: {fileID: 11400000, guid: 13829129fed345f4bb8aa14a951e3402, type: 2}
+    quantity: 2
   result: {fileID: 11400000, guid: ca30d340c51df1d4da1afb8fe2af92fc, type: 2}
   resultQuantity: 1
   requiredLevel: 3

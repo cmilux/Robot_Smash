@@ -98,22 +98,22 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   lootOptions:
   - item: {fileID: 11400000, guid: e58ba0762cfc763408f6fddadd430df6, type: 2}
-    minAmount: 2
-    maxAmount: 4
+    minAmount: 3
+    maxAmount: 5
   - item: {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
-    minAmount: 2
-    maxAmount: 4
+    minAmount: 3
+    maxAmount: 5
   - item: {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
-    minAmount: 2
-    maxAmount: 4
+    minAmount: 3
+    maxAmount: 5
   - item: {fileID: 11400000, guid: f2c1b4817ea469542b8f23e73a494480, type: 2}
-    minAmount: 2
-    maxAmount: 4
+    minAmount: 3
+    maxAmount: 5
   - item: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
-    minAmount: 2
-    maxAmount: 4
+    minAmount: 3
+    maxAmount: 5
   hitsToBreak: 1
-  dropDelay: 1.2
+  dropDelay: 1
   _itemHeight: 0.2
 --- !u!1001 &1139954440991650385
 PrefabInstance:

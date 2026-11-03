@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RecipeData
   ingredients:
   - itemData: {fileID: 11400000, guid: f2c1b4817ea469542b8f23e73a494480, type: 2}
-    quantity: 6
+    quantity: 4
   - itemData: {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
-    quantity: 3
+    quantity: 2
   result: {fileID: 11400000, guid: 989c81d480d961e4a9a5e8333f48c12f, type: 2}
   resultQuantity: 1
   requiredLevel: 4

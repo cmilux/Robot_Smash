@@ -99,15 +99,15 @@ MonoBehaviour:
   lootOptions:
   - item: {fileID: 11400000, guid: 07e784b5811eba946b8995bc0cf23619, type: 2}
     minAmount: 1
-    maxAmount: 2
+    maxAmount: 3
   - item: {fileID: 11400000, guid: bcab96fa27ff98c48a64db39dde92f9c, type: 2}
     minAmount: 1
-    maxAmount: 2
+    maxAmount: 3
   - item: {fileID: 11400000, guid: 13829129fed345f4bb8aa14a951e3402, type: 2}
     minAmount: 1
-    maxAmount: 2
+    maxAmount: 3
   hitsToBreak: 1
-  dropDelay: 1.2
+  dropDelay: 1
   _itemHeight: 0.2
 --- !u!1001 &651790233799508425
 PrefabInstance:
