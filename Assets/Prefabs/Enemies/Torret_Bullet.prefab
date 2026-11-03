@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7112418423039165931}
   - component: {fileID: 1514608834002001458}
   - component: {fileID: 8822041682169158449}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Torret_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretBullet
   ShowTopMostFoldoutHeaderGroup: 1
   damage: 7
-  _trailRenderer: {fileID: 0}
   _lifeTime: 5
 --- !u!135 &113237295562287286
 SphereCollider:
@@ -241,9 +240,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6964196500546063093}
     m_Modifications:
+    - target: {fileID: 2045018900699325580, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123143700454832511, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3810401440072799862, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
       propertyPath: m_Name
       value: VFX_WeaponFlash
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810401440072799862, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032881503841432043, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470194368179956155, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6977298271697848707, guid: 10a60a97e323eb24a8bf13186113bcdc, type: 3}
       propertyPath: m_LocalPosition.x
