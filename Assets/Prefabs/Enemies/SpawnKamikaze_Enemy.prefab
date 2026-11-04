@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KamikazeEnemy
   ShowTopMostFoldoutHeaderGroup: 1
+  aimPlayerErrorRadius: 4
   health:
     UpdateTraits:
       MinSecondsBetweenUpdates: 0

@@ -41,7 +41,7 @@ public class PlayerAttackDistance : NetworkBehaviour
 
     // Save the original aim rotation
     private Quaternion originalAimRotation;
-
+    [SerializeField] float aimErrorRadius = 0.75f;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -193,19 +193,31 @@ public class PlayerAttackDistance : NetworkBehaviour
         if (equippedWeaponData == null) return;
         if (Time.time < nextFireTime) return;
         
-            Vector3 shooterVelocity = rb.linearVelocity;
+        Vector3 shooterVelocity = rb.linearVelocity;
+        Enemy enemy = currentEnemy.GetComponent<Enemy>();
+        Vector3 enemyCenter = currentEnemy.GetComponent<Collider>().bounds.center;
+        float errorRadius = aimErrorRadius; //backup value
 
-            foreach(Transform point in firePoints)
-            {
-                // Ask the server to spawn the bullet
-                ShootServerRpc(
-                    point.position,
-                    point.rotation,
-                    rb.linearVelocity,
-                    equippedWeaponData.damageBase,
-                    equippedWeaponData.bulletSpeed
-                );
-            }
+        if (enemy != null)
+        {
+            errorRadius = enemy.aimPlayerErrorRadius;
+        }
+        foreach (Transform point in firePoints)
+        {
+            Vector2 circle = UnityEngine.Random.insideUnitCircle * errorRadius;
+            Vector3 target = enemyCenter + new Vector3(circle.x, 0, circle.y);
+            Vector3 direction = target - point.position;
+            Quaternion shotRotation = Quaternion.LookRotation(direction);
+
+            // Ask the server to spawn the bullet
+            ShootServerRpc(
+                point.position,
+                shotRotation,
+                rb.linearVelocity,
+                equippedWeaponData.damageBase,
+                equippedWeaponData.bulletSpeed
+            );
+        }
         nextFireTime = Time.time + equippedWeaponData.cooldownBase;
         OnShoot?.Invoke();
 

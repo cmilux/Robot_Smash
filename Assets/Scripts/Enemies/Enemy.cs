@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Enemy : NetworkBehaviour
 {
+    public float aimPlayerErrorRadius = 0.75f;
     [Header("Enemy life")]
     public NetworkVariable<int> health = new NetworkVariable<int>(
         0,
