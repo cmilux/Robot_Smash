@@ -65,7 +65,7 @@ public class RelayManager : MonoBehaviour
         {
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(_maxClients);       //parameter indicates the maximum number of connections that the client will allow
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
-            _codeText.text = "Code: " + joinCode;
+            _codeText.text = joinCode;
 
             var relayServerData = AllocationUtils.ToRelayServerData(allocation, "dtls");      //datagram transport layer security
 
