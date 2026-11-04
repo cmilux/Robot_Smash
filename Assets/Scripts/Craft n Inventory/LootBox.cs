@@ -25,6 +25,7 @@ public class LootBox : NetworkBehaviour
     public bool canRespawn = true;
     private NetworkVariable<bool> isBroken = new NetworkVariable<bool>(false);
     [SerializeField] GameObject _model;
+    [SerializeField] GameObject _brokenModel;
     public float respawnTimeMin = 40f;
     public float respawnTimeMax = 80f;
 
@@ -63,11 +64,13 @@ public class LootBox : NetworkBehaviour
     private void ApplyBrokenState(bool broken)
     {
         _model.SetActive(!broken);
+        if (!broken) _brokenModel.SetActive(false);
         gameObject.GetComponent<Collider>().enabled = !broken;
     }
     private void OnBrokenChanged(bool oldValue, bool newValue)
     {
         ApplyBrokenState(newValue);
+        _brokenModel.SetActive(newValue);
     }
     //Wait a few seconds and then spawn the item
     private IEnumerator DropAfterDelay()
