@@ -11,6 +11,8 @@ public class QuestLocation : NetworkBehaviour               //UPDATES PROGRESS O
 
     private bool alreadyReported = false; // prevents spamming ReportProgress every frame the player stays inside the trigger
 
+    private bool _completedOnServer = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -47,6 +49,9 @@ public class QuestLocation : NetworkBehaviour               //UPDATES PROGRESS O
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
     private void CompletedObjectivesServerRpc()
     {
+        if(_completedOnServer) return;
+        _completedOnServer = true;
+
         QuestManager.Instance.ReportProgressServerRpc(objectiveType, targetId, 1);
 
         ToggleObjects();
