@@ -513,7 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100832728}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (1)
+  m_Name: Q6_EnemiesSpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1782,7 +1782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 229449034}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint
+  m_Name: Q1_EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2089,19 +2089,19 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerBulletPoolSize: 30
   playerBulletPrefab: {fileID: 5500572145646739805, guid: 5e35427a7810fc24fb9bcb3cf792bdb9, type: 3}
-  enemyBulletPoolSize: 10
+  enemyBulletPoolSize: 50
   enemyBulletPrefab: {fileID: -6370925785387550289, guid: 1a9d7d0f7a578544d88de1b3793a4747, type: 3}
-  spawnKamikazePoolSize: 10
+  spawnKamikazePoolSize: 50
   spawnKamikazePrefab: {fileID: 8418929402541382791, guid: e7fb3bd73201ec64b9c3871b637ee9c9, type: 3}
-  kamikazePoolSize: 10
+  kamikazePoolSize: 50
   kamikazePrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
   kamikazeMediumPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
   kamikazeHardPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-  turretPoolSize: 10
+  turretPoolSize: 50
   turretPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
   turretMediumPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
   turretHardPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
-  bigEnemyPoolSize: 10
+  bigEnemyPoolSize: 50
   bigPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
   bigMediumPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
   bigHardPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
@@ -2311,15 +2311,15 @@ MonoBehaviour:
   _enemyConfig:
   - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
     spawnPoint: {fileID: 1827273365}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
     spawnPoint: {fileID: 1750272977}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
     spawnPoint: {fileID: 1106603722}
-    amount: 2
+    amount: 5
     respawnDelay: 4
 --- !u!1 &381083528 stripped
 GameObject:
@@ -2606,22 +2606,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestArea
   _questId: 0
   _enemyConfig:
-  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
-    spawnPoint: {fileID: 229449034}
-    amount: 2
-    respawnDelay: 4
-  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
-    spawnPoint: {fileID: 955727532}
-    amount: 2
-    respawnDelay: 4
-  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
-    spawnPoint: {fileID: 458163911}
-    amount: 2
-    respawnDelay: 4
   - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
     spawnPoint: {fileID: 722177977}
     amount: 1
     respawnDelay: 10000
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 229449034}
+    amount: 3
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
+    spawnPoint: {fileID: 458163911}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+    spawnPoint: {fileID: 955727532}
+    amount: 10
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 439521856}
+    amount: 3
+    respawnDelay: 20
+  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
+    spawnPoint: {fileID: 725191483}
+    amount: 5
+    respawnDelay: 20
+  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+    spawnPoint: {fileID: 1944981719}
+    amount: 10
+    respawnDelay: 10
 --- !u!1 &392415355 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -2715,7 +2727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439521856}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint
+  m_Name: Q2_EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2851,7 +2863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458163911}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (1)
+  m_Name: Q1_EnemiesSpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3282,7 +3294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557818753}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (4)
+  m_Name: Q3_EnemiesSpawnPoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3297,7 +3309,7 @@ Transform:
   m_GameObject: {fileID: 557818752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 541.29, y: 24.06, z: 391.37}
+  m_LocalPosition: {x: 423.9, y: 32.77, z: 432.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3776,15 +3788,27 @@ MonoBehaviour:
   _enemyConfig:
   - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
     spawnPoint: {fileID: 439521856}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
     spawnPoint: {fileID: 725191483}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
     spawnPoint: {fileID: 1944981719}
-    amount: 2
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+    spawnPoint: {fileID: 1711891141}
+    amount: 20
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
+    spawnPoint: {fileID: 557818753}
+    amount: 10
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 746689162}
+    amount: 5
     respawnDelay: 4
 --- !u!1 &722177976
 GameObject:
@@ -3796,7 +3820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 722177977}
   m_Layer: 0
-  m_Name: TutorialEnemiesSpawnPoint
+  m_Name: TUTORIAL_EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3827,7 +3851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 725191483}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (1)
+  m_Name: Q2_EnemiesSpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3858,7 +3882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 733473436}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (2)
+  m_Name: Q6_EnemiesSpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3963,7 +3987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746689162}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (5)
+  m_Name: Q3_EnemiesSpawnPoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3978,7 +4002,7 @@ Transform:
   m_GameObject: {fileID: 746689161}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 527.3, y: 28.46, z: 288.3}
+  m_LocalPosition: {x: 527.3, y: 26.25, z: 395.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4683,15 +4707,27 @@ MonoBehaviour:
   _enemyConfig:
   - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
     spawnPoint: {fileID: 1556461576}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
     spawnPoint: {fileID: 100832728}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
     spawnPoint: {fileID: 733473436}
-    amount: 2
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 1827273365}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 1750272977}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 1106603722}
+    amount: 5
     respawnDelay: 4
 --- !u!1 &939425900
 GameObject:
@@ -4745,15 +4781,27 @@ MonoBehaviour:
   _enemyConfig:
   - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
     spawnPoint: {fileID: 1154423626}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
     spawnPoint: {fileID: 1049401535}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
     spawnPoint: {fileID: 1132228017}
-    amount: 2
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
+    spawnPoint: {fileID: 1827273365}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+    spawnPoint: {fileID: 1750272977}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 1106603722}
+    amount: 5
     respawnDelay: 4
 --- !u!1 &955727531
 GameObject:
@@ -4765,7 +4813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 955727532}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (2)
+  m_Name: Q1_EnemiesSpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5765,7 +5813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049401535}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (1)
+  m_Name: Q4_EnemiesSpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5900,6 +5948,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -3.8350003, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1079423098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079423099}
+  m_Layer: 0
+  m_Name: Q1_EnemiesSpawnPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1079423099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079423098}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 224.3, y: 25.225, z: 217.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1378088084}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087377823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5980,7 +6059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1106603722}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (2)
+  m_Name: Q5_EnemiesSpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6011,7 +6090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1132228017}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (2)
+  m_Name: Q4_EnemiesSpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6026,7 +6105,7 @@ Transform:
   m_GameObject: {fileID: 1132228016}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 527.3, y: 28.46, z: 288.3}
+  m_LocalPosition: {x: 527.3, y: 25.38, z: 404.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6337,7 +6416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154423626}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint
+  m_Name: Q4_EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6532,6 +6611,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1150025167}
   m_SourcePrefab: {fileID: 100100000, guid: 33b6b932028f22c49ab396388ad3bea5, type: 3}
+--- !u!1 &1223534609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223534610}
+  m_Layer: 0
+  m_Name: Q1_EnemiesSpawnPoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1223534610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223534609}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 192.7, y: 29.67, z: 176.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1378088084}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228401044
 GameObject:
   m_ObjectHideFlags: 0
@@ -7277,6 +7387,37 @@ ParticleSystemRenderer:
   m_CorrespondingSourceObject: {fileID: 1433804205196106516, guid: 4e53146676806b443b2c1f818c963bca, type: 3}
   m_PrefabInstance: {fileID: 1342216979}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1342974922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342974923}
+  m_Layer: 0
+  m_Name: Q1_EnemiesSpawnPoint (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1342974923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342974922}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 274.4, y: 36.95, z: 183.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1378088084}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347087260
 GameObject:
   m_ObjectHideFlags: 0
@@ -7612,8 +7753,11 @@ Transform:
   m_Children:
   - {fileID: 1354500574}
   - {fileID: 229449034}
-  - {fileID: 955727532}
   - {fileID: 458163911}
+  - {fileID: 955727532}
+  - {fileID: 1079423099}
+  - {fileID: 1342974923}
+  - {fileID: 1223534610}
   m_Father: {fileID: 385631787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1381735256
@@ -8875,15 +9019,31 @@ MonoBehaviour:
   _enemyConfig:
   - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
     spawnPoint: {fileID: 1711891141}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
     spawnPoint: {fileID: 557818753}
-    amount: 2
+    amount: 5
     respawnDelay: 4
   - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
     spawnPoint: {fileID: 746689162}
-    amount: 2
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 6807736854180057406, guid: d6e37cbe5c32ae44386e7044ff235ec4, type: 3}
+    spawnPoint: {fileID: 1154423626}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 459753635806799329, guid: 8b0ae901552463a4788360ba21fc793e, type: 3}
+    spawnPoint: {fileID: 1049401535}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 1132228017}
+    amount: 5
+    respawnDelay: 4
+  - enemyPrefab: {fileID: 514323420479121245, guid: 4864b252b1d56a44c8dd3acdfe2bd1f8, type: 3}
+    spawnPoint: {fileID: 1827273365}
+    amount: 5
     respawnDelay: 4
 --- !u!1001 &1537864886
 PrefabInstance:
@@ -9273,7 +9433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1556461576}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint
+  m_Name: Q6_EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10255,7 +10415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711891141}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (3)
+  m_Name: Q3_EnemiesSpawnPoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -10270,7 +10430,7 @@ Transform:
   m_GameObject: {fileID: 1711891140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 540.21, y: 24.62, z: 382.35}
+  m_LocalPosition: {x: 419.49, y: 35.44, z: 457.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10366,7 +10526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750272977}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (1)
+  m_Name: Q5_EnemiesSpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -11344,7 +11504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1827273365}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint
+  m_Name: Q5_EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -11891,7 +12051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944981719}
   m_Layer: 0
-  m_Name: EnemiesSpawnPoint (2)
+  m_Name: Q2_EnemiesSpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -12039,7 +12199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25300002, y: 0.8454075}
   m_AnchorMax: {x: 0.78256255, y: 0.9378149}
-  m_AnchoredPosition: {x: 3.992981, y: 0}
+  m_AnchoredPosition: {x: 3.993042, y: 0}
   m_SizeDelta: {x: -8.894196, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2003943933
