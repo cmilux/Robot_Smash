@@ -155,22 +155,25 @@ public class Enemy : NetworkBehaviour
 
     public void UpdateTarget()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");     //gets all the player active on scene || encuentra a todos los players en la escena
+        float closestSqrDistance = Mathf.Infinity;
+        Transform closestPlayer = null;
 
-        float closestDistance = Mathf.Infinity;                 //largest possible value(infinity) so any real distance will be smaller || asigna el valor mas largo (inifito) para q cualquier distancia sea menor
-        Transform closestPlayer = null;             //variable to find the closest player || variable para encontrar al player mas cercano
-
-        foreach (GameObject p in players)           //for each player on players array || por cada player en el array de players
+        foreach (PlayerHealth p in PlayerHealth.All)
         {
-            float dist = Vector3.Distance(transform.position, p.transform.position);        //calculate distance between enemy and every player on scene || calcula la distancia entre el enemigo y los jugadores
-            if (dist < closestDistance)
+            if (p == null || p.isDead.Value) continue;  //ignore dead players || ignora a los jugadores muertos
+
+            //square distance
+            float sqrDist = (transform.position - p.transform.position).sqrMagnitude;
+
+            //keep the closest player so far || se queda con el jugador mas cercano hasta el momento
+            if (sqrDist < closestSqrDistance)
             {
-                closestDistance = dist;             //now closest distance now is the real distance between enemy and player || ahora closestdistance tiene la distancia real entre el enemigo y el player
-                closestPlayer = p.transform;        //sets the closest player transform || asigna la posicion del player mas cercanoo
+                closestSqrDistance = sqrDist;
+                closestPlayer = p.transform;
             }
         }
 
-        target = closestPlayer;         //follows closest player || sigue al player mas cercano
+        target = closestPlayer;         //follows closest alive player || sigue al player vivo mas cercano
     }
 
     protected void UpdateAnimator()

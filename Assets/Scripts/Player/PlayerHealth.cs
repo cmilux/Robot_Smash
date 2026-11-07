@@ -6,9 +6,13 @@ using System.Collections;
 using Unity.Netcode.Components;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class PlayerHealth : NetworkBehaviour
 {
+    //every spawned player
+    public static readonly List<PlayerHealth> All = new List<PlayerHealth>();
+
     [Header("Player life")]
     // The server controls the health, but all players can see it
     NetworkVariable<int> health = new NetworkVariable<int>(50,
@@ -25,6 +29,9 @@ public class PlayerHealth : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        //register this pllayer so enemies can find it || registra este jugador para que los enemigos lo enccuentren
+        if(!All.Contains(this)) All.Add(this);
+
         // Listen for health changes to update the UI
         health.OnValueChanged += OnHealthChange;
 
@@ -147,6 +154,9 @@ public class PlayerHealth : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
+        //remove it from the list || lo saca de la lista
+        All.Remove(this);
+
         // Stop listening for health changes to prevent errors
         // Siempre es buena práctica desvincular el evento al salir de la red
         health.OnValueChanged -= OnHealthChange;
