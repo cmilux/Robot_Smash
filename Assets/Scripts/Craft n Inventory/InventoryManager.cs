@@ -144,6 +144,7 @@ public class InventoryManager : NetworkBehaviour
         //Local UI only for the owner
 
         if (!IsOwner) return;
+        equippedCarVariantId.Value = PlayerCarChoices.SelectedCarVariantId;
         // Find and link the UI elements for the local player
         playerInventoryUI = GameObject.Find("InventoryUI").transform.Find("Inventory").gameObject;
         craftingUI = GameObject.Find("InventoryUI").transform.Find("Craft").gameObject;
