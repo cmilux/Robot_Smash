@@ -166,20 +166,16 @@ public class PlayerHealth : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Healer"))
-        {
-            if (health.Value == maxHealth) return;
+        //only server heals
+        if(!IsServer) return;
+        if(isDead.Value) return;
+        if(!other.CompareTag("Healer")) return;
+        if (health.Value >= maxHealth) return;      //dont heal if health is full
 
-            PlayerHealer healer = other.GetComponent<PlayerHealer>();
+        PlayerHealer healer = other.GetComponentInParent<PlayerHealer>();
+        if (healer == null || !healer.TryConsume()) return;
 
-            health.Value = health.Value + healer.healing;
-
-            if (health.Value >= maxHealth)
-            {
-                health.Value = maxHealth;
-            }
-
-            NetworkObject.Destroy(other.gameObject);
-        }
+        //heal but never above the max health
+        health.Value = Mathf.Min(health.Value + healer.healing, maxHealth);
     }
 }
