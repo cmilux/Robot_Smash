@@ -14906,8 +14906,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _rayHeight: 0.5
-  _snapDistance: 3
-  _stickForce: 40
+  _snapDistance: 2.5
+  _stickForce: 20
   dashSpeed: 50
   dashDuration: 0.5
   dashCooldownBackup: 3
