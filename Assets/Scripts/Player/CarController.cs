@@ -176,19 +176,26 @@ public class CarController : NetworkBehaviour
         _carBumper.SetNextDashReadyTime(_nextDashTime);   
     }
 
-    //cast a ray down to know if theres ground and how tilted it is
+    //casts a ray down to know if there's ground below and how tilted it is
+    //tira un rayo hacia abajo para saber si hay suelo debajo y cuanto se inclina
     void CheckGround()
     {
+        //start a bit above the pivot so the ray doesn't begin inside the terrain on slopes
+        //empieza un poco arriba del pivot para que el rayo no nazca dentro del terreno en las pendientes
         Vector3 origin = transform.position + Vector3.up * _rayHeight;
 
+        //true if the ray hits the ground mask within reach (the extra _rayHeight compensates the raised origin)
+        //true si el rayo toca la mascara del suelo dentro del alcance (el _rayHeight extra compensa el origen elevado)
         _isGrounded = Physics.Raycast(
             origin,
             Vector3.down,
             out RaycastHit hit,
             _rayHeight + _snapDistance,
             _groundMask,
-            QueryTriggerInteraction.Ignore);
+            QueryTriggerInteraction.Ignore);    //triggers (healers, zones) don't count as ground || los triggers no cuentan como suelo
 
+        //the normal tells how tilted the ground is; flat ground (up) if we're in the air
+        //la normal dice cuanto se inclina el suelo; suelo plano (up) si estamos en el aire
         _groundNormal = _isGrounded ? hit.normal : Vector3.up;
     }
 
