@@ -14871,7 +14871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 83375010
+  GlobalObjectIdHash: 2185100068
   InScenePlacedSourceGlobalObjectIdHash: 2185100068
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -14902,6 +14902,12 @@ MonoBehaviour:
   speed: 25
   turnSpeed: 100
   acceleration: 8
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _rayHeight: 0.5
+  _snapDistance: 3
+  _stickForce: 40
   dashSpeed: 50
   dashDuration: 0.5
   dashCooldownBackup: 3

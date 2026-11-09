@@ -13,6 +13,14 @@ public class CarController : NetworkBehaviour
     public float turnSpeed = 100f;
     public float acceleration = 8f;     //how fast it reaches target speed
 
+    [Header("Ground stick")]
+    [SerializeField] LayerMask _groundMask;     //only terrain/ground layers, not the players
+    [SerializeField] float _rayHeight = 0.5f;   //how far above the pivot the ray starts
+    [SerializeField] float _snapDistance = 1.0f;    //max gap to the ground to still count as grounded
+    [SerializeField] float _stickForce = 20f;   //downward push while grounded
+    private bool _isGrounded;
+    private Vector3 _groundNormal = Vector3.up;
+
     [Header("Dash")]
     private CarBumper _carBumper;
     public float dashSpeed = 50f;
@@ -47,6 +55,7 @@ public class CarController : NetworkBehaviour
         if (!IsOwner) return;
         if (_rb.isKinematic) return;
 
+        CheckGround();
         HandleMov();
         HandleRotation();
         //FlipCar();
@@ -83,13 +92,34 @@ public class CarController : NetworkBehaviour
             moveAmount = speed; // force forward movement during dash (si no apretas la w igual acelera)
         }
 
-        // Set the target velocity in the car forward direction
+        Vector3 targetVelocity;
+
+        if (_isGrounded)
+        {
+            //follow the slope: move along the ground plane, not straight ahead
+            Vector3 slopeDir = Vector3.ProjectOnPlane(transform.forward, _groundNormal).normalized;
+            targetVelocity = slopeDir * moveAmount;
+        }
+        else
+        {
+            //in the aire gravity decides the vertical speed
+            targetVelocity = transform.forward * moveAmount;
+            targetVelocity.y = _rb.linearVelocity.y;
+        }
+
+        //move smoothly towards the target velocity
+        _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+
+        //small push to the ground so it doesnt take off on crests or downhill
+        if (_isGrounded) _rb.AddForce(-_groundNormal * _stickForce, ForceMode.Acceleration);
+
+       /* // Set the target velocity in the car forward direction
         Vector3 targetVelocity = transform.forward * moveAmount;
         // Keep the current vertical velocity
         targetVelocity.y = _rb.linearVelocity.y;
 
         // move smoothly towards the target velocity
-        _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+        _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);*/
     }
 
     void HandleRotation()
@@ -144,6 +174,29 @@ public class CarController : NetworkBehaviour
         float cooldown = _carBumper.GetDashCooldown(dashCooldownBackup);
         _nextDashTime = Time.time + cooldown;
         _carBumper.SetNextDashReadyTime(_nextDashTime);   
+    }
+
+    //cast a ray down to know if theres ground and how tilted it is
+    void CheckGround()
+    {
+        Vector3 origin = transform.position + Vector3.up * _rayHeight;
+
+        _isGrounded = Physics.Raycast(
+            origin,
+            Vector3.down,
+            out RaycastHit hit,
+            _rayHeight + _snapDistance,
+            _groundMask,
+            QueryTriggerInteraction.Ignore);
+
+        _groundNormal = _isGrounded ? hit.normal : Vector3.up;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = _isGrounded ? Color.green : Color.red;
+        Vector3 origin = transform.position + Vector3.up * _rayHeight;
+        Gizmos.DrawLine(origin, origin + Vector3.down * (_rayHeight + _snapDistance));
     }
 
     void FlipCar()
