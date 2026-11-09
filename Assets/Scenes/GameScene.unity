@@ -3216,6 +3216,7 @@ GameObject:
   - component: {fileID: 550842234}
   - component: {fileID: 550842233}
   - component: {fileID: 550842235}
+  - component: {fileID: 550842236}
   m_Layer: 0
   m_Name: BridgeManager
   m_TagString: Untagged
@@ -3258,13 +3259,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550842232}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 831.9093, y: 497.99908, z: 0}
+  m_LocalRotation: {x: -0, y: 0.2040758, z: -0, w: 0.97895515}
+  m_LocalPosition: {x: 347.15, y: 22.82, z: 187.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 1737786611}
+  m_LocalEulerAnglesHint: {x: 0, y: 23.551, z: 0}
 --- !u!114 &550842235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3281,6 +3282,27 @@ MonoBehaviour:
   _enableBridgeWhenOpen:
   - {fileID: 1076197678}
   _disableBridgeWhenOpen: []
+--- !u!65 &550842236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550842232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1144428, y: 10.778391, z: 9.2616625}
+  m_Center: {x: -0.0572115, y: 2.8042784, z: -0.6613283}
 --- !u!1 &557818752
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,7 +3854,7 @@ Transform:
   m_GameObject: {fileID: 722177976}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -566.1, y: -515.973, z: 141.82}
+  m_LocalPosition: {x: 393.90002, y: 24.026978, z: 141.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5149,17 +5171,17 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   StartEnabled: 1
   Components:
-  - name: SM_Bld_ControlTower (3) (Mesh Renderer)
+  - name: SM_Bld_ControlTower_02 (2) (Mesh Renderer)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 990988968}
-  - name: SM_Bld_ControlTower (3) (Nav Mesh Obstacle)
+  - name: SM_Bld_ControlTower_02 (2) (Nav Mesh Obstacle)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 990988965}
-  - name: SM_Bld_ControlTower (3) (Box Collider)
+  - name: SM_Bld_ControlTower_02 (2) (Box Collider)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
@@ -5396,11 +5418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -539.0385
+      value: 420.9615
       objectReference: {fileID: 0}
     - target: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -505.93677
+      value: 34.063232
       objectReference: {fileID: 0}
     - target: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5632,17 +5654,17 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   StartEnabled: 1
   Components:
-  - name: SM_Bld_ControlTower (4) (Mesh Renderer)
+  - name: SM_Bld_ControlTower_02 (1) (Mesh Renderer)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 1011114728}
-  - name: SM_Bld_ControlTower (4) (Nav Mesh Obstacle)
+  - name: SM_Bld_ControlTower_02 (1) (Nav Mesh Obstacle)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 1011114725}
-  - name: SM_Bld_ControlTower (4) (Box Collider)
+  - name: SM_Bld_ControlTower_02 (1) (Box Collider)
     InvertEnabled: 0
     EnableDelay: 0
     DisableDelay: 0
@@ -10441,14 +10463,15 @@ Transform:
   m_GameObject: {fileID: 1737786610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 29496555}
   - {fileID: 362049207}
-  - {fileID: 2132449360}
+  - {fileID: 550842234}
   - {fileID: 722177977}
+  - {fileID: 2132449360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1750272976
@@ -13043,11 +13066,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -533.1
+      value: 426.90002
       objectReference: {fileID: 0}
     - target: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -505.93677
+      value: 34.063232
       objectReference: {fileID: 0}
     - target: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13233,7 +13256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132449359}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13415,4 +13438,3 @@ SceneRoots:
   - {fileID: 1733303056}
   - {fileID: 333757547}
   - {fileID: 222467211}
-  - {fileID: 550842234}

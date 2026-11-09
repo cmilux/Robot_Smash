@@ -26,4 +26,8 @@ public class TutorialEvents : MonoBehaviour
     //raised when tutorial is done/skipped
     public static event Action OnTutorialCompleted;
     public static void RaiseCompleted() => OnTutorialCompleted?.Invoke();
+
+    //ask the tutorial to hide and stop (player died or left tutorial area
+    public static event Action OnStopRequested;
+    public static void RaiseStop() => OnStopRequested?.Invoke();
 }

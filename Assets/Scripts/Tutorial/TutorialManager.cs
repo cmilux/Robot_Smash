@@ -23,6 +23,8 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Steps")]
     [SerializeField] List<Step> _steps = new List<Step>();
+    //steps the player already did, even out of order
+    HashSet<TutorialStep> _completed = new HashSet<TutorialStep>();
 
     [Header("Pop up UI")]
     [SerializeField] GameObject _popupRoot;
@@ -38,8 +40,17 @@ public class TutorialManager : MonoBehaviour
     bool _running;
     Coroutine _routine;
 
-    private void OnEnable() => TutorialEvents.OnStepDone += HandleStepDone;
-    private void OnDisable() => TutorialEvents.OnStepDone -= HandleStepDone;
+    private void OnEnable()
+    {
+        TutorialEvents.OnStepDone += HandleStepDone;
+        TutorialEvents.OnStopRequested += StopTutorial;
+
+    }
+    private void OnDisable()
+    {
+        TutorialEvents.OnStepDone -= HandleStepDone;
+        TutorialEvents.OnStopRequested -= StopTutorial;
+    }
 
     private IEnumerator Start()
     {
@@ -84,8 +95,13 @@ public class TutorialManager : MonoBehaviour
     void HandleStepDone(TutorialStep done)
     {
         if (!_running || _index < 0) return;
-        if (_steps[_index].id != done) return;      //ignore events that arent the current step
+        
+        //remember it even if it isnt the current step yet
+        _completed.Add(done);
+
         if (done == _unlockAfterStep) TutorialEvents.RaiseCompleted();
+        
+        if (_steps[_index].id != done) return;      //ignore events that arent the current step
 
         if (_routine != null) StopCoroutine(_routine);
         _routine = StartCoroutine(CompleteRoutine(_steps[_index]));
@@ -100,6 +116,10 @@ public class TutorialManager : MonoBehaviour
         _routine = null;
 
         int next = _index + 1;
+
+        //skip steps the player already did
+        while(next < _steps.Count && _completed.Contains(_steps[next].id)) next++; 
+
         if (next >= _steps.Count)
         {
             FinishTutorial();
@@ -117,11 +137,26 @@ public class TutorialManager : MonoBehaviour
         while (t < _fadeTime)
         {
             t += Time.unscaledDeltaTime;
-            _popupGroup.alpha = Mathf.Lerp(start, target, t/_fadeTime);
+            _popupGroup.alpha = Mathf.Lerp(start, target, t / _fadeTime);
             yield return null;
         }
 
         _popupGroup.alpha = target;
+    }
+
+    void StopTutorial()
+    {
+        if (_routine != null) StopCoroutine(_routine);
+        _routine = null;
+
+        _popupGroup.alpha = 0f;
+        _popupRoot.SetActive(false);
+
+        if (_running)
+        {
+            _running = false;
+            TutorialEvents.RaiseCompleted();        //opens the bridge so nobody gets stuck
+        }
     }
 
     void FinishTutorial()

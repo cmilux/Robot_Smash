@@ -142,6 +142,7 @@ public class PlayerHealth : NetworkBehaviour
             {
                 GetComponent<CarController>().ResetInput();
                 GetComponent<InventoryManager>().CloseInventory();
+                TutorialEvents.RaiseStop();
             }
         }
     }
