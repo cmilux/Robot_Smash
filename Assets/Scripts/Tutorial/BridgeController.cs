@@ -44,4 +44,15 @@ public class BridgeController : NetworkBehaviour
         foreach(GameObject obj in _disableBridgeWhenOpen)
             if(obj != null) obj.SetActive(!open);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        //only the cars owner stops their tutorial (tutorial its local per player)
+        NetworkObject netObj = other.GetComponentInParent<NetworkObject>();
+        if(netObj == null || !netObj.IsOwner) return;
+
+        TutorialEvents.RaiseStop();
+    }
 }
