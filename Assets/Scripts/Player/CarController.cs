@@ -112,14 +112,6 @@ public class CarController : NetworkBehaviour
 
         //small push to the ground so it doesnt take off on crests or downhill
         if (_isGrounded) _rb.AddForce(-_groundNormal * _stickForce, ForceMode.Acceleration);
-
-       /* // Set the target velocity in the car forward direction
-        Vector3 targetVelocity = transform.forward * moveAmount;
-        // Keep the current vertical velocity
-        targetVelocity.y = _rb.linearVelocity.y;
-
-        // move smoothly towards the target velocity
-        _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);*/
     }
 
     void HandleRotation()
