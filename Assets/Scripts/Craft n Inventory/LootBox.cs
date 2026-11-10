@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LootBox : NetworkBehaviour
@@ -24,10 +23,15 @@ public class LootBox : NetworkBehaviour
     [Header("Respawn")]
     public bool canRespawn = true;
     private NetworkVariable<bool> isBroken = new NetworkVariable<bool>(false);
+
     [SerializeField] GameObject _model;
     [SerializeField] GameObject _brokenModel;
+    [SerializeField] float _brokenModelDuration = 2f;
+
     public float respawnTimeMin = 40f;
     public float respawnTimeMax = 80f;
+
+    private GameObject _droppedItem;
 
     //every player who hit this box, so each one gets credit for the tutorial step
     HashSet<ulong> _hitters = new HashSet<ulong>();
@@ -71,6 +75,10 @@ public class LootBox : NetworkBehaviour
     {
         ApplyBrokenState(newValue);
         _brokenModel.SetActive(newValue);
+        if (newValue)
+        {
+            StartCoroutine(HideBrokenModelAfterDelay());
+        }
     }
     //Wait a few seconds and then spawn the item
     private IEnumerator DropAfterDelay()
@@ -102,6 +110,7 @@ public class LootBox : NetworkBehaviour
             spawnPos, 
             Quaternion.identity
             );
+        _droppedItem = droppedItem;
         NetworkObject netObj = droppedItem.GetComponent<NetworkObject>();
         netObj.Spawn();
         ItemPickup pickup = droppedItem.GetComponent<ItemPickup>();
@@ -121,13 +130,45 @@ public class LootBox : NetworkBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(Random.Range(respawnTimeMin, respawnTimeMax));
-            _hitters.Clear();
-            isBroken.Value = false;
+            StartCoroutine(RespawnAfterDelay(Random.Range(respawnTimeMin, respawnTimeMax)));
         }
 
     }
+    private bool IsSpaceOccupied()
+    {
+        if (_droppedItem != null && _droppedItem.activeInHierarchy) return true;
 
+        BoxCollider box = GetComponent<BoxCollider>();
+        Vector3 center = transform.TransformPoint(box.center);
+        Vector3 halfSize = box.size * 0.5f;
+        Collider[] collidersInside = Physics.OverlapBox(center, halfSize, transform.rotation);
+
+        foreach ( Collider col in collidersInside)
+        {
+            if (col.CompareTag("Player")) return true;
+            if (col.GetComponentInParent<ItemPickup>() != null) return true;
+        }
+        return false;
+    }
+    private IEnumerator RespawnAfterDelay(float delay)
+    {   
+        yield return new WaitForSeconds(delay);
+        if (IsSpaceOccupied())
+        {
+            StartCoroutine(RespawnAfterDelay(2f));
+            yield break;
+        }
+        else
+        {
+            _hitters.Clear();
+            isBroken.Value = false;
+        }
+    }
+    private IEnumerator HideBrokenModelAfterDelay()
+    {
+        yield return new WaitForSeconds(_brokenModelDuration);
+        _brokenModel.SetActive(false);
+    }
     //runs on every client (and host), only the matching player raises the tutorial event
     [ClientRpc]
     private void NotifyBoxBrokenClientRpc(ulong clientId)

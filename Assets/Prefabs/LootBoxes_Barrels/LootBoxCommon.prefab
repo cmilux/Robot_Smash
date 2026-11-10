@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1850916195
+  GlobalObjectIdHash: 1067334791
   InScenePlacedSourceGlobalObjectIdHash: 0
   m_InScenePlacedDisabledByDefault: 0
   DeferredDespawnTick: 0
@@ -113,12 +113,13 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     minAmount: 3
     maxAmount: 5
-  dropDelay: 0.8
+  dropDelay: 0.7
   canRespawn: 1
   _model: {fileID: 220825193220837120}
   _brokenModel: {fileID: 5961741441083605296}
-  respawnTimeMin: 40
-  respawnTimeMax: 80
+  _brokenModelDuration: 2
+  respawnTimeMin: 30
+  respawnTimeMax: 60
   _itemHeight: 1.5
 --- !u!1001 &1139954440991650385
 PrefabInstance:
