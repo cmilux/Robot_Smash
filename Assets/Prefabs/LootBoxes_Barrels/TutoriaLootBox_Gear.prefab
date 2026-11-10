@@ -101,7 +101,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: db4e592525577214697f5ba403ccbb78, type: 2}
     minAmount: 1
     maxAmount: 1
-  dropDelay: 0.8
+  dropDelay: 0.7
   canRespawn: 0
   _model: {fileID: 5680643015475227312}
   _brokenModel: {fileID: 5583071875050671322}
