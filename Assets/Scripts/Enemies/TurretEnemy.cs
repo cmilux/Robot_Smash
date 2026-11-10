@@ -40,7 +40,9 @@ public class TurretEnemy : Enemy
             animator.SetBool("IsStopped", false);
             animator.SetBool("IsAttacking", true);
 
-            MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
+            agent.isStopped = true;     //when player is detected it stops and attacks
+
+            RotateTowardsTarget();      //every frame, not only when shooting
             ShootPlayer();
         }
 
@@ -62,8 +64,6 @@ public class TurretEnemy : Enemy
         bulletTime -= Time.deltaTime;
         if (bulletTime > 0) return;
         bulletTime = shootingCooldown;
-
-        RotateTowardsTarget();
 
         for (int i = 0; i < spawnPoints.Length; i++)
         {

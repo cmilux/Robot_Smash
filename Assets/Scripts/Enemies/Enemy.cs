@@ -23,7 +23,7 @@ public class Enemy : NetworkBehaviour
     [Header("Enemy movement")]
     protected NavMeshAgent agent;
     public float stopDistance;
-    [SerializeField] float turnForce = 0.05f;
+    [SerializeField] float _turnSpeed = 180f;   //degrees per second
     Vector3 _spawnPoint;
 
     [Header("Patrol logic")]
@@ -61,24 +61,6 @@ public class Enemy : NetworkBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
-    }
-
-    private void LateUpdate()
-    {
-        if (!IsServer) return;
-        if (isDead.Value) return;
-
-        UpdateTarget();
-        DetectPlayer();
-
-        if (!_playerDetected)
-        {
-            HandlePatrolState();
-        }
-        else
-        {
-            MoveTowardTarget();
-        }
     }
 
     public override void OnNetworkSpawn()
@@ -209,17 +191,17 @@ public class Enemy : NetworkBehaviour
 
     protected void RotateTowardsTarget()
     {
-        //Vector3 relativePos = target.position - transform.position;
-        //Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.time * 0.1f);
+        if(target == null) return;
 
-        Vector3 targetDelta = target.transform.position - transform.position;
-        float angleToTarget = Vector3.Angle(transform.forward, targetDelta);
-        Vector3 turnAxis = Vector3.Cross(transform.forward, targetDelta);
+        //flat directiom, only turn left/right, never tild
+        //direccion plana, solo gira izq/der, no se inclina
+        Vector3 dir = target.position - transform.position;
+        dir.y = 0;
+        if (dir.sqrMagnitude < 0.001f) return;
 
-        //rb.AddTorque(turnAxis * angleToTarget * turnForce);
-
-        transform.RotateAround(transform.position, turnAxis, Time.deltaTime * turnForce * angleToTarget);
+        //turn toward the target at a fixed speed || gira hacia el objetivo a velocidad fija
+        Quaternion look = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, look, _turnSpeed);
     }
 
     protected void HandlePatrolState()

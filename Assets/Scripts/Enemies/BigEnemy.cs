@@ -7,6 +7,7 @@ using UnityEngine.AI;
 using UnityEngine.Pool;
 using UnityEngine.Profiling;
 using UnityEngine.UIElements;
+using System.Collections;
 
 public class BigEnemy : Enemy
 {
@@ -21,6 +22,12 @@ public class BigEnemy : Enemy
     [Header("Cooldown time")]
     public float spawnCooldown = 3f;
     public float spawnTime;
+    float _nextCountTime;
+
+    [Header("Spawn animation")]
+    [SerializeField] float _spawnAnimDelay = 0.6f;  //seconds from animation start to the throw moment || segundos desde que arranca la animacion hasta el lanzamiento
+    [SerializeField] float _spawnAnimDuration = 1.2f;   //how long IsSpawning stays on (clip length) || cuanto queda prendido IsSpawning (largo del clip)   
+    bool _spawning;
 
     protected override void Start()
     {
@@ -40,16 +47,34 @@ public class BigEnemy : Enemy
         if (!_playerDetected)
         {
             HandlePatrolState();        //player is out of range — keep wandering patrol points
+
+            //not attacking anymore, clear attack animation so it doesnt walk w the shooting animation
+            animator.SetBool("IsSpawning", false);
+            animator.SetBool("IsShooting", false);
         }
         else
         {
             MoveTowardTarget();         //player is within detectionRadius — chase them directly (stopDistance can be ~0 so it walks into contact range for the explosion collision)
             SpawnKamikaze();
             Shoot();
+
+            //face the player every frame while attacking
+            RotateTowardsTarget();
         }
 
-        //Checks how many spawned enemies are on scene || chequea cuantos enemigos hay en escena
-        currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
+        //count spawned kamikazes twice per second instead of every frame
+        if (Time.time >= _nextCountTime)
+        {
+            _nextCountTime = Time.time + 0.5f;
+            currentEnemies = GameObject.FindGameObjectsWithTag("SpawnedEnemies").Length;
+        }
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        _spawning = false;
+        spawnTime = 0f;
     }
 
     void SpawnKamikaze()
@@ -62,14 +87,37 @@ public class BigEnemy : Enemy
 
         agent.isStopped = true;
 
+        if (_spawning) return;  //already throwing one || ya esta lanzando uno
+
         //Cooldown to spawn enemies
         spawnTime -= Time.deltaTime;
         if (spawnTime > 0) return;
         spawnTime = spawnCooldown;
 
+        StartCoroutine(SpawnRoutine());
+    }
+
+    IEnumerator SpawnRoutine()
+    {
+        _spawning = true;
+
+
+
         animator.SetBool("IsSpawning", true);
         animator.SetBool("IsShooting", false);
 
+        yield return new WaitForSeconds(_spawnAnimDelay);
+
+        if (!isDead.Value && _playerDetected) SpawnOneKamikaze();
+
+        yield return new WaitForSeconds(Mathf.Max(0f, _spawnAnimDuration - _spawnAnimDelay));
+
+        animator.SetBool("IsSpawning", false);
+        _spawning = false;
+    }
+
+    void SpawnOneKamikaze()
+    {
         //calculates a radius from enemy position || calcula un radio basado en la posicion del enemigo
         Vector3 spawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
         spawnPos.y = transform.position.y;
@@ -140,7 +188,7 @@ public class BigEnemy : Enemy
             }
             else
                 bullet.transform.SetPositionAndRotation(
-                    spawnPointIndex.position, 
+                    spawnPointIndex.position,
                     spawnPointIndex.rotation
                     );
 
