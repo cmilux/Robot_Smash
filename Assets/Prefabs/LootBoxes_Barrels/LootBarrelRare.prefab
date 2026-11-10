@@ -111,6 +111,7 @@ MonoBehaviour:
   canRespawn: 1
   _model: {fileID: 417416473959300248}
   _brokenModel: {fileID: 6791758276056346718}
+  _brokenModelDuration: 2
   respawnTimeMin: 40
   respawnTimeMax: 80
   _itemHeight: 1.5

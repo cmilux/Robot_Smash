@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LootBox : NetworkBehaviour
@@ -24,10 +23,14 @@ public class LootBox : NetworkBehaviour
     [Header("Respawn")]
     public bool canRespawn = true;
     private NetworkVariable<bool> isBroken = new NetworkVariable<bool>(false);
+
     [SerializeField] GameObject _model;
     [SerializeField] GameObject _brokenModel;
+    [SerializeField] float _brokenModelDuration = 2f;
+
     public float respawnTimeMin = 40f;
     public float respawnTimeMax = 80f;
+
     private GameObject _droppedItem;
 
     //every player who hit this box, so each one gets credit for the tutorial step
@@ -72,6 +75,10 @@ public class LootBox : NetworkBehaviour
     {
         ApplyBrokenState(newValue);
         _brokenModel.SetActive(newValue);
+        if (newValue)
+        {
+            StartCoroutine(HideBrokenModelAfterDelay());
+        }
     }
     //Wait a few seconds and then spawn the item
     private IEnumerator DropAfterDelay()
@@ -156,6 +163,11 @@ public class LootBox : NetworkBehaviour
             _hitters.Clear();
             isBroken.Value = false;
         }
+    }
+    private IEnumerator HideBrokenModelAfterDelay()
+    {
+        yield return new WaitForSeconds(_brokenModelDuration);
+        _brokenModel.SetActive(false);
     }
     //runs on every client (and host), only the matching player raises the tutorial event
     [ClientRpc]
