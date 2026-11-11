@@ -413,7 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8920c8dfae9e49689283f2b84243a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BiomeMusicZone
-  _music: {fileID: 8300000, guid: e80966cbe2ae94825828ad2c997df805, type: 3}
+  _music: {fileID: 8300000, guid: 897f57251015e454485801bf25071ba5, type: 3}
+  _volume: 1
 --- !u!65 &43823291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2527,6 +2528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BiomeMusicZone
   _music: {fileID: 8300000, guid: 2761d9eec833c483184ab2115c23ba85, type: 3}
+  _volume: 1
 --- !u!65 &347252855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3629,7 +3631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1264cf88febcb4c1bade5832e2d8537d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
-  _music: {fileID: 8300000, guid: e80966cbe2ae94825828ad2c997df805, type: 3}
+  _music: {fileID: 8300000, guid: 897f57251015e454485801bf25071ba5, type: 3}
+  _volume: 1
 --- !u!4 &542750722
 Transform:
   m_ObjectHideFlags: 0
@@ -12613,6 +12616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BiomeMusicZone
   _music: {fileID: 8300000, guid: 2761d9eec833c483184ab2115c23ba85, type: 3}
+  _volume: 0.7
 --- !u!65 &1829459308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14465,6 +14469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BiomeMusicZone
   _music: {fileID: 8300000, guid: 2761d9eec833c483184ab2115c23ba85, type: 3}
+  _volume: 0.7
 --- !u!65 &2139946999
 BoxCollider:
   m_ObjectHideFlags: 0
