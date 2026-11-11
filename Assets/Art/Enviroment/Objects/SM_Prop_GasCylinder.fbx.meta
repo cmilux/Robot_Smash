@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: M_Basic02
+    second: {fileID: 2100000, guid: bccb5687032f6594aa450065fc36ac68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_Roughness
     second: {fileID: 2100000, guid: 34656eaa3388a0349a675fd4e34245c3, type: 2}
   materials:
