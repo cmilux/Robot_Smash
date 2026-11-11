@@ -3410,20 +3410,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e12f581c9fc7b884d8bf62f58f7eedc0, type: 2}
+      objectReference: {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
     - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
+      objectReference: {fileID: 2100000, guid: 1210d8425407fac409b07ff2d078d87c, type: 2}
     - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 1210d8425407fac409b07ff2d078d87c, type: 2}
+    - target: {fileID: -5754084199372789682, guid: c36126a186b767149808a3dd04e7525c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7538533851745799548, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
     - target: {fileID: 919132149155446097, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: m_Name
       value: SM_Bld_ControlTower_02
@@ -6323,9 +6327,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
+      objectReference: {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1210d8425407fac409b07ff2d078d87c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c36126a186b767149808a3dd04e7525c, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
       objectReference: {fileID: 2100000, guid: e12f581c9fc7b884d8bf62f58f7eedc0, type: 2}
+    - target: {fileID: -5754084199372789682, guid: c36126a186b767149808a3dd04e7525c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7538533851745799548, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
     - target: {fileID: 919132149155446097, guid: c36126a186b767149808a3dd04e7525c, type: 3}
       propertyPath: m_Name
       value: SM_Bld_ControlTower_02 (1)
