@@ -12,11 +12,12 @@ using System.Collections;
 public class BigEnemy : Enemy
 {
     [Header("Spawn settings")]
-    float maxEnemies = 3;
+    int maxEnemies = 3;
     int currentEnemies;
     public GameObject kamikazeEnemy;
     public GameObject bulletObj;
     public Transform[] spawnBulletsPoint;
+    [SerializeField] Transform[] _kamikazeSpawnPoints;   //points behind the robot where kamikazes appear
     float spawnRadius = 5f;
 
     [Header("Cooldown time")]
@@ -25,8 +26,7 @@ public class BigEnemy : Enemy
     float _nextCountTime;
 
     [Header("Spawn animation")]
-    [SerializeField] float _spawnAnimDelay = 0.6f;  //seconds from animation start to the throw moment || segundos desde que arranca la animacion hasta el lanzamiento
-    [SerializeField] float _spawnAnimDuration = 1.2f;   //how long IsSpawning stays on (clip length) || cuanto queda prendido IsSpawning (largo del clip)   
+    [SerializeField] float _spawnAnimDuration = 2f;   //how long IsSpawning stays on: clip length / state speed + transition || cuanto queda prendido IsSpawning: largo del clip / velocidad del estado + transicion
     bool _spawning;
 
     protected override void Start()
@@ -101,26 +101,42 @@ public class BigEnemy : Enemy
     {
         _spawning = true;
 
-
-
         animator.SetBool("IsSpawning", true);
         animator.SetBool("IsShooting", false);
 
-        yield return new WaitForSeconds(_spawnAnimDelay);
-
-        if (!isDead.Value && _playerDetected) SpawnOneKamikaze();
-
-        yield return new WaitForSeconds(Mathf.Max(0f, _spawnAnimDuration - _spawnAnimDelay));
+        //the animation event (OnSpawnThrow) throws the kamikazes during this wait
+        //el evento de animacion (OnSpawnThrow) lanza los kamikazes durante esta espera
+        yield return new WaitForSeconds(_spawnAnimDuration);
 
         animator.SetBool("IsSpawning", false);
         _spawning = false;
     }
-
-    void SpawnOneKamikaze()
+    // Called by an animation event at the exact frame the kamikaze is thrown
+    public void OnSpawnThrow()
     {
-        //calculates a radius from enemy position || calcula un radio basado en la posicion del enemigo
-        Vector3 spawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
-        spawnPos.y = transform.position.y;
+        if (!IsServer) return;                          //only the server spawns enemies
+        if (isDead.Value || !_playerDetected) return;   //dont throw if dead or the player left
+
+        int missing = maxEnemies - currentEnemies;      //how many we need to reach the max
+        if (missing <= 0) return;
+        int toSpawn = Mathf.Min(missing, _kamikazeSpawnPoints.Length);
+
+        for (int i = 0; i < toSpawn; i++)
+        {
+            SpawnOneKamikaze(_kamikazeSpawnPoints[i].position);
+        }
+
+        //update the count now, the regular count only refreshes every 0.5 seconds
+        currentEnemies += toSpawn;
+
+        if (currentEnemies >= maxEnemies)
+        {
+            animator.SetBool("DidSpawn3", true);        //go straight to shooting in this same animation
+        }
+    }
+    void SpawnOneKamikaze(Vector3 position)
+    {
+        Vector3 spawnPos = position;
 
         if (NavMesh.SamplePosition(spawnPos, out NavMeshHit hit, spawnRadius, NavMesh.AllAreas))
         {
