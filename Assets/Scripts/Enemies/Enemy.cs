@@ -201,7 +201,7 @@ public class Enemy : NetworkBehaviour
 
         //turn toward the target at a fixed speed || gira hacia el objetivo a velocidad fija
         Quaternion look = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, look, _turnSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, look, _turnSpeed * Time.deltaTime);
     }
 
     protected void HandlePatrolState()
