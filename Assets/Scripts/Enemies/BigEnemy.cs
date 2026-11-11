@@ -108,12 +108,18 @@ public class BigEnemy : Enemy
 
         yield return new WaitForSeconds(_spawnAnimDelay);
 
-        if (!isDead.Value && _playerDetected) SpawnOneKamikaze();
-
         yield return new WaitForSeconds(Mathf.Max(0f, _spawnAnimDuration - _spawnAnimDelay));
 
         animator.SetBool("IsSpawning", false);
         _spawning = false;
+    }
+    // Called by an animation event at the exact frame the kamikaze is thrown
+    public void OnSpawnThrow()
+    {
+        if (!IsServer) return;                          //only the server spawns enemies
+        if (isDead.Value || !_playerDetected) return;   //dont throw if dead or the player left
+
+        SpawnOneKamikaze();
     }
 
     void SpawnOneKamikaze()
