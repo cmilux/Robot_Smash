@@ -20,7 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88c171f3dd252c64799ad449e0a3d9a9, type: 2}
   requiredQuestId: -1
   rewardItems:
-  - {fileID: 11400000, guid: f2c1b4817ea469542b8f23e73a494480, type: 2}
-  - {fileID: 11400000, guid: 0ca03c06be283c64980d002a1a035405, type: 2}
   - {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
+  - {fileID: 11400000, guid: f380ea7087a55464b8a1e649274c897b, type: 2}
+  - {fileID: 11400000, guid: bcab96fa27ff98c48a64db39dde92f9c, type: 2}
   rewardExp: 100
