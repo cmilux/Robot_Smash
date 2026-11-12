@@ -62,6 +62,8 @@ public class PlayerBulletController : NetworkBehaviour
     [ClientRpc]
     public void NotifySpawnClientRpc(Vector3 pos, Quaternion rot)
     {
+        AudioManager.Instance?.PlaySfxAt(SFXId.PlayerShoot, pos);
+
         if (IsServer) return;
 
         //move bullet directly to its real spawn point

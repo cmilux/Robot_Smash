@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
         public AudioClip[] clips;
         [Range(0f, 1f)] public float volume = 1f;
         public float pitchVariation = 0.05f;
+        public float minInterval = 0.05f;       //ignores repeats of this sound inside this time
     }
 
     [Header("Mixer")]
@@ -68,6 +69,7 @@ public class AudioManager : MonoBehaviour
     AudioSource[] _pool;
     int _nextSource;
     Dictionary<SFXId, SFX> _sfx = new Dictionary<SFXId, SFX>();
+    Dictionary<SFXId, float> _lastPlay = new Dictionary<SFXId, float>();
 
     private void Awake()
     {
@@ -175,12 +177,14 @@ public class AudioManager : MonoBehaviour
     #region SFX
     //no position, 2d sounds (UI, car)
     //with position, 3d sounds in the world
-    public void PlaySFx(SFXId id) => Play(id, null);
-    public void PlaySFx(SFXId id, Vector3 position) => Play(id, position);
+    public void PlaySfx(SFXId id) => Play(id, null);
+    public void PlaySfxAt(SFXId id, Vector3 position) => Play(id, position);
 
     void Play(SFXId id, Vector3? position)
     {
         if (!_sfx.TryGetValue(id, out SFX sfx) || sfx.clips == null || sfx.clips.Length == 0) return;
+        //if (_lastPlay.TryGetValue(id, out float last) && Time.unscaledDeltaTime - last < s.minInterval) return;
+        //_lastPlay[id] = Time.unscaledDeltaTime;
 
         AudioSource source = _pool[_nextSource];
         _nextSource = (_nextSource + 1) % _pool.Length;     //round robin: reuses the oldest source

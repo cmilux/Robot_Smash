@@ -167,6 +167,8 @@ public class Enemy : NetworkBehaviour
     [ClientRpc]
     public void PlayExplosionClientRpc()
     {
+        AudioManager.Instance?.PlaySfxAt(SFXId.Explosion, transform.position);
+
         _explosion.Play();          //Play particles on clients scene too
     }
 
