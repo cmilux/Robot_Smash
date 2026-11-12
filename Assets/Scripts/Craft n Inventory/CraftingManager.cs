@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Unity.Netcode;
+using TMPro;
 public class CraftingManager : MonoBehaviour
 {
     [Header("Crafting Slots")]
@@ -10,6 +11,11 @@ public class CraftingManager : MonoBehaviour
 
     [Header("Button")]
     public Button craftButton;
+    [SerializeField] TextMeshProUGUI craftButtonText; //the label inside the craft button
+    [SerializeField] float messageDuration = 2f;//how long a temporary message stays on the button
+    private float _messageUntil; //until when the temporary message is shown
+    private Color _normalTextColor; //the label color when the button is enabled
+    [SerializeField] Color warningTextColor = new Color(0.8f, 0.35f, 0f);   //color for messages that explain why you cant craft
 
     private RecipeData currentRecipe;
     private bool _resultAlreadyOwned;
@@ -19,7 +25,9 @@ public class CraftingManager : MonoBehaviour
     {
         //Connect the button by code
         craftButton.onClick.AddListener(OnCraftButton);
+        if(craftButtonText != null ) _normalTextColor = craftButtonText.color;
     }
+
     private void Update()
     {
         if (Time.time < _nextCheckTime) return;
@@ -47,7 +55,30 @@ public class CraftingManager : MonoBehaviour
         if (craftButton == null) return;
 
         craftButton.interactable = (currentRecipe != null && !_resultAlreadyOwned);
+
+        if (craftButtonText == null) return;
+
+        if(Time.time < _messageUntil) return; //a temporary message (like "INVENTARIO LLENO") is still showing, dont overwrite it
+
+        craftButtonText.text = _resultAlreadyOwned ? "YA TENES 1" : "CREAR";
+        if (_resultAlreadyOwned)
+        {
+            craftButtonText.color = warningTextColor;   //explains why it cant craft, keep it readable
+        }
+        else
+        {
+            craftButtonText.color = craftButton.interactable ? _normalTextColor : new Color(_normalTextColor.r, _normalTextColor.g, _normalTextColor.b, 0.4f);
+        }
     }
+    private void ShowMessageButton(string message)
+    {
+        if(craftButtonText == null) return;
+
+        craftButtonText.text = message;
+        craftButtonText.color = warningTextColor;
+        _messageUntil = Time.time + messageDuration;
+    }
+
     public void OnCraftButton()
     {
         if (currentRecipe == null) return;
@@ -66,6 +97,10 @@ public class CraftingManager : MonoBehaviour
 
                 //tutorial step to teach to craft
                 TutorialEvents.Raise(TutorialStep.Craft);
+            }
+            else
+            {
+                ShowMessageButton("SIN LUGAR");
             }
         }
 

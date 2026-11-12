@@ -908,8 +908,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Slot
   itemData: {fileID: 0}
   quantity: 0
+  currentDurability: 0
+  durabilityBar: {fileID: 0}
+  cooldownOverlay: {fileID: 0}
   icon: {fileID: 1849465512756788069}
   quantityText: {fileID: 3898758953583654077}
+  _emptySlot: {fileID: 0}
+  isHotbarSlot: 0
+  _allowedTypes: 
 --- !u!1 &4856123596523418269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1167,8 @@ MonoBehaviour:
   - {fileID: 1119210025992020472}
   resultSlot: {fileID: 3989764984638400331}
   craftButton: {fileID: 6831265532581126019}
+  craftButtonText: {fileID: 6980154267004443231}
+  messageDuration: 2
 --- !u!1 &6793807417820375429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,9 +1339,9 @@ MonoBehaviour:
   m_fontSize: 35
   m_fontSizeBase: 35
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 35
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1540,8 +1548,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Slot
   itemData: {fileID: 0}
   quantity: 0
+  currentDurability: 0
+  durabilityBar: {fileID: 0}
+  cooldownOverlay: {fileID: 0}
   icon: {fileID: 4147016466208014442}
   quantityText: {fileID: 1602324927913414578}
+  _emptySlot: {fileID: 0}
+  isHotbarSlot: 0
+  _allowedTypes: 
 --- !u!1 &7394407364700303158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,8 +1723,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Slot
   itemData: {fileID: 0}
   quantity: 0
+  currentDurability: 0
+  durabilityBar: {fileID: 0}
+  cooldownOverlay: {fileID: 0}
   icon: {fileID: 4346189047205586638}
   quantityText: {fileID: 1432549714375469334}
+  _emptySlot: {fileID: 0}
+  isHotbarSlot: 0
+  _allowedTypes: 
 --- !u!1 &8799669681284409795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,8 +1823,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Slot
   itemData: {fileID: 0}
   quantity: 0
+  currentDurability: 0
+  durabilityBar: {fileID: 0}
+  cooldownOverlay: {fileID: 0}
   icon: {fileID: 2413043872953449942}
   quantityText: {fileID: 1066624235467485710}
+  _emptySlot: {fileID: 0}
+  isHotbarSlot: 0
+  _allowedTypes: 
 --- !u!1 &8912282797953942778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,5 +1923,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Slot
   itemData: {fileID: 0}
   quantity: 0
+  currentDurability: 0
+  durabilityBar: {fileID: 0}
+  cooldownOverlay: {fileID: 0}
   icon: {fileID: 2363448148002033903}
   quantityText: {fileID: 1116070379588771639}
+  _emptySlot: {fileID: 0}
+  isHotbarSlot: 0
+  _allowedTypes: 
