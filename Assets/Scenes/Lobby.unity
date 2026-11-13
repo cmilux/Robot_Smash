@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
   _music: {fileID: 8300000, guid: f4b623200ab0d474aa6a0e342cf5275c, type: 3}
-  _volume: 1
+  _volume: 0.45
 --- !u!4 &775015677
 Transform:
   m_ObjectHideFlags: 0

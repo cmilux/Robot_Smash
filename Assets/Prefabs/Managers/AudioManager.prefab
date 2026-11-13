@@ -55,78 +55,105 @@ MonoBehaviour:
     volume: 0.5
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 1
     clips:
     - {fileID: 8300000, guid: a32d99f5a38c54f6699b30263b239f16, type: 3}
     volume: 0.1
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 2
     clips:
     - {fileID: 8300000, guid: 2d5a3422014e4454f850c2eb4e68595b, type: 3}
     volume: 0.1
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 3
     clips:
     - {fileID: 8300000, guid: 9529eecd56d674ee595efed9822d5cde, type: 3}
     volume: 0.5
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 4
     clips:
     - {fileID: 8300000, guid: 9529eecd56d674ee595efed9822d5cde, type: 3}
     volume: 0.5
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 5
     clips:
     - {fileID: 8300000, guid: e40658c08d9024dbeadc52260147c140, type: 3}
     volume: 0.5
     pitchVariation: 0
     minInterval: 0.05
-  - id: 7
-    clips:
-    - {fileID: 8300000, guid: ec23dc7d8578e402ba73390a0fc6cc91, type: 3}
-    volume: 0.5
-    pitchVariation: 0
-    minInterval: 0.05
+    startOffSet: 0
   - id: 10
     clips:
     - {fileID: 8300000, guid: 64993d91a85a3492da6578077ead5134, type: 3}
     volume: 0.5
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 12
     clips:
     - {fileID: 8300000, guid: 375f98f9d74454a5c8990dfc0378f252, type: 3}
     volume: 0.34
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 13
     clips:
     - {fileID: 8300000, guid: 9be29be184ae74b8b828ee9d54985aa4, type: 3}
-    volume: 0.34
+    volume: 1
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 14
     clips:
     - {fileID: 8300000, guid: 9a49823a603594e06b101a9899f15f81, type: 3}
     volume: 0.34
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 15
     clips:
     - {fileID: 8300000, guid: 1684168dfab1446668ac2a9ce86e3f5e, type: 3}
     volume: 0.34
     pitchVariation: 0
     minInterval: 0.05
+    startOffSet: 0
   - id: 8
     clips:
     - {fileID: 8300000, guid: 9529eecd56d674ee595efed9822d5cde, type: 3}
     volume: 0.8
     pitchVariation: 1.3
     minInterval: 0.05
+    startOffSet: 0
+  - id: 17
+    clips:
+    - {fileID: 8300000, guid: ae84a19fd988244118b4a05c344ba2d4, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 18
+    clips:
+    - {fileID: 8300000, guid: e238a684afa6941f781bea15396a7c49, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 16
+    clips:
+    - {fileID: 8300000, guid: e23516277511f440c91032177fae712b, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
   _poolSize: 16
   _minDistance: 5
   _maxDistance: 60

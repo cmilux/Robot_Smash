@@ -261,6 +261,8 @@ public class QuestManager : NetworkBehaviour
     {
         Debug.Log($"[CLIENT RPC] NotifyQuestComplete. activeQuestId={activeQuestId.Value}, ActiveQuest={ActiveQuest?.questTitle}");
 
+        AudioManager.Instance?.PlaySfx(SFXId.QuestComplete);
+
         //force ui to update showing completed state
         UIManager.Instance?.UpdateQuest(ActiveQuest, objectiveProgress);
     }

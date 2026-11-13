@@ -127,6 +127,8 @@ public class RelayManager : MonoBehaviour
         //only the host can load scenes and the button only exists for the host
         if (!NetworkManager.Singleton.IsHost) return;
 
+        AudioManager.Instance?.PlaySfx(SFXId.UIStart);
+
         _startButton.interactable = false;
         NetworkManager.Singleton.SceneManager.LoadScene(_gameSceneName, LoadSceneMode.Single);
     }

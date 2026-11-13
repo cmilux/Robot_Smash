@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
         [Range(0f, 1f)] public float volume = 1f;
         public float pitchVariation = 0.05f;
         public float minInterval = 0.05f;       //ignores repeats of this sound inside this time
+        public float startOffSet = 0f;      //seconds skipped at the start of the clip
     }
 
     [Header("Mixer")]
@@ -183,8 +184,6 @@ public class AudioManager : MonoBehaviour
     void Play(SFXId id, Vector3? position)
     {
         if (!_sfx.TryGetValue(id, out SFX sfx) || sfx.clips == null || sfx.clips.Length == 0) return;
-        //if (_lastPlay.TryGetValue(id, out float last) && Time.unscaledDeltaTime - last < s.minInterval) return;
-        //_lastPlay[id] = Time.unscaledDeltaTime;
 
         AudioSource source = _pool[_nextSource];
         _nextSource = (_nextSource + 1) % _pool.Length;     //round robin: reuses the oldest source
@@ -192,7 +191,13 @@ public class AudioManager : MonoBehaviour
         source.transform.position = position ?? Vector3.zero;
         source.spatialBlend = position.HasValue ? 1f : 0f;   //3d or 2d sound
         source.pitch = 1f + Random.Range(-sfx.pitchVariation, sfx.pitchVariation);
-        source.clip = sfx.clips[Random.Range(0, sfx.clips.Length)];
+
+        AudioClip clip = sfx.clips[Random.Range(0, sfx.clips.Length)];
+        source.clip = clip;
+
+        //start a bit into the clip, clamped so it never goes past the end
+        source.time = Mathf.Clamp(sfx.startOffSet, 0f, Mathf.Max(0f, clip.length - 0.05f));
+
         source.volume = sfx.volume;
         source.Play();
     }
