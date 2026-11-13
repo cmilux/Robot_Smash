@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.InputSystem;
 public class UIManager : MonoBehaviour
 {
     //one shared copy across everything
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] Button gameOverMenuButton;
     [SerializeField] string menuSceneName = "Lobby";
+    [SerializeField] Button exitButton;
 
     [Header("Inventory Warnings")]
     [SerializeField] GameObject inventoryWarnings;
@@ -56,6 +58,12 @@ public class UIManager : MonoBehaviour
     {
         if(gameOverPanel != null) gameOverPanel.SetActive(false);
         if (gameOverMenuButton != null) gameOverMenuButton.onClick.AddListener(ReturnToMenu);
+        if (exitButton != null) exitButton.onClick.AddListener(QuitGame);
+
+        if (NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
+        }
     }
 
     private void Update()
@@ -68,8 +76,19 @@ public class UIManager : MonoBehaviour
         {
             questPanel.SetActive(true);
         }
+        if(Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            QuitGame();
+            return;
+        }
     }
-
+    private void OnDestroy()
+    {
+        if (NetworkManager.Singleton != null)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
+        }
+    }
     public void UpdatePlayerHealth(int current, int max)
     {
         if (healthText != null) healthText.text = $"HP: {current}";
@@ -144,7 +163,19 @@ public class UIManager : MonoBehaviour
 
         SceneManager.LoadScene(menuSceneName);
     }
-
+    void QuitGame()
+    {
+        Debug.Log("Quit game");
+        Application.Quit();
+    }
+    void OnClientDisconnected(ulong clientId)
+    {
+        if (NetworkManager.Singleton.IsHost) return;
+        if(clientId == NetworkManager.Singleton.LocalClientId)
+        {
+            ReturnToMenu();
+        }
+    }
     public void ShowMessageWarningInventory(string text)
     {
         inventoryWarnings.SetActive(true);
