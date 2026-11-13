@@ -144,7 +144,6 @@ public class InventoryManager : NetworkBehaviour
         //Local UI only for the owner
 
         if (!IsOwner) return;
-        equippedCarVariantId.Value = PlayerCarChoices.SelectedCarVariantId;
         // Find and link the UI elements for the local player
         playerInventoryUI = GameObject.Find("InventoryUI").transform.Find("Inventory").gameObject;
         craftingUI = GameObject.Find("InventoryUI").transform.Find("Craft").gameObject;
@@ -441,11 +440,10 @@ public class InventoryManager : NetworkBehaviour
             currentPaintId.Value = -1;
         }
     }
-
-    private void EquipCarVariant(ItemData variantToEquip)
+    public void SetCarVariant(int variantId)
     {
-        if(!IsOwner) return;
-        equippedCarVariantId.Value = variantToEquip.id;
+        if (!IsOwner) return;
+        equippedCarVariantId.Value = variantId;
     }
 
     // Prepares the item data and asks the server to drop it
@@ -473,11 +471,6 @@ public class InventoryManager : NetworkBehaviour
         if (itemData.itemType == ItemType.paint)
         {
             ApplyPaint(itemData);
-            return;
-        }
-        if (itemData.itemType == ItemType.carSkin)
-        {
-            EquipCarVariant(itemData);
             return;
         }
         if (equippedIds.TryGetValue(itemData.itemType, out NetworkVariable<int> slot))
@@ -512,14 +505,6 @@ public class InventoryManager : NetworkBehaviour
         if (itemData.itemType == ItemType.paint)
         {
             ResetPaint();
-            return;
-        }
-
-        //MARTI: NO SE SI ESTE METODO ESTA EN FUNCIONAMIENTO PERO POR LAS DUDAS. TAMBIEN LO DE PINTURA NI IDEA SI LO DEJAMOS O QUE (ESTO ES POR LOGICA DE MUERTE)
-        if (itemData.itemType == ItemType.carSkin)          
-        {
-            if(!IsOwner) return;
-            equippedCarVariantId.Value = -1;
             return;
         }
 
