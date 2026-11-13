@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 12
   nombre: WireRope
   icon: {fileID: 21300000, guid: cd2086d817d01a4468a530dbe935bdf3, type: 3}
-  maxStock: 15
+  maxStock: 20
   visibleItemID: 12
   itemType: 0
   paintMaterial: {fileID: 0}
@@ -24,7 +24,6 @@ MonoBehaviour:
   damageBase: 0
   cooldownBase: 0
   maxDurability: -1
-  maxAmmo: -1
   bulletsPerShot: 0
   bulletSpeed: 0
   spreadAngle: 0

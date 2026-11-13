@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 18
   nombre: MetalRods
   icon: {fileID: 21300000, guid: 4f3a615784a206e47bf515d2fe0b2a9d, type: 3}
-  maxStock: 15
+  maxStock: 20
   visibleItemID: 18
   itemType: 0
   paintMaterial: {fileID: 0}
@@ -24,7 +24,6 @@ MonoBehaviour:
   damageBase: 0
   cooldownBase: 0
   maxDurability: -1
-  maxAmmo: -1
   bulletsPerShot: 0
   bulletSpeed: 0
   spreadAngle: 0

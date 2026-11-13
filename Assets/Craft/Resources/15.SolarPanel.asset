@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 15
   nombre: SolarPanel
   icon: {fileID: 21300000, guid: c20a4c3ab856d2a4f98a4e623218a6e2, type: 3}
-  maxStock: 15
+  maxStock: 20
   visibleItemID: 15
   itemType: 0
   paintMaterial: {fileID: 0}
@@ -24,7 +24,6 @@ MonoBehaviour:
   damageBase: 0
   cooldownBase: 0
   maxDurability: -1
-  maxAmmo: -1
   bulletsPerShot: 0
   bulletSpeed: 0
   spreadAngle: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 17
   nombre: Gear
   icon: {fileID: 21300000, guid: 825aae3924a0af2469479532d6cfb8d5, type: 3}
-  maxStock: 15
+  maxStock: 20
   visibleItemID: 17
   itemType: 0
   paintMaterial: {fileID: 0}
@@ -24,7 +24,6 @@ MonoBehaviour:
   damageBase: 0
   cooldownBase: 0
   maxDurability: -1
-  maxAmmo: -1
   bulletsPerShot: 0
   bulletSpeed: 0
   spreadAngle: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 13
   nombre: Keyboard
   icon: {fileID: 21300000, guid: 25a08d1d93c8b004e9a65ef65d513ef1, type: 3}
-  maxStock: 13
+  maxStock: 20
   visibleItemID: 13
   itemType: 0
   paintMaterial: {fileID: 0}
@@ -24,7 +24,6 @@ MonoBehaviour:
   damageBase: 0
   cooldownBase: 0
   maxDurability: -1
-  maxAmmo: -1
   bulletsPerShot: 0
   bulletSpeed: 0
   spreadAngle: 0
