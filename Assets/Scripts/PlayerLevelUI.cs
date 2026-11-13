@@ -42,6 +42,8 @@ public class PlayerLevelUI : MonoBehaviour
         {
             currentLevel++;     //Level up player if exp needed for that level was reached || sube de nivel al player si tiene la experiencia necesaria
             OnLevelChanged?.Invoke(currentLevel);
+
+            AudioManager.Instance?.PlaySfx(SFXId.LevelUp);
         }
     }
 

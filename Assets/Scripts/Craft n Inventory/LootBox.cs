@@ -57,6 +57,8 @@ public class LootBox : NetworkBehaviour
     {
         isBroken.Value = true;
 
+        PlayBreakSfxClientRpc();
+
         //tell every player who hit the box that it broke
         foreach (ulong clientId in _hitters)
         {
@@ -65,12 +67,14 @@ public class LootBox : NetworkBehaviour
 
         StartCoroutine(DropAfterDelay());
     }
+
     private void ApplyBrokenState(bool broken)
     {
         _model.SetActive(!broken);
         if (!broken) _brokenModel.SetActive(false);
         gameObject.GetComponent<Collider>().enabled = !broken;
     }
+
     private void OnBrokenChanged(bool oldValue, bool newValue)
     {
         ApplyBrokenState(newValue);
@@ -80,6 +84,13 @@ public class LootBox : NetworkBehaviour
             StartCoroutine(HideBrokenModelAfterDelay());
         }
     }
+
+    [ClientRpc]
+    private void PlayBreakSfxClientRpc()
+    {
+        AudioManager.Instance?.PlaySfxAt(SFXId.BoxBreak, transform.position);
+    }
+
     //Wait a few seconds and then spawn the item
     private IEnumerator DropAfterDelay()
     {   
@@ -134,6 +145,7 @@ public class LootBox : NetworkBehaviour
         }
 
     }
+
     private bool IsSpaceOccupied()
     {
         if (_droppedItem != null && _droppedItem.activeInHierarchy) return true;
@@ -150,6 +162,7 @@ public class LootBox : NetworkBehaviour
         }
         return false;
     }
+
     private IEnumerator RespawnAfterDelay(float delay)
     {   
         yield return new WaitForSeconds(delay);
@@ -164,11 +177,13 @@ public class LootBox : NetworkBehaviour
             isBroken.Value = false;
         }
     }
+
     private IEnumerator HideBrokenModelAfterDelay()
     {
         yield return new WaitForSeconds(_brokenModelDuration);
         _brokenModel.SetActive(false);
     }
+
     //runs on every client (and host), only the matching player raises the tutorial event
     [ClientRpc]
     private void NotifyBoxBrokenClientRpc(ulong clientId)
@@ -178,11 +193,13 @@ public class LootBox : NetworkBehaviour
         //tutorial step to teach player to hit a loot box
         TutorialEvents.Raise(TutorialStep.HitBox);
     }
+
     public override void OnNetworkSpawn()
     {
         isBroken.OnValueChanged += OnBrokenChanged;
         ApplyBrokenState(isBroken.Value);
     }
+
     public override void OnNetworkDespawn()
     {
         isBroken.OnValueChanged -= OnBrokenChanged;

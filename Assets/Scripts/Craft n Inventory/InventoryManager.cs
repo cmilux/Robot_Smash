@@ -388,6 +388,9 @@ public class InventoryManager : NetworkBehaviour
         {
             // Open or close the inventory UI window
             bool isOpening = !playerInventoryUI.activeSelf;
+
+            AudioManager.Instance?.PlaySfx(isOpening ? SFXId.InventoryOpen : SFXId.InventoryClose);
+
             playerInventoryUI.SetActive(isOpening);
             craftingUI.SetActive(isOpening);
             recipesUI.SetActive(isOpening);

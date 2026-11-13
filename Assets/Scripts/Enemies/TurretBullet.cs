@@ -49,6 +49,8 @@ public class TurretBullet : NetworkBehaviour
     [ClientRpc]
     public void NotifySpawnClientRpc(Vector3 pos, Quaternion rot)
     {
+        AudioManager.Instance?.PlaySfxAt(SFXId.EnemyShoot, pos);
+
         if (IsServer) return;
 
         transform.SetPositionAndRotation(pos, rot);

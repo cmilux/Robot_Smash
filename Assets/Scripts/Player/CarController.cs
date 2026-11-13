@@ -141,6 +141,8 @@ public class CarController : NetworkBehaviour
         //Prevent starting a new DashRoutine() if one is already in progress
         if (!isDashing)
         {
+            AudioManager.Instance?.PlaySfx(SFXId.Dash);
+
             _carBumper.UseDurability();
 
             StartCoroutine(DashRoutine());

@@ -56,6 +56,9 @@ public class PlayerHealth : NetworkBehaviour
         // Only update the screen UI for the person who owns this player
         if (!IsOwner) return;
 
+        //heal sound
+        if (oldValue > 0 && newValue > oldValue) AudioManager.Instance?.PlaySfx(SFXId.Heal);
+
         //Update ui references if value changes || actualiza la ui si los valores cambian
         UIManager.Instance.UpdatePlayerHealth(newValue, maxHealth);
     }
@@ -150,6 +153,9 @@ public class PlayerHealth : NetworkBehaviour
     [ClientRpc]
     void ShowGameOverClientRpc()
     {
+        //plays only when all players died
+        AudioManager.Instance?.PlaySfx(SFXId.GameOver);
+
         UIManager.Instance.ShowGameOver();
     }
 

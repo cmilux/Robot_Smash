@@ -40,6 +40,8 @@ public class AudioManager : MonoBehaviour
         public AudioClip[] clips;
         [Range(0f, 1f)] public float volume = 1f;
         public float pitchVariation = 0.05f;
+        public float minInterval = 0.05f;       //ignores repeats of this sound inside this time
+        public float startOffSet = 0f;      //seconds skipped at the start of the clip
     }
 
     [Header("Mixer")]
@@ -68,6 +70,7 @@ public class AudioManager : MonoBehaviour
     AudioSource[] _pool;
     int _nextSource;
     Dictionary<SFXId, SFX> _sfx = new Dictionary<SFXId, SFX>();
+    Dictionary<SFXId, float> _lastPlay = new Dictionary<SFXId, float>();
 
     private void Awake()
     {
@@ -175,8 +178,8 @@ public class AudioManager : MonoBehaviour
     #region SFX
     //no position, 2d sounds (UI, car)
     //with position, 3d sounds in the world
-    public void PlaySFx(SFXId id) => Play(id, null);
-    public void PlaySFx(SFXId id, Vector3 position) => Play(id, position);
+    public void PlaySfx(SFXId id) => Play(id, null);
+    public void PlaySfxAt(SFXId id, Vector3 position) => Play(id, position);
 
     void Play(SFXId id, Vector3? position)
     {
@@ -188,7 +191,13 @@ public class AudioManager : MonoBehaviour
         source.transform.position = position ?? Vector3.zero;
         source.spatialBlend = position.HasValue ? 1f : 0f;   //3d or 2d sound
         source.pitch = 1f + Random.Range(-sfx.pitchVariation, sfx.pitchVariation);
-        source.clip = sfx.clips[Random.Range(0, sfx.clips.Length)];
+
+        AudioClip clip = sfx.clips[Random.Range(0, sfx.clips.Length)];
+        source.clip = clip;
+
+        //start a bit into the clip, clamped so it never goes past the end
+        source.time = Mathf.Clamp(sfx.startOffSet, 0f, Mathf.Max(0f, clip.length - 0.05f));
+
         source.volume = sfx.volume;
         source.Play();
     }

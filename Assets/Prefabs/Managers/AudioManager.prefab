@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7240849040522877381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2929254653419174519}
+  - component: {fileID: 6955419908077581930}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2929254653419174519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240849040522877381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6955419908077581930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240849040522877381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e96d0cc6c574cec9370793c0012992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  _mixer: {fileID: 24100000, guid: 47c5ccb376cae45d1a285592eeefa2aa, type: 2}
+  _musicGroup: {fileID: 8420772881099487422, guid: 47c5ccb376cae45d1a285592eeefa2aa, type: 2}
+  _sfxGroup: {fileID: 4695394272908244235, guid: 47c5ccb376cae45d1a285592eeefa2aa, type: 2}
+  _fadeTime: 1.5
+  _sfxList:
+  - id: 0
+    clips:
+    - {fileID: 8300000, guid: 3c64d4a3d7aa34773abd795dec0aa708, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 1
+    clips:
+    - {fileID: 8300000, guid: a32d99f5a38c54f6699b30263b239f16, type: 3}
+    volume: 0.1
+    pitchVariation: 0
+    minInterval: 0.5
+    startOffSet: 0
+  - id: 2
+    clips:
+    - {fileID: 8300000, guid: 2d5a3422014e4454f850c2eb4e68595b, type: 3}
+    volume: 0.1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 3
+    clips:
+    - {fileID: 8300000, guid: 9529eecd56d674ee595efed9822d5cde, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 4
+    clips:
+    - {fileID: 8300000, guid: 9529eecd56d674ee595efed9822d5cde, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 5
+    clips:
+    - {fileID: 8300000, guid: e40658c08d9024dbeadc52260147c140, type: 3}
+    volume: 0.5
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 10
+    clips:
+    - {fileID: 8300000, guid: 64993d91a85a3492da6578077ead5134, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 12
+    clips:
+    - {fileID: 8300000, guid: 375f98f9d74454a5c8990dfc0378f252, type: 3}
+    volume: 0.34
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 14
+    clips:
+    - {fileID: 8300000, guid: 9a49823a603594e06b101a9899f15f81, type: 3}
+    volume: 0.34
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 15
+    clips:
+    - {fileID: 8300000, guid: 1684168dfab1446668ac2a9ce86e3f5e, type: 3}
+    volume: 0.34
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 8
+    clips:
+    - {fileID: 8300000, guid: 9529eecd56d674ee595efed9822d5cde, type: 3}
+    volume: 0.8
+    pitchVariation: 1.3
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 17
+    clips:
+    - {fileID: 8300000, guid: ae84a19fd988244118b4a05c344ba2d4, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 18
+    clips:
+    - {fileID: 8300000, guid: e238a684afa6941f781bea15396a7c49, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  - id: 16
+    clips:
+    - {fileID: 8300000, guid: e23516277511f440c91032177fae712b, type: 3}
+    volume: 1
+    pitchVariation: 0
+    minInterval: 0.05
+    startOffSet: 0
+  _poolSize: 16
+  _minDistance: 5
+  _maxDistance: 60
