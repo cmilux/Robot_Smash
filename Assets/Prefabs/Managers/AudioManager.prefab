@@ -105,13 +105,6 @@ MonoBehaviour:
     pitchVariation: 0
     minInterval: 0.05
     startOffSet: 0
-  - id: 13
-    clips:
-    - {fileID: 8300000, guid: 9be29be184ae74b8b828ee9d54985aa4, type: 3}
-    volume: 1
-    pitchVariation: 0
-    minInterval: 0.05
-    startOffSet: 0
   - id: 14
     clips:
     - {fileID: 8300000, guid: 9a49823a603594e06b101a9899f15f81, type: 3}
