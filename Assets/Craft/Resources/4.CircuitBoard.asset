@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 4
   nombre: CircuitBoard
-  icon: {fileID: 21300000, guid: 494f51a2a509157468d00377aed83e28, type: 3}
+  icon: {fileID: 21300000, guid: 0617de26f5a49524f99ae1a6322df4d5, type: 3}
   maxStock: 20
   visibleItemID: 4
   itemType: 0

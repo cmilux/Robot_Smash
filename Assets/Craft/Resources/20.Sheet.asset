@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 20
   nombre: Sheet
-  icon: {fileID: 21300000, guid: a2ee41284f8de504684dcb83a7aa1b5f, type: 3}
+  icon: {fileID: 21300000, guid: 169d5d21cc607bb48a045901cd2cca7b, type: 3}
   maxStock: 20
   visibleItemID: 20
   itemType: 0

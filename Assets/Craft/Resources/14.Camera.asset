@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 14
   nombre: Camera
-  icon: {fileID: 21300000, guid: d0149de3ae5b6e64eb7c69043efddcff, type: 3}
+  icon: {fileID: 21300000, guid: 1620dc0eaa721cf449a09646ca21b715, type: 3}
   maxStock: 20
   visibleItemID: 14
   itemType: 0

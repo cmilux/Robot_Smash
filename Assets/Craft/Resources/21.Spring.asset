@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 21
   nombre: Spring
-  icon: {fileID: 21300000, guid: 03a46c92b0ad4334da31a70ee8ed5082, type: 3}
+  icon: {fileID: 21300000, guid: 7683a80eea33fc9488a341ec297a23f7, type: 3}
   maxStock: 20
   visibleItemID: 21
   itemType: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 6
   nombre: Drill
-  icon: {fileID: 21300000, guid: 21e6e309cb28d5140bcc4fc8009eab9c, type: 3}
+  icon: {fileID: 21300000, guid: 35ebb431da88ac74e8d60f49ff271cef, type: 3}
   maxStock: 20
   visibleItemID: 6
   itemType: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 22
   nombre: Turbine
-  icon: {fileID: 21300000, guid: e113faa4d8e083a4e980d41e780465e0, type: 3}
+  icon: {fileID: 21300000, guid: 98fc3d8d67c60674b83c669cc295a863, type: 3}
   maxStock: 20
   visibleItemID: 22
   itemType: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 15
   nombre: SolarPanel
-  icon: {fileID: 21300000, guid: c20a4c3ab856d2a4f98a4e623218a6e2, type: 3}
+  icon: {fileID: 21300000, guid: 6c90469c498863047b3df2a9f82897fd, type: 3}
   maxStock: 20
   visibleItemID: 15
   itemType: 0

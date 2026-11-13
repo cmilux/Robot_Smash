@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 12
   nombre: WireRope
-  icon: {fileID: 21300000, guid: cd2086d817d01a4468a530dbe935bdf3, type: 3}
+  icon: {fileID: 21300000, guid: 09fb9817cd3b78e48b7dbc2f8a865f92, type: 3}
   maxStock: 20
   visibleItemID: 12
   itemType: 0

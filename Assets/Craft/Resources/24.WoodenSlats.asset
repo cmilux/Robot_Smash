@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 24
   nombre: WoodenStats
-  icon: {fileID: 21300000, guid: 56340a313b48be740827de7c79d346ec, type: 3}
+  icon: {fileID: 21300000, guid: 4e88eda1a985bfd4e987ebddf876c092, type: 3}
   maxStock: 20
   visibleItemID: 24
   itemType: 0

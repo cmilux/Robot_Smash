@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 5
   nombre: Antenna
-  icon: {fileID: 21300000, guid: c1139b893860b24458a8bcd820fe940e, type: 3}
+  icon: {fileID: 21300000, guid: 608ec76c99672784eaf0462e632b9fce, type: 3}
   maxStock: 20
   visibleItemID: 5
   itemType: 0
