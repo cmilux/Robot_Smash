@@ -36,10 +36,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI questTitleText;
     [SerializeField] TextMeshProUGUI questObjectivesText;
 
-    [Header("Game Over")]
-    [SerializeField] GameObject gameOverPanel;
-    [SerializeField] Button gameOverMenuButton;
+    [Header("The End")]
+    [SerializeField] GameObject theEndPanel;
+    [SerializeField] Button backToMenuButton;
     [SerializeField] string menuSceneName = "Lobby";
+    [SerializeField] TextMeshProUGUI theEndTitleText;   //title of the end panel
+    [SerializeField] string gameOverTitle = "GAME OVER";
+    [SerializeField] string victoryTitle = "GANASTE!";
+    bool _gameEnded;
+    public bool GameEnded => _gameEnded;
     [SerializeField] Button exitButton;
 
     [Header("Inventory Warnings")]
@@ -56,8 +61,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if(gameOverPanel != null) gameOverPanel.SetActive(false);
-        if (gameOverMenuButton != null) gameOverMenuButton.onClick.AddListener(ReturnToMenu);
+        //the end panel
+        if(theEndPanel != null) theEndPanel.SetActive(false);
+        if (backToMenuButton != null) backToMenuButton.onClick.AddListener(ReturnToMenu);
+        //exit button
         if (exitButton != null) exitButton.onClick.AddListener(QuitGame);
 
         if (NetworkManager.Singleton != null)
@@ -142,11 +149,28 @@ public class UIManager : MonoBehaviour
         questObjectivesText.text = objectivesList;
     }
 
-    public void ShowGameOver()
+    public void ShowVictory() => ShowEndScreen(victoryTitle);
+
+    public void ShowGameOver() => ShowEndScreen(gameOverTitle);
+
+    //one panel for both endings
+    void ShowEndScreen(string title)
     {
-        gameOverPanel.SetActive(true);
+        if(_gameEnded) return;
+        _gameEnded = true;
+
+        theEndTitleText.text = title;
+        theEndPanel.SetActive(true);
         Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState= CursorLockMode.None;
+
+        //nobody drives under the panel
+        NetworkObject playerObj = NetworkManager.Singleton.LocalClient?.PlayerObject;
+        if (playerObj != null)
+        {
+            NetworkPlayerConfig config = playerObj.GetComponent<NetworkPlayerConfig>();
+            if (config != null) config.SetInputEnabled(false);
+        }
     }
 
     void ReturnToMenu()
