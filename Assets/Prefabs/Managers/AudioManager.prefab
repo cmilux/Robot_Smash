@@ -61,7 +61,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a32d99f5a38c54f6699b30263b239f16, type: 3}
     volume: 0.1
     pitchVariation: 0
-    minInterval: 0.05
+    minInterval: 0.5
     startOffSet: 0
   - id: 2
     clips:
@@ -94,7 +94,7 @@ MonoBehaviour:
   - id: 10
     clips:
     - {fileID: 8300000, guid: 64993d91a85a3492da6578077ead5134, type: 3}
-    volume: 0.5
+    volume: 1
     pitchVariation: 0
     minInterval: 0.05
     startOffSet: 0
