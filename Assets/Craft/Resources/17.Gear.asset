@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 17
   nombre: Gear
-  icon: {fileID: 21300000, guid: 825aae3924a0af2469479532d6cfb8d5, type: 3}
+  icon: {fileID: 21300000, guid: 5fadc6964d71eb548944e0b25464ed55, type: 3}
   maxStock: 20
   visibleItemID: 17
   itemType: 0
