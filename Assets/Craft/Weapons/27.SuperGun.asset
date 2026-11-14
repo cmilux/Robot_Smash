@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 27
   nombre: SuperGun
-  icon: {fileID: 21300000, guid: 035b2005e36d80e45a82182be9372fe4, type: 3}
+  icon: {fileID: 21300000, guid: 8c4a95629991fdf47b1d03cb7688a1a7, type: 3}
   maxStock: 1
   visibleItemID: 27
   itemType: 1

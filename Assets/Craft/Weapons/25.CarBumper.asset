@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 25
   nombre: CarBumper
-  icon: {fileID: 21300000, guid: ba6498883d8de234c90fdd8ef0be98c8, type: 3}
+  icon: {fileID: 21300000, guid: 79375c58c4432fc4fbad8a000b067d20, type: 3}
   maxStock: 1
   visibleItemID: 25
   itemType: 4

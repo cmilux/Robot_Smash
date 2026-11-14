@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 2
   nombre: NormalGun
-  icon: {fileID: 21300000, guid: 23e3c2bf4c4c375418823f9bff536c3c, type: 3}
+  icon: {fileID: 21300000, guid: c1bae8b8f0d9d7646b57e8fc5282349b, type: 3}
   maxStock: 1
   visibleItemID: 2
   itemType: 1

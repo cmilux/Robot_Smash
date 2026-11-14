@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   id: 1
   nombre: MachineGun
-  icon: {fileID: 21300000, guid: 6677597725e89fe409ae62749411bbf1, type: 3}
+  icon: {fileID: 21300000, guid: 1aa5a27e532b37746b3d714f702c7506, type: 3}
   maxStock: 1
   visibleItemID: 1
   itemType: 1
