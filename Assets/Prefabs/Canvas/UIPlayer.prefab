@@ -383,10 +383,10 @@ MonoBehaviour:
   ghostIcon: {fileID: 353884305845634402}
   inventoryPanel: {fileID: 2816084868936092170}
   craftPanel: {fileID: 8707938178250747716}
-  healthText: {fileID: 7405675198085381855}
+  healthText: {fileID: 0}
   healthFill: {fileID: 998228593731203088}
   levelText: {fileID: 6371042950948335008}
-  expText: {fileID: 157672427135480960}
+  expText: {fileID: 0}
   expFill: {fileID: 8404138339873214068}
   questPanel: {fileID: 3681326995423810705}
   questTitleText: {fileID: 1805426606362938158}
@@ -411,7 +411,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3094987455836833253, guid: 3767489032812864fa3e3f29e2428001, type: 3}
       propertyPath: m_Name
-      value: 'Life Bar '
+      value: Life Bar
       objectReference: {fileID: 0}
     - target: {fileID: 7200927514487160111, guid: 3767489032812864fa3e3f29e2428001, type: 3}
       propertyPath: m_Pivot.x
@@ -509,17 +509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &7405675198085381855 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7739004402017475335, guid: 3767489032812864fa3e3f29e2428001, type: 3}
-  m_PrefabInstance: {fileID: 981865924361659864}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &7948462703171131639 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7200927514487160111, guid: 3767489032812864fa3e3f29e2428001, type: 3}
@@ -1088,17 +1077,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
---- !u!114 &157672427135480960 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7410296378396769453, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
-  m_PrefabInstance: {fileID: 7270643198798284845}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &6371042950948335008 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4363142208546891149, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
