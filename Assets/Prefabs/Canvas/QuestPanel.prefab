@@ -130,10 +130,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3040595382692988139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.78487754}
-  m_AnchorMax: {x: 1, y: 0.95719373}
-  m_AnchoredPosition: {x: 17, y: -19.507}
-  m_SizeDelta: {x: -124.8007, y: 43.098}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 17, y: -3.007}
+  m_SizeDelta: {x: -124.8007, y: 6.0979996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4165192782053386453
 CanvasRenderer:
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -271,10 +271,10 @@ RectTransform:
   - {fileID: 9107829359161964808}
   m_Father: {fileID: 5774796841231042250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.4345, y: 113.012146}
-  m_SizeDelta: {x: 365.5865, y: 44.3207}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -26.987854}
+  m_SizeDelta: {x: 0, y: 44.32071}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7917648661878429210
 CanvasRenderer:
