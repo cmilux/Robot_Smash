@@ -22,13 +22,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject craftPanel;
 
     [Header("Player Health")]
-    
-    [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Image healthFill;
 
     [Header("Level and experience")]
     [SerializeField] TextMeshProUGUI levelText;
-    [SerializeField] TextMeshProUGUI expText;
     [SerializeField] Image expFill;
 
     [Header("Quests")]
@@ -96,16 +93,15 @@ public class UIManager : MonoBehaviour
             NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
         }
     }
+
     public void UpdatePlayerHealth(int current, int max)
     {
-        if (healthText != null) healthText.text = $"HP: {current}";
         if (healthFill != null) healthFill.fillAmount = (float)current / max;
     }
 
     public void UpdatePlayerExp(int current, int max, int level)
     {
         if (levelText != null) levelText.text = level.ToString();
-        if (expText != null) expText.text = $"{current} exp / {max} exp";
         if (expFill != null) expFill.fillAmount = max > 0 ? (float)current / max : 1f;
     }
 

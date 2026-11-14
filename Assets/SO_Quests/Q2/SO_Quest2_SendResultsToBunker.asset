@@ -23,4 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
   - {fileID: 11400000, guid: a8b92d702f3779346a671fcb8f4435b8, type: 2}
   - {fileID: 11400000, guid: bcab96fa27ff98c48a64db39dde92f9c, type: 2}
-  rewardExp: 100
+  rewardExp: 400
+  isFinalQuest: 0
