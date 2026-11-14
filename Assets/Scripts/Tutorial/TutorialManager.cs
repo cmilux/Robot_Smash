@@ -32,6 +32,10 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _messageText;
     [SerializeField] float _fadeTime = 0.25f;
 
+    [Header("Select Car Panel")]
+    //tutorial waits until this panel is closed
+    [SerializeField] GameObject _waitForPanel;
+
     [Header("Bridge unlock")]
     //step that unlocks the bridge when completed
     [SerializeField] TutorialStep _unlockAfterStep = TutorialStep.Craft;
@@ -70,6 +74,8 @@ public class TutorialManager : MonoBehaviour
             yield break;
         }
 
+        //wait for car select panel to be closed before showing tutotrial steps
+        yield return new WaitUntil(() => _waitForPanel == null || !_waitForPanel.activeInHierarchy);
 
         _running = true;
         ShowStep(0);
