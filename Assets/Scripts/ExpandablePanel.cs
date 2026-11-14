@@ -6,7 +6,8 @@ public class ExpandablePanel : MonoBehaviour
 {
     [SerializeField] Button _headerButton; //clicking the header opens/closes the panel
     [SerializeField] GameObject _content; //the part that gets hidden
-    [SerializeField] bool _startOpen = true;
+    [SerializeField] GameObject _headerBackground;  //header background gets hidden
+    [SerializeField] bool _startOpen = false;
 
     [Header("Arrow")]
     [SerializeField] Image _arrowImage;  //the arrow icon in the header
@@ -49,6 +50,7 @@ public class ExpandablePanel : MonoBehaviour
         if(_content!= null)
         {
             _content.SetActive(open);
+            _headerBackground.SetActive(!open);
         }
 
         if(_arrowImage!= null)
