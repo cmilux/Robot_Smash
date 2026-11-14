@@ -14,4 +14,5 @@ public class QuestData : ScriptableObject
 
     public List<ItemData> rewardItems;          //items granted on completion
     public int rewardExp;                       //exp granted on completion (connected w PlayerLevelUI)
+    public bool isFinalQuest = false;
 }

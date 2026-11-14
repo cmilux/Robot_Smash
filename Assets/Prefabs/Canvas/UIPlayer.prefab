@@ -391,9 +391,12 @@ MonoBehaviour:
   questPanel: {fileID: 3681326995423810705}
   questTitleText: {fileID: 1805426606362938158}
   questObjectivesText: {fileID: 3860827470306264367}
-  gameOverPanel: {fileID: 5883024646011510625}
-  gameOverMenuButton: {fileID: 6511637407747961219}
+  theEndPanel: {fileID: 5883024646011510625}
+  backToMenuButton: {fileID: 6511637407747961219}
   menuSceneName: Lobby
+  theEndTitleText: {fileID: 1769143941301261049}
+  gameOverTitle: GAME OVER
+  victoryTitle: GANASTE!
   exitButton: {fileID: 8012424408370506468}
   inventoryWarnings: {fileID: 2059382575889378134}
   inventoryWarningsText: {fileID: 98475942388029686}
@@ -850,6 +853,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3190b13323c33324ab6931ce703a5381, type: 3}
+--- !u!114 &1769143941301261049 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5917557168868532579, guid: 3190b13323c33324ab6931ce703a5381, type: 3}
+  m_PrefabInstance: {fileID: 5373394615480251290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &5883024646011510625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1960915560528096507, guid: 3190b13323c33324ab6931ce703a5381, type: 3}

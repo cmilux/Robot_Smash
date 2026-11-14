@@ -27,6 +27,13 @@ public class PlayerHealth : NetworkBehaviour
 
     [SerializeField] float _respawnDelay = 5f;
 
+    NetworkPlayerConfig _playerConfig;
+
+    private void Awake()
+    {
+        _playerConfig = GetComponent<NetworkPlayerConfig>();    
+    }
+
     public override void OnNetworkSpawn()
     {
         //register this pllayer so enemies can find it || registra este jugador para que los enemigos lo enccuentren
@@ -153,6 +160,8 @@ public class PlayerHealth : NetworkBehaviour
     [ClientRpc]
     void ShowGameOverClientRpc()
     {
+        if (UIManager.Instance.GameEnded) return;       //already won, dont show game over panel
+
         //plays only when all players died
         AudioManager.Instance?.PlaySfx(SFXId.GameOver);
 

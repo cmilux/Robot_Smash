@@ -248,10 +248,11 @@ public class QuestManager : NetworkBehaviour
         // busca la proxima mision en la cadena ANTES del delay — ActiveQuest depende de activeQuestId,
         // que estamos por cambiar, asi que agarra lo que necesitas de el ahora mientras sigue siendo valido
         int completedQuestId = ActiveQuest.questId;
+        bool wasFinalQuest = ActiveQuest.isFinalQuest;
         QuestData nextQuest = allQuest.Find(q => q.requiredQuestId == completedQuestId);
 
         //wait 1 sec before hiding quest (so ui gets time to update)
-        StartCoroutine(AdvanceQuestAfterDelay(nextQuest));
+        StartCoroutine(AdvanceQuestAfterDelay(nextQuest, wasFinalQuest));
 
         Debug.Log("Quest is done");
     }
@@ -289,9 +290,16 @@ public class QuestManager : NetworkBehaviour
         }
     }
 
-    private IEnumerator AdvanceQuestAfterDelay(QuestData nextQuest)
+    private IEnumerator AdvanceQuestAfterDelay(QuestData nextQuest, bool wasFinalQuest)
     {
         yield return new WaitForSeconds(1);
+
+        if (wasFinalQuest)
+        {
+            activeQuestId.Value = -1;
+            ShowVictoryClientRpc();
+            yield break;
+        }
 
         if (nextQuest != null)
         {
@@ -303,5 +311,11 @@ public class QuestManager : NetworkBehaviour
             //apaga la mision para que ningun futuro reporte dispare esto (evita duplicados)
             activeQuestId.Value = -1;
         }
+    }
+
+    [ClientRpc]
+    private void ShowVictoryClientRpc()
+    {
+        UIManager.Instance?.ShowVictory();
     }
 }

@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bac2c2b63569ba84b938abd8142eecfc, type: 2}
   - {fileID: 11400000, guid: 453a14d742ae2474cb90399290c18eed, type: 2}
   requiredQuestId: 4
-  rewardItems:
-  - {fileID: 0}
+  rewardItems: []
   rewardExp: 0
+  isFinalQuest: 1
