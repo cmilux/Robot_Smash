@@ -3,6 +3,8 @@ using System.Security.Cryptography;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode.Components;
+
 public class CarController : NetworkBehaviour
 {
     [Header("Movement")]
@@ -20,6 +22,10 @@ public class CarController : NetworkBehaviour
     [SerializeField] float _stickForce = 20f;   //downward push while grounded
     private bool _isGrounded;
     private Vector3 _groundNormal = Vector3.up;
+
+    [Header("Voidd safety net")]
+    [SerializeField] float _killY;      //below this height the car will be consider lost
+    private NetworkTransform _netTransform;
 
     [Header("Dash")]
     private CarBumper _carBumper;
@@ -43,6 +49,8 @@ public class CarController : NetworkBehaviour
 
         _carBumper = GetComponent<CarBumper>();
 
+        _netTransform = GetComponent<NetworkTransform>();
+
         if(_animator == null) _animator = GetComponentInChildren<Animator>();
 
         _currentSpeed = speed;
@@ -56,6 +64,9 @@ public class CarController : NetworkBehaviour
         if (_rb.isKinematic) return;
 
         CheckGround();
+
+        if (transform.position.y < _killY) RescueFromVoid();
+
         HandleMov();
         HandleRotation();
         //FlipCar();
@@ -70,6 +81,20 @@ public class CarController : NetworkBehaviour
         {
             _animator.SetFloat("Speed", _netSpeed.Value);
         }
+    }
+
+    void RescueFromVoid()
+    {
+        if (PlayerSpawner.instance == null) return;
+
+        _rb.linearVelocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+
+        Transform point = PlayerSpawner.instance.GetSpawnPoint();
+        Vector3 pos = point.position + Vector3.up;      //1m above so it doesnt spawn inside the ground
+
+        if (_netTransform != null) _netTransform.Teleport(pos, point.rotation, transform.localScale);
+        else transform.SetPositionAndRotation(pos, point.rotation);
     }
 
     public void OnMove(InputValue value)

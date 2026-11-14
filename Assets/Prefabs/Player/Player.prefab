@@ -14909,6 +14909,7 @@ MonoBehaviour:
   _rayHeight: 0.5
   _snapDistance: 2.5
   _stickForce: 20
+  _killY: -20
   dashSpeed: 50
   dashDuration: 0.5
   dashCooldownBackup: 3
