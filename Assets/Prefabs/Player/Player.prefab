@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3112274172027597627}
   - component: {fileID: 4254244592441433034}
   - component: {fileID: 1958485174296190358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 6479570802586964713}
   - component: {fileID: 5821863693768937384}
   - component: {fileID: 7807236023607709449}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MachineGunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4936,7 +4936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 297846322575704992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4971,7 +4971,7 @@ GameObject:
   - component: {fileID: 2738271479126457982}
   - component: {fileID: 2486887214311294882}
   - component: {fileID: 7603059206357443792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9805,7 +9805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3659682720188997155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: propeller (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9887,7 +9887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1167280249739503120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9922,7 +9922,7 @@ GameObject:
   - component: {fileID: 398574734206660502}
   - component: {fileID: 7509750629770286811}
   - component: {fileID: 781434436338209128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14801,6 +14801,7 @@ Transform:
   - {fileID: 8027934947349211179}
   - {fileID: 5769064733744860934}
   - {fileID: 3659682720188997155}
+  - {fileID: 8191891370825590071}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1361223657341694240
@@ -14879,7 +14880,7 @@ MonoBehaviour:
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 0
+  m_InScenePlaced: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -15189,7 +15190,7 @@ GameObject:
   - component: {fileID: 4619045474102205271}
   - component: {fileID: 5824114153133665598}
   - component: {fileID: 7889029955210116713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20014,6 +20015,134 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!1 &2045085083895649756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5207382398705593449}
+  - component: {fileID: 3807427423729562210}
+  - component: {fileID: 5413569701918416850}
+  m_Layer: 12
+  m_Name: Minimap_Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5207382398705593449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045085083895649756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8191891370825590071}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!20 &3807427423729562210
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045085083895649756}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 20
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 6145
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: fb5f903332d6fa340af23ac716ff28bb, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &5413569701918416850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045085083895649756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &2171072124249911305
 GameObject:
   m_ObjectHideFlags: 0
@@ -20025,7 +20154,7 @@ GameObject:
   - component: {fileID: 5803942414270405768}
   - component: {fileID: 2074851625148746343}
   - component: {fileID: 6040386948178974787}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24860,7 +24989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9167546721848441512}
   - component: {fileID: 1237406288748087755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GO_NormalGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24909,7 +25038,7 @@ GameObject:
   - component: {fileID: 6319322809966678017}
   - component: {fileID: 7349215017265899318}
   - component: {fileID: 3915407266273424663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Wpn_Gun_MachineGun.BarrelPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25000,7 +25129,7 @@ GameObject:
   - component: {fileID: 1545004686537316008}
   - component: {fileID: 8316175264018024526}
   - component: {fileID: 4653504338733865000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootinGunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25093,7 +25222,7 @@ GameObject:
   - component: {fileID: 7095664823680237166}
   - component: {fileID: 7641615541783080460}
   - component: {fileID: 154638626781970343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29927,7 +30056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5379952444359173710}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29961,7 +30090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6486076332297913434}
   - component: {fileID: 873490343200077738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PickUpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30013,7 +30142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6010280341828067506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30046,7 +30175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5769064733744860934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: propeller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30083,7 +30212,7 @@ GameObject:
   - component: {fileID: 7228793647681321387}
   - component: {fileID: 6700188165788679565}
   - component: {fileID: 6970736813620065666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootingGunBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30174,7 +30303,7 @@ GameObject:
   - component: {fileID: 4474867316028635069}
   - component: {fileID: 9029070540499562931}
   - component: {fileID: 8927222871339373753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35059,7 +35188,7 @@ GameObject:
   - component: {fileID: 6361832315169514140}
   - component: {fileID: 4454442032114551997}
   - component: {fileID: 4551690323675922715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Wpn_Gun_Shotgun_02_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35147,7 +35276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5067035724792573422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35180,7 +35309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042237726884773915}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35215,7 +35344,7 @@ GameObject:
   - component: {fileID: 4864179389013350322}
   - component: {fileID: 4879535629327212871}
   - component: {fileID: 389812033577874338}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40051,7 +40180,7 @@ GameObject:
   - component: {fileID: 3345009491122684130}
   - component: {fileID: 4526029493909084943}
   - component: {fileID: 3682897309265456006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44887,7 +45016,7 @@ GameObject:
   - component: {fileID: 5859410964897294056}
   - component: {fileID: 5443772489924314757}
   - component: {fileID: 3079860159693435361}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SuperGunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45009,7 +45138,7 @@ GameObject:
   - component: {fileID: 8489316598843072572}
   - component: {fileID: 8237556571705415406}
   - component: {fileID: 5505956244607090745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49914,7 +50043,7 @@ GameObject:
   - component: {fileID: 2065046034922458682}
   - component: {fileID: 7489172614627472864}
   - component: {fileID: 1452230490768885583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54840,7 +54969,7 @@ GameObject:
   - component: {fileID: 8758378170436848736}
   - component: {fileID: 2362906910776506377}
   - component: {fileID: 6720603831033943518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GO_SuperGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54901,7 +55030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6923029823497974299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54967,7 +55096,7 @@ GameObject:
   - component: {fileID: 1491727393204946686}
   - component: {fileID: 6634546664477837784}
   - component: {fileID: 3800873885473984118}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59803,7 +59932,7 @@ GameObject:
   - component: {fileID: 629169629881757236}
   - component: {fileID: 7336175602843869308}
   - component: {fileID: 4872631926027823074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NormalGunBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60002,7 +60131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5792272983124249725}
   - component: {fileID: 4525037861765161781}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GO_MachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60052,7 +60181,7 @@ GameObject:
   - component: {fileID: 6403148120105163882}
   - component: {fileID: 485935365750247936}
   - component: {fileID: 5178478753457440032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64964,7 +65093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8027934947349211179}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Wpn_Gun_MachineGun 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65028,7 +65157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 470706472433740390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65052,6 +65181,129 @@ Transform:
   - {fileID: 5803942414270405768}
   m_Father: {fileID: 5769064733744860934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7724554651811221143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8191891370825590071}
+  m_Layer: 12
+  m_Name: Minimap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8191891370825590071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7724554651811221143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5207382398705593449}
+  - {fileID: 7405241119234474118}
+  m_Father: {fileID: 8867579207307262118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7876735167383581807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7405241119234474118}
+  - component: {fileID: 2850134364190372936}
+  - component: {fileID: 4622962187814331758}
+  m_Layer: 12
+  m_Name: PlayerIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7405241119234474118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876735167383581807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 10.38, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8191891370825590071}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &2850134364190372936
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876735167383581807}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4622962187814331758
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876735167383581807}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7f15aae6f34e21a469d6ef97f6d2b782, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8208866699056197519
 GameObject:
   m_ObjectHideFlags: 0
@@ -65231,7 +65483,7 @@ GameObject:
   - component: {fileID: 2342091777613826038}
   - component: {fileID: 6961915413800253085}
   - component: {fileID: 9045450959897848648}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70067,7 +70319,7 @@ GameObject:
   - component: {fileID: 3877011635188973379}
   - component: {fileID: 7008301615850646196}
   - component: {fileID: 8775781698639096360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74903,7 +75155,7 @@ GameObject:
   - component: {fileID: 3413818844741484979}
   - component: {fileID: 4057259385891246068}
   - component: {fileID: 7239067482275468513}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SuperGunBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74994,7 +75246,7 @@ GameObject:
   - component: {fileID: 2841972012609622566}
   - component: {fileID: 8244665893440604226}
   - component: {fileID: 914169847144487152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: flareI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79830,7 +80082,7 @@ GameObject:
   - component: {fileID: 7708566328029440986}
   - component: {fileID: 8081341457282862007}
   - component: {fileID: 1231531633734565075}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Wpn_Gun_MachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80039,6 +80291,10 @@ PrefabInstance:
       value: SM_Player_Car_03
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b0c3cc22ee389fd4e97ccfa20206c2ae, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0c3cc22ee389fd4e97ccfa20206c2ae, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -80183,6 +80439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wpn_Bumper
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d77ebf5d3bb5a146a511b786da0f781, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80245,6 +80505,10 @@ PrefabInstance:
       propertyPath: car
       value: 
       objectReference: {fileID: 8867579207307262118}
+    - target: {fileID: 6858947732793730123, guid: abe8ead1795237549aebb55163de0a25, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8546021182965308169, guid: abe8ead1795237549aebb55163de0a25, type: 3}
       propertyPath: m_Name
       value: CarCamera

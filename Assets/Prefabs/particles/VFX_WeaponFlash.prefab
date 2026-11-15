@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7489017246034920746}
   - component: {fileID: 3811688019191337872}
   - component: {fileID: 7460027215278448511}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: flash (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 814929044883749525}
   - component: {fileID: 285465281715104611}
   - component: {fileID: 2492254127743039347}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9799,7 +9799,7 @@ GameObject:
   - component: {fileID: 6977298271697848707}
   - component: {fileID: 5654030834756111770}
   - component: {fileID: 3611111852436356248}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: VFX_WeaponFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14639,7 +14639,7 @@ GameObject:
   - component: {fileID: 1479085334407394820}
   - component: {fileID: 9194983230941326515}
   - component: {fileID: 3583593556954094517}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: flash (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19533,7 +19533,7 @@ GameObject:
   - component: {fileID: 6155841910231380731}
   - component: {fileID: 3686493571892987514}
   - component: {fileID: 682794013959578493}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: flash (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

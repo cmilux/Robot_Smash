@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6945739589098844022}
   - component: {fileID: 4749737287748746084}
   - component: {fileID: 2693056130963554954}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: VFX_missionObject_V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

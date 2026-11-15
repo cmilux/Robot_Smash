@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3898359416459980219}
   - component: {fileID: 2569705898333865065}
   - component: {fileID: 3963937988370597751}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: VFX_sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
