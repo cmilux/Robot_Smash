@@ -16,6 +16,7 @@ MonoBehaviour:
   targetId: GasStation
   requiredAmount: 1
   requieresPreviousObj: 0
-  description: Acercate a la estacion de servicio y protegela de los ataques
+  description: "Acercate a la estacion de servicio al lado de la f\xE1brica y protegela
+    de los ataques"
   isOptional: 0
   bonusExp: 0
