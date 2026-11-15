@@ -4114,10 +4114,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 596753435}
     m_Modifications:
-    - target: {fileID: 2323490697567880203, guid: 3e86df05c9eac0e47af93ceec16a2ae5, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3367544549852938437, guid: 3e86df05c9eac0e47af93ceec16a2ae5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.4689026
@@ -4172,9 +4168,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3367544549852938437, guid: 3e86df05c9eac0e47af93ceec16a2ae5, type: 3}
   m_PrefabInstance: {fileID: 542275508}
   m_PrefabAsset: {fileID: 0}
---- !u!199 &542275510 stripped
-ParticleSystemRenderer:
-  m_CorrespondingSourceObject: {fileID: 5935804829483981354, guid: 3e86df05c9eac0e47af93ceec16a2ae5, type: 3}
+--- !u!198 &542275510 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2323490697567880203, guid: 3e86df05c9eac0e47af93ceec16a2ae5, type: 3}
   m_PrefabInstance: {fileID: 542275508}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &542750720
@@ -4628,6 +4624,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 596753434}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 542275510}
 --- !u!65 &596753437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4696,11 +4693,6 @@ MonoBehaviour:
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 1783486386}
-  - name: VFX_EPM (Particle System Renderer)
-    InvertEnabled: 0
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 542275510}
   - name: MinimapIcon (Mesh Renderer)
     InvertEnabled: 1
     EnableDelay: 0
@@ -7342,6 +7334,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 980746999}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!1001 &986200999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8425,6 +8418,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1087759771}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!1 &1090559696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10674,6 +10668,7 @@ MonoBehaviour:
   targetId: 
   turnGameObject: []
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!208 &1387196869
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -11159,6 +11154,7 @@ MonoBehaviour:
   - {fileID: 1776705817}
   - {fileID: 1467238003}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!65 &1429619517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11449,6 +11445,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1467238003}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!65 &1467238006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12130,6 +12127,7 @@ MonoBehaviour:
   - {fileID: 1542873667}
   - {fileID: 1652878188}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!114 &1542873671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12832,6 +12830,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1652878188}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!65 &1652878191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13142,6 +13141,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1657346730}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!208 &1657346736
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13682,6 +13682,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1696479810}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!114 &1696479816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14099,6 +14100,7 @@ MonoBehaviour:
   targetId: GasStation
   turnGameObject: []
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!1 &1757553202
 GameObject:
   m_ObjectHideFlags: 0
@@ -15451,6 +15453,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1838129676}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!114 &1838129680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16647,6 +16650,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 2074951001}
   destroySelfOnTrigger: 0
+  _completedVfx: {fileID: 0}
 --- !u!114 &2074951005
 MonoBehaviour:
   m_ObjectHideFlags: 0
