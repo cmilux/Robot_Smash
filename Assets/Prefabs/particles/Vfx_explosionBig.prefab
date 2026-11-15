@@ -48989,7 +48989,7 @@ GameObject:
   - component: {fileID: 910233859984468544}
   - component: {fileID: 6845214331386319410}
   m_Layer: 13
-  m_Name: explosionBig
+  m_Name: Vfx_explosionBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
