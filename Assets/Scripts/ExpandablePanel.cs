@@ -47,13 +47,17 @@ public class ExpandablePanel : MonoBehaviour
     {
         _isOpen = open;
 
-        if(_content!= null)
+        if (_content != null)
         {
             _content.SetActive(open);
+        }
+
+        if (_headerBackground != null)
+        {
             _headerBackground.SetActive(!open);
         }
 
-        if(_arrowImage!= null)
+        if (_arrowImage!= null)
         {
             _arrowImage.sprite = open ? _openSprite : _closedSprite;
         }
