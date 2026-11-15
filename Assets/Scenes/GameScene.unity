@@ -2946,6 +2946,105 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &334379458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1087759770}
+    m_Modifications:
+    - target: {fileID: 3703670800493868211, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_Name
+      value: MinimapQuestIcon (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 334379462}
+  m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+--- !u!4 &334379459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 334379458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &334379460 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 334379458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &334379461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 334379458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &334379462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334379461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 334379460}
 --- !u!1 &347252852
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,6 +4726,10 @@ MonoBehaviour:
   targetId: DropEPM
   turnGameObject:
   - {fileID: 596753434}
+  - {fileID: 1783032350}
+  - {fileID: 773298180}
+  - {fileID: 1829465952}
+  - {fileID: 334379461}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 542275510}
 --- !u!65 &596753437
@@ -4697,11 +4800,6 @@ MonoBehaviour:
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 1783486386}
-  - name: MinimapIcon (Mesh Renderer)
-    InvertEnabled: 1
-    EnableDelay: 0
-    DisableDelay: 0
-    Component: {fileID: 1783032349}
 --- !u!1 &604963406 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -5882,6 +5980,105 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5901272079689648273, guid: 4636d2d842057034cb0582b86903a2ed, type: 3}
   m_PrefabInstance: {fileID: 751558425}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &773298177
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1696479809}
+    m_Modifications:
+    - target: {fileID: 3703670800493868211, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_Name
+      value: MinimapQuestIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 773298181}
+  m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+--- !u!4 &773298178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 773298177}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &773298179 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 773298177}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &773298180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 773298177}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &773298181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773298180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 773298179}
 --- !u!1 &789318924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b3f236057421fb6488b262ee44c7fc54, type: 3}
@@ -6991,6 +7188,112 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1378088084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &961891657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1429619515}
+    m_Modifications:
+    - target: {fileID: 1387937697794258462, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24b6fe5536b49fa448ad8d638f44b04d, type: 2}
+    - target: {fileID: 3703670800493868211, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703670800493868211, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703670800493868211, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      propertyPath: m_Name
+      value: MinimapIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8626306737260234255, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 961891660}
+  m_SourcePrefab: {fileID: 100100000, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+--- !u!4 &961891658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+  m_PrefabInstance: {fileID: 961891657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &961891659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626306737260234255, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+  m_PrefabInstance: {fileID: 961891657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &961891660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961891659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1965741556}
 --- !u!1001 &965255172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7197,6 +7500,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1624946529}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1829465950}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
       insertIndex: -1
@@ -7340,6 +7646,8 @@ MonoBehaviour:
   targetId: ControlTower
   turnGameObject:
   - {fileID: 980746999}
+  - {fileID: 1829465952}
+  - {fileID: 1008448849}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 1624946530}
 --- !u!1001 &986200999
@@ -7639,6 +7947,105 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!1001 &1008448846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1755891013}
+    m_Modifications:
+    - target: {fileID: 3703670800493868211, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_Name
+      value: MinimapQuestIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008448850}
+  m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+--- !u!4 &1008448847 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1008448846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1008448848 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1008448846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1008448849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1008448846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1008448850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008448849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1008448848}
 --- !u!1001 &1028746298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8284,6 +8691,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1262039057}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 334379459}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
       insertIndex: -1
@@ -8427,6 +8837,7 @@ MonoBehaviour:
   targetId: ControlTower
   turnGameObject:
   - {fileID: 1087759771}
+  - {fileID: 334379461}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 1262039058}
 --- !u!1 &1090559696
@@ -11284,7 +11695,8 @@ Transform:
   m_LocalPosition: {x: 240.22, y: 23.78, z: 223.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 961891658}
   m_Father: {fileID: 715309984}
   m_LocalEulerAnglesHint: {x: 0, y: 45.811, z: 0}
 --- !u!114 &1429619516
@@ -11305,6 +11717,7 @@ MonoBehaviour:
   turnGameObject:
   - {fileID: 1776705817}
   - {fileID: 1467238003}
+  - {fileID: 961891659}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 0}
 --- !u!65 &1429619517
@@ -11596,6 +12009,7 @@ MonoBehaviour:
   targetId: PickUp
   turnGameObject:
   - {fileID: 1467238003}
+  - {fileID: 1783032350}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 0}
 --- !u!65 &1467238006
@@ -13052,6 +13466,7 @@ MonoBehaviour:
   targetId: Key
   turnGameObject:
   - {fileID: 1652878188}
+  - {fileID: 961891659}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 0}
 --- !u!65 &1652878191
@@ -13791,6 +14206,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1131468942}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 773298178}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f1a3a980a120124888395ccdc134038, type: 3}
       insertIndex: -1
@@ -13907,6 +14325,7 @@ MonoBehaviour:
   targetId: ControlTower
   turnGameObject:
   - {fileID: 1696479810}
+  - {fileID: 773298180}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 1131468943}
 --- !u!114 &1696479816
@@ -14258,7 +14677,8 @@ Transform:
   m_LocalPosition: {x: 555.96, y: 40.57, z: 165.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1008448847}
   m_Father: {fileID: 379249842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1755891014
@@ -14324,7 +14744,8 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   objectiveType: 3
   targetId: GasStation
-  turnGameObject: []
+  turnGameObject:
+  - {fileID: 1008448849}
   destroySelfOnTrigger: 0
   _completedVfx: {fileID: 0}
 --- !u!1 &1757553202
@@ -14936,7 +15357,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.83
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14944,7 +15365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14981,7 +15402,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783032351}
   m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
 --- !u!4 &1783032348 stripped
 Transform:
@@ -14993,6 +15417,31 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
   m_PrefabInstance: {fileID: 1783032347}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1783032350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1783032347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1783032351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783032350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1783032349}
 --- !u!1001 &1783486383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15571,6 +16020,105 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 265.58737, y: 1, z: 98.571655}
   m_Center: {x: -79.45305, y: 0, z: 139.08344}
+--- !u!1001 &1829465949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 980746998}
+    m_Modifications:
+    - target: {fileID: 3703670800493868211, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_Name
+      value: MinimapQuestIcon (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1829465953}
+  m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+--- !u!4 &1829465950 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1829465949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1829465951 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1829465949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1829465952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1829465949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1829465953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829465952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0b25b3f95e5324abc80c09cb29f271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.ComponentController
+  ShowTopMostFoldoutHeaderGroup: 1
+  StartEnabled: 0
+  Components:
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1829465951}
 --- !u!1 &1837960821
 GameObject:
   m_ObjectHideFlags: 0
@@ -16236,6 +16784,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 930704121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1965741556 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 3895afbf010a86b4787abe701ca5cb3b, type: 3}
+  m_PrefabInstance: {fileID: 961891657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1966411949
 PrefabInstance:
   m_ObjectHideFlags: 0
