@@ -9,6 +9,9 @@ public class QuestLocation : NetworkBehaviour               //UPDATES PROGRESS O
     [SerializeField] GameObject[] turnGameObject;
     [SerializeField] bool destroySelfOnTrigger = false;
 
+    [Header("VFX")]
+    [SerializeField] ParticleSystem _completedVfx;  //played on every client when the objective is completed || se reproduce en todos los clientes al completar el objetivo
+
     private bool alreadyReported = false; // prevents spamming ReportProgress every frame the player stays inside the trigger
 
     private bool _completedOnServer = false;
@@ -56,12 +59,22 @@ public class QuestLocation : NetworkBehaviour               //UPDATES PROGRESS O
 
         ToggleObjects();
 
+        //after the object turns off, play its effect  || despues de apagar el objeto, reproduce efecto
+        if (_completedVfx != null) PlayCompletedVfxRpc();
+
         // for narrative pickups like the letter — remove the object once it's been "collected"
         // para pickups narrativos como la carta — elimina el objeto una vez "recolectado"
         if (destroySelfOnTrigger && NetworkObject.IsSpawned)
         {
             NetworkObject.Despawn(false);
         }
+    }
+
+    // runs on the host and every client || corre en el host y en todos los clientes
+    [Rpc(SendTo.ClientsAndHost)]
+    private void PlayCompletedVfxRpc()
+    {
+        if (_completedVfx != null) _completedVfx.Play();
     }
 
     private void ToggleObjects()
