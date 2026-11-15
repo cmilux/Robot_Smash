@@ -412,6 +412,73 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 294.59012, y: 1, z: 471.47113}
   m_Center: {x: 0.78526306, y: 0, z: 106.970184}
+--- !u!1001 &60577727
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1467238004}
+    m_Modifications:
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_Name
+      value: MinimapQuestIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+--- !u!4 &60577728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 60577727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &60577729 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 60577727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &80348254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4540,6 +4607,7 @@ Transform:
   m_Children:
   - {fileID: 542275509}
   - {fileID: 1783486384}
+  - {fileID: 1783032348}
   m_Father: {fileID: 1528734299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &596753436
@@ -4633,6 +4701,11 @@ MonoBehaviour:
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 542275510}
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 1
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 1783032349}
 --- !u!1 &604963406 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3736ef507e942b46ac448d1fa1abc1e, type: 3}
@@ -11355,6 +11428,7 @@ Transform:
   - {fileID: 1693449381}
   - {fileID: 243234125}
   - {fileID: 1768382920}
+  - {fileID: 60577728}
   m_Father: {fileID: 1528734299}
   m_LocalEulerAnglesHint: {x: 9.906, y: -3.305, z: -20.181}
 --- !u!114 &1467238005
@@ -11453,6 +11527,11 @@ MonoBehaviour:
     EnableDelay: 0
     DisableDelay: 0
     Component: {fileID: 243234126}
+  - name: MinimapIcon (Mesh Renderer)
+    InvertEnabled: 0
+    EnableDelay: 0
+    DisableDelay: 0
+    Component: {fileID: 60577729}
 --- !u!1 &1476962230
 GameObject:
   m_ObjectHideFlags: 0
@@ -14619,6 +14698,73 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 30.985214, y: 7.54582, z: 15.052427}
   m_Center: {x: -1.0291467, y: 3.753306, z: -0.0000023841858}
+--- !u!1001 &1783032347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 596753435}
+    m_Modifications:
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626306737260234255, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+      propertyPath: m_Name
+      value: MinimapQuestIcon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+--- !u!4 &1783032348 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5571754704635659491, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1783032347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1783032349 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1387937697794258462, guid: 5c06cf34e7bce4943ad9f765d4bbb8ce, type: 3}
+  m_PrefabInstance: {fileID: 1783032347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1783486383
 PrefabInstance:
   m_ObjectHideFlags: 0
