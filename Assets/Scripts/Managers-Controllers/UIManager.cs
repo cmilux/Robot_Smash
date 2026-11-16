@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI questTitleText;
     [SerializeField] TextMeshProUGUI questObjectivesText;
 
+    [Header("Minimap")]
+    [SerializeField] GameObject minimapPanel;
+
     [Header("The End")]
     [SerializeField] GameObject theEndPanel;
     [SerializeField] Button backToMenuButton;
@@ -75,10 +78,12 @@ public class UIManager : MonoBehaviour
         if (inventoryPanel.activeSelf && craftPanel.activeSelf)
         {
             questPanel.SetActive(false);
+            minimapPanel.SetActive(false);
         }
         else
         {
             questPanel.SetActive(true);
+            minimapPanel.SetActive(true);
         }
         if(Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {

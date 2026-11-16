@@ -95,8 +95,8 @@ MonoBehaviour:
   _headerBackground: {fileID: 1923569273536717748}
   _startOpen: 1
   _arrowImage: {fileID: 3991297478916585717}
-  _openSprite: {fileID: 21300000, guid: 66434c7f7f5e6be48b959dedc3f9779f, type: 3}
-  _closedSprite: {fileID: 21300000, guid: 28293d96db2a6d3478f42652ccd850af, type: 3}
+  _openSprite: {fileID: 21300000, guid: b8ebf651cfc6f8e4a8fcefa027174651, type: 3}
+  _closedSprite: {fileID: 21300000, guid: a001e85364ee4b648ad44438cbf4cc72, type: 3}
   _useKey: 1
   _toggleKey: 27
 --- !u!1 &911399899766282279
