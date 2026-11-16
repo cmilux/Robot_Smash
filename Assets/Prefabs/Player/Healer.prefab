@@ -138,7 +138,7 @@ MonoBehaviour:
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 1
+  m_InScenePlaced: 0
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealer
   ShowTopMostFoldoutHeaderGroup: 1
-  healing: 15
+  healing: 100
   _respawnTime: 30
   _healerVFX: {fileID: 4663737813904716099}
 --- !u!1001 &4395006050082563366
