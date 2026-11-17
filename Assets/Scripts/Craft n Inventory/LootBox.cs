@@ -41,14 +41,25 @@ public class LootBox : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!IsServer) return;
         if (isBroken.Value) return;
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        //remember who hit it (the collider might be a child, so look in parents)
         NetworkObject playerNetObj = collision.gameObject.GetComponentInParent<NetworkObject>();
-        if (playerNetObj != null) _hitters.Add(playerNetObj.OwnerClientId);
 
+        //only the car's owner reports the hit, it's the one that sees the real crash
+        //solo el dueno del auto avisa el choque, es el que ve el choque real
+        if (playerNetObj == null || !playerNetObj.IsOwner) return;
+
+        BreakServerRpc(playerNetObj.OwnerClientId);
+    }
+    //the server breaks the box, so every player sees the same result
+    //el servidor rompe la caja, asi todos los jugadores ven lo mismo
+    [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]
+    private void BreakServerRpc(ulong hitterId)
+    {
+        if (isBroken.Value) return;     //already broken, ignore a second hit || ya esta rota, ignora un segundo choque
+
+        _hitters.Add(hitterId);
         Break();
     }
 
