@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestObjective
   type: 0
   targetId: Enemy
-  requiredAmount: 2
+  requiredAmount: 10
   requieresPreviousObj: 0
-  description: Elimina a 2 enemigos
+  description: Elimina a 10 enemigos
   isOptional: 0
   bonusExp: 0
