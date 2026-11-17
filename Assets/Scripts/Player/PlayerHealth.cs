@@ -163,7 +163,7 @@ public class PlayerHealth : NetworkBehaviour
         if (UIManager.Instance.GameEnded) return;       //already won, dont show game over panel
 
         //plays only when all players died
-        AudioManager.Instance?.PlaySfx(SFXId.GameOver);
+        //AudioManager.Instance?.PlaySfx(SFXId.GameOver);
 
         UIManager.Instance.ShowGameOver();
     }

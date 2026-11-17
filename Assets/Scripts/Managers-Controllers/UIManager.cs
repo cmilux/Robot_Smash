@@ -46,6 +46,8 @@ public class UIManager : MonoBehaviour
     bool _gameEnded;
     public bool GameEnded => _gameEnded;
     [SerializeField] Button exitButton;
+    [SerializeField] AudioClip victoryMusic;
+    [SerializeField] AudioClip gameOverMusic;
 
     [Header("Inventory Warnings")]
     [SerializeField] GameObject inventoryWarnings;
@@ -150,15 +152,16 @@ public class UIManager : MonoBehaviour
         questObjectivesText.text = objectivesList;
     }
 
-    public void ShowVictory() => ShowEndScreen(victoryTitle);
+    public void ShowVictory() => ShowEndScreen(victoryTitle, victoryMusic);
 
-    public void ShowGameOver() => ShowEndScreen(gameOverTitle);
+    public void ShowGameOver() => ShowEndScreen(gameOverTitle, gameOverMusic);
 
     //one panel for both endings
-    void ShowEndScreen(string title)
+    void ShowEndScreen(string title, AudioClip music)
     {
         if(_gameEnded) return;
         _gameEnded = true;
+        AudioManager.Instance?.EnterEndScreen(music);
 
         theEndTitleText.text = title;
         theEndPanel.SetActive(true);

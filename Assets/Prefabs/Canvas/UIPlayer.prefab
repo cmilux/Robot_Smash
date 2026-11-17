@@ -398,6 +398,8 @@ MonoBehaviour:
   gameOverTitle: GAME OVER
   victoryTitle: GANASTE!
   exitButton: {fileID: 8012424408370506468}
+  victoryMusic: {fileID: 8300000, guid: 23bb52d6325584156ae42b99180c5c06, type: 3}
+  gameOverMusic: {fileID: 8300000, guid: 1684168dfab1446668ac2a9ce86e3f5e, type: 3}
   inventoryWarnings: {fileID: 2059382575889378134}
   inventoryWarningsText: {fileID: 98475942388029686}
   warningDuration: 2
@@ -601,6 +603,14 @@ PrefabInstance:
     - target: {fileID: 1192027519222407496, guid: 2d759281c77754f4c84b6d1b50ceab6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569598521352773565, guid: 2d759281c77754f4c84b6d1b50ceab6e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1569598521352773565, guid: 2d759281c77754f4c84b6d1b50ceab6e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.27911377
       objectReference: {fileID: 0}
     - target: {fileID: 6718658748454929689, guid: 2d759281c77754f4c84b6d1b50ceab6e, type: 3}
       propertyPath: m_Name
@@ -944,6 +954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheEndPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7046279275628613408, guid: 3190b13323c33324ab6931ce703a5381, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1172,8 +1186,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5195247458550624689, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195247458550624689, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3686656402
+      value: 3501076935
       objectReference: {fileID: 0}
     - target: {fileID: 7847868898756788230, guid: a06dcbdfecc03514b9d82a24b113d261, type: 3}
       propertyPath: m_Name

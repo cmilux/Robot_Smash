@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 //one id per sound effect
 public enum SFXId
@@ -58,7 +59,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] float _minDistance = 5f;
     [SerializeField] float _maxDistance = 60f;
 
-    //static, survives scene loads, session only
     static float _musicVolume = 0.8f;
     static float _sfxVolume = 0.8f;
     public float MusicVolume => _musicVolume;
@@ -71,12 +71,16 @@ public class AudioManager : MonoBehaviour
     int _nextSource;
     Dictionary<SFXId, SFX> _sfx = new Dictionary<SFXId, SFX>();
     Dictionary<SFXId, float> _lastPlay = new Dictionary<SFXId, float>();
+    bool _endScreen;
 
     private void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        //any scene load clears the block (lobby or new game)
+        SceneManager.sceneLoaded += (scene, mode) => _endScreen = false;
 
         foreach (SFX sfx in _sfxList) _sfx[sfx.id] = sfx;
         {
@@ -126,6 +130,7 @@ public class AudioManager : MonoBehaviour
     #region Music
     public void PlayMusic(AudioClip clip, float volume = 1f)
     {
+        if (_endScreen) return;
         if (clip == null) return;
         volume = Mathf.Clamp01(volume);
 
@@ -137,6 +142,31 @@ public class AudioManager : MonoBehaviour
 
         if (_fadeRoutine != null) StopCoroutine(_fadeRoutine);
         _fadeRoutine = StartCoroutine(CrossFadeRoutine(clip, volume));
+    }
+
+    //fades current track and stops it
+    public void StopMusic()
+    {
+        if(_fadeRoutine != null) StopCoroutine(_fadeRoutine);
+        _fadeRoutine = StartCoroutine(FadeOutRoutine());
+    }
+
+    IEnumerator FadeOutRoutine()
+    {
+        AudioSource src = _currentMusic;
+        float start = src.volume;
+        float t = 0f;
+
+        while (t < _fadeTime)
+        {
+            t += Time.unscaledDeltaTime;
+            src.volume = start * (1f - Mathf.Clamp01(t / _fadeTime));
+            yield return null;
+        }
+
+        src.Stop();
+        src.volume = 1f;
+        _fadeRoutine = null;
     }
 
     //fades the old track out while the new one fades in
@@ -184,6 +214,7 @@ public class AudioManager : MonoBehaviour
     void Play(SFXId id, Vector3? position)
     {
         if (!_sfx.TryGetValue(id, out SFX sfx) || sfx.clips == null || sfx.clips.Length == 0) return;
+        if (_endScreen && id != SFXId.UIClick) return;
 
         AudioSource source = _pool[_nextSource];
         _nextSource = (_nextSource + 1) % _pool.Length;     //round robin: reuses the oldest source
@@ -202,4 +233,15 @@ public class AudioManager : MonoBehaviour
         source.Play();
     }
     #endregion
+
+    //end screen, cut everything and leave only the end music
+    public void EnterEndScreen(AudioClip music)
+    {
+        foreach (AudioSource src in _pool) src.Stop();       //cut sounds
+
+        _endScreen = false;     //unlocked on purposed so the end music can start
+        if (music != null) PlayMusic(music);
+        else StopMusic();
+        _endScreen = true;      //from now nothing plays
+    }
 }
