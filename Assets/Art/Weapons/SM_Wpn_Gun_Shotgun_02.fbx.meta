@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Base_Roughness
-    second: {fileID: 2100000, guid: d872551c8d424b04cba3da29160a0077, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Metallic
-    second: {fileID: 2100000, guid: c76788e3871bc304fa598b4d6d84dc59, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Roughness
-    second: {fileID: 2100000, guid: 34656eaa3388a0349a675fd4e34245c3, type: 2}
+      name: m_Basic
+    second: {fileID: 2100000, guid: b993ffe4cb6028449a5bc01622c19300, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -112,7 +112,7 @@ public class RelayManager : MonoBehaviour
             _hostButton.gameObject.SetActive(false);
             _joinButton.gameObject.SetActive(false);
             _joinInputField.gameObject.SetActive(false);
-            _codeText.text = "Waiting for the host to start...";
+            _codeText.text = "Waiting...";
         }
         catch (RelayServiceException exception)
         {
