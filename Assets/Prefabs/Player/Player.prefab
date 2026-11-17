@@ -14989,6 +14989,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _playerInput: {fileID: 5073014740563901637}
   _camera: {fileID: 3112758913659697368}
+  _minimapCamera: {fileID: 2045085083895649756}
 --- !u!114 &4785973931527059128
 MonoBehaviour:
   m_ObjectHideFlags: 0
