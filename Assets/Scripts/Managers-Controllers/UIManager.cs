@@ -188,6 +188,9 @@ public class UIManager : MonoBehaviour
             nm.Shutdown();
             Destroy(nm.gameObject);
         }
+        //free the mouse, the lobby needs it to click || libera el mouse, el lobby lo necesita para clickear
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
         SceneManager.LoadScene(menuSceneName);
     }
