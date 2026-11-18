@@ -10,7 +10,7 @@ public class SawSpin : MonoBehaviour
     void Update()
     {
         if (carSaws == null) return;
-        if (!carSaws.sawsOn) return;
+        if (!carSaws.sawsOn.Value) return;
 
         // Rotate each saw around own axis
         sawLeft.Rotate(0,spinSpeed * Time.deltaTime, 0f, Space.Self); // eje y

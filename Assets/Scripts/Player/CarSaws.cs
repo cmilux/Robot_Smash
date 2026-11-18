@@ -10,7 +10,7 @@ public class CarSaws : NetworkBehaviour
     // True when the player has the saws equipped from the inventory
     public bool isEquipped = false;
     // True when the player turned the saws on with the button
-    public bool sawsOn = false; // deberia ser networkvariable para que el otro jugador vea la rotacion visual
+    public NetworkVariable<bool> sawsOn = new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
 
     public float damageRate = 1f; // how often the same enemy can be hit again
 
@@ -60,7 +60,7 @@ public class CarSaws : NetworkBehaviour
     {
         if (!IsOwner) return;
         if (!isEquipped) return;
-        if (sawsOn) return; // already spinning ignore extra press
+        if (sawsOn.Value) return; // already spinning ignore extra press
         if (onCooldown) return; // still waiting to be usable again
         if(equippedWeaponData == null) return;
 
@@ -70,9 +70,9 @@ public class CarSaws : NetworkBehaviour
     // Turns the saws on, wait, then turns them off automatic
     private IEnumerator SawsOnRoutine()
     {
-        sawsOn = true;                          // prende
+        sawsOn.Value = true;                          // prende
         yield return new WaitForSeconds(onDuration);  // espera
-        sawsOn = false;                         // se apaga
+        sawsOn.Value = false;                         // se apaga
         onCooldown = true;                      // marca que hay que esperar
         if (equippedWeaponData != null)
         {
@@ -84,7 +84,7 @@ public class CarSaws : NetworkBehaviour
     private void OnCollisionStay(Collision collision)
     {
         if (!isEquipped) return;
-        if (!sawsOn) return;
+        if (!sawsOn.Value) return;
         if (!IsOwner) return;
         if (!collision.gameObject.CompareTag("Enemy")) return;
         if (equippedWeaponData == null) return;

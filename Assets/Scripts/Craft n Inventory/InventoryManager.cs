@@ -264,7 +264,11 @@ public class InventoryManager : NetworkBehaviour
             // Force the saws off if they get unequipped 
             if (newId == -1)
             {
-                carSaws.sawsOn = false;
+                if (IsOwner)
+                {
+                    carSaws.sawsOn.Value = false;
+                }
+                    
             }
 
             //pass the equipped ItemData (or null if unequipped)
