@@ -35,6 +35,8 @@ public class QuestManager : NetworkBehaviour
     //permite a otros scripts leer que mision esta activa sin exponer la NetworkVariable
     public int CurrentQuestId => activeQuestId.Value;
 
+    [SerializeField] float _victoryDelay = 3f;
+
     private void Awake()
     {
         Instance = this;    //register singleton
@@ -292,7 +294,7 @@ public class QuestManager : NetworkBehaviour
 
     private IEnumerator AdvanceQuestAfterDelay(QuestData nextQuest, bool wasFinalQuest)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(wasFinalQuest ? _victoryDelay : 1f);
 
         if (wasFinalQuest)
         {
