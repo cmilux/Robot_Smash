@@ -14989,6 +14989,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   _playerInput: {fileID: 5073014740563901637}
   _camera: {fileID: 3112758913659697368}
+  _minimapCamera: {fileID: 2045085083895649756}
 --- !u!114 &4785973931527059128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20083,7 +20084,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 80
+  orthographic size: 60
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -20111,7 +20112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -30242,7 +30243,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3061763682965626647}
-  m_Mesh: {fileID: 4601005713106181203, guid: 0cecc13157e217b49ad5f25e36af2a2e, type: 3}
+  m_Mesh: {fileID: 2766175533573949068, guid: 0cecc13157e217b49ad5f25e36af2a2e, type: 3}
 --- !u!23 &6970736813620065666
 MeshRenderer:
   m_ObjectHideFlags: 0

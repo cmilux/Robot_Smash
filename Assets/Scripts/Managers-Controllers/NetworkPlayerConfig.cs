@@ -7,6 +7,7 @@ public class NetworkPlayerConfig : NetworkBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _camera;
+    [SerializeField] private GameObject _minimapCamera;
     private CarController _car;
 
     private void Awake()
@@ -23,6 +24,7 @@ public class NetworkPlayerConfig : NetworkBehaviour
         Debug.Log($"[RED] Spawned Player. IsOwner: {IsOwner}. NetworkId: {NetworkObjectId}");
         _playerInput.enabled = IsOwner;
         _camera.SetActive(IsOwner);
+        if (_minimapCamera != null) _minimapCamera.SetActive(IsOwner);      //each player renders their own minimap
     }
 
     public void SetInputEnabled(bool value)
@@ -40,5 +42,6 @@ public class NetworkPlayerConfig : NetworkBehaviour
         //disables the unactive player move || desabilita que el jugador inactivo se mueva (unity)
         _playerInput.enabled = false;
         _camera.SetActive(false);
+        if (_minimapCamera != null) _minimapCamera.SetActive(false);
     }
 }

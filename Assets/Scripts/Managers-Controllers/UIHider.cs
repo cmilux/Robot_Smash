@@ -30,7 +30,7 @@ public class UIHider : MonoBehaviour
         }
 
         //while hidde, re hidde every second: new scenes and pooled enemy bars create canvases
-        if (_hidden && Time.unscaledDeltaTime >= _nextApply)
+        if (_hidden && Time.unscaledTime >= _nextApply)
         {
             _nextApply = Time.unscaledDeltaTime + 3f;
             Apply();
