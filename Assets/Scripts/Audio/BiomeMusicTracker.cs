@@ -11,8 +11,8 @@ public class BiomeMusicTracker : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) return;
-        if (Time.time > _nextCheck)
-            _nextCheck = Time.time + _checkInterval;
+        if (Time.time < _nextCheck) return;
+        _nextCheck = Time.time + _checkInterval;
 
         if (AudioManager.Instance == null) return;
 
