@@ -19,6 +19,7 @@ public class Enemy : NetworkBehaviour
         NetworkVariableWritePermission.Server);
     public float timeBeforeDestroy;
     [SerializeField] protected Image _enemyHealthFill;
+    private Canvas _healthCanvas;
 
     [Header("Enemy movement")]
     protected NavMeshAgent agent;
@@ -65,6 +66,11 @@ public class Enemy : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        if (_enemyHealthFill != null)
+        {
+            _healthCanvas = _enemyHealthFill.GetComponentInParent<Canvas>();
+        }
+
         health.OnValueChanged += OnHealthChanged;
 
         if (IsServer)
@@ -322,6 +328,8 @@ public class Enemy : NetworkBehaviour
     void UpdateEnemyHealth(int current, int max)
     {
         if (_enemyHealthFill != null) _enemyHealthFill.fillAmount = (float)current / max;
+
+        if (_healthCanvas != null) _healthCanvas.enabled = current < max && current > 0;
     }
 
     protected virtual void Die(float delay)
